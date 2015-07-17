@@ -1,2 +1,2 @@
 # badges
-Plugin badges pour GLPI
+Plugin badges pour GLPI 0.90
