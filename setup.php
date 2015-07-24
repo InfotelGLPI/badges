@@ -85,7 +85,7 @@ function plugin_version_badges() {
       'version' => '2.1.0',
       'author'  => "<a href='http://infotel.com/services/expertise-technique/glpi/'>Infotel</a>",
       'license' => 'GPLv2+',
-      'homepage'=>'https://forge.indepnet.net/projects/badges',
+      'homepage'=>'https://github.com/InfotelGLPI/badges',
       'minGlpiVersion' => '0.90',
    );
 }
