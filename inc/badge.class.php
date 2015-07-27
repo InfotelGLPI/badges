@@ -408,7 +408,7 @@ class PluginBadgesBadge extends CommonDBTM {
             $badge_infos[$type][$entity][] = $data;
 
             if (!isset($badges_infos[$type][$entity])) {
-               $badge_messages[$type][$entity] = __('Badges at the end of the validity', 'badges') ."<br />";
+               $badge_messages[$type][$entity] = __('Badges expired or badges which expires', 'badges') ."<br />";
             }
             $badge_messages[$type][$entity] .= $message;
          }
