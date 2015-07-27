@@ -328,7 +328,7 @@ class PluginBadgesBadge extends CommonDBTM {
       switch ($name) {
          case 'BadgesAlert':
             return array (
-               'description' => __('Badges which expires', 'badges'));   // Optional
+               'description' => __('Badges expired or badges which expires', 'badges'));   // Optional
             break;
       }
       return array();
