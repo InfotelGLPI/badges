@@ -85,28 +85,13 @@ class PluginBadgesNotificationState extends CommonDBTM {
    }
   
    public function showAddForm($target) {
-      global $DB;
-      
-      $used = array();
-      $query = "SELECT *
-      FROM `".$this->getTable()."`
-      ORDER BY `states_id` ASC ";
-      if ($result = $DB->query($query)) {
-         $number = $DB->numrows($result);
-         if ($number != 0) {
-             while($ligne= $DB->fetch_array($result)) {
-               $used[]=$ligne["states_id"];
-            }
-         }
-      }
 
       echo "<div align='center'><form method='post'  action=\"$target\">";
       echo "<table class='tab_cadre_fixe' cellpadding='5'><tr ><th colspan='2'>";
       _e('Unused status for expiration mailing', 'badges');
       echo "</th></tr>";
       echo "<tr class='tab_bg_1'><td>";
-      Dropdown::show('State', array('name' => "states_id",
-                                    'used' => $used));
+      Dropdown::show('State', array('name' => "states_id"));
       echo "</td>";
       echo "<td>";
       echo "<div align='center'>";

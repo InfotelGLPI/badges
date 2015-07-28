@@ -108,12 +108,12 @@ class PluginBadgesProfile extends CommonDBTM {
 
       $profile = new Profile();
       $profile->getFromDB($profiles_id);
-      if ($profile->getField('interface') == 'central') {
+//      if ($profile->getField('interface') == 'central') {
          $rights = $this->getAllRights();
          $profile->displayRightsChoiceMatrix($rights, array('canedit'       => $canedit,
                                                          'default_class' => 'tab_bg_2',
                                                          'title'         => __('General')));
-      }
+//      }
       echo "<table class='tab_cadre_fixehov'>";
       echo "<tr class='tab_bg_1'><th colspan='4'>".__('Helpdesk')."</th></tr>\n";
 

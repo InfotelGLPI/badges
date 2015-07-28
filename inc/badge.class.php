@@ -115,6 +115,11 @@ class PluginBadgesBadge extends CommonDBTM {
       $tab[80]['name']           = __('Entity');
       $tab[80]['datatype']       = 'dropdown';
       
+      $tab[81]['table']    = $this->getTable();
+      $tab[81]['field']    = 'is_bookable';
+      $tab[81]['name']     = __('Bookable', 'badges');
+      $tab[81]['datatype'] = 'bool';
+      
       return $tab;
    }
    
@@ -122,6 +127,7 @@ class PluginBadgesBadge extends CommonDBTM {
 
       $ong = array();
       $this->addDefaultFormTab($ong);
+      $this->addStandardTab('PluginBadgesReturn', $ong, $options);
       $this->addStandardTab('Ticket', $ong, $options);
       $this->addStandardTab('Item_Problem', $ong, $options);
       $this->addStandardTab('Document_Item', $ong, $options);
@@ -219,11 +225,15 @@ class PluginBadgesBadge extends CommonDBTM {
       echo "<td>";
       Html::showDateFormItem("date_expiration",$this->fields["date_expiration"],true,true);
       echo "</td>";
-      
-      echo "<td colspan='2'>";
+      echo "<td>".__('Bookable', 'badges')."</td><td>";
+      Dropdown::showYesNo('is_bookable', $this->fields['is_bookable']);
+      echo "</td>";
+      echo "</tr>";
+
+      echo "<tr class='tab_bg_1'>";
+      echo "<td colspan='4'>";
       printf(__('Last update on %s'), Html::convDateTime($this->fields["date_mod"]));
       echo "</td>";
-      
       echo "</tr>";
       
       echo "<tr class='tab_bg_1'>";
@@ -263,7 +273,7 @@ class PluginBadgesBadge extends CommonDBTM {
       $isadmin = static::canUpdate();
       $actions = parent::getSpecificMassiveActions($checkitem);
       
-      if (Session::haveRight('transfer', READ)
+      if (Session::haveRight('transfer', READ && Session::isMultiEntitiesMode() && $isadmin)
             && Session::isMultiEntitiesMode()
             && $isadmin) {
          $actions['PluginBadgesBadge'.MassiveAction::CLASS_ACTION_SEPARATOR.'transfer'] = __('Transfer');
@@ -328,7 +338,7 @@ class PluginBadgesBadge extends CommonDBTM {
       switch ($name) {
          case 'BadgesAlert':
             return array (
-               'description' => __('Badges expired or badges which expires', 'badges'));   // Optional
+               'description' => __('Badges which expires', 'badges'));   // Optional
             break;
       }
       return array();
@@ -375,6 +385,33 @@ class PluginBadgesBadge extends CommonDBTM {
 
       return $query;
    }
+   
+   
+   static function queryBadgesReturnExpire() {
+
+      $config = new PluginBadgesConfig();
+      $notif  = new PluginBadgesNotificationState();
+
+      $config->getFromDB('1');
+      $delay = $config->fields["delay_returnexpire"];
+      
+      $query = null;
+      if (!empty($delay)) {
+         $query = "SELECT *
+            FROM `glpi_plugin_badges_requests`
+            LEFT JOIN `glpi_plugin_badges_badges`
+               ON (`glpi_plugin_badges_requests`.`badges_id` = `glpi_plugin_badges_badges`.`id`)
+            WHERE `glpi_plugin_badges_requests`.`affectation_date` IS NOT NULL
+            AND `glpi_plugin_badges_requests`.`is_affected` = '1'
+            AND TIME_TO_SEC(TIMEDIFF(NOW(),`glpi_plugin_badges_requests`.`affectation_date`)) > $delay ";
+         $query.= "AND `glpi_plugin_badges_badges`.`states_id` NOT IN (999999";
+         $query.= $notif->findStates();
+         $query.= ") ";
+      }
+
+      return $query;
+   }
+
    /**
     * Cron action on badges : ExpiredBadges or BadgesWhichExpire
     *
@@ -393,24 +430,27 @@ class PluginBadgesBadge extends CommonDBTM {
       
       $query_expired = self::queryExpiredBadges();
       $query_whichexpire = self::queryBadgesWhichExpire();
-      
-      $querys = array(Alert::NOTICE=>$query_whichexpire, Alert::END=>$query_expired);
+
+      $querys = array(PluginBadgesNotificationTargetBadge::BadgesWhichExpire => $query_whichexpire,
+                      PluginBadgesNotificationTargetBadge::ExpiredBadges     => $query_expired);
       
       $badge_infos = array();
       $badge_messages = array();
 
       foreach ($querys as $type => $query) {
          $badge_infos[$type] = array();
-         foreach ($DB->request($query) as $data) {
-            $entity = $data['entities_id'];
-            $message = $data["name"].": ".
-                        Html::convdate($data["date_expiration"])."<br>\n";
-            $badge_infos[$type][$entity][] = $data;
+         if (!empty($query)) {
+            foreach ($DB->request($query) as $data) {
+               $entity = $data['entities_id'];
+               $message = $data["name"].": ".
+                           Html::convdate($data["date_expiration"])."<br>\n";
+               $badge_infos[$type][$entity][] = $data;
 
-            if (!isset($badges_infos[$type][$entity])) {
-               $badge_messages[$type][$entity] = __('Badges expired or badges which expires', 'badges') ."<br />";
+               if (!isset($badges_infos[$type][$entity])) {
+                  $badge_messages[$type][$entity] = __('Badges at the end of the validity', 'badges') ."<br />";
+               }
+               $badge_messages[$type][$entity] .= $message;
             }
-            $badge_messages[$type][$entity] .= $message;
          }
       }
       
@@ -419,10 +459,8 @@ class PluginBadgesBadge extends CommonDBTM {
          foreach ($badge_infos[$type] as $entity => $badges) {
             Plugin::loadLang('badges');
 
-            if (NotificationEvent::raiseEvent(($type==Alert::NOTICE?"BadgesWhichExpire":"ExpiredBadges"),
-                                              new PluginBadgesBadge(),
-                                              array('entities_id'=>$entity,
-                                                    'badges'=>$badges))) {
+            if (NotificationEvent::raiseEvent($type, new PluginBadgesBadge(), array('entities_id' => $entity,
+                                                                                    'badges'      => $badges))) {
                $message = $badge_messages[$type][$entity];
                $cron_status = 1;
                if ($task) {

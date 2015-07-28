@@ -50,11 +50,11 @@ class PluginBadgesMenu extends CommonGLPI {
    }
 
    static function removeRightsFromSession() {
-      if (isset($_SESSION['glpimenu']['tools']['types']['PluginBadgesMenu'])) {
-         unset($_SESSION['glpimenu']['tools']['types']['PluginBadgesMenu']); 
+      if (isset($_SESSION['glpimenu']['assets']['types']['PluginBadgesMenu'])) {
+         unset($_SESSION['glpimenu']['assets']['types']['PluginBadgesMenu']); 
       }
-      if (isset($_SESSION['glpimenu']['tools']['content']['pluginbadgesmenu'])) {
-         unset($_SESSION['glpimenu']['tools']['content']['pluginbadgesmenu']); 
+      if (isset($_SESSION['glpimenu']['assets']['content']['pluginbadgesmenu'])) {
+         unset($_SESSION['glpimenu']['assets']['content']['pluginbadgesmenu']); 
       }
    }
 }
