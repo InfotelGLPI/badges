@@ -34,6 +34,7 @@ if (!defined('GLPI_ROOT')) {
 class PluginBadgesBadgeType extends CommonDropdown {
 
    static $rightname = "plugin_badges";
+   var $can_be_translated  = true;
    
    static function getTypeName($nb=0) {
       return _n('Type of badge', 'Types of badge', $nb, 'badges');
