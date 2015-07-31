@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Rafael Ferreira <rafael.f.f1@gmail.com>, 2012
+# Rafael Fontenelle <rffontenelle@gmail.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: GLPI Project - badges plugin\n"
