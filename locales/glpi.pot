@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GLPI - Badges plugin 1.9.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-07-28 09:41+0200\n"
+"POT-Creation-Date: 2015-09-17 09:58+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: setup.php:83 inc/badge.class.php:41 inc/menu.class.php:35
+#: setup.php:85 inc/badge.class.php:41 inc/menu.class.php:35
 #: inc/profile.class.php:143 inc/request.class.php:169
 #: inc/request.class.php:274
 msgid "Badge"
@@ -26,8 +26,8 @@ msgid_plural "Badges"
 msgstr[0] ""
 msgstr[1] ""
 
-#: setup.php:95
-msgid "This plugin requires GLPI >= 0.85.3"
+#: setup.php:97
+msgid "This plugin requires GLPI >= 0.90"
 msgstr ""
 
 #: inc/badge.class.php:68 inc/badge.class.php:210 inc/request.class.php:432
@@ -35,8 +35,8 @@ msgid "Affectation date"
 msgstr ""
 
 #: inc/badge.class.php:73 inc/badge.class.php:223
-#: inc/notificationtargetbadge.class.php:75
-#: inc/notificationtargetbadge.class.php:118
+#: inc/notificationtargetbadge.class.php:72
+#: inc/notificationtargetbadge.class.php:115
 msgid "Date of end of validity"
 msgstr ""
 
@@ -44,17 +44,17 @@ msgstr ""
 msgid "Bookable"
 msgstr ""
 
-#: inc/badge.class.php:341 inc/notificationtargetbadge.class.php:45
-#: inc/notificationtargetbadge.class.php:64
+#: inc/badge.class.php:341 inc/notificationtargetbadge.class.php:48
+#: inc/notificationtargetbadge.class.php:62
 msgid "Badges which expires"
 msgstr ""
 
-#: inc/badge.class.php:450 inc/notificationtargetbadge.class.php:44
-#: inc/notificationtargetbadge.class.php:61 inc/return.class.php:411
+#: inc/badge.class.php:450 inc/notificationtargetbadge.class.php:47
+#: inc/notificationtargetbadge.class.php:59 inc/return.class.php:407
 msgid "Badges at the end of the validity"
 msgstr ""
 
-#: inc/badgetype.class.php:39
+#: inc/badgetype.class.php:40
 msgid "Type of badge"
 msgid_plural "Types of badge"
 msgstr[0] ""
@@ -64,20 +64,20 @@ msgstr[1] ""
 msgid "Plugin Setup"
 msgstr ""
 
-#: inc/config.class.php:71 inc/config.class.php:115
+#: inc/config.class.php:73 inc/config.class.php:117
 msgid "Time of checking of validity of the badges"
 msgstr ""
 
-#: inc/config.class.php:77
+#: inc/config.class.php:79
 msgid "Badges expired for more than "
 msgstr ""
 
-#: inc/config.class.php:87
+#: inc/config.class.php:89
 msgid "Badges expiring in less than "
 msgstr ""
 
-#: inc/config.class.php:121 inc/notificationtargetbadge.class.php:47
-#: inc/notificationtargetbadge.class.php:70
+#: inc/config.class.php:123 inc/notificationtargetbadge.class.php:50
+#: inc/notificationtargetbadge.class.php:68
 msgid "Badge return delay"
 msgstr ""
 
@@ -85,52 +85,52 @@ msgstr ""
 msgid "Unused status for expiration mailing"
 msgstr ""
 
-#: inc/notificationtargetbadge.class.php:46
-#: inc/notificationtargetbadge.class.php:67 inc/request.class.php:222
+#: inc/notificationtargetbadge.class.php:49
+#: inc/notificationtargetbadge.class.php:65 inc/request.class.php:222
 #: inc/request.class.php:228 inc/return.class.php:238 inc/wizard.class.php:59
 #: inc/wizard.class.php:66 inc/wizard.class.php:67
 msgid "Access badge request"
 msgstr ""
 
-#: inc/notificationtargetbadge.class.php:77
-#: inc/notificationtargetbadge.class.php:119
+#: inc/notificationtargetbadge.class.php:74
+#: inc/notificationtargetbadge.class.php:116
 msgid "Allotted to"
 msgstr ""
 
-#: inc/notificationtargetbadge.class.php:93
-#: inc/notificationtargetbadge.class.php:120 inc/request.class.php:170
+#: inc/notificationtargetbadge.class.php:90
+#: inc/notificationtargetbadge.class.php:117 inc/request.class.php:170
 #: inc/request.class.php:235 inc/request.class.php:272
 #: inc/request.class.php:429 inc/return.class.php:155 inc/return.class.php:299
 msgid "Visitor realname"
 msgstr ""
 
-#: inc/notificationtargetbadge.class.php:94
-#: inc/notificationtargetbadge.class.php:121 inc/request.class.php:171
+#: inc/notificationtargetbadge.class.php:91
+#: inc/notificationtargetbadge.class.php:118 inc/request.class.php:171
 #: inc/request.class.php:231 inc/request.class.php:271
 #: inc/request.class.php:430 inc/return.class.php:156 inc/return.class.php:297
 msgid "Visitor firstname"
 msgstr ""
 
-#: inc/notificationtargetbadge.class.php:95
-#: inc/notificationtargetbadge.class.php:122 inc/request.class.php:172
+#: inc/notificationtargetbadge.class.php:92
+#: inc/notificationtargetbadge.class.php:119 inc/request.class.php:172
 #: inc/request.class.php:242 inc/request.class.php:273
 #: inc/request.class.php:431 inc/return.class.php:157 inc/return.class.php:304
 msgid "Visitor society"
 msgstr ""
 
-#: inc/notificationtargetbadge.class.php:96
-#: inc/notificationtargetbadge.class.php:123 inc/request.class.php:116
+#: inc/notificationtargetbadge.class.php:93
+#: inc/notificationtargetbadge.class.php:120 inc/request.class.php:116
 #: inc/request.class.php:173 inc/request.class.php:253
 #: inc/request.class.php:275 inc/return.class.php:158 inc/return.class.php:310
-#: inc/return.class.php:407
+#: inc/return.class.php:403
 msgid "Arrival date"
 msgstr ""
 
-#: inc/notificationtargetbadge.class.php:133 inc/request.class.php:43
+#: inc/notificationtargetbadge.class.php:130 inc/request.class.php:43
 msgid "Badges request"
 msgstr ""
 
-#: inc/notificationtargetbadge.class.php:139
+#: inc/notificationtargetbadge.class.php:136
 msgid "Badges expired or badges which expires"
 msgstr ""
 
@@ -203,7 +203,7 @@ msgstr ""
 msgid "Badge returned"
 msgstr ""
 
-#: inc/return.class.php:348
+#: inc/return.class.php:347
 msgid "Badges return"
 msgstr ""
 
