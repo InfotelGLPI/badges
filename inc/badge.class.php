@@ -35,7 +35,7 @@ class PluginBadgesBadge extends CommonDBTM {
    
    public $dohistory                   = true;
    static $rightname                   = "plugin_badges";
-   protected $usenotepadrights         = true;
+   protected $usenotepad               = true;
 
    static function getTypeName($nb=0) {
       return _n('Badge', 'Badges', $nb, 'badges');
