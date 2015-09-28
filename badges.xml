@@ -3,7 +3,7 @@
    <name>Badges Inventory</name>
    <key>badges</key>
    <state>stable</state>
-    <logo></logo>
+    <logo>https://raw.githubusercontent.com/InfotelGLPI/badges/master/badges.png</logo>
    <description>
       <short>
          <fr><![CDATA[Gestion de badges. Ce plugin vous permet de gérer les badges de votre réseau et de les associer à des éléments de l’inventaire.<br />Un système d'alertes mail permet de vérifier les badges qui vont ou qui ont expirés.]]></fr>
