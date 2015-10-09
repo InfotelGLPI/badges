@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GLPI Project - badges plugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-17 09:58+0200\n"
-"PO-Revision-Date: 2015-09-17 08:00+0000\n"
+"POT-Creation-Date: 2015-10-09 16:42+0200\n"
+"PO-Revision-Date: 2015-10-09 14:43+0000\n"
 "Last-Translator: Xavier CAILLAUD <tsmr@thetsmr.fr>\n"
 "Language-Team: Turkish (Turkey) (http://www.transifex.com/tsmr/GLPI_badges/language/tr_TR/)\n"
 "MIME-Version: 1.0\n"
@@ -27,7 +27,7 @@ msgstr[0] "Yaka Kartları"
 
 #: setup.php:97
 msgid "This plugin requires GLPI >= 0.90"
-msgstr ""
+msgstr "Bu uygulama eki GLPI 0.90 ve üzerindeki sürümlerle çalışır"
 
 #: inc/badge.class.php:68 inc/badge.class.php:210 inc/request.class.php:432
 msgid "Affectation date"
@@ -41,7 +41,7 @@ msgstr "Geçerlilik süresinin sonu"
 
 #: inc/badge.class.php:120 inc/badge.class.php:228
 msgid "Bookable"
-msgstr ""
+msgstr "Ayırtılabilir"
 
 #: inc/badge.class.php:341 inc/notificationtargetbadge.class.php:48
 #: inc/notificationtargetbadge.class.php:62
@@ -77,7 +77,7 @@ msgstr "Şu kadar zaman içinde süresi dolan yaka kartları"
 #: inc/config.class.php:123 inc/notificationtargetbadge.class.php:50
 #: inc/notificationtargetbadge.class.php:68
 msgid "Badge return delay"
-msgstr ""
+msgstr "Yaka kartı geri alma gecikmesi"
 
 #: inc/notificationstate.class.php:91 inc/notificationstate.class.php:121
 msgid "Unused status for expiration mailing"
@@ -88,7 +88,7 @@ msgstr "Süre dolma e-postası için kullanılmıyor durumu"
 #: inc/request.class.php:228 inc/return.class.php:238 inc/wizard.class.php:59
 #: inc/wizard.class.php:66 inc/wizard.class.php:67
 msgid "Access badge request"
-msgstr ""
+msgstr "Erişim yaka kartı isteği"
 
 #: inc/notificationtargetbadge.class.php:74
 #: inc/notificationtargetbadge.class.php:116
@@ -100,21 +100,21 @@ msgstr "Kullanıcısı"
 #: inc/request.class.php:235 inc/request.class.php:272
 #: inc/request.class.php:429 inc/return.class.php:155 inc/return.class.php:299
 msgid "Visitor realname"
-msgstr ""
+msgstr "Ziyaretçinin gerçek adı"
 
 #: inc/notificationtargetbadge.class.php:91
 #: inc/notificationtargetbadge.class.php:118 inc/request.class.php:171
 #: inc/request.class.php:231 inc/request.class.php:271
 #: inc/request.class.php:430 inc/return.class.php:156 inc/return.class.php:297
 msgid "Visitor firstname"
-msgstr ""
+msgstr "Ziyaretçinin adı"
 
 #: inc/notificationtargetbadge.class.php:92
 #: inc/notificationtargetbadge.class.php:119 inc/request.class.php:172
 #: inc/request.class.php:242 inc/request.class.php:273
 #: inc/request.class.php:431 inc/return.class.php:157 inc/return.class.php:304
 msgid "Visitor society"
-msgstr ""
+msgstr "Ziyaretçinin topluluğu"
 
 #: inc/notificationtargetbadge.class.php:93
 #: inc/notificationtargetbadge.class.php:120 inc/request.class.php:116
@@ -122,11 +122,11 @@ msgstr ""
 #: inc/request.class.php:275 inc/return.class.php:158 inc/return.class.php:310
 #: inc/return.class.php:403
 msgid "Arrival date"
-msgstr ""
+msgstr "Varış tarihi"
 
 #: inc/notificationtargetbadge.class.php:130 inc/request.class.php:43
 msgid "Badges request"
-msgstr ""
+msgstr "Yaka kartları isteği"
 
 #: inc/notificationtargetbadge.class.php:136
 msgid "Badges expired or badges which expires"
@@ -134,79 +134,79 @@ msgstr "Süresi geçmiş ve geçmek üzere olan yaka kartları"
 
 #: inc/request.class.php:111
 msgid "Badges usage search"
-msgstr ""
+msgstr "Yaka kartları kullanımı araması"
 
 #: inc/request.class.php:122 inc/request.class.php:174
 #: inc/return.class.php:159
 msgid "Return date"
-msgstr ""
+msgstr "Geri alma tarihi"
 
 #: inc/request.class.php:166 inc/request.class.php:196
 msgid "Badge usage report"
-msgstr ""
+msgstr "Yaka kartı kullanım raporu"
 
 #: inc/request.class.php:246 inc/request.class.php:433
 msgid "Available badge"
-msgid_plural "Availabe badges"
+msgid_plural "Available badges"
 msgstr[0] ""
 
 #: inc/request.class.php:261
 msgid "Add to cart"
-msgstr ""
+msgstr "Sepete ekle"
 
 #: inc/request.class.php:269
 msgid "Cart"
-msgstr ""
+msgstr "Sepet"
 
 #: inc/request.class.php:373
 msgid "Badge affected"
 msgid_plural "Badges affected"
-msgstr[0] ""
+msgstr[0] "yaka kartı etkilendi"
 
 #: inc/request.class.php:379
 msgid "Please add badges in cart"
-msgstr ""
+msgstr "Lütfen sepete yaka kartları ekleyin"
 
 #: inc/return.class.php:52 inc/return.class.php:114
 msgid "Badge return"
-msgstr ""
+msgstr "Yaka kartı geri alma"
 
 #: inc/return.class.php:126
 msgid "Force badge restitution"
-msgstr ""
+msgstr "Yaka kartını geri almaya zorla"
 
 #: inc/return.class.php:150 inc/return.class.php:180
 msgid "Badge requests history"
-msgstr ""
+msgstr "Yaka kartı isteği geçmişi"
 
 #: inc/return.class.php:199 inc/return.class.php:242
 msgid "Badges in your possession"
-msgstr ""
+msgstr "Kullanımınızdaki yaka kartları"
 
 #: inc/return.class.php:231 inc/wizard.class.php:73 inc/wizard.class.php:74
 msgid "Access badge return"
-msgstr ""
+msgstr "Erişim yaka kartı geri alma"
 
 #: inc/return.class.php:264
 msgid "Restitution date"
-msgstr ""
+msgstr "Geri alma tarihi"
 
 #: inc/return.class.php:276
 msgid "Return"
-msgstr ""
+msgstr "Geri alma"
 
 #: inc/return.class.php:334
 msgid "Badge returned"
-msgstr ""
+msgstr "Yaka kartı geri alındı"
 
 #: inc/return.class.php:347
 msgid "Badges return"
-msgstr ""
+msgstr "Yaka kartı geri alındı"
 
 #: inc/wizard.class.php:43
 msgid "Badges wizard"
-msgstr ""
+msgstr "Yaka kartları yardımcısı"
 
 #: inc/wizard.class.php:67
 msgid "For a limited time"
-msgstr ""
+msgstr "Sınırlı bir süre için"

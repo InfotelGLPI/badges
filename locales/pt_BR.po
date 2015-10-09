@@ -1,0 +1,216 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Badges Development Team
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Rafael Fontenelle <rffontenelle@gmail.com>, 2012
+msgid ""
+msgstr ""
+"Project-Id-Version: GLPI Project - badges plugin\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-10-09 16:42+0200\n"
+"PO-Revision-Date: 2015-10-09 14:43+0000\n"
+"Last-Translator: Xavier CAILLAUD <tsmr@thetsmr.fr>\n"
+"Language-Team: Portuguese (Brazil) (http://www.transifex.com/tsmr/GLPI_badges/language/pt_BR/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: setup.php:85 inc/badge.class.php:41 inc/menu.class.php:35
+#: inc/profile.class.php:143 inc/request.class.php:169
+#: inc/request.class.php:274
+msgid "Badge"
+msgid_plural "Badges"
+msgstr[0] "Insígnia"
+msgstr[1] "Insígnias"
+
+#: setup.php:97
+msgid "This plugin requires GLPI >= 0.90"
+msgstr ""
+
+#: inc/badge.class.php:68 inc/badge.class.php:210 inc/request.class.php:432
+msgid "Affectation date"
+msgstr "Data de "
+
+#: inc/badge.class.php:73 inc/badge.class.php:223
+#: inc/notificationtargetbadge.class.php:72
+#: inc/notificationtargetbadge.class.php:115
+msgid "Date of end of validity"
+msgstr "Data do fim da validade"
+
+#: inc/badge.class.php:120 inc/badge.class.php:228
+msgid "Bookable"
+msgstr ""
+
+#: inc/badge.class.php:341 inc/notificationtargetbadge.class.php:48
+#: inc/notificationtargetbadge.class.php:62
+msgid "Badges which expires"
+msgstr "Insígnias que expiram"
+
+#: inc/badge.class.php:450 inc/notificationtargetbadge.class.php:47
+#: inc/notificationtargetbadge.class.php:59 inc/return.class.php:407
+msgid "Badges at the end of the validity"
+msgstr "Insígnias no final da validade"
+
+#: inc/badgetype.class.php:40
+msgid "Type of badge"
+msgid_plural "Types of badge"
+msgstr[0] "Tipo de insígnia"
+msgstr[1] "Tipos de insígnias"
+
+#: inc/config.class.php:39
+msgid "Plugin Setup"
+msgstr "Configuração do plugin"
+
+#: inc/config.class.php:73 inc/config.class.php:117
+msgid "Time of checking of validity of the badges"
+msgstr "Intervalo de verificação de validade de insígnias"
+
+#: inc/config.class.php:79
+msgid "Badges expired for more than "
+msgstr "Insígnias expiradas a mais de "
+
+#: inc/config.class.php:89
+msgid "Badges expiring in less than "
+msgstr "Insígnias expirando em menos de "
+
+#: inc/config.class.php:123 inc/notificationtargetbadge.class.php:50
+#: inc/notificationtargetbadge.class.php:68
+msgid "Badge return delay"
+msgstr ""
+
+#: inc/notificationstate.class.php:91 inc/notificationstate.class.php:121
+msgid "Unused status for expiration mailing"
+msgstr "Status não usado para enviar email de expirados"
+
+#: inc/notificationtargetbadge.class.php:49
+#: inc/notificationtargetbadge.class.php:65 inc/request.class.php:222
+#: inc/request.class.php:228 inc/return.class.php:238 inc/wizard.class.php:59
+#: inc/wizard.class.php:66 inc/wizard.class.php:67
+msgid "Access badge request"
+msgstr ""
+
+#: inc/notificationtargetbadge.class.php:74
+#: inc/notificationtargetbadge.class.php:116
+msgid "Allotted to"
+msgstr "Lotado a"
+
+#: inc/notificationtargetbadge.class.php:90
+#: inc/notificationtargetbadge.class.php:117 inc/request.class.php:170
+#: inc/request.class.php:235 inc/request.class.php:272
+#: inc/request.class.php:429 inc/return.class.php:155 inc/return.class.php:299
+msgid "Visitor realname"
+msgstr ""
+
+#: inc/notificationtargetbadge.class.php:91
+#: inc/notificationtargetbadge.class.php:118 inc/request.class.php:171
+#: inc/request.class.php:231 inc/request.class.php:271
+#: inc/request.class.php:430 inc/return.class.php:156 inc/return.class.php:297
+msgid "Visitor firstname"
+msgstr ""
+
+#: inc/notificationtargetbadge.class.php:92
+#: inc/notificationtargetbadge.class.php:119 inc/request.class.php:172
+#: inc/request.class.php:242 inc/request.class.php:273
+#: inc/request.class.php:431 inc/return.class.php:157 inc/return.class.php:304
+msgid "Visitor society"
+msgstr ""
+
+#: inc/notificationtargetbadge.class.php:93
+#: inc/notificationtargetbadge.class.php:120 inc/request.class.php:116
+#: inc/request.class.php:173 inc/request.class.php:253
+#: inc/request.class.php:275 inc/return.class.php:158 inc/return.class.php:310
+#: inc/return.class.php:403
+msgid "Arrival date"
+msgstr ""
+
+#: inc/notificationtargetbadge.class.php:130 inc/request.class.php:43
+msgid "Badges request"
+msgstr ""
+
+#: inc/notificationtargetbadge.class.php:136
+msgid "Badges expired or badges which expires"
+msgstr "Insígnia expiraram ou que vão expirar"
+
+#: inc/request.class.php:111
+msgid "Badges usage search"
+msgstr ""
+
+#: inc/request.class.php:122 inc/request.class.php:174
+#: inc/return.class.php:159
+msgid "Return date"
+msgstr ""
+
+#: inc/request.class.php:166 inc/request.class.php:196
+msgid "Badge usage report"
+msgstr ""
+
+#: inc/request.class.php:246 inc/request.class.php:433
+msgid "Available badge"
+msgid_plural "Available badges"
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/request.class.php:261
+msgid "Add to cart"
+msgstr ""
+
+#: inc/request.class.php:269
+msgid "Cart"
+msgstr ""
+
+#: inc/request.class.php:373
+msgid "Badge affected"
+msgid_plural "Badges affected"
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/request.class.php:379
+msgid "Please add badges in cart"
+msgstr ""
+
+#: inc/return.class.php:52 inc/return.class.php:114
+msgid "Badge return"
+msgstr ""
+
+#: inc/return.class.php:126
+msgid "Force badge restitution"
+msgstr ""
+
+#: inc/return.class.php:150 inc/return.class.php:180
+msgid "Badge requests history"
+msgstr ""
+
+#: inc/return.class.php:199 inc/return.class.php:242
+msgid "Badges in your possession"
+msgstr ""
+
+#: inc/return.class.php:231 inc/wizard.class.php:73 inc/wizard.class.php:74
+msgid "Access badge return"
+msgstr ""
+
+#: inc/return.class.php:264
+msgid "Restitution date"
+msgstr ""
+
+#: inc/return.class.php:276
+msgid "Return"
+msgstr ""
+
+#: inc/return.class.php:334
+msgid "Badge returned"
+msgstr ""
+
+#: inc/return.class.php:347
+msgid "Badges return"
+msgstr ""
+
+#: inc/wizard.class.php:43
+msgid "Badges wizard"
+msgstr ""
+
+#: inc/wizard.class.php:67
+msgid "For a limited time"
+msgstr ""
