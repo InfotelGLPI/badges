@@ -243,7 +243,7 @@ class PluginBadgesRequest extends CommonDBTM {
       echo "<td>";
       html::autocompletionTextField($request, "visitor_society", array('name' => "visitor_society"));
       echo "</td>";
-      echo "<td>"._n("Available badge", "Availabe badges", 2, "badges")." <span class='red'>*</span></td>";
+      echo "<td>"._n("Available badge", "Available badges", 2, "badges")." <span class='red'>*</span></td>";
       echo "<td id='badges_available'>";
       $this->loadAvailableBadges();
       echo "</td>";
@@ -430,7 +430,7 @@ class PluginBadgesRequest extends CommonDBTM {
                                 'visitor_firstname' => __('Visitor firstname', 'badges'),
                                 'visitor_society'   => __('Visitor society', 'badges'),
                                 'affectation_date'  => __('Affectation date', 'badges'),
-                                'badges_id'         => _n("Available badge", "Availabe badges", 2, "badges"));
+                                'badges_id'         => _n("Available badge", "Available badges", 2, "badges"));
 
       foreach ($input as $key => $value) {
          if (isset($mandatory_fields[$key])) {
