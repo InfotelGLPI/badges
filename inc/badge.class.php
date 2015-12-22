@@ -115,10 +115,14 @@ class PluginBadgesBadge extends CommonDBTM {
       $tab[80]['name']           = __('Entity');
       $tab[80]['datatype']       = 'dropdown';
       
-      $tab[81]['table']    = $this->getTable();
-      $tab[81]['field']    = 'is_bookable';
-      $tab[81]['name']     = __('Bookable', 'badges');
-      $tab[81]['datatype'] = 'bool';
+      $tab[81]['table']       = 'glpi_entities';
+      $tab[81]['field']       = 'entities_id';
+      $tab[81]['name']        = __('Entity')."-".__('ID');
+      
+      $tab[82]['table']    = $this->getTable();
+      $tab[82]['field']    = 'is_bookable';
+      $tab[82]['name']     = __('Bookable', 'badges');
+      $tab[82]['datatype'] = 'bool';
       
       return $tab;
    }
