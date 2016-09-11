@@ -16,6 +16,8 @@
    </description>
    <homepage>https://github.com/InfotelGLPI/badges</homepage>
    <download>https://github.com/InfotelGLPI/badges/releases</download>
+   <issues>https://github.com/InfotelGLPI/badges/issues</issues>
+   <readme>https://raw.githubusercontent.com/InfotelGLPI/badges/master/README.md</readme>
    <authors>
       <author>Xavier Caillaud</author>
       <author>Infotel</author>
