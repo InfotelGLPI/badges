@@ -86,14 +86,14 @@ function plugin_version_badges() {
       'author'  => "<a href='http://infotel.com/services/expertise-technique/glpi/'>Infotel</a>",
       'license' => 'GPLv2+',
       'homepage'=>'https://github.com/InfotelGLPI/badges',
-      'minGlpiVersion' => '0.90',
+      'minGlpiVersion' => '9.1',
    );
 }
 
 // Optional : check prerequisites before install : may print errors or add to message after redirect
 function plugin_badges_check_prerequisites() {
-   if (version_compare(GLPI_VERSION,'0.90','lt') || version_compare(GLPI_VERSION,'9.2','ge')) {
-      _e('This plugin requires GLPI >= 0.90', 'badges');
+   if (version_compare(GLPI_VERSION,'9.1','lt') || version_compare(GLPI_VERSION,'9.2','ge')) {
+      _e('This plugin requires GLPI >= 9.1', 'badges');
       return false;
    }
    return true;
