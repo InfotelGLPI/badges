@@ -39,7 +39,7 @@ function plugin_badges_install() {
 
    if (!TableExists("glpi_plugin_badges") && !TableExists("glpi_plugin_badges_badgetypes")) {
       $install=true;
-      $DB->runFile(GLPI_ROOT ."/plugins/badges/sql/empty-2.0.1.sql");
+      $DB->runFile(GLPI_ROOT ."/plugins/badges/sql/empty-2.2.0.sql");
 
    } else if (TableExists("glpi_plugin_badges_users") && !TableExists("glpi_plugin_badges_default")) {
       
@@ -117,7 +117,7 @@ function plugin_badges_install() {
       $query  = "INSERT INTO `glpi_notifications`
                                    VALUES (NULL, 'Access badge request', 0, 'PluginBadgesBadge', 'AccessBadgeRequest',
                                           'mail','".$itemtype."',
-                                          '', 1, 1, '".date('Y-m-d H:i:s')."');";
+                                          '', 1, 1, '".date('Y-m-d H:i:s')."', '".date('Y-m-d H:i:s')."');";
       $result = $DB->query($query);
    }
 
@@ -156,7 +156,7 @@ function plugin_badges_install() {
    $query  = "INSERT INTO `glpi_notifications`
                                 VALUES (NULL, 'Access badge return', 0, 'PluginBadgesBadge', 'BadgesReturn',
                                        'mail','".$itemtype."',
-                                       '', 1, 1, '".date('Y-m-d H:i:s')."');";
+                                       '', 1, 1, '".date('Y-m-d H:i:s')."', '".date('Y-m-d H:i:s')."');";
    $result = $DB->query($query);
 
    if ($update78) {
@@ -213,7 +213,7 @@ function plugin_badges_install() {
 
    PluginBadgesProfile::initProfile();
    PluginBadgesProfile::createFirstAccess($_SESSION['glpiactiveprofile']['id']);
-   $migration = new Migration("2.0.0");
+   $migration = new Migration("2.2.0");
    $migration->dropTable('glpi_plugin_badges_profiles');
    
    return true;
