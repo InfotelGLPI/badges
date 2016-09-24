@@ -233,12 +233,6 @@ class PluginBadgesBadge extends CommonDBTM {
       Dropdown::showYesNo('is_bookable', $this->fields['is_bookable']);
       echo "</td>";
       echo "</tr>";
-
-      echo "<tr class='tab_bg_1'>";
-      echo "<td colspan='4'>";
-      printf(__('Last update on %s'), Html::convDateTime($this->fields["date_mod"]));
-      echo "</td>";
-      echo "</tr>";
       
       echo "<tr class='tab_bg_1'>";
       
