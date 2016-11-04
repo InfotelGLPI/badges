@@ -31,40 +31,44 @@ if (!defined('GLPI_ROOT')) {
    die("Sorry. You can't access directly to this file");
 }
 
-class PluginBadgesConfig extends CommonDBTM {
-   
-   function getTabNameForItem(CommonGLPI $item, $withtemplate=0) {
+class PluginBadgesConfig extends CommonDBTM
+{
 
-      if ($item->getType()=='CronTask' && $item->getField('name')=="BadgesAlert") {
-            return __('Plugin Setup', 'badges');
+   function getTabNameForItem(CommonGLPI $item, $withtemplate = 0)
+   {
+
+      if ($item->getType() == 'CronTask' && $item->getField('name') == "BadgesAlert") {
+         return __('Plugin Setup', 'badges');
       }
       return '';
    }
 
 
-   static function displayTabContentForItem(CommonGLPI $item, $tabnum=1, $withtemplate=0) {
+   static function displayTabContentForItem(CommonGLPI $item, $tabnum = 1, $withtemplate = 0)
+   {
       global $CFG_GLPI;
 
-      if ($item->getType()=='CronTask') {
+      if ($item->getType() == 'CronTask') {
 
-         $target = $CFG_GLPI["root_doc"]."/plugins/badges/front/notification.state.php";
+         $target = $CFG_GLPI["root_doc"] . "/plugins/badges/front/notification.state.php";
          PluginBadgesBadge::configCron($target);
       }
       return true;
    }
-   
-   function showForm($target,$ID) {
 
-      if(!$this->getFromDB($ID)){
+   function showForm($target, $ID)
+   {
+
+      if (!$this->getFromDB($ID)) {
          $this->getEmpty();
       }
-      
-      $delay_expired      = $this->fields["delay_expired"];
-      $delay_whichexpire  = $this->fields["delay_whichexpire"];
-      
-      $date_expired      = date("Y-m-d", mktime(0, 0, 0, date("m"), date("d") - $delay_expired, date("y")));
-      $date_whichexpire  = date("Y-m-d", mktime(0, 0, 0, date("m"), date("d") + $delay_whichexpire, date("y")));
-      
+
+      $delay_expired = $this->fields["delay_expired"];
+      $delay_whichexpire = $this->fields["delay_whichexpire"];
+
+      $date_expired = date("Y-m-d", mktime(0, 0, 0, date("m"), date("d") - $delay_expired, date("y")));
+      $date_whichexpire = date("Y-m-d", mktime(0, 0, 0, date("m"), date("d") + $delay_whichexpire, date("y")));
+
       echo "<div align='center'>";
       echo "<form method='post' action=\"$target\">";
       echo "<table class='tab_cadre_fixe'>";
@@ -80,7 +84,7 @@ class PluginBadgesConfig extends CommonDBTM {
       echo "</td>";
       echo "<td>";
       echo "&nbsp;<input type='text' size='15' name='delay_expired' value=\"$delay_expired\">";
-      echo "&nbsp;"._n('Day', 'Days', 2)." ( > ".Html::convdate($date_expired).")<br>";
+      echo "&nbsp;" . _n('Day', 'Days', 2) . " ( > " . Html::convDate($date_expired) . ")<br>";
       echo "</td>";
       echo "</tr>";
 
@@ -90,23 +94,24 @@ class PluginBadgesConfig extends CommonDBTM {
       echo "</td>";
       echo "<td>";
       echo "&nbsp;<input type='text' size='15' name='delay_whichexpire' value=\"$delay_whichexpire\">";
-      echo "&nbsp;"._n('Day', 'Days', 2)." ( < ".Html::convdate($date_whichexpire).")<br>";
+      echo "&nbsp;" . _n('Day', 'Days', 2) . " ( < " . Html::convDate($date_whichexpire) . ")<br>";
       echo "</td>";
       echo "</tr>";
 
       echo "<tr class='tab_bg_1'>";
       echo "<td class='center' colspan='4'>";
-      echo "<input type='hidden' name='id' value='".$ID."'>";
-      echo "<input type='submit' name='update' value=\""._sx('button', 'Save')."\" class='submit' >";
+      echo "<input type='hidden' name='id' value='" . $ID . "'>";
+      echo "<input type='submit' name='update' value=\"" . _sx('button', 'Save') . "\" class='submit' >";
       echo "</td>";
       echo "</tr>";
       echo "</table>";
       Html::closeForm();
       echo "</div>";
    }
-   
-   public function showFormBadgeReturn($target,$ID) {
-      
+
+   public function showFormBadgeReturn($target, $ID)
+   {
+
       $this->getFromDB($ID);
 
       echo "<div align='center'>";
@@ -117,25 +122,25 @@ class PluginBadgesConfig extends CommonDBTM {
       _e('Time of checking of validity of the badges', 'badges');
       echo "</th>";
       echo "</tr>";
-      
+
       echo "<tr class='tab_bg_1'>";
       echo "<td>";
-      _e('Badge return delay', 'badges')."&nbsp;";
+      _e('Badge return delay', 'badges') . "&nbsp;";
       echo "</td>";
       echo "<td>";
-      Dropdown::showTimeStamp("delay_returnexpire", array('min'             => DAY_TIMESTAMP,
-                                                          'max'             => 52 * WEEK_TIMESTAMP,
-                                                          'step'            => DAY_TIMESTAMP,
-                                                          'value'           => $this->fields["delay_returnexpire"],
-                                                          'addfirstminutes' => true,
-                                                          'inhours'         => false));
+      Dropdown::showTimeStamp("delay_returnexpire", array('min' => DAY_TIMESTAMP,
+         'max' => 52 * WEEK_TIMESTAMP,
+         'step' => DAY_TIMESTAMP,
+         'value' => $this->fields["delay_returnexpire"],
+         'addfirstminutes' => true,
+         'inhours' => false));
       echo "</td>";
       echo "</tr>";
 
       echo "<tr class='tab_bg_1'>";
       echo "<td class='center' colspan='4'>";
-      echo "<input type='hidden' name='id' value='".$ID."'>";
-      echo "<input type='submit' name='update' value=\""._sx('button', 'Save')."\" class='submit' >";
+      echo "<input type='hidden' name='id' value='" . $ID . "'>";
+      echo "<input type='submit' name='update' value=\"" . _sx('button', 'Save') . "\" class='submit' >";
       echo "</td>";
       echo "</tr>";
       echo "</table>";
@@ -143,5 +148,3 @@ class PluginBadgesConfig extends CommonDBTM {
       echo "</div>";
    }
 }
-
-?>

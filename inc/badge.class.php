@@ -31,103 +31,107 @@ if (!defined('GLPI_ROOT')) {
    die("Sorry. You can't access directly to this file");
 }
 
-class PluginBadgesBadge extends CommonDBTM {
-   
-   public $dohistory                   = true;
-   static $rightname                   = "plugin_badges";
-   protected $usenotepad               = true;
+class PluginBadgesBadge extends CommonDBTM
+{
 
-   static function getTypeName($nb=0) {
+   public $dohistory = true;
+   static $rightname = "plugin_badges";
+   protected $usenotepad = true;
+
+   static function getTypeName($nb = 0)
+   {
       return _n('Badge', 'Badges', $nb, 'badges');
    }
 
-  
-   function getSearchOptions() {
 
-      $tab                       = array();
+   function getSearchOptions()
+   {
 
-      $tab['common']             = self::getTypeName(2);
+      $tab = array();
 
-      $tab[1]['table']           = $this->getTable();
-      $tab[1]['field']           = 'name';
-      $tab[1]['name']            = __('Name');
-      $tab[1]['datatype']        = 'itemlink';
-      $tab[1]['itemlink_type']   = $this->getType();
-      
-      $tab[2]['table']           = 'glpi_plugin_badges_badgetypes';
-      $tab[2]['field']           = 'name';
-      $tab[2]['name']            = __('Type');
-      $tab[2]['datatype']        = 'dropdown';
-      
-      $tab[3]['table']           = $this->getTable();
-      $tab[3]['field']           = 'serial';
-      $tab[3]['name']            = __('Serial number');
-      
-      $tab[4]['table']           = $this->getTable();
-      $tab[4]['field']           = 'date_affectation';
-      $tab[4]['name']            = __('Affectation date', 'badges');
-      $tab[4]['datatype']        = 'date';
-      
-      $tab[5]['table']           = $this->getTable();
-      $tab[5]['field']           = 'date_expiration';
-      $tab[5]['name']            = __('Date of end of validity', 'badges');
-      $tab[5]['datatype']        = 'date';
-      
-      $tab[6]['table']           = 'glpi_locations';
-      $tab[6]['field']           = 'completename';
-      $tab[6]['name']            = __('Location');
-      $tab[6]['datatype']        = 'dropdown';
-      
-      $tab[7]['table']           = 'glpi_states';
-      $tab[7]['field']           = 'completename';
-      $tab[7]['name']            = __('Status');
-      $tab[7]['datatype']        = 'dropdown';
-      
-      $tab[8]['table']           = $this->getTable();
-      $tab[8]['field']           = 'comment';
-      $tab[8]['name']            = __('Comments');
-      $tab[8]['datatype']        = 'text';
-      
-      $tab[9]['table']           = $this->getTable();
-      $tab[9]['field']           = 'is_helpdesk_visible';
-      $tab[9]['name']            = __('Associable to a ticket');
-      $tab[9]['datatype']        = 'bool';
-      
-      $tab[10]['table']          = 'glpi_users';
-      $tab[10]['field']          = 'name';
-      $tab[10]['name']           = __('User');
-      $tab[10]['datatype']       = 'dropdown';
-      $tab[10]['right']          = 'all';
-      
-      $tab[11]['table']          = $this->getTable();
-      $tab[11]['field']          = 'date_mod';
-      $tab[11]['name']           = __('Last update');
-      $tab[11]['datatype']       = 'datetime';
-      $tab[11]['massiveaction']  = false;
-      
-      $tab[30]['table']          = $this->getTable();
-      $tab[30]['field']          = 'id';
-      $tab[30]['name']           = __('ID');
-      $tab[30]['datatype']       = 'number';
+      $tab['common'] = self::getTypeName(2);
 
-      $tab[80]['table']          = 'glpi_entities';
-      $tab[80]['field']          = 'completename';
-      $tab[80]['name']           = __('Entity');
-      $tab[80]['datatype']       = 'dropdown';
-      
-      $tab[81]['table']       = 'glpi_entities';
-      $tab[81]['field']       = 'entities_id';
-      $tab[81]['name']        = __('Entity')."-".__('ID');
-      
-      $tab[82]['table']    = $this->getTable();
-      $tab[82]['field']    = 'is_bookable';
-      $tab[82]['name']     = __('Bookable', 'badges');
+      $tab[1]['table'] = $this->getTable();
+      $tab[1]['field'] = 'name';
+      $tab[1]['name'] = __('Name');
+      $tab[1]['datatype'] = 'itemlink';
+      $tab[1]['itemlink_type'] = $this->getType();
+
+      $tab[2]['table'] = 'glpi_plugin_badges_badgetypes';
+      $tab[2]['field'] = 'name';
+      $tab[2]['name'] = __('Type');
+      $tab[2]['datatype'] = 'dropdown';
+
+      $tab[3]['table'] = $this->getTable();
+      $tab[3]['field'] = 'serial';
+      $tab[3]['name'] = __('Serial number');
+
+      $tab[4]['table'] = $this->getTable();
+      $tab[4]['field'] = 'date_affectation';
+      $tab[4]['name'] = __('Affectation date', 'badges');
+      $tab[4]['datatype'] = 'date';
+
+      $tab[5]['table'] = $this->getTable();
+      $tab[5]['field'] = 'date_expiration';
+      $tab[5]['name'] = __('Date of end of validity', 'badges');
+      $tab[5]['datatype'] = 'date';
+
+      $tab[6]['table'] = 'glpi_locations';
+      $tab[6]['field'] = 'completename';
+      $tab[6]['name'] = __('Location');
+      $tab[6]['datatype'] = 'dropdown';
+
+      $tab[7]['table'] = 'glpi_states';
+      $tab[7]['field'] = 'completename';
+      $tab[7]['name'] = __('Status');
+      $tab[7]['datatype'] = 'dropdown';
+
+      $tab[8]['table'] = $this->getTable();
+      $tab[8]['field'] = 'comment';
+      $tab[8]['name'] = __('Comments');
+      $tab[8]['datatype'] = 'text';
+
+      $tab[9]['table'] = $this->getTable();
+      $tab[9]['field'] = 'is_helpdesk_visible';
+      $tab[9]['name'] = __('Associable to a ticket');
+      $tab[9]['datatype'] = 'bool';
+
+      $tab[10]['table'] = 'glpi_users';
+      $tab[10]['field'] = 'name';
+      $tab[10]['name'] = __('User');
+      $tab[10]['datatype'] = 'dropdown';
+      $tab[10]['right'] = 'all';
+
+      $tab[11]['table'] = $this->getTable();
+      $tab[11]['field'] = 'date_mod';
+      $tab[11]['name'] = __('Last update');
+      $tab[11]['datatype'] = 'datetime';
+      $tab[11]['massiveaction'] = false;
+
+      $tab[30]['table'] = $this->getTable();
+      $tab[30]['field'] = 'id';
+      $tab[30]['name'] = __('ID');
+      $tab[30]['datatype'] = 'number';
+
+      $tab[80]['table'] = 'glpi_entities';
+      $tab[80]['field'] = 'completename';
+      $tab[80]['name'] = __('Entity');
+      $tab[80]['datatype'] = 'dropdown';
+
+      $tab[81]['table'] = 'glpi_entities';
+      $tab[81]['field'] = 'entities_id';
+      $tab[81]['name'] = __('Entity') . "-" . __('ID');
+
+      $tab[82]['table'] = $this->getTable();
+      $tab[82]['field'] = 'is_bookable';
+      $tab[82]['name'] = __('Bookable', 'badges');
       $tab[82]['datatype'] = 'bool';
-      
+
       return $tab;
    }
-   
-   function defineTabs($options=array()) {
+
+   function defineTabs($options = array())
+   {
 
       $ong = array();
       $this->addDefaultFormTab($ong);
@@ -141,27 +145,30 @@ class PluginBadgesBadge extends CommonDBTM {
       return $ong;
    }
 
-   function prepareInputForAdd($input) {
+   function prepareInputForAdd($input)
+   {
 
-      if (isset($input['date_affectation']) && empty($input['date_affectation'])) 
-         $input['date_affectation']='NULL';
-      if (isset($input['date_expiration']) && empty($input['date_expiration'])) 
-         $input['date_expiration']='NULL';
-
-      return $input;
-   }
-
-   function prepareInputForUpdate($input) {
-
-      if (isset($input['date_affectation']) && empty($input['date_affectation'])) 
-         $input['date_affectation']='NULL';
-      if (isset($input['date_expiration']) && empty($input['date_expiration'])) 
-         $input['date_expiration']='NULL';
+      if (isset($input['date_affectation']) && empty($input['date_affectation']))
+         $input['date_affectation'] = 'NULL';
+      if (isset($input['date_expiration']) && empty($input['date_expiration']))
+         $input['date_expiration'] = 'NULL';
 
       return $input;
    }
 
-   function showForm ($ID, $options=array()) {
+   function prepareInputForUpdate($input)
+   {
+
+      if (isset($input['date_affectation']) && empty($input['date_affectation']))
+         $input['date_affectation'] = 'NULL';
+      if (isset($input['date_expiration']) && empty($input['date_expiration']))
+         $input['date_expiration'] = 'NULL';
+
+      return $input;
+   }
+
+   function showForm($ID, $options = array())
+   {
 
       $this->initForm($ID, $options);
       $this->showFormHeader($options);
@@ -170,75 +177,75 @@ class PluginBadgesBadge extends CommonDBTM {
 
       echo "<td>" . __('Name') . "</td>";
       echo "<td>";
-      Html::autocompletionTextField($this,"name");
+      Html::autocompletionTextField($this, "name");
       echo "</td>";
-      
+
       echo "<td>" . __('User') . "</td><td>";
       User::dropdown(array('value' => $this->fields["users_id"],
-                           'entity' => $this->fields["entities_id"],
-                           'right' => 'all'));
+         'entity' => $this->fields["entities_id"],
+         'right' => 'all'));
       echo "</td>";
-      
+
       echo "</tr>";
-      
+
       echo "<tr class='tab_bg_1'>";
-      
+
       echo "<td>" . __('Location') . "</td><td>";
-      Location::dropdown(array('value'  => $this->fields["locations_id"],
-                               'entity' => $this->fields["entities_id"]));
+      Location::dropdown(array('value' => $this->fields["locations_id"],
+         'entity' => $this->fields["entities_id"]));
       echo "</td>";
-      
+
       echo "<td>" . __('Type') . "</td><td>";
       Dropdown::show('PluginBadgesBadgeType', array('name' => "plugin_badges_badgetypes_id",
-                                                   'value' => $this->fields["plugin_badges_badgetypes_id"], 
-                                                   'entity' => $this->fields["entities_id"]));
+         'value' => $this->fields["plugin_badges_badgetypes_id"],
+         'entity' => $this->fields["entities_id"]));
       echo "</td>";
-      
+
       echo "</tr>";
-      
+
       echo "<tr class='tab_bg_1'>";
-      
+
       echo "<td>" . __('Serial number') . "</td>";
       echo "<td>";
-      Html::autocompletionTextField($this,"serial");
+      Html::autocompletionTextField($this, "serial");
       echo "</td>";
-      
+
       echo "<td>" . __('Status') . "</td><td>";
       State::dropdown(array('value' => $this->fields["states_id"]));
       echo "</td>";
-      
+
       echo "</tr>";
-      
+
       echo "<tr class='tab_bg_1'>";
-      
-      echo "<td>" . __('Affectation date', 'badges')  . "</td>";
+
+      echo "<td>" . __('Affectation date', 'badges') . "</td>";
       echo "<td>";
-      Html::showDateFormItem("date_affectation",$this->fields["date_affectation"],true,true);
+      Html::showDateFormItem("date_affectation", $this->fields["date_affectation"], true, true);
       echo "</td>";
-      
+
       echo "<td>" . __('Associable to a ticket') . "</td><td>";
-      Dropdown::showYesNo('is_helpdesk_visible',$this->fields['is_helpdesk_visible']);
+      Dropdown::showYesNo('is_helpdesk_visible', $this->fields['is_helpdesk_visible']);
       echo "</td>";
-      
+
       echo "</tr>";
-      
+
       echo "<tr class='tab_bg_1'>";
-      
+
       echo "<td>" . __('Date of end of validity', 'badges');
       echo "</td>";
       echo "<td>";
-      Html::showDateFormItem("date_expiration",$this->fields["date_expiration"],true,true);
+      Html::showDateFormItem("date_expiration", $this->fields["date_expiration"], true, true);
       echo "</td>";
-      echo "<td>".__('Bookable', 'badges')."</td><td>";
+      echo "<td>" . __('Bookable', 'badges') . "</td><td>";
       Dropdown::showYesNo('is_bookable', $this->fields['is_bookable']);
       echo "</td>";
       echo "</tr>";
-      
+
       echo "<tr class='tab_bg_1'>";
-      
+
       echo "<td>" . __('Comments') . "</td>";
-      echo "<td class='center' colspan='3'><textarea cols='115' rows='5' name='comment' >".
-               $this->fields["comment"]."</textarea>";
+      echo "<td class='center' colspan='3'><textarea cols='115' rows='5' name='comment' >" .
+         $this->fields["comment"] . "</textarea>";
 
       echo "</td>";
       echo "</tr>";
@@ -247,45 +254,49 @@ class PluginBadgesBadge extends CommonDBTM {
 
       return true;
    }
-   
+
    //for search engine
-   static function getSpecificValueToDisplay($field, $values, array $options=array()) {
-      
+   static function getSpecificValueToDisplay($field, $values, array $options = array())
+   {
+
       if (!is_array($values)) {
          $values = array($field => $values);
       }
       switch ($field) {
          case 'date_expiration' :
-            
+
             if (empty($values[$field]))
                return __('infinite');
             else
-               return Html::convdate($values[$field]);
-         break;
+               return Html::convDate($values[$field]);
+            break;
       }
       return parent::getSpecificValueToDisplay($field, $values, $options);
    }
-   
+
    //Massive Action
-   function getSpecificMassiveActions($checkitem=NULL) {
+   function getSpecificMassiveActions($checkitem = NULL)
+   {
       $isadmin = static::canUpdate();
       $actions = parent::getSpecificMassiveActions($checkitem);
-      
+
       if (Session::haveRight('transfer', READ && Session::isMultiEntitiesMode() && $isadmin)
-            && Session::isMultiEntitiesMode()
-            && $isadmin) {
-         $actions['PluginBadgesBadge'.MassiveAction::CLASS_ACTION_SEPARATOR.'transfer'] = __('Transfer');
+         && Session::isMultiEntitiesMode()
+         && $isadmin
+      ) {
+         $actions['PluginBadgesBadge' . MassiveAction::CLASS_ACTION_SEPARATOR . 'transfer'] = __('Transfer');
       }
       return $actions;
-   }  
+   }
 
 
-   static function showMassiveActionsSubForm(MassiveAction $ma) {
+   static function showMassiveActionsSubForm(MassiveAction $ma)
+   {
 
       switch ($ma->getAction()) {
          case "transfer" :
             Dropdown::show('Entity');
-            echo Html::submit(_x('button','Post'), array('name' => 'massiveaction'));
+            echo Html::submit(_x('button', 'Post'), array('name' => 'massiveaction'));
             return true;
             break;
       }
@@ -296,12 +307,17 @@ class PluginBadgesBadge extends CommonDBTM {
     * @since version 0.85
     *
     * @see CommonDBTM::processMassiveActionsForOneItemtype()
-   **/
+    * @param MassiveAction $ma
+    * @param CommonDBTM $item
+    * @param array $ids
+    * @return nothing|void
+    */
    static function processMassiveActionsForOneItemtype(MassiveAction $ma, CommonDBTM $item,
-                                                       array $ids) {
+                                                       array $ids)
+   {
 
       switch ($ma->getAction()) {
-          case "transfer" :
+         case "transfer" :
             $input = $ma->getInput();
 
             if ($item->getType() == 'PluginBadgesBadge') {
@@ -321,34 +337,37 @@ class PluginBadgesBadge extends CommonDBTM {
                   if ($item->update($values)) {
                      $ma->itemDone($item->getType(), $key, MassiveAction::ACTION_OK);
                   } else {
-                      $ma->itemDone($item->getType(), $key, MassiveAction::ACTION_KO);
+                     $ma->itemDone($item->getType(), $key, MassiveAction::ACTION_KO);
                   }
                }
             }
             break;
       }
+      return;
    }
-   
-   
+
+
    // Cron action
-   static function cronInfo($name) {
+   static function cronInfo($name)
+   {
 
       switch ($name) {
          case 'BadgesAlert':
-            return array (
+            return array(
                'description' => __('Badges which expires', 'badges'));   // Optional
             break;
       }
       return array();
    }
-   
-   static function queryExpiredBadges() {
 
-      $config=new PluginBadgesConfig();
-      $notif= new PluginBadgesNotificationState();
-      
+   static function queryExpiredBadges()
+   {
+
+      $config = new PluginBadgesConfig();
+      $notif = new PluginBadgesNotificationState();
+
       $config->getFromDB('1');
-      $delay=$config->fields["delay_expired"];
+      $delay = $config->fields["delay_expired"];
 
       $query = "SELECT * 
          FROM `glpi_plugin_badges_badges`
@@ -356,43 +375,45 @@ class PluginBadgesBadge extends CommonDBTM {
          AND `is_deleted` = '0'
          AND DATEDIFF(CURDATE(),`date_expiration`) > $delay 
          AND DATEDIFF(CURDATE(),`date_expiration`) > 0 ";
-      $query.= "AND `states_id` NOT IN (999999";
-      $query.= $notif->findStates();
-      $query.= ") ";
+      $query .= "AND `states_id` NOT IN (999999";
+      $query .= $notif->findStates();
+      $query .= ") ";
 
       return $query;
    }
-   
-   static function queryBadgesWhichExpire() {
 
-      $config=new PluginBadgesConfig();
-      $notif= new PluginBadgesNotificationState();
-      
+   static function queryBadgesWhichExpire()
+   {
+
+      $config = new PluginBadgesConfig();
+      $notif = new PluginBadgesNotificationState();
+
       $config->getFromDB('1');
-      $delay=$config->fields["delay_whichexpire"];
-      
+      $delay = $config->fields["delay_whichexpire"];
+
       $query = "SELECT *
          FROM `glpi_plugin_badges_badges`
          WHERE `date_expiration` IS NOT NULL
          AND `is_deleted` = '0'
          AND DATEDIFF(CURDATE(),`date_expiration`) > -$delay 
          AND DATEDIFF(CURDATE(),`date_expiration`) < 0 ";
-      $query.= "AND `states_id` NOT IN (999999";
-      $query.= $notif->findStates();
-      $query.= ") ";
+      $query .= "AND `states_id` NOT IN (999999";
+      $query .= $notif->findStates();
+      $query .= ") ";
 
       return $query;
    }
-   
-   
-   static function queryBadgesReturnExpire() {
+
+
+   static function queryBadgesReturnExpire()
+   {
 
       $config = new PluginBadgesConfig();
-      $notif  = new PluginBadgesNotificationState();
+      $notif = new PluginBadgesNotificationState();
 
       $config->getFromDB('1');
       $delay = $config->fields["delay_returnexpire"];
-      
+
       $query = null;
       if (!empty($delay)) {
          $query = "SELECT *
@@ -402,9 +423,9 @@ class PluginBadgesBadge extends CommonDBTM {
             WHERE `glpi_plugin_badges_requests`.`affectation_date` IS NOT NULL
             AND `glpi_plugin_badges_requests`.`is_affected` = '1'
             AND TIME_TO_SEC(TIMEDIFF(NOW(),`glpi_plugin_badges_requests`.`affectation_date`)) > $delay ";
-         $query.= "AND `glpi_plugin_badges_badges`.`states_id` NOT IN (999999";
-         $query.= $notif->findStates();
-         $query.= ") ";
+         $query .= "AND `glpi_plugin_badges_badges`.`states_id` NOT IN (999999";
+         $query .= $notif->findStates();
+         $query .= ") ";
       }
 
       return $query;
@@ -415,23 +436,26 @@ class PluginBadgesBadge extends CommonDBTM {
     *
     * @param $task for log, if NULL display
     *
-    **/
-   static function cronBadgesAlert($task=NULL) {
-      global $DB,$CFG_GLPI;
-      
+    *
+    * @return int
+    */
+   static function cronBadgesAlert($task = NULL)
+   {
+      global $DB, $CFG_GLPI;
+
       if (!$CFG_GLPI["use_mailing"]) {
          return 0;
       }
 
-      $message=array();
+      $message = array();
       $cron_status = 0;
-      
+
       $query_expired = self::queryExpiredBadges();
       $query_whichexpire = self::queryBadgesWhichExpire();
 
       $querys = array(PluginBadgesNotificationTargetBadge::BadgesWhichExpire => $query_whichexpire,
-                      PluginBadgesNotificationTargetBadge::ExpiredBadges     => $query_expired);
-      
+         PluginBadgesNotificationTargetBadge::ExpiredBadges => $query_expired);
+
       $badge_infos = array();
       $badge_messages = array();
 
@@ -440,60 +464,61 @@ class PluginBadgesBadge extends CommonDBTM {
          if (!empty($query)) {
             foreach ($DB->request($query) as $data) {
                $entity = $data['entities_id'];
-               $message = $data["name"].": ".
-                           Html::convdate($data["date_expiration"])."<br>\n";
+               $message = $data["name"] . ": " .
+                  Html::convDate($data["date_expiration"]) . "<br>\n";
                $badge_infos[$type][$entity][] = $data;
 
                if (!isset($badges_infos[$type][$entity])) {
-                  $badge_messages[$type][$entity] = __('Badges at the end of the validity', 'badges') ."<br />";
+                  $badge_messages[$type][$entity] = __('Badges at the end of the validity', 'badges') . "<br />";
                }
                $badge_messages[$type][$entity] .= $message;
             }
          }
       }
-      
+
       foreach ($querys as $type => $query) {
-      
+
          foreach ($badge_infos[$type] as $entity => $badges) {
             Plugin::loadLang('badges');
 
             if (NotificationEvent::raiseEvent($type, new PluginBadgesBadge(), array('entities_id' => $entity,
-                                                                                    'badges'      => $badges))) {
+               'badges' => $badges))
+            ) {
                $message = $badge_messages[$type][$entity];
                $cron_status = 1;
                if ($task) {
                   $task->log(Dropdown::getDropdownName("glpi_entities",
-                                                       $entity).":  $message\n");
+                        $entity) . ":  $message\n");
                   $task->addVolume(1);
                } else {
                   Session::addMessageAfterRedirect(Dropdown::getDropdownName("glpi_entities",
-                                                                    $entity).":  $message");
+                        $entity) . ":  $message");
                }
 
             } else {
                if ($task) {
-                  $task->log(Dropdown::getDropdownName("glpi_entities",$entity).
-                             ":  Send badges alert failed\n");
+                  $task->log(Dropdown::getDropdownName("glpi_entities", $entity) .
+                     ":  Send badges alert failed\n");
                } else {
-                  Session::addMessageAfterRedirect(Dropdown::getDropdownName("glpi_entities",$entity).
-                                          ":  Send badges alert failed",false,ERROR);
+                  Session::addMessageAfterRedirect(Dropdown::getDropdownName("glpi_entities", $entity) .
+                     ":  Send badges alert failed", false, ERROR);
                }
             }
          }
       }
-      
+
       return $cron_status;
    }
-   
-   static function configCron($target) {
 
-      $notif=new PluginBadgesNotificationState();
-      $config=new PluginBadgesConfig();
+   static function configCron($target)
+   {
 
-      $config->showForm($target,1);
+      $notif = new PluginBadgesNotificationState();
+      $config = new PluginBadgesConfig();
+
+      $config->showForm($target, 1);
       $notif->showForm($target);
       $notif->showAddForm($target);
-    
+
    }
 }
-?>

@@ -27,59 +27,57 @@
  --------------------------------------------------------------------------
  */
 
-include ('../../../inc/includes.php');
+include('../../../inc/includes.php');
 
 if (!isset($_GET["id"])) $_GET["id"] = "";
 if (!isset($_GET["withtemplate"])) $_GET["withtemplate"] = "";
 
-$badge=new PluginBadgesBadge();
+$badge = new PluginBadgesBadge();
 
 if (isset($_POST["add"])) {
 
-   $badge->check(-1,CREATE,$_POST);
-   $newID=$badge->add($_POST);
+   $badge->check(-1, CREATE, $_POST);
+   $newID = $badge->add($_POST);
    if ($_SESSION['glpibackcreated']) {
-      Html::redirect($badge->getFormURL()."?id=".$newID);
+      Html::redirect($badge->getFormURL() . "?id=" . $newID);
    }
    Html::back();
-   
+
 } else if (isset($_POST["delete"])) {
 
-   $badge->check($_POST['id'],DELETE);
+   $badge->check($_POST['id'], DELETE);
    $badge->delete($_POST);
    $badge->redirectToList();
-   
+
 } else if (isset($_POST["restore"])) {
 
-   $badge->check($_POST['id'],PURGE);
+   $badge->check($_POST['id'], PURGE);
    $badge->restore($_POST);
    $badge->redirectToList();
-   
+
 } else if (isset($_POST["purge"])) {
 
-   $badge->check($_POST['id'],PURGE);
-   $badge->delete($_POST,1);
+   $badge->check($_POST['id'], PURGE);
+   $badge->delete($_POST, 1);
    $badge->redirectToList();
-   
+
 } else if (isset($_POST["update"])) {
 
-   $badge->check($_POST['id'],UPDATE);
+   $badge->check($_POST['id'], UPDATE);
    $badge->update($_POST);
    Html::back();
-   
+
 } else {
-   
+
    $badge->checkGlobal(READ);
-   
+
    $plugin = new Plugin();
    if ($plugin->isActivated("environment")) {
-      Html::header(PluginBadgesBadge::getTypeName(2),'',"assets","pluginenvironmentdisplay","badges");
+      Html::header(PluginBadgesBadge::getTypeName(2), '', "assets", "pluginenvironmentdisplay", "badges");
    } else {
-      Html::header(PluginBadgesBadge::getTypeName(2), '', "assets","pluginbadgesmenu");
+      Html::header(PluginBadgesBadge::getTypeName(2), '', "assets", "pluginbadgesmenu");
    }
    $badge->display($_GET);
 
    Html::footer();
 }
-
-?>

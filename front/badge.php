@@ -27,16 +27,16 @@
  --------------------------------------------------------------------------
  */
 
-include ('../../../inc/includes.php');
+include('../../../inc/includes.php');
 
 $plugin = new Plugin();
 if ($plugin->isActivated("environment")) {
-   Html::header(PluginBadgesBadge::getTypeName(2),'',"assets","pluginenvironmentdisplay","badges");
+   Html::header(PluginBadgesBadge::getTypeName(2), '', "assets", "pluginenvironmentdisplay", "badges");
 } else {
-   Html::header(PluginBadgesBadge::getTypeName(2), '', "assets","pluginbadgesmenu");
+   Html::header(PluginBadgesBadge::getTypeName(2), '', "assets", "pluginbadgesmenu");
 }
 
-$badge=new PluginBadgesBadge();
+$badge = new PluginBadgesBadge();
 $badge->checkGlobal(READ);
 
 if ($badge->canView()) {
@@ -48,5 +48,3 @@ if ($badge->canView()) {
 }
 
 Html::footer();
-
-?>

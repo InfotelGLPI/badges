@@ -31,36 +31,39 @@ if (!defined('GLPI_ROOT')) {
    die("Sorry. You can't access directly to this file");
 }
 
-class PluginBadgesBadgeType extends CommonDropdown {
+class PluginBadgesBadgeType extends CommonDropdown
+{
 
-   static $rightname = "plugin_badges";
-   var $can_be_translated  = true;
-   
-   static function getTypeName($nb=0) {
+   static $rightname = "dropdown";
+   var $can_be_translated = true;
+
+   static function getTypeName($nb = 0)
+   {
       return _n('Type of badge', 'Types of badge', $nb, 'badges');
    }
 
-   
-   static function transfer($ID, $entity) {
+
+   static function transfer($ID, $entity)
+   {
       global $DB;
 
-      if ($ID>0) {
+      if ($ID > 0) {
          // Not already transfer
          // Search init item
          $query = "SELECT *
                    FROM `glpi_plugin_badges_badgetypes`
                    WHERE `id` = '$ID'";
 
-         if ($result=$DB->query($query)) {
+         if ($result = $DB->query($query)) {
             if ($DB->numrows($result)) {
                $data = $DB->fetch_assoc($result);
                $data = Toolbox::addslashes_deep($data);
                $input['name'] = $data['name'];
-               $input['entities_id']  = $entity;
+               $input['entities_id'] = $entity;
                $temp = new self();
-               $newID    = $temp->getID($input);
+               $newID = $temp->getID();
 
-               if ($newID<0) {
+               if ($newID < 0) {
                   $newID = $temp->import($input);
                }
 
@@ -71,5 +74,3 @@ class PluginBadgesBadgeType extends CommonDropdown {
       return 0;
    }
 }
-
-?>

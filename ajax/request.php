@@ -27,24 +27,24 @@
  --------------------------------------------------------------------------
  */
 
-include ("../../../inc/includes.php");
+include("../../../inc/includes.php");
 
 Session::checkLoginUser();
 //Html::header_nocache();
 
-switch($_POST['action']){
+switch ($_POST['action']) {
    case 'addToCart':
       header('Content-Type: application/json; charset=UTF-8"');
       $request = new PluginBadgesRequest();
       echo json_encode($request->addToCart($_POST));
       break;
-   
+
    case 'addBadges':
       header('Content-Type: application/json; charset=UTF-8"');
       $request = new PluginBadgesRequest();
       echo json_encode($request->addBadges($_POST));
       break;
-   
+
    case 'reloadAvailableBadges':
       header("Content-Type: text/html; charset=UTF-8");
       $request = new PluginBadgesRequest();
@@ -53,24 +53,22 @@ switch($_POST['action']){
       }
       $request->loadAvailableBadges($_POST['used']);
       break;
-   
+
    case 'loadBadgeInformation':
       header("Content-Type: text/html; charset=UTF-8");
       $return = new PluginBadgesReturn();
       $return->loadBadgeInformation(Session::getLoginUserID(), $_POST['badges_id']);
       break;
-   
+
    case 'returnBadges':
       header('Content-Type: application/json; charset=UTF-8"');
       $return = new PluginBadgesReturn();
       echo json_encode($return->returnBadge($_POST));
       break;
-   
+
    case 'searchBadges':
       header('Content-Type: application/json; charset=UTF-8"');
       $request = new PluginBadgesRequest();
       echo json_encode($request->listItems($_POST['requesters_id'], $_POST));
       break;
 }
-
-?>

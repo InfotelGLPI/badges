@@ -27,9 +27,7 @@
  --------------------------------------------------------------------------
  */
 
-include ('../../../inc/includes.php');
+include('../../../inc/includes.php');
 
 $dropdown = new PluginBadgesBadgeType();
-include (GLPI_ROOT . "/front/dropdown.common.php");
-
-?>
+include(GLPI_ROOT . "/front/dropdown.common.php");

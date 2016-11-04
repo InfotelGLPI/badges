@@ -75,8 +75,11 @@ class PluginBadgesBadgeInjection extends PluginBadgesBadge
    /**
     * Standard method to delete an object into glpi
     * WILL BE INTEGRATED INTO THE CORE IN 0.80
-    * @param fields fields to add into glpi
-    * @param options options used during creation
+    * @param array $values
+    * @param array|options $options
+    * @return an
+    * @internal param fields $fields to add into glpi
+    * @internal param options $options used during creation
     */
    function deleteObject($values=array(), $options=array()) {
       $lib = new PluginDatainjectionCommonInjectionLib($this,$values,$options);
@@ -87,9 +90,11 @@ class PluginBadgesBadgeInjection extends PluginBadgesBadge
    /**
     * Standard method to add an object into glpi
     * WILL BE INTEGRATED INTO THE CORE IN 0.80
-    * @param values fields to add into glpi
-    * @param options options used during creation
+    * @param array|fields $values
+    * @param array|options $options
     * @return an array of IDs of newly created objects : for example array(Computer=>1, Networkport=>10)
+    * @internal param fields $values to add into glpi
+    * @internal param options $options used during creation
     */
    function addOrUpdateObject($values=array(), $options=array()) {
 
@@ -98,5 +103,3 @@ class PluginBadgesBadgeInjection extends PluginBadgesBadge
       return $lib->getInjectionResults();
    }
 }
-
-?>

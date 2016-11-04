@@ -27,12 +27,12 @@
  --------------------------------------------------------------------------
  */
 
-include ('../../../inc/includes.php');
+include('../../../inc/includes.php');
 
 if ($_SESSION['glpiactiveprofile']['interface'] == 'central') {
-   Html::header(PluginBadgesWizard::getTypeName(2), '', "assets","pluginbadgesmenu");
+   Html::header(PluginBadgesWizard::getTypeName(2), '', "assets", "pluginbadgesmenu");
 } else {
-   Html::helpHeader(PluginBadgesWizard::getTypeName(2), '', "assets","pluginbadgesmenu");
+   Html::helpHeader(PluginBadgesWizard::getTypeName(2));
 }
 
 $wizard = new PluginBadgesWizard();
@@ -43,4 +43,3 @@ if ($_SESSION['glpiactiveprofile']['interface'] == 'central') {
 } else {
    Html::helpFooter();
 }
-?>

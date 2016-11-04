@@ -27,7 +27,7 @@
  --------------------------------------------------------------------------
  */
 
-include ('../../../inc/includes.php');
+include('../../../inc/includes.php');
 
 $return = new PluginBadgesReturn();
 
@@ -35,8 +35,6 @@ if (isset($_POST["force_return"])) {
    $return->check(-1, UPDATE, $_POST);
    $result = $return->returnBadge($_POST);
    Session::addMessageAfterRedirect($result['message']);
-   
+
    Html::back();
 }
-
-?>

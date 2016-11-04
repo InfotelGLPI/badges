@@ -1,4 +1,5 @@
 <?php
+
 /*
  * @version $Id: HEADER 15930 2011-10-30 15:47:55Z tsmr $
  -------------------------------------------------------------------------
@@ -27,33 +28,36 @@
  --------------------------------------------------------------------------
  */
 
-class PluginBadgesMenu extends CommonGLPI {
+class PluginBadgesMenu extends CommonGLPI
+{
    static $rightname = 'plugin_badges';
 
-   static function getMenuName() {
+   static function getMenuName()
+   {
       return _n('Badge', 'Badges', 2, 'badges');
    }
 
-   static function getMenuContent() {
-      global $CFG_GLPI;
+   static function getMenuContent()
+   {
 
-      $menu                                           = array();
-      $menu['title']                                  = self::getMenuName();
-      $menu['page']                                   = "/plugins/badges/front/badge.php";
-      $menu['links']['search']                        = PluginBadgesBadge::getSearchURL(false);
+      $menu = array();
+      $menu['title'] = self::getMenuName();
+      $menu['page'] = "/plugins/badges/front/badge.php";
+      $menu['links']['search'] = PluginBadgesBadge::getSearchURL(false);
       if (PluginBadgesBadge::canCreate()) {
-         $menu['links']['add']                        = PluginBadgesBadge::getFormURL(false);
+         $menu['links']['add'] = PluginBadgesBadge::getFormURL(false);
       }
 
       return $menu;
    }
 
-   static function removeRightsFromSession() {
+   static function removeRightsFromSession()
+   {
       if (isset($_SESSION['glpimenu']['assets']['types']['PluginBadgesMenu'])) {
-         unset($_SESSION['glpimenu']['assets']['types']['PluginBadgesMenu']); 
+         unset($_SESSION['glpimenu']['assets']['types']['PluginBadgesMenu']);
       }
       if (isset($_SESSION['glpimenu']['assets']['content']['pluginbadgesmenu'])) {
-         unset($_SESSION['glpimenu']['assets']['content']['pluginbadgesmenu']); 
+         unset($_SESSION['glpimenu']['assets']['content']['pluginbadgesmenu']);
       }
    }
 }

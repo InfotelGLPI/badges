@@ -31,12 +31,14 @@ if (!defined('GLPI_ROOT')) {
    die("Sorry. You can't access directly to this file");
 }
 
-class PluginBadgesNotificationState extends CommonDBTM {
-   
-   public function getFromDBbyState($states_id) {
+class PluginBadgesNotificationState extends CommonDBTM
+{
+
+   public function getFromDBbyState($states_id)
+   {
       global $DB;
-      
-      $query = "SELECT * FROM `".$this->getTable()."` " .
+
+      $query = "SELECT * FROM `" . $this->getTable() . "` " .
          "WHERE `states_id` = '" . $states_id . "' ";
       if ($result = $DB->query($query)) {
          if ($DB->numrows($result) != 1) {
@@ -51,40 +53,43 @@ class PluginBadgesNotificationState extends CommonDBTM {
       }
       return false;
    }
-   
-   public function findStates() {
+
+   public function findStates()
+   {
       global $DB;
 
-      $queryBranch='';
+      $queryBranch = '';
       // Recherche les enfants
 
-      $queryChilds= "SELECT `states_id`
-      FROM `".$this->getTable()."`";
+      $queryChilds = "SELECT `states_id`
+      FROM `" . $this->getTable() . "`";
       if ($resultChilds = $DB->query($queryChilds)) {
          while ($dataChilds = $DB->fetch_array($resultChilds)) {
-            $child=$dataChilds["states_id"];
+            $child = $dataChilds["states_id"];
             $queryBranch .= ",$child";
          }
       }
 
       return $queryBranch;
-  }
+   }
 
-   public function addNotificationState($states_id) {
+   public function addNotificationState($states_id)
+   {
 
       if ($this->getFromDBbyState($states_id)) {
 
          $this->update(array(
-         'id'=>$this->fields['id'],
-         'states_id'=>$states_id));
+            'id' => $this->fields['id'],
+            'states_id' => $states_id));
       } else {
 
          $this->add(array(
-         'states_id'=>$states_id));
+            'states_id' => $states_id));
       }
    }
-  
-   public function showAddForm($target) {
+
+   public function showAddForm($target)
+   {
 
       echo "<div align='center'><form method='post'  action=\"$target\">";
       echo "<table class='tab_cadre_fixe' cellpadding='5'><tr ><th colspan='2'>";
@@ -95,20 +100,21 @@ class PluginBadgesNotificationState extends CommonDBTM {
       echo "</td>";
       echo "<td>";
       echo "<div align='center'>";
-      echo "<input type='submit' name='add' value=\""._sx('button','Add')."\" class='submit' >";
+      echo "<input type='submit' name='add' value=\"" . _sx('button', 'Add') . "\" class='submit' >";
       echo "</div></td></tr>";
       echo "</table>";
       Html::closeForm();
       echo "</div>";
-  }
-  
-   public function showForm($target) {
+   }
+
+   public function showForm($target)
+   {
       global $DB;
 
-      $rand=mt_rand();
+      $rand = mt_rand();
 
       $query = "SELECT *
-      FROM `".$this->getTable()."`
+      FROM `" . $this->getTable() . "`
       ORDER BY `states_id` ASC ";
       if ($result = $DB->query($query)) {
          $number = $DB->numrows($result);
@@ -120,14 +126,14 @@ class PluginBadgesNotificationState extends CommonDBTM {
             echo "<tr>";
             echo "<th></th><th>" . __('Unused status for expiration mailing', 'badges') . "</th>";
             echo "</tr>";
-            while($ligne = $DB->fetch_array($result)) {
-               $ID=$ligne["id"];
+            while ($ligne = $DB->fetch_array($result)) {
+               $ID = $ligne["id"];
                echo "<tr class='tab_bg_1'>";
                echo "<td class='center' width='10'>";
                echo "<input type='hidden' name='id' value='$ID'>";
                echo "<input type='checkbox' name='item[$ID]' value='1'>";
                echo "</td>";
-               echo "<td>".Dropdown::getDropdownName("glpi_states",$ligne["states_id"])."</td>";
+               echo "<td>" . Dropdown::getDropdownName("glpi_states", $ligne["states_id"]) . "</td>";
                echo "</tr>";
             }
 
@@ -140,5 +146,3 @@ class PluginBadgesNotificationState extends CommonDBTM {
       }
    }
 }
-
-?>

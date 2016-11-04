@@ -20,10 +20,11 @@
         }
 
         /**
-         * badges_add_custom_values : add text input 
-         * 
-         * @param action  
-         * @param toobserve  
+         * badges_add_custom_values : add text input
+         *
+         * @param action
+         * @param toobserve
+         * @param toupdate
          */
         this.badges_addToCart = function (action, toobserve, toupdate) {
             var formInput = object.getFormData(toobserve);
@@ -32,7 +33,7 @@
                 url: object.params['root_doc'] + '/plugins/badges/ajax/request.php',
                 type: "POST",
                 dataType: "json",
-                data: 'action='+action+'&' + formInput,
+                data: 'action=' + action + '&' + formInput,
                 success: function (data) {
                     if (data.success) {
                         var item_bloc = $('#' + toupdate);
@@ -70,13 +71,13 @@
                     }
                 }
             });
-        }
+        };
 
         /**
          * Add badges
-         * 
-         * @param action  
-         * @param toobserve                
+         *
+         * @param action
+         * @param toobserve
          */
         this.badges_addBadges = function (action, toobserve) {
             var formInput = object.getFormData(toobserve);
@@ -85,7 +86,7 @@
                 type: "POST",
                 dataType: "json",
                 url: object.params['root_doc'] + '/plugins/badges/ajax/request.php',
-                data: 'action='+action+'&' + formInput,
+                data: 'action=' + action + '&' + formInput,
                 success: function (data) {
                     $("#dialog-confirm").html(data.message);
                     $("#dialog-confirm").dialog({
@@ -102,22 +103,22 @@
                     });
                 }
             });
-        }
-        
+        };
+
         /**
          * Return badges
-         * 
-         * @param action  
-         * @param toobserve                
+         *
+         * @param action
+         * @param toobserve
          */
-        this.badges_returnBadges = function(action, toobserve) {
+        this.badges_returnBadges = function (action, toobserve) {
             var formInput = object.getFormData(toobserve);
 
             $.ajax({
                 type: "POST",
                 dataType: "json",
                 url: object.params['root_doc'] + '/plugins/badges/ajax/request.php',
-                data: 'action='+action+'&' + formInput,
+                data: 'action=' + action + '&' + formInput,
                 success: function (data) {
                     $("#dialog-confirm").html(data.message);
                     $("#dialog-confirm").dialog({
@@ -134,23 +135,23 @@
                     });
                 }
             });
-        }
-        
+        };
+
         /**
          * Search badges
-         * 
-         * @param field_id  
-         * @param toobserve  
-         * @param toupdate                  
+         *
+         * @param action
+         * @param toobserve
+         * @param toupdate
          */
-        this.badges_searchBadges = function(action, toobserve, toupdate) {
+        this.badges_searchBadges = function (action, toobserve, toupdate) {
             var formInput = object.getFormData(toobserve);
 
             $.ajax({
                 type: "POST",
                 dataType: "json",
                 url: object.params['root_doc'] + '/plugins/badges/ajax/request.php',
-                data: 'action='+action+'&' + formInput,
+                data: 'action=' + action + '&' + formInput,
                 success: function (data) {
                     var result = data.message;
                     var item_bloc = $('#' + toupdate);
@@ -162,14 +163,13 @@
                     }
                 }
             });
-        }
-        
+        };
+
         /**
          * Reload available badges
-         * 
-         * @param field_id  
+         *
          */
-        this.badges_reloadAvailableBadges = function() {
+        this.badges_reloadAvailableBadges = function () {
             $.ajax({
                 type: "POST",
                 url: object.params['root_doc'] + '/plugins/badges/ajax/request.php',
@@ -187,14 +187,14 @@
                     }
                 }
             });
-        }
+        };
 
         /**
-         * badges_removeCart : delete text input 
-         * 
-         * @param field_id  
+         * badges_removeCart : delete text input
+         *
+         * @param field_id
          */
-        this.badges_removeCart = function(field_id) {
+        this.badges_removeCart = function (field_id) {
             var value = $("tr[id=" + field_id + "] input[id=badges_id]").val();
 
             // Remove element from used badges variable
@@ -214,36 +214,36 @@
 
             // Remove cart row
             $('#' + field_id).remove();
-        }
+        };
 
         /**
          * Cancel wizard
-         * 
-         * @param field_id  
+         *
+         * @param url
          */
-        this.badges_cancel = function(url) {
+        this.badges_cancel = function (url) {
             window.location.href = url;
-        }
+        };
 
-        /** 
+        /**
          *  Get the form values and construct data url
-         * 
+         *
          * @param object form
          */
-        this.getFormData = function(form) {
+        this.getFormData = function (form) {
             if (typeof (form) !== 'object') {
                 var form = $('#' + form);
             }
 
             return object.encodeParameters(form[0]);
-        }
+        };
 
-        /** 
+        /**
          * Encode form parameters for URL
-         * 
-         * @param array elements
+         *
+         * @param elements
          */
-        this.encodeParameters = function(elements) {
+        this.encodeParameters = function (elements) {
             var kvpairs = [];
 
             $.each(elements, function (index, e) {
@@ -269,7 +269,7 @@
             });
 
             return kvpairs.join("&");
-        }
+        };
 
         return this;
     }
