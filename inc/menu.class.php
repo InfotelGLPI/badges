@@ -28,15 +28,24 @@
  --------------------------------------------------------------------------
  */
 
+/**
+ * Class PluginBadgesMenu
+ */
 class PluginBadgesMenu extends CommonGLPI
 {
    static $rightname = 'plugin_badges';
 
+   /**
+    * @return translated
+    */
    static function getMenuName()
    {
       return _n('Badge', 'Badges', 2, 'badges');
    }
 
+   /**
+    * @return array
+    */
    static function getMenuContent()
    {
 

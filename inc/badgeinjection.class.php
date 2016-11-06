@@ -31,9 +31,15 @@ if (!defined('GLPI_ROOT')){
    die("Sorry. You can't access directly to this file");
 }
 
+/**
+ * Class PluginBadgesBadgeInjection
+ */
 class PluginBadgesBadgeInjection extends PluginBadgesBadge
    implements PluginDatainjectionInjectionInterface {
 
+   /**
+    * @return mixed
+    */
    static function getTable() {
    
       $parenttype = get_parent_class();
@@ -41,14 +47,24 @@ class PluginBadgesBadgeInjection extends PluginBadgesBadge
       
    }
 
+   /**
+    * @return bool
+    */
    function isPrimaryType() {
       return true;
    }
 
+   /**
+    * @return array
+    */
    function connectedTo() {
       return array();
    }
 
+   /**
+    * @param string $primary_type
+    * @return array|the
+    */
    function getOptions($primary_type = '') {
 
       $tab = Search::getOptions(get_parent_class($this));

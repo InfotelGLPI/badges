@@ -46,6 +46,9 @@ class PluginBadgesReturn extends CommonDBTM
 
    static $rightname = "plugin_badges";
 
+   /**
+    * PluginBadgesReturn constructor.
+    */
    function __construct()
    {
       parent::__construct();
@@ -54,6 +57,10 @@ class PluginBadgesReturn extends CommonDBTM
       $this->request = new PluginBadgesRequest();
    }
 
+   /**
+    * @param int $nb
+    * @return string|translated
+    */
    static function getTypeName($nb = 0)
    {
       return __('Badge return', 'badges');
@@ -357,6 +364,10 @@ class PluginBadgesReturn extends CommonDBTM
    }
 
    // Cron action
+   /**
+    * @param $name
+    * @return array
+    */
    static function cronInfo($name)
    {
 
@@ -369,11 +380,13 @@ class PluginBadgesReturn extends CommonDBTM
       return array();
    }
 
+   /**
+    * @return null|string
+    */
    static function queryBadgesReturnExpire()
    {
 
       $config = new PluginBadgesConfig();
-      $notif = new PluginBadgesNotificationState();
 
       $config->getFromDB('1');
       $delay = $config->fields["delay_returnexpire"];
@@ -408,7 +421,6 @@ class PluginBadgesReturn extends CommonDBTM
          return 0;
       }
 
-      $message = array();
       $cron_status = 0;
 
       $query_returnexpire = self::queryBadgesReturnExpire();
@@ -472,6 +484,9 @@ class PluginBadgesReturn extends CommonDBTM
       return $cron_status;
    }
 
+   /**
+    * @param $target
+    */
    static function configCron($target)
    {
       $config = new PluginBadgesConfig();

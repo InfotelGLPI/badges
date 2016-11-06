@@ -31,9 +31,17 @@ if (!defined('GLPI_ROOT')) {
    die("Sorry. You can't access directly to this file");
 }
 
+/**
+ * Class PluginBadgesConfig
+ */
 class PluginBadgesConfig extends CommonDBTM
 {
 
+   /**
+    * @param CommonGLPI $item
+    * @param int $withtemplate
+    * @return string|translated
+    */
    function getTabNameForItem(CommonGLPI $item, $withtemplate = 0)
    {
 
@@ -44,6 +52,12 @@ class PluginBadgesConfig extends CommonDBTM
    }
 
 
+   /**
+    * @param CommonGLPI $item
+    * @param int $tabnum
+    * @param int $withtemplate
+    * @return bool
+    */
    static function displayTabContentForItem(CommonGLPI $item, $tabnum = 1, $withtemplate = 0)
    {
       global $CFG_GLPI;
@@ -56,6 +70,10 @@ class PluginBadgesConfig extends CommonDBTM
       return true;
    }
 
+   /**
+    * @param $target
+    * @param $ID
+    */
    function showForm($target, $ID)
    {
 
@@ -109,6 +127,10 @@ class PluginBadgesConfig extends CommonDBTM
       echo "</div>";
    }
 
+   /**
+    * @param $target
+    * @param $ID
+    */
    public function showFormBadgeReturn($target, $ID)
    {
 

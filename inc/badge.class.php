@@ -31,6 +31,9 @@ if (!defined('GLPI_ROOT')) {
    die("Sorry. You can't access directly to this file");
 }
 
+/**
+ * Class PluginBadgesBadge
+ */
 class PluginBadgesBadge extends CommonDBTM
 {
 
@@ -38,12 +41,19 @@ class PluginBadgesBadge extends CommonDBTM
    static $rightname = "plugin_badges";
    protected $usenotepad = true;
 
+   /**
+    * @param int $nb
+    * @return translated
+    */
    static function getTypeName($nb = 0)
    {
       return _n('Badge', 'Badges', $nb, 'badges');
    }
 
 
+   /**
+    * @return array
+    */
    function getSearchOptions()
    {
 
@@ -130,6 +140,10 @@ class PluginBadgesBadge extends CommonDBTM
       return $tab;
    }
 
+   /**
+    * @param array $options
+    * @return array
+    */
    function defineTabs($options = array())
    {
 
@@ -145,6 +159,10 @@ class PluginBadgesBadge extends CommonDBTM
       return $ong;
    }
 
+   /**
+    * @param datas $input
+    * @return datas
+    */
    function prepareInputForAdd($input)
    {
 
@@ -156,6 +174,10 @@ class PluginBadgesBadge extends CommonDBTM
       return $input;
    }
 
+   /**
+    * @param datas $input
+    * @return datas
+    */
    function prepareInputForUpdate($input)
    {
 
@@ -167,6 +189,11 @@ class PluginBadgesBadge extends CommonDBTM
       return $input;
    }
 
+   /**
+    * @param $ID
+    * @param array $options
+    * @return bool
+    */
    function showForm($ID, $options = array())
    {
 
@@ -256,6 +283,12 @@ class PluginBadgesBadge extends CommonDBTM
    }
 
    //for search engine
+   /**
+    * @param String $field
+    * @param String $values
+    * @param array $options
+    * @return date|return|string|translated
+    */
    static function getSpecificValueToDisplay($field, $values, array $options = array())
    {
 
@@ -275,6 +308,10 @@ class PluginBadgesBadge extends CommonDBTM
    }
 
    //Massive Action
+   /**
+    * @param null $checkitem
+    * @return an
+    */
    function getSpecificMassiveActions($checkitem = NULL)
    {
       $isadmin = static::canUpdate();
@@ -290,6 +327,10 @@ class PluginBadgesBadge extends CommonDBTM
    }
 
 
+   /**
+    * @param MassiveAction $ma
+    * @return bool|false
+    */
    static function showMassiveActionsSubForm(MassiveAction $ma)
    {
 
@@ -348,6 +389,10 @@ class PluginBadgesBadge extends CommonDBTM
 
 
    // Cron action
+   /**
+    * @param $name
+    * @return array
+    */
    static function cronInfo($name)
    {
 
@@ -360,6 +405,9 @@ class PluginBadgesBadge extends CommonDBTM
       return array();
    }
 
+   /**
+    * @return string
+    */
    static function queryExpiredBadges()
    {
 
@@ -382,6 +430,9 @@ class PluginBadgesBadge extends CommonDBTM
       return $query;
    }
 
+   /**
+    * @return string
+    */
    static function queryBadgesWhichExpire()
    {
 
@@ -405,6 +456,9 @@ class PluginBadgesBadge extends CommonDBTM
    }
 
 
+   /**
+    * @return null|string
+    */
    static function queryBadgesReturnExpire()
    {
 
@@ -446,9 +500,6 @@ class PluginBadgesBadge extends CommonDBTM
       if (!$CFG_GLPI["use_mailing"]) {
          return 0;
       }
-
-      $message = array();
-      $cron_status = 0;
 
       $query_expired = self::queryExpiredBadges();
       $query_whichexpire = self::queryBadgesWhichExpire();
@@ -510,6 +561,9 @@ class PluginBadgesBadge extends CommonDBTM
       return $cron_status;
    }
 
+   /**
+    * @param $target
+    */
    static function configCron($target)
    {
 

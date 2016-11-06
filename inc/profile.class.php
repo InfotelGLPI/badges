@@ -31,11 +31,19 @@ if (!defined('GLPI_ROOT')) {
    die("Sorry. You can't access directly to this file");
 }
 
+/**
+ * Class PluginBadgesProfile
+ */
 class PluginBadgesProfile extends CommonDBTM
 {
 
    static $rightname = "profile";
 
+   /**
+    * @param CommonGLPI $item
+    * @param int $withtemplate
+    * @return string|translated
+    */
    public function getTabNameForItem(CommonGLPI $item, $withtemplate = 0)
    {
 
@@ -45,6 +53,12 @@ class PluginBadgesProfile extends CommonDBTM
       return '';
    }
 
+   /**
+    * @param CommonGLPI $item
+    * @param int $tabnum
+    * @param int $withtemplate
+    * @return bool
+    */
    public static function displayTabContentForItem(CommonGLPI $item, $tabnum = 1, $withtemplate = 0)
    {
 
@@ -60,6 +74,9 @@ class PluginBadgesProfile extends CommonDBTM
       return true;
    }
 
+   /**
+    * @param $ID
+    */
    static function createFirstAccess($ID)
    {
       //85
@@ -153,6 +170,10 @@ class PluginBadgesProfile extends CommonDBTM
       return;
    }
 
+   /**
+    * @param bool $all
+    * @return array
+    */
    static function getAllRights($all = false)
    {
       $rights = array(

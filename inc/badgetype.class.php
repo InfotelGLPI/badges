@@ -31,18 +31,30 @@ if (!defined('GLPI_ROOT')) {
    die("Sorry. You can't access directly to this file");
 }
 
+/**
+ * Class PluginBadgesBadgeType
+ */
 class PluginBadgesBadgeType extends CommonDropdown
 {
 
    static $rightname = "dropdown";
    var $can_be_translated = true;
 
+   /**
+    * @param int $nb
+    * @return translated
+    */
    static function getTypeName($nb = 0)
    {
       return _n('Type of badge', 'Types of badge', $nb, 'badges');
    }
 
 
+   /**
+    * @param $ID
+    * @param $entity
+    * @return ID|int|the
+    */
    static function transfer($ID, $entity)
    {
       global $DB;

@@ -79,6 +79,9 @@ function plugin_init_badges()
 
 // Get the name and the version of the plugin - Needed
 
+/**
+ * @return array
+ */
 function plugin_version_badges()
 {
 
@@ -93,6 +96,9 @@ function plugin_version_badges()
 }
 
 // Optional : check prerequisites before install : may print errors or add to message after redirect
+/**
+ * @return bool
+ */
 function plugin_badges_check_prerequisites()
 {
    if (version_compare(GLPI_VERSION, '9.1', 'lt') || version_compare(GLPI_VERSION, '9.2', 'ge')) {
@@ -104,11 +110,18 @@ function plugin_badges_check_prerequisites()
 
 // Uninstall process for plugin : need to return true if succeeded
 //may display messages or add to message after redirect
+/**
+ * @return bool
+ */
 function plugin_badges_check_config()
 {
    return true;
 }
 
+/**
+ * @param $types
+ * @return mixed
+ */
 function plugin_datainjection_migratetypes_badges($types)
 {
    $types[1600] = 'PluginBadgesBadge';

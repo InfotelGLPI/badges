@@ -31,9 +31,16 @@ if (!defined('GLPI_ROOT')) {
    die("Sorry. You can't access directly to this file");
 }
 
+/**
+ * Class PluginBadgesNotificationState
+ */
 class PluginBadgesNotificationState extends CommonDBTM
 {
 
+   /**
+    * @param $states_id
+    * @return bool
+    */
    public function getFromDBbyState($states_id)
    {
       global $DB;
@@ -54,6 +61,9 @@ class PluginBadgesNotificationState extends CommonDBTM
       return false;
    }
 
+   /**
+    * @return string
+    */
    public function findStates()
    {
       global $DB;
@@ -73,6 +83,9 @@ class PluginBadgesNotificationState extends CommonDBTM
       return $queryBranch;
    }
 
+   /**
+    * @param $states_id
+    */
    public function addNotificationState($states_id)
    {
 
@@ -88,6 +101,9 @@ class PluginBadgesNotificationState extends CommonDBTM
       }
    }
 
+   /**
+    * @param $target
+    */
    public function showAddForm($target)
    {
 
@@ -107,6 +123,9 @@ class PluginBadgesNotificationState extends CommonDBTM
       echo "</div>";
    }
 
+   /**
+    * @param $target
+    */
    public function showForm($target)
    {
       global $DB;

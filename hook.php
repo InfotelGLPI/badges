@@ -27,6 +27,9 @@
  --------------------------------------------------------------------------
  */
 
+/**
+ * @return bool
+ */
 function plugin_badges_install()
 {
    global $DB;
@@ -242,6 +245,9 @@ function plugin_badges_configure15()
    $DB->query($query);
 }
 
+/**
+ * @return bool
+ */
 function plugin_badges_uninstall()
 {
    global $DB;
@@ -342,6 +348,10 @@ function plugin_badges_uninstall()
    return true;
 }
 
+/**
+ * @param $types
+ * @return mixed
+ */
 function plugin_badges_AssignToTicket($types)
 {
 
@@ -353,6 +363,9 @@ function plugin_badges_AssignToTicket($types)
 }
 
 // Define dropdown relations
+/**
+ * @return array
+ */
 function plugin_badges_getDatabaseRelations()
 {
 
@@ -370,6 +383,9 @@ function plugin_badges_getDatabaseRelations()
 }
 
 // Define Dropdown tables to be manage in GLPI :
+/**
+ * @return array
+ */
 function plugin_badges_getDropdown()
 {
 
@@ -380,6 +396,13 @@ function plugin_badges_getDropdown()
       return array();
 }
 
+/**
+ * @param $type
+ * @param $ID
+ * @param $data
+ * @param $num
+ * @return string
+ */
 function plugin_badges_displayConfigItem($type, $ID, $data, $num)
 {
 

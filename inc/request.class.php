@@ -44,6 +44,10 @@ class PluginBadgesRequest extends CommonDBTM
 
    static $rightname = "plugin_badges";
 
+   /**
+    * @param int $nb
+    * @return string|translated
+    */
    static function getTypeName($nb = 0)
    {
       return __('Badges request', 'badges');

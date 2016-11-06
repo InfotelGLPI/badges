@@ -32,6 +32,9 @@ if (!defined('GLPI_ROOT')) {
 }
 
 // Class NotificationTarget
+/**
+ * Class PluginBadgesNotificationTargetBadge
+ */
 class PluginBadgesNotificationTargetBadge extends NotificationTarget
 {
 
@@ -43,6 +46,9 @@ class PluginBadgesNotificationTargetBadge extends NotificationTarget
    const AccessBadgeRequest = "AccessBadgeRequest";
 
 
+   /**
+    * @return array
+    */
    function getEvents()
    {
       return array(self::ExpiredBadges => __('Badges at the end of the validity', 'badges'),
@@ -51,6 +57,10 @@ class PluginBadgesNotificationTargetBadge extends NotificationTarget
          self::BadgesReturn => __('Badge return delay', 'badges'));
    }
 
+   /**
+    * @param $event
+    * @param array $options
+    */
    function getDatasForTemplate($event, $options = array())
    {
 
@@ -110,6 +120,9 @@ class PluginBadgesNotificationTargetBadge extends NotificationTarget
       }
    }
 
+   /**
+    *
+    */
    function getTags()
    {
 
@@ -155,6 +168,10 @@ class PluginBadgesNotificationTargetBadge extends NotificationTarget
       }
    }
 
+   /**
+    * @param $data
+    * @param $options
+    */
    function getSpecificTargets($data, $options)
    {
       switch ($data['items_id']) {
