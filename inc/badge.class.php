@@ -519,7 +519,7 @@ class PluginBadgesBadge extends CommonDBTM
                   Html::convDate($data["date_expiration"]) . "<br>\n";
                $badge_infos[$type][$entity][] = $data;
 
-               if (!isset($badges_infos[$type][$entity])) {
+               if (!isset($badge_messages[$type][$entity])) {
                   $badge_messages[$type][$entity] = __('Badges at the end of the validity', 'badges') . "<br />";
                }
                $badge_messages[$type][$entity] .= $message;
