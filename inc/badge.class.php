@@ -509,7 +509,8 @@ class PluginBadgesBadge extends CommonDBTM
 
       $badge_infos = array();
       $badge_messages = array();
-
+      $cron_status = 0;
+      
       foreach ($querys as $type => $query) {
          $badge_infos[$type] = array();
          if (!empty($query)) {
