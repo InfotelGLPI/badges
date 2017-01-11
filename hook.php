@@ -376,7 +376,7 @@ function plugin_badges_getDatabaseRelations()
             "glpi_plugin_badges_badgetypes" => "entities_id"),
          "glpi_locations" => array("glpi_plugin_badges_badges" => "locations_id"),
          "glpi_states" => array("glpi_plugin_badges_badges" => "states_id",
-            "glpi_plugin_badges_mailingstates" => "states_id"),
+            "glpi_plugin_badges_notificationstates" => "states_id"),
          "glpi_users" => array("glpi_plugin_badges_badges" => "users_id"));
    else
       return array();
