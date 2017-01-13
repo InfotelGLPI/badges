@@ -60,7 +60,15 @@ function plugin_init_badges()
       $plugin = new Plugin();
       if (!$plugin->isActivated('environment') && Session::haveRight("plugin_badges", READ)) {
          $PLUGIN_HOOKS['menu_toadd']['badges'] = array('assets' => 'PluginBadgesMenu');
+         
+      }
+      
+      if (Session::haveRight("plugin_badges", READ) && !class_exists('PluginServicecatalogMain')) {
          $PLUGIN_HOOKS['helpdesk_menu_entry']['badges'] = '/front/wizard.php';
+      }
+      
+      if (class_exists('PluginServicecatalogMain')) {
+         $PLUGIN_HOOKS['servicecatalog']['badges'] = array ('PluginBadgesServicecatalog');
       }
 
       if (Session::haveRight("plugin_badges", UPDATE)) {
