@@ -43,7 +43,7 @@ function plugin_badges_install()
 
    if (!TableExists("glpi_plugin_badges") && !TableExists("glpi_plugin_badges_badgetypes")) {
       $install = true;
-      $DB->runFile(GLPI_ROOT . "/plugins/badges/sql/empty-2.2.0.sql");
+      $DB->runFile(GLPI_ROOT . "/plugins/badges/sql/empty-2.2.1.sql");
 
    } else if (TableExists("glpi_plugin_badges_users") && !TableExists("glpi_plugin_badges_default")) {
 
@@ -118,10 +118,10 @@ function plugin_badges_install()
       $DB->query($query);
 
 
-      $query = "INSERT INTO `glpi_notifications`
-                                   VALUES (NULL, 'Access badge request', 0, 'PluginBadgesBadge', 'AccessBadgeRequest',
-                                          'mail','" . $itemtype . "',
-                                          '', 1, 1, '" . date('Y-m-d H:i:s') . "', '" . date('Y-m-d H:i:s') . "');";
+      $query = "INSERT INTO `glpi_notifications` (name, entities_id, itemtype, event, mode, notificationtemplates_id, 
+                                              is_recursive, is_active)
+                                   VALUES ('Access badge request', 0, 'PluginBadgesBadge', 'AccessBadgeRequest',
+                                          'mail','" . $itemtype . "', 1, 1);";
       $DB->query($query);
    }
 
@@ -157,10 +157,10 @@ function plugin_badges_install()
                      ##ENDFOREACHbadgerequest##&lt;/p&gt;');";
    $DB->query($query);
 
-   $query = "INSERT INTO `glpi_notifications`
-                                VALUES (NULL, 'Access badge return', 0, 'PluginBadgesBadge', 'BadgesReturn',
-                                       'mail','" . $itemtype . "',
-                                       '', 1, 1, '" . date('Y-m-d H:i:s') . "', '" . date('Y-m-d H:i:s') . "');";
+   $query = "INSERT INTO `glpi_notifications` (name, entities_id, itemtype, event, mode, notificationtemplates_id, 
+                                              is_recursive, is_active)
+                                VALUES ('Access badge return', 0, 'PluginBadgesBadge', 'BadgesReturn',
+                                       'mail','" . $itemtype . "', 1, 1);";
    $DB->query($query);
 
    if ($update78) {
