@@ -126,13 +126,13 @@ class PluginBadgesRequest extends CommonDBTM
 
          echo "<tr class='tab_bg_1'>";
          echo "<td>";
-         _e('Arrival date', 'badges');
+         echo __('Arrival date', 'badges');
          echo "</td>";
          echo "<td>";
          Html::showDateTimeField("begin_date", array('value' => $begin_date));
          echo "</td>";
          echo "<td>";
-         _e('Return date', 'badges');
+         echo __('Return date', 'badges');
          echo "</td>";
          echo "<td>";
          Html::showDateTimeField("end_date", array('value' => $end_date));
@@ -238,7 +238,7 @@ class PluginBadgesRequest extends CommonDBTM
       // Wizard title
       echo "<div class='badges_wizard_title'><p>";
       echo "<img class='badges_wizard_img' src='" . $CFG_GLPI['root_doc'] . "/plugins/badges/pics/badgerequest.png' alt='badgerequest'/>&nbsp;";
-      _e("Access badge request", "badges");
+      echo __("Access badge request", "badges");
       echo "</p></div>";
 
       // Add badges request

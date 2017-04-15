@@ -92,13 +92,13 @@ class PluginBadgesConfig extends CommonDBTM
       echo "<table class='tab_cadre_fixe'>";
       echo "<tr class='tab_bg_1'>";
       echo "<th colspan='4'>";
-      _e('Time of checking of validity of the badges', 'badges');
+      echo __('Time of checking of validity of the badges', 'badges');
       echo "</th>";
       echo "</tr>";
 
       echo "<tr class='tab_bg_1'>";
       echo "<td>";
-      _e('Badges expired for more than ', 'badges');
+      echo __('Badges expired for more than ', 'badges');
       echo "</td>";
       echo "<td>";
       echo "&nbsp;<input type='text' size='15' name='delay_expired' value=\"$delay_expired\">";
@@ -108,7 +108,7 @@ class PluginBadgesConfig extends CommonDBTM
 
       echo "<tr class='tab_bg_1'>";
       echo "<td>";
-      _e('Badges expiring in less than ', 'badges');
+      echo __('Badges expiring in less than ', 'badges');
       echo "</td>";
       echo "<td>";
       echo "&nbsp;<input type='text' size='15' name='delay_whichexpire' value=\"$delay_whichexpire\">";
@@ -141,13 +141,13 @@ class PluginBadgesConfig extends CommonDBTM
       echo "<table class='tab_cadre_fixe'>";
       echo "<tr class='tab_bg_1'>";
       echo "<th colspan='4'>";
-      _e('Time of checking of validity of the badges', 'badges');
+      echo __('Time of checking of validity of the badges', 'badges');
       echo "</th>";
       echo "</tr>";
 
       echo "<tr class='tab_bg_1'>";
       echo "<td>";
-      _e('Badge return delay', 'badges') . "&nbsp;";
+      echo __('Badge return delay', 'badges') . "&nbsp;";
       echo "</td>";
       echo "<td>";
       Dropdown::showTimeStamp("delay_returnexpire", array('min' => DAY_TIMESTAMP,

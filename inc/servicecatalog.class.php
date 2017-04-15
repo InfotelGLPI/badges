@@ -67,7 +67,7 @@ class PluginBadgesServicecatalog extends CommonGLPI
    static function getMenuComment()
    {
 
-      _e('Manage temporary badges', 'badges');
+      echo __('Manage temporary badges', 'badges');
    }
 
    static function getLinkList()

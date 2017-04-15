@@ -109,7 +109,7 @@ class PluginBadgesNotificationState extends CommonDBTM
 
       echo "<div align='center'><form method='post'  action=\"$target\">";
       echo "<table class='tab_cadre_fixe' cellpadding='5'><tr ><th colspan='2'>";
-      _e('Unused status for expiration mailing', 'badges');
+      echo __('Unused status for expiration mailing', 'badges');
       echo "</th></tr>";
       echo "<tr class='tab_bg_1'><td>";
       Dropdown::show('State', array('name' => "states_id"));

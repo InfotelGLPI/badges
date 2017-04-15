@@ -250,7 +250,7 @@ class PluginBadgesReturn extends CommonDBTM
       // Wizard title
       echo "<div class='badges_wizard_title'><p>";
       echo "<img class='badges_wizard_img' src='" . $CFG_GLPI['root_doc'] . "/plugins/badges/pics/badgereturn.png' alt='badgereturn'/>&nbsp;";
-      _e("Access badge return", "badges");
+      echo __("Access badge return", "badges");
       echo "</p></div>";
 
 
