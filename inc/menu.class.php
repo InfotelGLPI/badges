@@ -10,7 +10,7 @@
  -------------------------------------------------------------------------
 
  LICENSE
-      
+
  This file is part of badges.
 
  badges is free software; you can redistribute it and/or modify
@@ -31,27 +31,24 @@
 /**
  * Class PluginBadgesMenu
  */
-class PluginBadgesMenu extends CommonGLPI
-{
+class PluginBadgesMenu extends CommonGLPI {
    static $rightname = 'plugin_badges';
 
    /**
     * @return translated
     */
-   static function getMenuName()
-   {
+   static function getMenuName() {
       return _n('Badge', 'Badges', 2, 'badges');
    }
 
    /**
     * @return array
     */
-   static function getMenuContent()
-   {
+   static function getMenuContent() {
 
-      $menu = array();
-      $menu['title'] = self::getMenuName();
-      $menu['page'] = "/plugins/badges/front/badge.php";
+      $menu                    = array();
+      $menu['title']           = self::getMenuName();
+      $menu['page']            = "/plugins/badges/front/badge.php";
       $menu['links']['search'] = PluginBadgesBadge::getSearchURL(false);
       if (PluginBadgesBadge::canCreate()) {
          $menu['links']['add'] = PluginBadgesBadge::getFormURL(false);
@@ -60,8 +57,7 @@ class PluginBadgesMenu extends CommonGLPI
       return $menu;
    }
 
-   static function removeRightsFromSession()
-   {
+   static function removeRightsFromSession() {
       if (isset($_SESSION['glpimenu']['assets']['types']['PluginBadgesMenu'])) {
          unset($_SESSION['glpimenu']['assets']['types']['PluginBadgesMenu']);
       }

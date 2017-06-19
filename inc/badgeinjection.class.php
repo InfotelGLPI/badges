@@ -9,7 +9,7 @@
  -------------------------------------------------------------------------
 
  LICENSE
-      
+
  This file is part of badges.
 
  badges is free software; you can redistribute it and/or modify
@@ -27,7 +27,7 @@
  --------------------------------------------------------------------------
  */
 
-if (!defined('GLPI_ROOT')){
+if (!defined('GLPI_ROOT')) {
    die("Sorry. You can't access directly to this file");
 }
 
@@ -41,10 +41,10 @@ class PluginBadgesBadgeInjection extends PluginBadgesBadge
     * @return mixed
     */
    static function getTable() {
-   
+
       $parenttype = get_parent_class();
       return $parenttype::getTable();
-      
+
    }
 
    /**
@@ -63,6 +63,7 @@ class PluginBadgesBadgeInjection extends PluginBadgesBadge
 
    /**
     * @param string $primary_type
+    *
     * @return array|the
     */
    function getOptions($primary_type = '') {
@@ -75,13 +76,13 @@ class PluginBadgesBadgeInjection extends PluginBadgesBadge
 
       //$blacklist = PluginDatainjectionCommonInjectionLib::getBlacklistedOptions();
       //Remove some options because some fields cannot be imported
-      $notimportable = array(11,30,80);
+      $notimportable            = array(11, 30, 80);
       $options['ignore_fields'] = $notimportable;
-      $options['displaytype'] = array("dropdown"       => array(2,6,7),
-                                      "user"           => array(10),
-                                      "multiline_text" => array(8),
-                                      "date"           => array(4,5),
-                                      "bool"           => array(9));
+      $options['displaytype']   = array("dropdown"       => array(2, 6, 7),
+                                        "user"           => array(10),
+                                        "multiline_text" => array(8),
+                                        "date"           => array(4, 5),
+                                        "bool"           => array(9));
 
       $tab = PluginDatainjectionCommonInjectionLib::addToSearchOptions($tab, $options, $this);
 
@@ -91,14 +92,16 @@ class PluginBadgesBadgeInjection extends PluginBadgesBadge
    /**
     * Standard method to delete an object into glpi
     * WILL BE INTEGRATED INTO THE CORE IN 0.80
-    * @param array $values
+    *
+    * @param array         $values
     * @param array|options $options
+    *
     * @return an
     * @internal param fields $fields to add into glpi
     * @internal param options $options used during creation
     */
-   function deleteObject($values=array(), $options=array()) {
-      $lib = new PluginDatainjectionCommonInjectionLib($this,$values,$options);
+   function deleteObject($values = array(), $options = array()) {
+      $lib = new PluginDatainjectionCommonInjectionLib($this, $values, $options);
       $lib->deleteObject();
       return $lib->getInjectionResults();
    }
@@ -106,15 +109,17 @@ class PluginBadgesBadgeInjection extends PluginBadgesBadge
    /**
     * Standard method to add an object into glpi
     * WILL BE INTEGRATED INTO THE CORE IN 0.80
-    * @param array|fields $values
+    *
+    * @param array|fields  $values
     * @param array|options $options
+    *
     * @return an array of IDs of newly created objects : for example array(Computer=>1, Networkport=>10)
     * @internal param fields $values to add into glpi
     * @internal param options $options used during creation
     */
-   function addOrUpdateObject($values=array(), $options=array()) {
+   function addOrUpdateObject($values = array(), $options = array()) {
 
-      $lib = new PluginDatainjectionCommonInjectionLib($this,$values,$options);
+      $lib = new PluginDatainjectionCommonInjectionLib($this, $values, $options);
       $lib->processAddOrUpdate();
       return $lib->getInjectionResults();
    }

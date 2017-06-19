@@ -9,7 +9,7 @@
  -------------------------------------------------------------------------
 
  LICENSE
-      
+
  This file is part of badges.
 
  badges is free software; you can redistribute it and/or modify
@@ -34,18 +34,17 @@ if (!defined('GLPI_ROOT')) {
 /**
  * Class PluginBadgesBadgeType
  */
-class PluginBadgesBadgeType extends CommonDropdown
-{
+class PluginBadgesBadgeType extends CommonDropdown {
 
-   static $rightname = "dropdown";
-   var $can_be_translated = true;
+   static $rightname         = "dropdown";
+   var    $can_be_translated = true;
 
    /**
     * @param int $nb
+    *
     * @return translated
     */
-   static function getTypeName($nb = 0)
-   {
+   static function getTypeName($nb = 0) {
       return _n('Type of badge', 'Types of badge', $nb, 'badges');
    }
 
@@ -53,10 +52,10 @@ class PluginBadgesBadgeType extends CommonDropdown
    /**
     * @param $ID
     * @param $entity
+    *
     * @return ID|int|the
     */
-   static function transfer($ID, $entity)
-   {
+   static function transfer($ID, $entity) {
       global $DB;
 
       if ($ID > 0) {
@@ -68,12 +67,12 @@ class PluginBadgesBadgeType extends CommonDropdown
 
          if ($result = $DB->query($query)) {
             if ($DB->numrows($result)) {
-               $data = $DB->fetch_assoc($result);
-               $data = Toolbox::addslashes_deep($data);
-               $input['name'] = $data['name'];
+               $data                 = $DB->fetch_assoc($result);
+               $data                 = Toolbox::addslashes_deep($data);
+               $input['name']        = $data['name'];
                $input['entities_id'] = $entity;
-               $temp = new self();
-               $newID = $temp->getID();
+               $temp                 = new self();
+               $newID                = $temp->getID();
 
                if ($newID < 0) {
                   $newID = $temp->import($input);

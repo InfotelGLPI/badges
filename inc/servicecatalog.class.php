@@ -9,7 +9,7 @@
  -------------------------------------------------------------------------
 
  LICENSE
-      
+
  This file is part of badges.
 
  badges is free software; you can redistribute it and/or modify
@@ -33,50 +33,45 @@ if (!defined('GLPI_ROOT')) {
 }
 
 
-class PluginBadgesServicecatalog extends CommonGLPI
-{
+class PluginBadgesServicecatalog extends CommonGLPI {
 
    static $rightname = 'plugin_badges';
 
    var $dohistory = false;
 
-   static function canUse()
-   {
+   static function canUse() {
       return Session::haveRight(self::$rightname, READ);
    }
 
-   static function getMenuLogo()
-   {
+   static function getMenuLogo() {
       global $CFG_GLPI;
 
-      return "<a href='".$CFG_GLPI['root_doc'] . "/plugins/badges/front/wizard.php'>
-      <img class=\"bt-img-responsive\" src=\"" . $CFG_GLPI['root_doc'] . "/plugins/servicecatalog/img/badges.png\" alt=\"Advanced request\" width=\"200\" height=\"110\"></a>";
+      return "<a href='" . $CFG_GLPI['root_doc'] . "/plugins/badges/front/wizard.php'>
+      <img class=\"bt-img-responsive\" src=\"" . $CFG_GLPI['root_doc'] . "/plugins/servicecatalog/img/badges.png\" 
+      alt=\"Advanced request\" width=\"200\" height=\"110\"></a>";
 
    }
 
-   static function getMenuTitle()
-   {
+   static function getMenuTitle() {
       global $CFG_GLPI;
 
-      return "<a href='".$CFG_GLPI['root_doc'] . "/plugins/badges/front/wizard.php' class='de-em'>
-      <span class='de-em'>" . __('Manage', 'servicecatalog') . " </span><span class='em'>" . __('Temporary badges', 'badges')."</span></a>";
+      return "<a href='" . $CFG_GLPI['root_doc'] . "/plugins/badges/front/wizard.php' class='de-em'>
+      <span class='de-em'>" . __('Manage', 'servicecatalog') . " </span>
+      <span class='em'>" . __('Temporary badges', 'badges') . "</span></a>";
 
    }
 
 
-   static function getMenuComment()
-   {
+   static function getMenuComment() {
 
       echo __('Manage temporary badges', 'badges');
    }
 
-   static function getLinkList()
-   {
+   static function getLinkList() {
       return "";
    }
 
-   static function getList()
-   {
+   static function getList() {
       return "";
    }
 }

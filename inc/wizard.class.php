@@ -9,7 +9,7 @@
  -------------------------------------------------------------------------
 
  LICENSE
-      
+
  This file is part of badges.
 
  badges is free software; you can redistribute it and/or modify
@@ -39,25 +39,23 @@ if (!defined('GLPI_ROOT')) {
  * @package    Badges
  * @author     Ludovic Dupont
  */
-class PluginBadgesWizard extends CommonDBTM
-{
+class PluginBadgesWizard extends CommonDBTM {
 
    static $rightname = "plugin_badges";
 
    /**
     * @param int $nb
+    *
     * @return string|translated
     */
-   static function getTypeName($nb = 0)
-   {
+   static function getTypeName($nb = 0) {
       return __('Badges wizard', 'badges');
    }
 
    /**
     * Show config menu
     */
-   function showMenu()
-   {
+   function showMenu() {
       global $CFG_GLPI;
 
       if (!$this->canView()) {
@@ -74,14 +72,16 @@ class PluginBadgesWizard extends CommonDBTM
       // Badge request
       echo "<td class='center badges_menu_item'>";
       echo "<a  class='badges_menu_a' href=\"./wizard.form.php?action=badgerequest\">";
-      echo "<img class='badges_menu_img' src='" . $CFG_GLPI["root_doc"] . "/plugins/badges/pics/badgerequest.png' alt=\"" . __("Access badge request", "badges") . "\">";
+      echo "<img class='badges_menu_img' src='" . $CFG_GLPI["root_doc"] . "/plugins/badges/pics/badgerequest.png' 
+      alt=\"" . __("Access badge request", "badges") . "\">";
       echo "<br>" . __("Access badge request", "badges") . "<br>(" . __("For a limited time", "badges") . ")</a>";
       echo "</td>";
 
       // Badge return
       echo "<td class='center badges_menu_item'>";
       echo "<a  class='badges_menu_a' href=\"./wizard.form.php?action=badgereturn\">";
-      echo "<img class='badges_menu_img' src='" . $CFG_GLPI["root_doc"] . "/plugins/badges/pics/badgereturn.png' alt=\"" . __("Access badge return", "badges") . "\">";
+      echo "<img class='badges_menu_img' src='" . $CFG_GLPI["root_doc"] . "/plugins/badges/pics/badgereturn.png' 
+      alt=\"" . __("Access badge return", "badges") . "\">";
       echo "<br>" . __("Access badge return", "badges") . "</a>";
       echo "</td>";
 
@@ -92,10 +92,10 @@ class PluginBadgesWizard extends CommonDBTM
 
    /**
     * Show wizard form of the current step
+    *
     * @param $step
     */
-   function showWizard($step)
-   {
+   function showWizard($step) {
 
       echo "<div class='badges_wizard'>";
       echo "<form name='wizard_form' id='badges_wizardForm'

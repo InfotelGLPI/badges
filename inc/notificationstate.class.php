@@ -9,7 +9,7 @@
  -------------------------------------------------------------------------
 
  LICENSE
-      
+
  This file is part of badges.
 
  badges is free software; you can redistribute it and/or modify
@@ -34,19 +34,18 @@ if (!defined('GLPI_ROOT')) {
 /**
  * Class PluginBadgesNotificationState
  */
-class PluginBadgesNotificationState extends CommonDBTM
-{
+class PluginBadgesNotificationState extends CommonDBTM {
 
    /**
     * @param $states_id
+    *
     * @return bool
     */
-   public function getFromDBbyState($states_id)
-   {
+   public function getFromDBbyState($states_id) {
       global $DB;
 
       $query = "SELECT * FROM `" . $this->getTable() . "` " .
-         "WHERE `states_id` = '" . $states_id . "' ";
+               "WHERE `states_id` = '" . $states_id . "' ";
       if ($result = $DB->query($query)) {
          if ($DB->numrows($result) != 1) {
             return false;
@@ -64,8 +63,7 @@ class PluginBadgesNotificationState extends CommonDBTM
    /**
     * @return string
     */
-   public function findStates()
-   {
+   public function findStates() {
       global $DB;
 
       $queryBranch = '';
@@ -86,26 +84,24 @@ class PluginBadgesNotificationState extends CommonDBTM
    /**
     * @param $states_id
     */
-   public function addNotificationState($states_id)
-   {
+   public function addNotificationState($states_id) {
 
       if ($this->getFromDBbyState($states_id)) {
 
          $this->update(array(
-            'id' => $this->fields['id'],
-            'states_id' => $states_id));
+                          'id'        => $this->fields['id'],
+                          'states_id' => $states_id));
       } else {
 
          $this->add(array(
-            'states_id' => $states_id));
+                       'states_id' => $states_id));
       }
    }
 
    /**
     * @param $target
     */
-   public function showAddForm($target)
-   {
+   public function showAddForm($target) {
 
       echo "<div align='center'><form method='post'  action=\"$target\">";
       echo "<table class='tab_cadre_fixe' cellpadding='5'><tr ><th colspan='2'>";
@@ -126,8 +122,7 @@ class PluginBadgesNotificationState extends CommonDBTM
    /**
     * @param $target
     */
-   public function showForm($target)
-   {
+   public function showForm($target) {
       global $DB;
 
       $rand = mt_rand();
