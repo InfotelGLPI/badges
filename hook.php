@@ -41,11 +41,11 @@ function plugin_badges_install()
    $update85 = false;
    $update201 = false;
 
-   if (!TableExists("glpi_plugin_badges") && !TableExists("glpi_plugin_badges_badgetypes")) {
+   if (!$DB->tableExists("glpi_plugin_badges") && !$DB->tableExists("glpi_plugin_badges_badgetypes")) {
       $install = true;
       $DB->runFile(GLPI_ROOT . "/plugins/badges/sql/empty-2.2.1.sql");
 
-   } else if (TableExists("glpi_plugin_badges_users") && !TableExists("glpi_plugin_badges_default")) {
+   } else if ($DB->tableExists("glpi_plugin_badges_users") && !$DB->tableExists("glpi_plugin_badges_default")) {
 
       $update78 = true;
       $DB->runFile(GLPI_ROOT . "/plugins/badges/sql/update-1.4.sql");
@@ -54,7 +54,7 @@ function plugin_badges_install()
       $DB->runFile(GLPI_ROOT . "/plugins/badges/sql/update-1.5.1.sql");
       $DB->runFile(GLPI_ROOT . "/plugins/badges/sql/update-1.6.0.sql");
 
-   } else if (TableExists("glpi_plugin_badges_profiles") && FieldExists("glpi_plugin_badges_profiles", "interface")) {
+   } else if ($DB->tableExists("glpi_plugin_badges_profiles") && $DB->fieldExists("glpi_plugin_badges_profiles", "interface")) {
 
       $update78 = true;
       $DB->runFile(GLPI_ROOT . "/plugins/badges/sql/update-1.5.0.sql");
@@ -62,24 +62,24 @@ function plugin_badges_install()
       $DB->runFile(GLPI_ROOT . "/plugins/badges/sql/update-1.5.1.sql");
       $DB->runFile(GLPI_ROOT . "/plugins/badges/sql/update-1.6.0.sql");
 
-   } else if (TableExists("glpi_plugin_badges") && !FieldExists("glpi_plugin_badges", "date_mod")) {
+   } else if ($DB->tableExists("glpi_plugin_badges") && !$DB->fieldExists("glpi_plugin_badges", "date_mod")) {
 
       $update78 = true;
       $DB->runFile(GLPI_ROOT . "/plugins/badges/sql/update-1.5.1.sql");
       $DB->runFile(GLPI_ROOT . "/plugins/badges/sql/update-1.6.0.sql");
 
-   } else if (!TableExists("glpi_plugin_badges_badgetypes")) {
+   } else if (!$DB->tableExists("glpi_plugin_badges_badgetypes")) {
 
       $update78 = true;
       $DB->runFile(GLPI_ROOT . "/plugins/badges/sql/update-1.6.0.sql");
 
-   } else if (TableExists("glpi_plugin_badges_profiles")) {
+   } else if ($DB->tableExists("glpi_plugin_badges_profiles")) {
 
       $update85 = true;
 
    }
 
-   if (!TableExists("glpi_plugin_badges_requests")) {
+   if (!$DB->tableExists("glpi_plugin_badges_requests")) {
       $update201 = true;
       $DB->runFile(GLPI_ROOT . "/plugins/badges/sql/update-2.0.1.sql");
    }
@@ -118,10 +118,10 @@ function plugin_badges_install()
       $DB->query($query);
 
 
-      $query = "INSERT INTO `glpi_notifications` (name, entities_id, itemtype, event, mode, notificationtemplates_id, 
+      $query = "INSERT INTO `glpi_notifications` (name, entities_id, itemtype, event, notificationtemplates_id, 
                                               is_recursive, is_active)
                                    VALUES ('Access badge request', 0, 'PluginBadgesBadge', 'AccessBadgeRequest',
-                                          'mail','" . $itemtype . "', 1, 1);";
+                                          '" . $itemtype . "', 1, 1);";
       $DB->query($query);
    }
 
@@ -157,10 +157,10 @@ function plugin_badges_install()
                      ##ENDFOREACHbadgerequest##&lt;/p&gt;');";
    $DB->query($query);
 
-   $query = "INSERT INTO `glpi_notifications` (name, entities_id, itemtype, event, mode, notificationtemplates_id, 
+   $query = "INSERT INTO `glpi_notifications` (name, entities_id, itemtype, event, notificationtemplates_id, 
                                               is_recursive, is_active)
                                 VALUES ('Access badge return', 0, 'PluginBadgesBadge', 'BadgesReturn',
-                                       'mail','" . $itemtype . "', 1, 1);";
+                                       '" . $itemtype . "', 1, 1);";
    $DB->query($query);
 
    if ($update78) {
@@ -193,7 +193,7 @@ function plugin_badges_install()
 
       foreach ($notepad_tables as $t) {
          // Migrate data
-         if (FieldExists($t, 'notepad')) {
+         if ($DB->fieldExists($t, 'notepad')) {
             $query = "SELECT id, notepad
                       FROM `$t`
                       WHERE notepad IS NOT NULL

@@ -28,23 +28,22 @@
  */
 
 // Init the hooks of the plugins -Needed
-function plugin_init_badges()
-{
+function plugin_init_badges() {
    global $PLUGIN_HOOKS;
 
-   $PLUGIN_HOOKS['csrf_compliant']['badges'] = true;
+   $PLUGIN_HOOKS['csrf_compliant']['badges']   = true;
    $PLUGIN_HOOKS['assign_to_ticket']['badges'] = true;
-   $PLUGIN_HOOKS['change_profile']['badges'] = array('PluginBadgesProfile', 'initProfile');
-   $PLUGIN_HOOKS['add_css']['badges'] = array('badges.css');
+   $PLUGIN_HOOKS['change_profile']['badges']   = array('PluginBadgesProfile', 'initProfile');
+   $PLUGIN_HOOKS['add_css']['badges']          = array('badges.css');
    $PLUGIN_HOOKS['add_javascript']['badges'][] = 'badges.js';
 
    if (Session::getLoginUserID()) {
 
       Plugin::registerClass('PluginBadgesBadge', array(
-         'linkuser_types' => true,
-         'document_types' => true,
-         'helpdesk_visible_types' => true,
-         'ticket_types' => true,
+         'linkuser_types'              => true,
+         'document_types'              => true,
+         'helpdesk_visible_types'      => true,
+         'ticket_types'                => true,
          'notificationtemplates_types' => true
       ));
 
@@ -60,15 +59,15 @@ function plugin_init_badges()
       $plugin = new Plugin();
       if (!$plugin->isActivated('environment') && Session::haveRight("plugin_badges", READ)) {
          $PLUGIN_HOOKS['menu_toadd']['badges'] = array('assets' => 'PluginBadgesMenu');
-         
+
       }
-      
+
       if (Session::haveRight("plugin_badges", READ) && !class_exists('PluginServicecatalogMain')) {
          $PLUGIN_HOOKS['helpdesk_menu_entry']['badges'] = '/front/wizard.php';
       }
-      
+
       if (class_exists('PluginServicecatalogMain')) {
-         $PLUGIN_HOOKS['servicecatalog']['badges'] = array ('PluginBadgesServicecatalog');
+         $PLUGIN_HOOKS['servicecatalog']['badges'] = array('PluginBadgesServicecatalog');
       }
 
       if (Session::haveRight("plugin_badges", UPDATE)) {
@@ -80,7 +79,7 @@ function plugin_init_badges()
       }
 
       // Import from Data_Injection plugin
-      $PLUGIN_HOOKS['migratetypes']['badges'] = 'plugin_datainjection_migratetypes_badges';
+      $PLUGIN_HOOKS['migratetypes']['badges']  = 'plugin_datainjection_migratetypes_badges';
       $PLUGIN_HOOKS['redirect_page']['badges'] = 'front/wizard.php';
    }
 }
@@ -90,16 +89,15 @@ function plugin_init_badges()
 /**
  * @return array
  */
-function plugin_version_badges()
-{
+function plugin_version_badges() {
 
    return array(
-      'name' => _n('Badge', 'Badges', 2, 'badges'),
-      'version' => '2.2.1',
-      'author' => "<a href='http://infotel.com/services/expertise-technique/glpi/'>Infotel</a>",
-      'license' => 'GPLv2+',
-      'homepage' => 'https://github.com/InfotelGLPI/badges',
-      'minGlpiVersion' => '0.90',
+      'name'           => _n('Badge', 'Badges', 2, 'badges'),
+      'version'        => '2.3.0',
+      'author'         => "<a href='http://infotel.com/services/expertise-technique/glpi/'>Infotel</a>",
+      'license'        => 'GPLv2+',
+      'homepage'       => 'https://github.com/InfotelGLPI/badges',
+      'minGlpiVersion' => '9.2',
    );
 }
 
@@ -107,10 +105,9 @@ function plugin_version_badges()
 /**
  * @return bool
  */
-function plugin_badges_check_prerequisites()
-{
-   if (version_compare(GLPI_VERSION, '0.90', 'lt') || version_compare(GLPI_VERSION, '9.2', 'ge')) {
-      echo __('This plugin requires GLPI >= 0.90', 'badges');
+function plugin_badges_check_prerequisites() {
+   if (version_compare(GLPI_VERSION, '9.2', 'lt') || version_compare(GLPI_VERSION, '9.3', 'ge')) {
+      echo __('This plugin requires GLPI >= 9.2');
       return false;
    }
    return true;
@@ -121,17 +118,16 @@ function plugin_badges_check_prerequisites()
 /**
  * @return bool
  */
-function plugin_badges_check_config()
-{
+function plugin_badges_check_config() {
    return true;
 }
 
 /**
  * @param $types
+ *
  * @return mixed
  */
-function plugin_datainjection_migratetypes_badges($types)
-{
+function plugin_datainjection_migratetypes_badges($types) {
    $types[1600] = 'PluginBadgesBadge';
    return $types;
 }

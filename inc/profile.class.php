@@ -95,13 +95,11 @@ class PluginBadgesProfile extends CommonDBTM {
       $profileRight = new ProfileRight();
       foreach ($rights as $right => $value) {
          if (countElementsInTable('glpi_profilerights',
-                                  "`profiles_id`='$profiles_id' AND `name`='$right'") && $drop_existing
-         ) {
+                                  "`profiles_id`='$profiles_id' AND `name`='$right'") && $drop_existing) {
             $profileRight->deleteByCriteria(array('profiles_id' => $profiles_id, 'name' => $right));
          }
          if (!countElementsInTable('glpi_profilerights',
-                                   "`profiles_id`='$profiles_id' AND `name`='$right'")
-         ) {
+                                   "`profiles_id`='$profiles_id' AND `name`='$right'")) {
             $myright['profiles_id'] = $profiles_id;
             $myright['name']        = $right;
             $myright['rights']      = $value;
@@ -129,8 +127,7 @@ class PluginBadgesProfile extends CommonDBTM {
 
       echo "<div class='firstbloc'>";
       if (($canedit = Session::haveRightsOr(self::$rightname, array(CREATE, UPDATE, PURGE)))
-          && $openform
-      ) {
+          && $openform) {
          $profile = new Profile();
          echo "<form method='post' action='" . $profile->getFormURL() . "'>";
       }
@@ -226,7 +223,7 @@ class PluginBadgesProfile extends CommonDBTM {
    static function migrateOneProfile($profiles_id) {
       global $DB;
       //Cannot launch migration if there's nothing to migrate...
-      if (!TableExists('glpi_plugin_badges_profiles')) {
+      if (!$DB->tableExists('glpi_plugin_badges_profiles')) {
          return true;
       }
 

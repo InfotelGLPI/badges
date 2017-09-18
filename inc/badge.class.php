@@ -248,7 +248,7 @@ class PluginBadgesBadge extends CommonDBTM {
 
       echo "<td>" . __('Affectation date', 'badges') . "</td>";
       echo "<td>";
-      Html::showDateFormItem("date_affectation", $this->fields["date_affectation"], true, true);
+      Html::showDateField("date_affectation", ['value' => $this->fields["date_affectation"]]);
       echo "</td>";
 
       echo "<td>" . __('Associable to a ticket') . "</td><td>";
@@ -262,7 +262,7 @@ class PluginBadgesBadge extends CommonDBTM {
       echo "<td>" . __('Date of end of validity', 'badges');
       echo "</td>";
       echo "<td>";
-      Html::showDateFormItem("date_expiration", $this->fields["date_expiration"], true, true);
+      Html::showDateField("date_expiration", ['value' => $this->fields["date_expiration"]]);
       echo "</td>";
       echo "<td>" . __('Bookable', 'badges') . "</td><td>";
       Dropdown::showYesNo('is_bookable', $this->fields['is_bookable']);
