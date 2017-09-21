@@ -118,26 +118,34 @@ function plugin_badges_install()
       $DB->query($query);
 
 
-      $query = "INSERT INTO `glpi_notifications` (name, entities_id, itemtype, event, notificationtemplates_id, 
-                                              is_recursive, is_active)
-                                   VALUES ('Access badge request', 0, 'PluginBadgesBadge', 'AccessBadgeRequest',
-                                          '" . $itemtype . "', 1, 1);";
+      $query = "INSERT INTO `glpi_notifications` (name, entities_id, itemtype, event, is_recursive, is_active)
+                VALUES ('Access badge request', 0, 'PluginBadgesBadge', 'AccessBadgeRequest', 1, 1);";
       $DB->query($query);
-   }
 
-   // Badge expiration alert notification
-   $query_id = "SELECT `id` FROM `glpi_notificationtemplates` WHERE `itemtype`='PluginBadgesBadge' AND `name` = 'Access Badges Return'";
-   $result = $DB->query($query_id) or die($DB->error());
-   $itemtype = $DB->result($result, 0, 'id');
-   if (empty($itemtype)) {
-      $query_id = "INSERT INTO `glpi_notificationtemplates`(`name`, `itemtype`, `date_mod`, `comment`, `css`) VALUES ('Access Badges Return','PluginBadgesBadge', NOW(),'','');";
-      $result = $DB->query($query_id) or die($DB->error());
+      //retrieve notification id
+      $query_id = "SELECT `id` FROM `glpi_notifications`
+               WHERE `name` = 'Access badge request' AND `itemtype` = 'PluginBadgesBadge' AND `event` = 'AccessBadgeRequest'";
+      $result = $DB->query($query_id) or die ($DB->error());
+      $notification = $DB->result($result, 0, 'id');
+
+      $query = "INSERT INTO `glpi_notifications_notificationtemplates` (`notifications_id`, `mode`, `notificationtemplates_id`) 
+               VALUES (" . $notification . ", 'mailing', " . $itemtype . ");";
+      $DB->query($query);
+
+
+      // Badge expiration alert notification
       $query_id = "SELECT `id` FROM `glpi_notificationtemplates` WHERE `itemtype`='PluginBadgesBadge' AND `name` = 'Access Badges Return'";
       $result = $DB->query($query_id) or die($DB->error());
       $itemtype = $DB->result($result, 0, 'id');
-   }
+      if (empty($itemtype)) {
+         $query_id = "INSERT INTO `glpi_notificationtemplates`(`name`, `itemtype`, `date_mod`, `comment`, `css`) VALUES ('Access Badges Return','PluginBadgesBadge', NOW(),'','');";
+         $result = $DB->query($query_id) or die($DB->error());
+         $query_id = "SELECT `id` FROM `glpi_notificationtemplates` WHERE `itemtype`='PluginBadgesBadge' AND `name` = 'Access Badges Return'";
+         $result = $DB->query($query_id) or die($DB->error());
+         $itemtype = $DB->result($result, 0, 'id');
+      }
 
-   $query = "INSERT INTO `glpi_notificationtemplatetranslations`
+      $query = "INSERT INTO `glpi_notificationtemplatetranslations`
                               VALUES(NULL, '" . $itemtype . "', '','##badge.action## : ##badge.entity##',
                      '##lang.badge.entity## :##badge.entity##
                      ##FOREACHbadgerequest## 
@@ -155,13 +163,22 @@ function plugin_badges_install()
                      ##lang.badgerequest.visitorrealname## : ##badgerequest.visitorrealname##&lt;br /&gt;
                      ##lang.badgerequest.visitorsociety## : ##badgerequest.visitorsociety##&lt;br /&gt;
                      ##ENDFOREACHbadgerequest##&lt;/p&gt;');";
-   $DB->query($query);
+      $DB->query($query);
 
-   $query = "INSERT INTO `glpi_notifications` (name, entities_id, itemtype, event, notificationtemplates_id, 
-                                              is_recursive, is_active)
-                                VALUES ('Access badge return', 0, 'PluginBadgesBadge', 'BadgesReturn',
-                                       '" . $itemtype . "', 1, 1);";
-   $DB->query($query);
+      $query = "INSERT INTO `glpi_notifications` (name, entities_id, itemtype, event, is_recursive, is_active)
+                VALUES ('Access badge return', 0, 'PluginBadgesBadge', 'BadgesReturn', 1, 1);";
+      $DB->query($query);
+
+      //retrieve notification id
+      $query_id = "SELECT `id` FROM `glpi_notifications`
+               WHERE `name` = 'Access badge return' AND `itemtype` = 'PluginBadgesBadge' AND `event` = 'BadgesReturn'";
+      $result = $DB->query($query_id) or die ($DB->error());
+      $notification = $DB->result($result, 0, 'id');
+
+      $query = "INSERT INTO `glpi_notifications_notificationtemplates` (`notifications_id`, `mode`, `notificationtemplates_id`) 
+               VALUES (" . $notification . ", 'mailing', " . $itemtype . ");";
+      $DB->query($query);
+   }
 
    if ($update78) {
       $query_ = "SELECT *
@@ -184,7 +201,7 @@ function plugin_badges_install()
 
       Plugin::migrateItemType(
          array(1600 => 'PluginBadgesBadge'),
-         array("glpi_bookmarks", "glpi_bookmarks_users", "glpi_displaypreferences",
+         array("glpi_savedsearches", "glpi_savedsearches_users", "glpi_displaypreferences",
             "glpi_documents_items", "glpi_infocoms", "glpi_logs", "glpi_items_tickets"));
    }
 
@@ -308,6 +325,7 @@ function plugin_badges_uninstall()
    //templates
    $template = new NotificationTemplate();
    $translation = new NotificationTemplateTranslation();
+   $notif_template = new Notification_NotificationTemplate();
    $options = array('itemtype' => 'PluginBadgesBadge',
       'FIELDS' => 'id');
    foreach ($DB->request('glpi_notificationtemplates', $options) as $data) {
@@ -318,10 +336,14 @@ function plugin_badges_uninstall()
          $translation->delete($data_template);
       }
       $template->delete($data);
+
+      foreach ($DB->request('glpi_notifications_notificationtemplates', $options_template) as $data_template) {
+         $notif_template->delete($data_template);
+      }
    }
    $tables_glpi = array("glpi_displaypreferences",
       "glpi_documents_items",
-      "glpi_bookmarks",
+      "glpi_savedsearches",
       "glpi_logs",
       "glpi_items_tickets",
       "glpi_notepads",
