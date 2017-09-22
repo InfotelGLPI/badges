@@ -77,8 +77,9 @@ class PluginBadgesReturn extends CommonDBTM {
       if (!$withtemplate) {
          if ($item->getType() == 'PluginBadgesBadge') {
             if ($_SESSION['glpishow_count_on_tabs']) {
+               $dbu = new DbUtils();
                return self::createTabEntry(PluginBadgesRequest::getTypeName(),
-                                           countElementsInTable($this->getTable(),
+                                           $dbu->countElementsInTable($this->getTable(),
                                                                 "`badges_id` = '" . $item->getID() . "'"));
             }
             return PluginBadgesRequest::getTypeName();
