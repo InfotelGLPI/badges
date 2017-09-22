@@ -158,7 +158,7 @@ class PluginBadgesNotificationTargetBadge extends NotificationTarget {
     *
     * @param string $event
     */
-   function getAdditionalTargets($event = '') {
+   function addAdditionalTargets($event = '') {
       if ($event == self::BadgesReturn || $event == self::AccessBadgeRequest) {
          $this->addTarget(self::REQUESTER, __("Requester"));
       }
