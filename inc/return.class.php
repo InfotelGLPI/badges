@@ -242,10 +242,7 @@ class PluginBadgesReturn extends CommonDBTM {
    function showBadgeReturn() {
       global $CFG_GLPI;
 
-      // Init badge cart javascript
-      echo "<script type='text/javascript'>";
-      echo "var badges = $(document).badges(" . json_encode(array('root_doc' => $CFG_GLPI['root_doc'])) . ");";
-      echo "</script>";
+      Html::requireJs('badges');
 
       // Wizard title
       echo "<div class='badges_wizard_title'><p>";
@@ -297,13 +294,17 @@ class PluginBadgesReturn extends CommonDBTM {
       echo "<td class='badges_wizard_button'>";
       echo "<div id='dialog-confirm'></div>";
       echo "<input type=\"button\" class=\"submit badge_next_button\" name=\"returnBadges\" 
-      value=\"" . __('Return', 'badges') . "\" onclick=\"badges.badges_returnBadges('returnBadges','badges_wizardForm');\">";
+      value=\"" . __('Return', 'badges') . "\" onclick=\"badges_returnBadges('returnBadges','badges_wizardForm');\">";
       echo "<input type=\"button\" class=\"badge_previous_button submit\" name=\"previous\" 
-      value=\"" . _sx('button', 'Cancel') . "\" onclick=\"badges.badges_cancel('" . $CFG_GLPI['root_doc'] . "/plugins/badges/front/wizard.php');\">";
+      value=\"" . _sx('button', 'Cancel') . "\" onclick=\"badges_cancel('" . $CFG_GLPI['root_doc'] . "/plugins/badges/front/wizard.php');\">";
       echo "<input type='hidden' name='requesters_id' value='" . Session::getLoginUserID() . "'>";
       echo "</td>";
       echo "</tr>";
       echo "</table>";
+
+      // Init javascript
+      echo Html::scriptBlock('$(document).ready(function() {badges_initJs("' . $CFG_GLPI['root_doc'] . '");});');
+
    }
 
    /**

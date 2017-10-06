@@ -24,6 +24,10 @@
     </authors>
     <versions>
         <version>
+            <num>2.3.0</num>
+            <compatibility>9.2</compatibility>
+        </version>
+        <version>
             <num>2.2.0</num>
             <compatibility>9.1</compatibility>
         </version>
@@ -89,10 +93,12 @@
         </version>
     </versions>
     <langs>
-        <lang>fr_FR</lang>
+        <lang>de_DE</lang>
         <lang>en_GB</lang>
-        <lang>es_ES</lang>
         <lang>es_AR</lang>
+        <lang>es_ES</lang>
+        <lang>fr_FR</lang>
+        <lang>hr_HR</lang>
         <lang>pt_BR</lang>
         <lang>ro_RO</lang>
         <lang>tr_TR</lang>

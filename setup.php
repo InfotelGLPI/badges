@@ -35,7 +35,9 @@ function plugin_init_badges() {
    $PLUGIN_HOOKS['assign_to_ticket']['badges'] = true;
    $PLUGIN_HOOKS['change_profile']['badges']   = array('PluginBadgesProfile', 'initProfile');
    $PLUGIN_HOOKS['add_css']['badges']          = array('badges.css');
-   $PLUGIN_HOOKS['add_javascript']['badges'][] = 'badges.js';
+
+   $PLUGIN_HOOKS['javascript']['badges'][]   = '/plugins/badges/badges.js';
+//   $PLUGIN_HOOKS['add_javascript']['badges'][] = 'badges.js';
 
    if (Session::getLoginUserID()) {
 

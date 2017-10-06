@@ -174,7 +174,7 @@ class PluginBadgesNotificationTargetBadge extends NotificationTarget {
             if (isset($this->options['badgerequest'])) {
                foreach ($this->options['badgerequest'] as $badgeRequest) {
                   $this->target_object->fields['requesters_id'] = $badgeRequest['requesters_id'];
-                  $this->getUserByField("requesters_id");
+                  $this->addUserByField("requesters_id");
                }
             }
             break;

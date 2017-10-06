@@ -111,11 +111,10 @@ class PluginBadgesRequest extends CommonDBTM {
       $begin_date = date('Y-m-d H:i:s', strtotime(date('Y-m-d H:i:s') . "-1 MONTH"));
       $end_date   = date('Y-m-d H:i:s');
 
+
+
       if ($canedit) {
-         // Init badge cart javascript
-         echo "<script type='text/javascript'>";
-         echo "var badges = $(document).badges(" . json_encode(array('root_doc' => $CFG_GLPI['root_doc'])) . ");";
-         echo "</script>";
+         Html::requireJs('badges');
 
          echo "<form name='form' method='post' action='" . Toolbox::getItemTypeFormURL($this->getType()) . "' id='badges_formSearchBadges'>";
          echo "<div align='center'>";
@@ -139,11 +138,16 @@ class PluginBadgesRequest extends CommonDBTM {
          echo "</td>";
          echo "<td>";
          echo "<input type=\"button\" class=\"submit\" name=\"addToCart\" value=\"" . __('Search') . "\"
-         onclick=\"badges.badges_searchBadges('searchBadges','badges_formSearchBadges', 'badges_searchBadges');\" >";
+         onclick=\"badges_searchBadges('searchBadges','badges_formSearchBadges', 'badges_searchBadges');\" >";
          echo "<input type='hidden' name='requesters_id' value='" . $item->fields['id'] . "' >";
          echo "</td>";
          echo "</tr>";
          echo "</table></div>";
+
+         // Init javascript
+         echo Html::scriptBlock('$(document).ready(function() {badges_initJs("' . $CFG_GLPI['root_doc'] . '");});');
+
+
          Html::closeForm();
       }
 
@@ -231,10 +235,10 @@ class PluginBadgesRequest extends CommonDBTM {
       $request = new PluginBadgesRequest();
       $request->getEmpty();
 
-      // Init badge cart javascript
-      echo "<script type='text/javascript'>";
-      echo "var badges = $(document).badges(" . json_encode(array('root_doc' => $CFG_GLPI['root_doc'])) . ");";
-      echo "</script>";
+      Html::requireJs('badges');
+
+      // Init javascript
+      echo Html::scriptBlock('$(document).ready(function() {badges_initJs("' . $CFG_GLPI['root_doc'] . '");});');
 
       // Wizard title
       echo "<div class='badges_wizard_title'><p>";
@@ -280,7 +284,7 @@ class PluginBadgesRequest extends CommonDBTM {
       echo "<tr>";
       echo "<td class='center' colspan='4'>";
       echo "<input type=\"button\" class=\"submit\" name=\"addToCart\" value=\"" . __('Add to cart', 'badges') . "\"
-      onclick=\"badges.badges_addToCart('addToCart','badges_wizardForm', 'badges_cart');\" >";
+      onclick=\"badges_addToCart('addToCart','badges_wizardForm', 'badges_cart');\" >";
       echo "</td>";
       echo "</tr>";
       echo "</table>";
@@ -306,12 +310,13 @@ class PluginBadgesRequest extends CommonDBTM {
       echo "<td class='badges_wizard_button'>";
       echo "<div id='dialog-confirm'></div>";
       echo "<input type=\"button\" class=\"submit badge_next_button\" name=\"addBadges\" value=\"" . _sx('button', 'Post') . "\" 
-      onclick=\"badges.badges_addBadges('addBadges','badges_wizardForm');\">";
+      onclick=\"badges_addBadges('addBadges','badges_wizardForm');\">";
       echo "<input type=\"button\" class=\"badge_previous_button submit\" name=\"previous\" value=\"" . _sx('button', 'Cancel') . "\" 
-      onclick=\"badges.badges_cancel('" . $CFG_GLPI['root_doc'] . "/plugins/badges/front/wizard.php');\">";
+      onclick=\"badges_cancel('" . $CFG_GLPI['root_doc'] . "/plugins/badges/front/wizard.php');\">";
       echo "</td>";
       echo "</tr>";
       echo "</table>";
+
    }
 
    /**

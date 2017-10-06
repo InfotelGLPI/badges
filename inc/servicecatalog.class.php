@@ -43,12 +43,12 @@ class PluginBadgesServicecatalog extends CommonGLPI {
       return Session::haveRight(self::$rightname, READ);
    }
 
-   static function getMenuLogo() {
+   static function getMenuLogo($width = 190, $height = 100) {
       global $CFG_GLPI;
 
       return "<a href='" . $CFG_GLPI['root_doc'] . "/plugins/badges/front/wizard.php'>
       <img class=\"bt-img-responsive\" src=\"" . $CFG_GLPI['root_doc'] . "/plugins/servicecatalog/img/badges.png\" 
-      alt=\"Advanced request\" width=\"200\" height=\"110\"></a>";
+      alt=\"Advanced request\" width=\"$width\" height=\"$height\"></a>";
 
    }
 

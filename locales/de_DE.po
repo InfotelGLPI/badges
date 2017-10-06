@@ -3,6 +3,8 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# NeoTrinity <tecvisor@yahoo.fr>, 2016
+# Robert Langenkamp <teacas@web.de>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: GLPI Project - badges plugin\n"
@@ -10,11 +12,11 @@ msgstr ""
 "POT-Creation-Date: 2017-10-06 14:57+0200\n"
 "PO-Revision-Date: 2017-10-06 13:12+0000\n"
 "Last-Translator: Amandine Manceau\n"
-"Language-Team: English (United Kingdom) (http://www.transifex.com/tsmr/GLPI_badges/language/en_GB/)\n"
+"Language-Team: German (Germany) (http://www.transifex.com/tsmr/GLPI_badges/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: en_GB\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: setup.php:97 inc/badge.class.php:49 inc/menu.class.php:41
@@ -22,96 +24,96 @@ msgstr ""
 #: inc/request.class.php:300
 msgid "Badge"
 msgid_plural "Badges"
-msgstr[0] "Badge"
-msgstr[1] "Badges"
+msgstr[0] "Das Abzeichen"
+msgstr[1] "Die Abzeichen"
 
 #: inc/badge.class.php:79 inc/badge.class.php:249 inc/request.class.php:473
 msgid "Affectation date"
-msgstr "Affectation date"
+msgstr "Affektierungsdatum"
 
 #: inc/badge.class.php:84 inc/badge.class.php:262
 #: inc/notificationtargetbadge.class.php:81
 #: inc/notificationtargetbadge.class.php:127
 msgid "Date of end of validity"
-msgstr "Date of end of validity"
+msgstr "Datum des Ende der Gültigkeit"
 
 #: inc/badge.class.php:135 inc/badge.class.php:267
 msgid "Bookable"
-msgstr "Bookable"
+msgstr "Buchbar"
 
 #: inc/badge.class.php:405 inc/notificationtargetbadge.class.php:53
 #: inc/notificationtargetbadge.class.php:71
 msgid "Badges which expires"
-msgstr "Badges which expires"
+msgstr "Abzeichen die ablaufen"
 
 #: inc/badge.class.php:523 inc/notificationtargetbadge.class.php:52
 #: inc/notificationtargetbadge.class.php:68 inc/return.class.php:444
 msgid "Badges at the end of the validity"
-msgstr "Badges at the end of the validity"
+msgstr "Abzeichen am Ende der Gültigkeit"
 
 #: inc/badgetype.class.php:48
 msgid "Type of badge"
 msgid_plural "Types of badge"
-msgstr[0] "Type of badge"
-msgstr[1] "Types of badge"
+msgstr[0] "Abzeichenart"
+msgstr[1] "Abzeichenarten"
 
 #: inc/config.class.php:48
 msgid "Plugin Setup"
-msgstr "Plugin Setup"
+msgstr "Plugin-Einrichtung"
 
 #: inc/config.class.php:93 inc/config.class.php:141
 msgid "Time of checking of validity of the badges"
-msgstr "Time of checking of validity of the badges"
+msgstr "Zeit der Überprüfung der Abzeichen Gültigkeit"
 
 #: inc/config.class.php:99
 msgid "Badges expired for more than "
-msgstr "Badges expired for more than "
+msgstr "Abzeichen abgelaufen mehr als"
 
 #: inc/config.class.php:109
 msgid "Badges expiring in less than "
-msgstr "Badges expiring in less than "
+msgstr "Auslaufenden Abzeichen in weniger als"
 
 #: inc/config.class.php:147 inc/notificationtargetbadge.class.php:55
 #: inc/notificationtargetbadge.class.php:77
 msgid "Badge return delay"
-msgstr "Badge return delay"
+msgstr "Abzeichen Rücklaufverzögerung"
 
 #: inc/notificationstate.class.php:108 inc/notificationstate.class.php:141
 msgid "Unused status for expiration mailing"
-msgstr "Unused status for expiration mailing"
+msgstr "Unbenutzter Status für Ablaufmailing"
 
 #: inc/notificationtargetbadge.class.php:54
 #: inc/notificationtargetbadge.class.php:74 inc/request.class.php:247
 #: inc/request.class.php:253 inc/return.class.php:257 inc/wizard.class.php:68
 #: inc/wizard.class.php:76 inc/wizard.class.php:77
 msgid "Access badge request"
-msgstr "Access badge request"
+msgstr "Zugangsabzeichenanforderung"
 
 #: inc/notificationtargetbadge.class.php:83
 #: inc/notificationtargetbadge.class.php:128
 msgid "Allotted to"
-msgstr "Allotted to"
+msgstr "Zugeteilt"
 
 #: inc/notificationtargetbadge.class.php:99
 #: inc/notificationtargetbadge.class.php:129 inc/request.class.php:194
 #: inc/request.class.php:260 inc/request.class.php:298
 #: inc/request.class.php:470 inc/return.class.php:176 inc/return.class.php:325
 msgid "Visitor realname"
-msgstr "Visitor realname"
+msgstr "Besucher echter Name"
 
 #: inc/notificationtargetbadge.class.php:100
 #: inc/notificationtargetbadge.class.php:130 inc/request.class.php:195
 #: inc/request.class.php:256 inc/request.class.php:297
 #: inc/request.class.php:471 inc/return.class.php:177 inc/return.class.php:323
 msgid "Visitor firstname"
-msgstr "Visitor firstname"
+msgstr "Besucher Vorname"
 
 #: inc/notificationtargetbadge.class.php:101
 #: inc/notificationtargetbadge.class.php:131 inc/request.class.php:196
 #: inc/request.class.php:267 inc/request.class.php:299
 #: inc/request.class.php:472 inc/return.class.php:178 inc/return.class.php:330
 msgid "Visitor society"
-msgstr "Visitor society"
+msgstr "Besuchergesellschaft"
 
 #: inc/notificationtargetbadge.class.php:102
 #: inc/notificationtargetbadge.class.php:132 inc/request.class.php:128
@@ -119,105 +121,105 @@ msgstr "Visitor society"
 #: inc/request.class.php:301 inc/return.class.php:179 inc/return.class.php:336
 #: inc/return.class.php:439
 msgid "Arrival date"
-msgstr "Arrival date"
+msgstr "Ankunftsdatum"
 
 #: inc/notificationtargetbadge.class.php:142 inc/request.class.php:52
 msgid "Badges request"
-msgstr "Badges request"
+msgstr "Abzeichenanfrage"
 
 #: inc/notificationtargetbadge.class.php:148
 msgid "Badges expired or badges which expires"
-msgstr "Badges expired or badges which expires"
+msgstr "Abgelaufen Abzeichen oder Abzeichen die abläuft"
 
 #: inc/request.class.php:123
 msgid "Badges usage search"
-msgstr "Badges usage search"
+msgstr "Abzeichen Gebrauchssuche"
 
 #: inc/request.class.php:134 inc/request.class.php:198
 #: inc/return.class.php:180
 msgid "Return date"
-msgstr "Return date"
+msgstr "Rückgabedatum"
 
 #: inc/request.class.php:190 inc/request.class.php:220
 msgid "Badge usage report"
-msgstr "Badge usage report"
+msgstr "Abzeichen Nutzungsbericht"
 
 #: inc/request.class.php:271 inc/request.class.php:474
 msgid "Available badge"
 msgid_plural "Available badges"
-msgstr[0] "Available badge"
-msgstr[1] "Available badges"
+msgstr[0] "Verfügbare Abzeichen"
+msgstr[1] "Verfügbare Abzeichen"
 
 #: inc/request.class.php:286
 msgid "Add to cart"
-msgstr "Add to cart"
+msgstr "In den Warenkorb legen"
 
 #: inc/request.class.php:295
 msgid "Cart"
-msgstr "Cart"
+msgstr "Der Warenkorb"
 
 #: inc/request.class.php:410
 msgid "Badge affected"
 msgid_plural "Badges affected"
-msgstr[0] "Badge affected"
-msgstr[1] "Badges affected"
+msgstr[0] "zugewiesen Abzeichen"
+msgstr[1] "zugewiesen Abzeichen"
 
 #: inc/request.class.php:417
 msgid "Please add badges in cart"
-msgstr "Please add badges in cart"
+msgstr "Bitte Abzeichen in den Warenkorb fügen"
 
 #: inc/return.class.php:64 inc/return.class.php:134
 msgid "Badge return"
-msgstr "Badge return"
+msgstr "Abzeichen Rückkehr"
 
 #: inc/return.class.php:146
 msgid "Force badge restitution"
-msgstr "Force badge restitution"
+msgstr "Abzeichen Zwangrückgabe"
 
 #: inc/return.class.php:171 inc/return.class.php:201
 msgid "Badge requests history"
-msgstr "Badge requests history"
+msgstr "Verlauf der Abzeinchenanfragen"
 
 #: inc/return.class.php:221 inc/return.class.php:261
 msgid "Badges in your possession"
-msgstr "Badges in your possession"
+msgstr "Abzeichen in Ihrem Besitz"
 
 #: inc/return.class.php:251 inc/wizard.class.php:84 inc/wizard.class.php:85
 msgid "Access badge return"
-msgstr "Access badge return"
+msgstr "Zugangabzeichen Rückkehr"
 
 #: inc/return.class.php:284
 msgid "Restitution date"
-msgstr "Restitution date"
+msgstr "Rückgabedatum"
 
 #: inc/return.class.php:297
 msgid "Return"
-msgstr "Return"
+msgstr "Rückgabe"
 
 #: inc/return.class.php:362
 msgid "Badge returned"
-msgstr "Badge returned"
+msgstr "Abzeichen zurückgegeben"
 
 #: inc/return.class.php:380
 msgid "Badges return"
-msgstr "Badges return"
+msgstr "Abzeichen Rückkehr"
 
 #: inc/servicecatalog.class.php:59
 msgid "Manage"
-msgstr "Manage"
+msgstr "Verwalten"
 
 #: inc/servicecatalog.class.php:60
 msgid "Temporary badges"
-msgstr "Temporary badges"
+msgstr "temporäres Abzeichen"
 
 #: inc/servicecatalog.class.php:67
 msgid "Manage temporary badges"
-msgstr "Manage temporary badges"
+msgstr "Verwaltung temporärer Abzeichen"
 
 #: inc/wizard.class.php:52
 msgid "Badges wizard"
-msgstr "Badges wizard"
+msgstr "Abzeichenassistent"
 
 #: inc/wizard.class.php:77
 msgid "For a limited time"
-msgstr "For a limited time"
+msgstr "Für eine begrenzte Zeit"
