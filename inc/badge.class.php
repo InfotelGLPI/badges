@@ -496,7 +496,7 @@ class PluginBadgesBadge extends CommonDBTM {
    static function cronBadgesAlert($task = NULL) {
       global $DB, $CFG_GLPI;
 
-      if (!$CFG_GLPI["use_mailing"]) {
+      if (!$CFG_GLPI["notifications_mailing"]) {
          return 0;
       }
 
