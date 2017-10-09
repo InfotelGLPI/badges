@@ -59,28 +59,28 @@ class PluginBadgesNotificationTargetBadge extends NotificationTarget {
     * @param       $event
     * @param array $options
     */
-   function getDatasForTemplate($event, $options = array()) {
+   function addDataForTemplate($event, $options = array()) {
 
-      $this->datas['##badge.entity##']      = Dropdown::getDropdownName('glpi_entities', $options['entities_id']);
-      $this->datas['##lang.badge.entity##'] = __('Entity');
+      $this->data['##badge.entity##']      = Dropdown::getDropdownName('glpi_entities', $options['entities_id']);
+      $this->data['##lang.badge.entity##'] = __('Entity');
       switch ($event) {
          case self::ExpiredBadges:
-            $this->datas['##badge.action##'] = __('Badges at the end of the validity', 'badges');
+            $this->data['##badge.action##'] = __('Badges at the end of the validity', 'badges');
             break;
          case self::BadgesWhichExpire:
-            $this->datas['##badge.action##'] = __('Badges which expires', 'badges');
+            $this->data['##badge.action##'] = __('Badges which expires', 'badges');
             break;
          case self::AccessBadgeRequest:
-            $this->datas['##badge.action##'] = __('Access badge request', 'badges');
+            $this->data['##badge.action##'] = __('Access badge request', 'badges');
             break;
          case self::BadgesReturn:
-            $this->datas['##badge.action##'] = __('Badge return delay', 'badges');
+            $this->data['##badge.action##'] = __('Badge return delay', 'badges');
             break;
       }
-      $this->datas['##lang.badge.name##']           = __('Name');
-      $this->datas['##lang.badge.dateexpiration##'] = __('Date of end of validity', 'badges');
-      $this->datas['##lang.badge.serial##']         = __('Serial number');
-      $this->datas['##lang.badge.users##']          = __('Allotted to', 'badges');
+      $this->data['##lang.badge.name##']           = __('Name');
+      $this->data['##lang.badge.dateexpiration##'] = __('Date of end of validity', 'badges');
+      $this->data['##lang.badge.serial##']         = __('Serial number');
+      $this->data['##lang.badge.users##']          = __('Allotted to', 'badges');
 
       if (isset($options['badges'])) {
          foreach ($options['badges'] as $id => $badge) {
@@ -91,16 +91,16 @@ class PluginBadgesNotificationTargetBadge extends NotificationTarget {
             $tmp['##badge.users##']          = Html::clean(getUserName($badge["users_id"]));
             $tmp['##badge.dateexpiration##'] = Html::convDate($badge['date_expiration']);
 
-            $this->datas['badges'][] = $tmp;
+            $this->data['badges'][] = $tmp;
          }
       }
 
       // Badge request
-      $this->datas['##lang.badgerequest.visitorrealname##']  = __('Visitor realname', 'badges');
-      $this->datas['##lang.badgerequest.visitorfirstname##'] = __('Visitor firstname', 'badges');
-      $this->datas['##lang.badgerequest.visitorsociety##']   = __('Visitor society', 'badges');
-      $this->datas['##lang.badgerequest.arrivaldate##']      = __('Arrival date', 'badges');
-      $this->datas['##lang.badgerequest.requester##']        = __('Requester');
+      $this->data['##lang.badgerequest.visitorrealname##']  = __('Visitor realname', 'badges');
+      $this->data['##lang.badgerequest.visitorfirstname##'] = __('Visitor firstname', 'badges');
+      $this->data['##lang.badgerequest.visitorsociety##']   = __('Visitor society', 'badges');
+      $this->data['##lang.badgerequest.arrivaldate##']      = __('Arrival date', 'badges');
+      $this->data['##lang.badgerequest.requester##']        = __('Requester');
 
       if (isset($options['badgerequest'])) {
          foreach ($options['badgerequest'] as $id => $badge) {
@@ -112,7 +112,7 @@ class PluginBadgesNotificationTargetBadge extends NotificationTarget {
             $tmp['##badgerequest.arrivaldate##']      = Html::convDate($badge['affectation_date']);
             $tmp['##badgerequest.requester##']        = Html::clean(getUserName(Session::getLoginUserID()));
 
-            $this->datas['badgerequest'][] = $tmp;
+            $this->data['badgerequest'][] = $tmp;
          }
       }
    }
