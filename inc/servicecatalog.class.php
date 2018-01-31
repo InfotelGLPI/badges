@@ -43,12 +43,10 @@ class PluginBadgesServicecatalog extends CommonGLPI {
       return Session::haveRight(self::$rightname, READ);
    }
 
-   static function getMenuLogo($width = 190, $height = 100) {
+   static function getMenuLogo() {
       global $CFG_GLPI;
 
-      return "<a href='" . $CFG_GLPI['root_doc'] . "/plugins/badges/front/wizard.php'>
-      <img class=\"bt-img-responsive\" src=\"" . $CFG_GLPI['root_doc'] . "/plugins/servicecatalog/img/badges.png\" 
-      alt=\"Advanced request\" width=\"$width\" height=\"$height\"></a>";
+      return "<a class='bt-badges' href='" . $CFG_GLPI['root_doc'] . "/plugins/badges/front/wizard.php'></a>";
 
    }
 
@@ -56,8 +54,7 @@ class PluginBadgesServicecatalog extends CommonGLPI {
       global $CFG_GLPI;
 
       return "<a href='" . $CFG_GLPI['root_doc'] . "/plugins/badges/front/wizard.php' class='de-em'>
-      <span class='de-em'>" . __('Manage', 'servicecatalog') . " </span>
-      <span class='em'>" . __('Temporary badges', 'badges') . "</span></a>";
+      <span class='de-em'>" . __('Manage', 'servicecatalog') . " </span><span class='em'>" . __('Temporary badges', 'badges') . "</span></a>";
 
    }
 
