@@ -147,12 +147,12 @@ class PluginBadgesConfig extends CommonDBTM {
       echo __('Badge return delay', 'badges') . "&nbsp;";
       echo "</td>";
       echo "<td>";
-      Dropdown::showTimeStamp("delay_returnexpire", array('min'             => DAY_TIMESTAMP,
+      Dropdown::showTimeStamp("delay_returnexpire", ['min'             => DAY_TIMESTAMP,
                                                           'max'             => 52 * WEEK_TIMESTAMP,
                                                           'step'            => DAY_TIMESTAMP,
                                                           'value'           => $this->fields["delay_returnexpire"],
                                                           'addfirstminutes' => true,
-                                                          'inhours'         => false));
+                                                          'inhours'         => false]);
       echo "</td>";
       echo "</tr>";
 

@@ -9,7 +9,7 @@
  -------------------------------------------------------------------------
 
  LICENSE
-      
+
  This file is part of badges.
 
  badges is free software; you can redistribute it and/or modify
@@ -33,26 +33,26 @@ function plugin_init_badges() {
 
    $PLUGIN_HOOKS['csrf_compliant']['badges']   = true;
    $PLUGIN_HOOKS['assign_to_ticket']['badges'] = true;
-   $PLUGIN_HOOKS['change_profile']['badges']   = array('PluginBadgesProfile', 'initProfile');
-   $PLUGIN_HOOKS['add_css']['badges']          = array('badges.css');
+   $PLUGIN_HOOKS['change_profile']['badges']   = ['PluginBadgesProfile', 'initProfile'];
+   $PLUGIN_HOOKS['add_css']['badges']          = ['badges.css'];
 
    $PLUGIN_HOOKS['javascript']['badges'][]   = '/plugins/badges/badges.js';
-//   $PLUGIN_HOOKS['add_javascript']['badges'][] = 'badges.js';
+   //   $PLUGIN_HOOKS['add_javascript']['badges'][] = 'badges.js';
 
    if (Session::getLoginUserID()) {
 
-      Plugin::registerClass('PluginBadgesBadge', array(
+      Plugin::registerClass('PluginBadgesBadge', [
          'linkuser_types'              => true,
          'document_types'              => true,
          'helpdesk_visible_types'      => true,
          'ticket_types'                => true,
          'notificationtemplates_types' => true
-      ));
+      ]);
 
-      Plugin::registerClass('PluginBadgesProfile', array('addtabon' => 'Profile'));
-      Plugin::registerClass('PluginBadgesConfig', array('addtabon' => 'CronTask'));
-      Plugin::registerClass('PluginBadgesReturn', array('addtabon' => 'CronTask'));
-      Plugin::registerClass('PluginBadgesRequest', array('addtabon' => 'User'));
+      Plugin::registerClass('PluginBadgesProfile', ['addtabon' => 'Profile']);
+      Plugin::registerClass('PluginBadgesConfig', ['addtabon' => 'CronTask']);
+      Plugin::registerClass('PluginBadgesReturn', ['addtabon' => 'CronTask']);
+      Plugin::registerClass('PluginBadgesRequest', ['addtabon' => 'User']);
 
       if (class_exists('PluginResourcesResource')) {
          PluginResourcesResource::registerType('PluginBadgesBadge');
@@ -60,7 +60,7 @@ function plugin_init_badges() {
 
       $plugin = new Plugin();
       if (!$plugin->isActivated('environment') && Session::haveRight("plugin_badges", READ)) {
-         $PLUGIN_HOOKS['menu_toadd']['badges'] = array('assets' => 'PluginBadgesMenu');
+         $PLUGIN_HOOKS['menu_toadd']['badges'] = ['assets' => 'PluginBadgesMenu'];
 
       }
 
@@ -69,7 +69,7 @@ function plugin_init_badges() {
       }
 
       if (class_exists('PluginServicecatalogMain')) {
-         $PLUGIN_HOOKS['servicecatalog']['badges'] = array('PluginBadgesServicecatalog');
+         $PLUGIN_HOOKS['servicecatalog']['badges'] = ['PluginBadgesServicecatalog'];
       }
 
       if (Session::haveRight("plugin_badges", UPDATE)) {
@@ -93,14 +93,14 @@ function plugin_init_badges() {
  */
 function plugin_version_badges() {
 
-   return array(
+   return [
       'name'           => _n('Badge', 'Badges', 2, 'badges'),
       'version'        => '2.3.0',
       'author'         => "<a href='http://infotel.com/services/expertise-technique/glpi/'>Infotel</a>",
       'license'        => 'GPLv2+',
       'homepage'       => 'https://github.com/InfotelGLPI/badges',
       'minGlpiVersion' => '9.2',
-   );
+   ];
 }
 
 // Optional : check prerequisites before install : may print errors or add to message after redirect

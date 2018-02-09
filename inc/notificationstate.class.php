@@ -88,13 +88,13 @@ class PluginBadgesNotificationState extends CommonDBTM {
 
       if ($this->getFromDBbyState($states_id)) {
 
-         $this->update(array(
+         $this->update([
                           'id'        => $this->fields['id'],
-                          'states_id' => $states_id));
+                          'states_id' => $states_id]);
       } else {
 
-         $this->add(array(
-                       'states_id' => $states_id));
+         $this->add([
+                       'states_id' => $states_id]);
       }
    }
 
@@ -108,7 +108,7 @@ class PluginBadgesNotificationState extends CommonDBTM {
       echo __('Unused status for expiration mailing', 'badges');
       echo "</th></tr>";
       echo "<tr class='tab_bg_1'><td>";
-      Dropdown::show('State', array('name' => "states_id"));
+      Dropdown::show('State', ['name' => "states_id"]);
       echo "</td>";
       echo "<td>";
       echo "<div align='center'>";
@@ -152,7 +152,7 @@ class PluginBadgesNotificationState extends CommonDBTM {
             }
 
             Html::openArrowMassives("massiveaction_form$rand", true);
-            Html::closeArrowMassives(array('delete' => __('Delete permanently')));
+            Html::closeArrowMassives(['delete' => __('Delete permanently')]);
             echo "</table>";
             Html::closeForm();
             echo "</div>";

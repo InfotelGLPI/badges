@@ -215,10 +215,10 @@ class PluginBadgesReturn extends CommonDBTM {
     * @return array
     */
    function checkMandatoryFields($input) {
-      $msg     = array();
+      $msg     = [];
       $checkKo = false;
 
-      $mandatory_fields = array('return_badges_id' => __("Badges in your possession", "badges"));
+      $mandatory_fields = ['return_badges_id' => __("Badges in your possession", "badges")];
 
       foreach ($input as $key => $value) {
          if (isset($mandatory_fields[$key])) {
@@ -230,10 +230,10 @@ class PluginBadgesReturn extends CommonDBTM {
       }
 
       if ($checkKo) {
-         return array(false, sprintf(__("Mandatory fields are not filled. Please correct: %s"), implode(', ', $msg)));
+         return [false, sprintf(__("Mandatory fields are not filled. Please correct: %s"), implode(', ', $msg))];
       }
 
-      return array(true, null);
+      return [true, null];
    }
 
    /**
@@ -260,15 +260,15 @@ class PluginBadgesReturn extends CommonDBTM {
       echo "<tr>";
       echo "<td>" . __("Badges in your possession", "badges") . " <span class='red'>*</span></td>";
       echo "<td>";
-      $elements = array(Dropdown::EMPTY_VALUE);
+      $elements = [Dropdown::EMPTY_VALUE];
       foreach ($this->request->getUserBadges(Session::getLoginUserID()) as $val) {
          $elements[$val['badges_id']] = Dropdown::getDropdownName("glpi_plugin_badges_badges", $val['badges_id']);
       }
-      $rand = Dropdown::showFromArray("return_badges_id", $elements, array('on_change' => 'badges_loadBadgeInformation();'));
+      $rand = Dropdown::showFromArray("return_badges_id", $elements, ['on_change' => 'badges_loadBadgeInformation();']);
       echo "<script type='text/javascript'>";
       echo "function badges_loadBadgeInformation(){";
-      $params = array('action'    => 'loadBadgeInformation',
-                      'badges_id' => '__VALUE__');
+      $params = ['action'    => 'loadBadgeInformation',
+                      'badges_id' => '__VALUE__'];
       Ajax::updateItemJsCode("badges_informations", $CFG_GLPI['root_doc'] . "/plugins/badges/ajax/request.php",
                              $params, "dropdown_return_badges_id$rand");
       echo "}";
@@ -355,15 +355,15 @@ class PluginBadgesReturn extends CommonDBTM {
       if ($success) {
          $datas = $this->request->getUserBadges($params['requesters_id'], "`badges_id` = " . $params['return_badges_id']);
          foreach ($datas as $data) {
-            $this->update(array('id'          => $data['id'],
+            $this->update(['id'          => $data['id'],
                                 'is_affected' => 0,
-                                'return_date' => date('Y-m-d H:i:s')));
+                                'return_date' => date('Y-m-d H:i:s')]);
          }
          $message = __('Badge returned', 'badges');
       }
 
-      return array('success' => $success,
-                   'message' => $message);
+      return ['success' => $success,
+                   'message' => $message];
    }
 
    // Cron action
@@ -376,11 +376,11 @@ class PluginBadgesReturn extends CommonDBTM {
 
       switch ($name) {
          case 'BadgesReturnAlert':
-            return array(
-               'description' => __('Badges return', 'badges'));   // Optional
+            return [
+               'description' => __('Badges return', 'badges')];   // Optional
             break;
       }
-      return array();
+      return [];
    }
 
    /**
@@ -415,7 +415,7 @@ class PluginBadgesReturn extends CommonDBTM {
     *
     * @return int
     */
-   static function cronBadgesReturnAlert($task = NULL) {
+   static function cronBadgesReturnAlert($task = null) {
       global $DB, $CFG_GLPI;
 
       if (!$CFG_GLPI["notifications_mailing"]) {
@@ -426,13 +426,13 @@ class PluginBadgesReturn extends CommonDBTM {
 
       $query_returnexpire = self::queryBadgesReturnExpire();
 
-      $querys = array(PluginBadgesNotificationTargetBadge::BadgesReturn => $query_returnexpire);
+      $querys = [PluginBadgesNotificationTargetBadge::BadgesReturn => $query_returnexpire];
 
-      $badge_infos    = array();
-      $badge_messages = array();
+      $badge_infos    = [];
+      $badge_messages = [];
 
       foreach ($querys as $type => $query) {
-         $badge_infos[$type] = array();
+         $badge_infos[$type] = [];
          if (!empty($query)) {
             foreach ($DB->request($query) as $data) {
                $entity                        = $data['entities_id'];
@@ -453,15 +453,15 @@ class PluginBadgesReturn extends CommonDBTM {
             Plugin::loadLang('badges');
             // Set badge request fields
             foreach ($badges as $badge) {
-               $badgerequest[] = array('visitor_realname'  => $badge['visitor_realname'],
+               $badgerequest[] = ['visitor_realname'  => $badge['visitor_realname'],
                                        'visitor_firstname' => $badge['visitor_firstname'],
                                        'visitor_society'   => $badge['visitor_society'],
                                        'affectation_date'  => $badge['affectation_date'],
-                                       'requesters_id'     => $badge['requesters_id']);
+                                       'requesters_id'     => $badge['requesters_id']];
             }
-            if (NotificationEvent::raiseEvent($type, new PluginBadgesBadge(), array('entities_id'  => $entity,
+            if (NotificationEvent::raiseEvent($type, new PluginBadgesBadge(), ['entities_id'  => $entity,
                                                                                     'badges'       => $badges,
-                                                                                    'badgerequest' => $badgerequest))
+                                                                                    'badgerequest' => $badgerequest])
             ) {
                $message     = $badge_messages[$type][$entity];
                $cron_status = 1;

@@ -99,7 +99,7 @@ class PluginBadgesRequest extends CommonDBTM {
     *
     * @return bool|void
     */
-   function showForUser($item, $options = array()) {
+   function showForUser($item, $options = []) {
       global $CFG_GLPI;
 
       if (!$this->canCreate() || !$this->canView()) {
@@ -110,8 +110,6 @@ class PluginBadgesRequest extends CommonDBTM {
 
       $begin_date = date('Y-m-d H:i:s', strtotime(date('Y-m-d H:i:s') . "-1 MONTH"));
       $end_date   = date('Y-m-d H:i:s');
-
-
 
       if ($canedit) {
          Html::requireJs('badges');
@@ -128,13 +126,13 @@ class PluginBadgesRequest extends CommonDBTM {
          echo __('Arrival date', 'badges');
          echo "</td>";
          echo "<td>";
-         Html::showDateTimeField("begin_date", array('value' => $begin_date));
+         Html::showDateTimeField("begin_date", ['value' => $begin_date]);
          echo "</td>";
          echo "<td>";
          echo __('Return date', 'badges');
          echo "</td>";
          echo "<td>";
-         Html::showDateTimeField("end_date", array('value' => $end_date));
+         Html::showDateTimeField("end_date", ['value' => $end_date]);
          echo "</td>";
          echo "<td>";
          echo "<input type=\"button\" class=\"submit\" name=\"addToCart\" value=\"" . __('Search') . "\"
@@ -147,12 +145,11 @@ class PluginBadgesRequest extends CommonDBTM {
          // Init javascript
          echo Html::scriptBlock('$(document).ready(function() {badges_initJs("' . $CFG_GLPI['root_doc'] . '");});');
 
-
          Html::closeForm();
       }
 
       echo "<div class='center' id='badges_searchBadges'>";
-      $result = $this->listItems($item->fields['id'], array('begin_date' => $begin_date, 'end_date' => $end_date));
+      $result = $this->listItems($item->fields['id'], ['begin_date' => $begin_date, 'end_date' => $end_date]);
       echo $result['message'];
       echo "</div>";
 
@@ -169,7 +166,7 @@ class PluginBadgesRequest extends CommonDBTM {
     * @return array
     * @internal param type $fields
     */
-   function listItems($requesters_id, $options = array()) {
+   function listItems($requesters_id, $options = []) {
 
       $params['begin_date'] = "NULL";
       $params['end_date']   = "NULL";
@@ -223,7 +220,7 @@ class PluginBadgesRequest extends CommonDBTM {
          $message .= "</table>";
       }
 
-      return array('success' => true, 'message' => $message);
+      return ['success' => true, 'message' => $message];
    }
 
    /**
@@ -255,18 +252,18 @@ class PluginBadgesRequest extends CommonDBTM {
       echo "<tr>";
       echo "<td>" . __("Visitor firstname", "badges") . " <span class='red'>*</span></td>";
       echo "<td>";
-      Html::autocompletionTextField($request, "visitor_firstname", array('name' => "visitor_firstname"));
+      Html::autocompletionTextField($request, "visitor_firstname", ['name' => "visitor_firstname"]);
       echo "</td>";
       echo "<td>" . __("Visitor realname", "badges") . " <span class='red'>*</span></td>";
       echo "<td>";
-      Html::autocompletionTextField($request, "visitor_realname", array('name' => "visitor_realname"));
+      Html::autocompletionTextField($request, "visitor_realname", ['name' => "visitor_realname"]);
       echo "</td>";
       echo "</tr>";
 
       echo "<tr>";
       echo "<td>" . __("Visitor society", "badges") . " <span class='red'>*</span></td>";
       echo "<td>";
-      Html::autocompletionTextField($request, "visitor_society", array('name' => "visitor_society"));
+      Html::autocompletionTextField($request, "visitor_society", ['name' => "visitor_society"]);
       echo "</td>";
       echo "<td>" . _n("Available badge", "Available badges", 2, "badges") . " <span class='red'>*</span></td>";
       echo "<td id='badges_available'>";
@@ -277,7 +274,7 @@ class PluginBadgesRequest extends CommonDBTM {
       echo "<tr>";
       echo "<td>" . __("Arrival date", "badges") . " <span class='red'>*</span></td>";
       echo "<td>";
-      Html::showDateTimeField("affectation_date", array('value' => date('Y-m-d H:i:s')));
+      Html::showDateTimeField("affectation_date", ['value' => date('Y-m-d H:i:s')]);
       echo "</td>";
       echo "</tr>";
 
@@ -326,7 +323,7 @@ class PluginBadgesRequest extends CommonDBTM {
     *
     * @return array
     */
-   function loadAvailableBadges($used = array()) {
+   function loadAvailableBadges($used = []) {
 
       $datas = $this->getUsedBadges();
       if (!empty($datas)) {
@@ -335,10 +332,10 @@ class PluginBadgesRequest extends CommonDBTM {
          }
       }
 
-      Dropdown::show("PluginBadgesBadge", array('name'      => 'badges_id',
+      Dropdown::show("PluginBadgesBadge", ['name'      => 'badges_id',
                                                 'used'      => $used,
                                                 'condition' => "`is_bookable` = 1",
-                                                'entity'    => $_SESSION['glpiactive_entity']));
+                                                'entity'    => $_SESSION['glpiactive_entity']]);
       return;
    }
 
@@ -353,22 +350,22 @@ class PluginBadgesRequest extends CommonDBTM {
 
       list($success, $message) = $this->checkMandatoryFields($params);
 
-      return array('success' => $success,
+      return ['success' => $success,
                    'message' => $message,
                    'rowId'   => mt_rand(),
-                   'fields'  => array(
-                      'visitor_firstname' => array('label' => $params['visitor_firstname'],
-                                                   'value' => $params['visitor_firstname']),
-                      'visitor_realname'  => array('label' => $params['visitor_realname'],
-                                                   'value' => $params['visitor_realname']),
-                      'visitor_society'   => array('label' => $params['visitor_society'],
-                                                   'value' => $params['visitor_society']),
-                      'badges_id'         => array('label' => Dropdown::getDropdownName("glpi_plugin_badges_badges",
+                   'fields'  => [
+                      'visitor_firstname' => ['label' => $params['visitor_firstname'],
+                                                   'value' => $params['visitor_firstname']],
+                      'visitor_realname'  => ['label' => $params['visitor_realname'],
+                                                   'value' => $params['visitor_realname']],
+                      'visitor_society'   => ['label' => $params['visitor_society'],
+                                                   'value' => $params['visitor_society']],
+                      'badges_id'         => ['label' => Dropdown::getDropdownName("glpi_plugin_badges_badges",
                                                                                         $params['badges_id']),
-                                                   'value' => $params['badges_id']),
-                      'affectation_date'  => array('label' => $params['affectation_date'],
-                                                   'value' => $params['affectation_date'])
-                   ));
+                                                   'value' => $params['badges_id']],
+                      'affectation_date'  => ['label' => $params['affectation_date'],
+                                                   'value' => $params['affectation_date']]
+                   ]];
 
    }
 
@@ -387,38 +384,38 @@ class PluginBadgesRequest extends CommonDBTM {
             if ($success) {
                $badgeExist = $this->find("`badges_id` = " . $row['badges_id'] . " AND `is_affected` = 1");
                if (empty($badgeExist)) {
-                  $this->add(array('visitor_realname'  => $row['visitor_realname'],
+                  $this->add(['visitor_realname'  => $row['visitor_realname'],
                                    'visitor_firstname' => $row['visitor_firstname'],
                                    'visitor_society'   => $row['visitor_society'],
                                    'affectation_date'  => $row['affectation_date'],
                                    'badges_id'         => $row['badges_id'],
                                    'is_affected'       => 1,
-                                   'requesters_id'     => Session::getLoginUserID()));
+                                   'requesters_id'     => Session::getLoginUserID()]);
                } else {
                   $badgeExist = reset($badgeExist);
-                  $this->update(array('id'                => $badgeExist['id'],
+                  $this->update(['id'                => $badgeExist['id'],
                                       'visitor_realname'  => $row['visitor_realname'],
                                       'visitor_firstname' => $row['visitor_firstname'],
                                       'visitor_society'   => $row['visitor_society'],
                                       'affectation_date'  => $row['affectation_date'],
                                       'badges_id'         => $row['badges_id'],
                                       'is_affected'       => 1,
-                                      'requesters_id'     => Session::getLoginUserID()));
+                                      'requesters_id'     => Session::getLoginUserID()]);
                }
             }
 
             $message = _n('Badge affected', 'Badges affected', count($params['badges_cart']), 'badges');
             NotificationEvent::raiseEvent("AccessBadgeRequest", new PluginBadgesBadge(),
-                                          array('entities_id'  => $_SESSION['glpiactive_entity'],
-                                                'badgerequest' => $params['badges_cart']));
+                                          ['entities_id'  => $_SESSION['glpiactive_entity'],
+                                                'badgerequest' => $params['badges_cart']]);
          }
       } else {
          $success = false;
          $message = __('Please add badges in cart', 'badges');
       }
 
-      return array('success' => $success,
-                   'message' => $message);
+      return ['success' => $success,
+                   'message' => $message];
    }
 
    /**
@@ -426,7 +423,7 @@ class PluginBadgesRequest extends CommonDBTM {
     */
    function getUsedBadges() {
 
-      $used  = array();
+      $used  = [];
       $datas = $this->find("`is_affected` = 1");
       if (!empty($datas)) {
          foreach ($datas as $data) {
@@ -464,14 +461,14 @@ class PluginBadgesRequest extends CommonDBTM {
     * @return array
     */
    function checkMandatoryFields($input) {
-      $msg     = array();
+      $msg     = [];
       $checkKo = false;
 
-      $mandatory_fields = array('visitor_realname'  => __('Visitor realname', 'badges'),
+      $mandatory_fields = ['visitor_realname'  => __('Visitor realname', 'badges'),
                                 'visitor_firstname' => __('Visitor firstname', 'badges'),
                                 'visitor_society'   => __('Visitor society', 'badges'),
                                 'affectation_date'  => __('Affectation date', 'badges'),
-                                'badges_id'         => _n("Available badge", "Available badges", 2, "badges"));
+                                'badges_id'         => _n("Available badge", "Available badges", 2, "badges")];
 
       foreach ($input as $key => $value) {
          if (isset($mandatory_fields[$key])) {
@@ -483,10 +480,10 @@ class PluginBadgesRequest extends CommonDBTM {
       }
 
       if ($checkKo) {
-         return array(false, sprintf(__("Mandatory fields are not filled. Please correct: %s"), implode(', ', $msg)));
+         return [false, sprintf(__("Mandatory fields are not filled. Please correct: %s"), implode(', ', $msg))];
       }
 
-      return array(true, null);
+      return [true, null];
    }
 
 }

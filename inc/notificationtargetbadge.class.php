@@ -49,17 +49,17 @@ class PluginBadgesNotificationTargetBadge extends NotificationTarget {
     * @return array
     */
    function getEvents() {
-      return array(self::ExpiredBadges      => __('Badges at the end of the validity', 'badges'),
+      return [self::ExpiredBadges      => __('Badges at the end of the validity', 'badges'),
                    self::BadgesWhichExpire  => __('Badges which expires', 'badges'),
                    self::AccessBadgeRequest => __('Access badge request', 'badges'),
-                   self::BadgesReturn       => __('Badge return delay', 'badges'));
+                   self::BadgesReturn       => __('Badge return delay', 'badges')];
    }
 
    /**
     * @param       $event
     * @param array $options
     */
-   function addDataForTemplate($event, $options = array()) {
+   function addDataForTemplate($event, $options = []) {
 
       $this->data['##badge.entity##']      = Dropdown::getDropdownName('glpi_entities', $options['entities_id']);
       $this->data['##lang.badge.entity##'] = __('Entity');
@@ -84,7 +84,7 @@ class PluginBadgesNotificationTargetBadge extends NotificationTarget {
 
       if (isset($options['badges'])) {
          foreach ($options['badges'] as $id => $badge) {
-            $tmp = array();
+            $tmp = [];
 
             $tmp['##badge.name##']           = $badge['name'];
             $tmp['##badge.serial##']         = $badge['serial'];
@@ -104,7 +104,7 @@ class PluginBadgesNotificationTargetBadge extends NotificationTarget {
 
       if (isset($options['badgerequest'])) {
          foreach ($options['badgerequest'] as $id => $badge) {
-            $tmp = array();
+            $tmp = [];
 
             $tmp['##badgerequest.visitorrealname##']  = $badge['visitor_realname'];
             $tmp['##badgerequest.visitorfirstname##'] = $badge['visitor_firstname'];
@@ -122,7 +122,7 @@ class PluginBadgesNotificationTargetBadge extends NotificationTarget {
     */
    function getTags() {
 
-      $tags = array('badge.name'                    => __('Name'),
+      $tags = ['badge.name'                    => __('Name'),
                     'badge.serial'                  => __('Serial number'),
                     'badge.dateexpiration'          => __('Date of end of validity', 'badges'),
                     'badge.users'                   => __('Allotted to', 'badges'),
@@ -130,25 +130,25 @@ class PluginBadgesNotificationTargetBadge extends NotificationTarget {
                     'badgerequest.visitorfirstname' => __('Visitor firstname', 'badges'),
                     'badgerequest.visitorsociety'   => __('Visitor society', 'badges'),
                     'badgerequest.arrivaldate'      => __('Arrival date', 'badges'),
-                    'badgerequest.requester'        => __('Requester'));
+                    'badgerequest.requester'        => __('Requester')];
 
       foreach ($tags as $tag => $label) {
-         $this->addTagToList(array('tag'   => $tag,
+         $this->addTagToList(['tag'   => $tag,
                                    'label' => $label,
-                                   'value' => true));
+                                   'value' => true]);
       }
 
-      $this->addTagToList(array('tag'     => 'badgerequest',
+      $this->addTagToList(['tag'     => 'badgerequest',
                                 'label'   => __('Badges request', 'badges'),
                                 'value'   => false,
                                 'foreach' => true,
-                                'events'  => array(self::BadgesWhichExpire)));
+                                'events'  => [self::BadgesWhichExpire]]);
 
-      $this->addTagToList(array('tag'     => 'badges',
+      $this->addTagToList(['tag'     => 'badges',
                                 'label'   => __('Badges expired or badges which expires', 'badges'),
                                 'value'   => false,
                                 'foreach' => true,
-                                'events'  => array(self::BadgesWhichExpire, self::ExpiredBadges)));
+                                'events'  => [self::BadgesWhichExpire, self::ExpiredBadges]]);
 
       asort($this->tag_descriptions);
    }

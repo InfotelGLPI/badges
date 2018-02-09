@@ -46,7 +46,7 @@ class PluginBadgesMenu extends CommonGLPI {
     */
    static function getMenuContent() {
 
-      $menu                    = array();
+      $menu                    = [];
       $menu['title']           = self::getMenuName();
       $menu['page']            = "/plugins/badges/front/badge.php";
       $menu['links']['search'] = PluginBadgesBadge::getSearchURL(false);

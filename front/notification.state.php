@@ -43,7 +43,7 @@ if (isset($_POST["add"])) {
 
    foreach ($_POST["item"] as $key => $val) {
       if ($val == 1) {
-         $notif->delete(array('id' => $key));
+         $notif->delete(['id' => $key]);
       }
    }
    Html::back();

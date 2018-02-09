@@ -58,7 +58,7 @@ class PluginBadgesBadgeInjection extends PluginBadgesBadge
     * @return array
     */
    function connectedTo() {
-      return array();
+      return [];
    }
 
    /**
@@ -76,13 +76,13 @@ class PluginBadgesBadgeInjection extends PluginBadgesBadge
 
       //$blacklist = PluginDatainjectionCommonInjectionLib::getBlacklistedOptions();
       //Remove some options because some fields cannot be imported
-      $notimportable            = array(11, 30, 80);
+      $notimportable            = [11, 30, 80];
       $options['ignore_fields'] = $notimportable;
-      $options['displaytype']   = array("dropdown"       => array(2, 6, 7),
-                                        "user"           => array(10),
-                                        "multiline_text" => array(8),
-                                        "date"           => array(4, 5),
-                                        "bool"           => array(9));
+      $options['displaytype']   = ["dropdown"       => [2, 6, 7],
+                                        "user"           => [10],
+                                        "multiline_text" => [8],
+                                        "date"           => [4, 5],
+                                        "bool"           => [9]];
 
       $tab = PluginDatainjectionCommonInjectionLib::addToSearchOptions($tab, $options, $this);
 
@@ -100,7 +100,7 @@ class PluginBadgesBadgeInjection extends PluginBadgesBadge
     * @internal param fields $fields to add into glpi
     * @internal param options $options used during creation
     */
-   function deleteObject($values = array(), $options = array()) {
+   function deleteObject($values = [], $options = []) {
       $lib = new PluginDatainjectionCommonInjectionLib($this, $values, $options);
       $lib->deleteObject();
       return $lib->getInjectionResults();
@@ -117,7 +117,7 @@ class PluginBadgesBadgeInjection extends PluginBadgesBadge
     * @internal param fields $values to add into glpi
     * @internal param options $options used during creation
     */
-   function addOrUpdateObject($values = array(), $options = array()) {
+   function addOrUpdateObject($values = [], $options = []) {
 
       $lib = new PluginDatainjectionCommonInjectionLib($this, $values, $options);
       $lib->processAddOrUpdate();

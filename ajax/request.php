@@ -49,7 +49,7 @@ switch ($_POST['action']) {
       header("Content-Type: text/html; charset=UTF-8");
       $request = new PluginBadgesRequest();
       if (!isset($_POST['used'])) {
-         $_POST['used'] = array();
+         $_POST['used'] = [];
       }
       $request->loadAvailableBadges($_POST['used']);
       break;

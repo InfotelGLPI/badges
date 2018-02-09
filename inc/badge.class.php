@@ -55,7 +55,7 @@ class PluginBadgesBadge extends CommonDBTM {
     */
    function getSearchOptions() {
 
-      $tab = array();
+      $tab = [];
 
       $tab['common'] = self::getTypeName(2);
 
@@ -143,9 +143,9 @@ class PluginBadgesBadge extends CommonDBTM {
     *
     * @return array
     */
-   function defineTabs($options = array()) {
+   function defineTabs($options = []) {
 
-      $ong = array();
+      $ong = [];
       $this->addDefaultFormTab($ong);
       $this->addStandardTab('PluginBadgesReturn', $ong, $options);
       $this->addStandardTab('Ticket', $ong, $options);
@@ -196,7 +196,7 @@ class PluginBadgesBadge extends CommonDBTM {
     *
     * @return bool
     */
-   function showForm($ID, $options = array()) {
+   function showForm($ID, $options = []) {
 
       $this->initForm($ID, $options);
       $this->showFormHeader($options);
@@ -209,9 +209,9 @@ class PluginBadgesBadge extends CommonDBTM {
       echo "</td>";
 
       echo "<td>" . __('User') . "</td><td>";
-      User::dropdown(array('value'  => $this->fields["users_id"],
+      User::dropdown(['value'  => $this->fields["users_id"],
                            'entity' => $this->fields["entities_id"],
-                           'right'  => 'all'));
+                           'right'  => 'all']);
       echo "</td>";
 
       echo "</tr>";
@@ -219,14 +219,14 @@ class PluginBadgesBadge extends CommonDBTM {
       echo "<tr class='tab_bg_1'>";
 
       echo "<td>" . __('Location') . "</td><td>";
-      Location::dropdown(array('value'  => $this->fields["locations_id"],
-                               'entity' => $this->fields["entities_id"]));
+      Location::dropdown(['value'  => $this->fields["locations_id"],
+                               'entity' => $this->fields["entities_id"]]);
       echo "</td>";
 
       echo "<td>" . __('Type') . "</td><td>";
-      Dropdown::show('PluginBadgesBadgeType', array('name'   => "plugin_badges_badgetypes_id",
+      Dropdown::show('PluginBadgesBadgeType', ['name'   => "plugin_badges_badgetypes_id",
                                                     'value'  => $this->fields["plugin_badges_badgetypes_id"],
-                                                    'entity' => $this->fields["entities_id"]));
+                                                    'entity' => $this->fields["entities_id"]]);
       echo "</td>";
 
       echo "</tr>";
@@ -239,7 +239,7 @@ class PluginBadgesBadge extends CommonDBTM {
       echo "</td>";
 
       echo "<td>" . __('Status') . "</td><td>";
-      State::dropdown(array('value' => $this->fields["states_id"]));
+      State::dropdown(['value' => $this->fields["states_id"]]);
       echo "</td>";
 
       echo "</tr>";
@@ -291,10 +291,10 @@ class PluginBadgesBadge extends CommonDBTM {
     *
     * @return date|return|string|translated
     */
-   static function getSpecificValueToDisplay($field, $values, array $options = array()) {
+   static function getSpecificValueToDisplay($field, $values, array $options = []) {
 
       if (!is_array($values)) {
-         $values = array($field => $values);
+         $values = [$field => $values];
       }
       switch ($field) {
          case 'date_expiration' :
@@ -315,7 +315,7 @@ class PluginBadgesBadge extends CommonDBTM {
     *
     * @return an
     */
-   function getSpecificMassiveActions($checkitem = NULL) {
+   function getSpecificMassiveActions($checkitem = null) {
       $isadmin = static::canUpdate();
       $actions = parent::getSpecificMassiveActions($checkitem);
 
@@ -339,7 +339,7 @@ class PluginBadgesBadge extends CommonDBTM {
       switch ($ma->getAction()) {
          case "transfer" :
             Dropdown::show('Entity');
-            echo Html::submit(_x('button', 'Post'), array('name' => 'massiveaction'));
+            echo Html::submit(_x('button', 'Post'), ['name' => 'massiveaction']);
             return true;
             break;
       }
@@ -401,11 +401,11 @@ class PluginBadgesBadge extends CommonDBTM {
 
       switch ($name) {
          case 'BadgesAlert':
-            return array(
-               'description' => __('Badges which expires', 'badges'));   // Optional
+            return [
+               'description' => __('Badges which expires', 'badges')];   // Optional
             break;
       }
-      return array();
+      return [];
    }
 
    /**
@@ -493,7 +493,7 @@ class PluginBadgesBadge extends CommonDBTM {
     *
     * @return int
     */
-   static function cronBadgesAlert($task = NULL) {
+   static function cronBadgesAlert($task = null) {
       global $DB, $CFG_GLPI;
 
       if (!$CFG_GLPI["notifications_mailing"]) {
@@ -503,15 +503,15 @@ class PluginBadgesBadge extends CommonDBTM {
       $query_expired     = self::queryExpiredBadges();
       $query_whichexpire = self::queryBadgesWhichExpire();
 
-      $querys = array(PluginBadgesNotificationTargetBadge::BadgesWhichExpire => $query_whichexpire,
-                      PluginBadgesNotificationTargetBadge::ExpiredBadges     => $query_expired);
+      $querys = [PluginBadgesNotificationTargetBadge::BadgesWhichExpire => $query_whichexpire,
+                      PluginBadgesNotificationTargetBadge::ExpiredBadges     => $query_expired];
 
-      $badge_infos    = array();
-      $badge_messages = array();
+      $badge_infos    = [];
+      $badge_messages = [];
       $cron_status    = 0;
 
       foreach ($querys as $type => $query) {
-         $badge_infos[$type] = array();
+         $badge_infos[$type] = [];
          if (!empty($query)) {
             foreach ($DB->request($query) as $data) {
                $entity                        = $data['entities_id'];
@@ -532,8 +532,8 @@ class PluginBadgesBadge extends CommonDBTM {
          foreach ($badge_infos[$type] as $entity => $badges) {
             Plugin::loadLang('badges');
 
-            if (NotificationEvent::raiseEvent($type, new PluginBadgesBadge(), array('entities_id' => $entity,
-                                                                                    'badges'      => $badges))
+            if (NotificationEvent::raiseEvent($type, new PluginBadgesBadge(), ['entities_id' => $entity,
+                                                                                    'badges'      => $badges])
             ) {
                $message     = $badge_messages[$type][$entity];
                $cron_status = 1;
