@@ -46,7 +46,7 @@ class PluginBadgesServicecatalog extends CommonGLPI {
    static function getMenuLogo() {
       global $CFG_GLPI;
 
-      return "<a class='bt-badges' href='" . $CFG_GLPI['root_doc'] . "/plugins/badges/front/wizard.php'></a>";
+      return "<a class='bt-interface bt-badges' href='" . $CFG_GLPI['root_doc'] . "/plugins/badges/front/wizard.php'></a>";
 
    }
 
@@ -61,7 +61,7 @@ class PluginBadgesServicecatalog extends CommonGLPI {
 
    static function getMenuComment() {
 
-      echo __('Manage temporary badges', 'badges');
+      return __('Manage temporary badges', 'badges');
    }
 
    static function getLinkList() {
