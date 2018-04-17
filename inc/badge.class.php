@@ -53,87 +53,135 @@ class PluginBadgesBadge extends CommonDBTM {
    /**
     * @return array
     */
-   function getSearchOptions() {
+   function rawSearchOptions() {
 
       $tab = [];
 
-      $tab['common'] = self::getTypeName(2);
+      $tab[] = [
+         'id'   => 'common',
+         'name' => self::getTypeName(2)
+      ];
 
-      $tab[1]['table']         = $this->getTable();
-      $tab[1]['field']         = 'name';
-      $tab[1]['name']          = __('Name');
-      $tab[1]['datatype']      = 'itemlink';
-      $tab[1]['itemlink_type'] = $this->getType();
+      $tab[] = [
+         'id'            => '1',
+         'table'         => $this->getTable(),
+         'field'         => 'name',
+         'name'          => __('Name'),
+         'datatype'      => 'itemlink',
+         'itemlink_type' => $this->getType(),
+      ];
 
-      $tab[2]['table']    = 'glpi_plugin_badges_badgetypes';
-      $tab[2]['field']    = 'name';
-      $tab[2]['name']     = __('Type');
-      $tab[2]['datatype'] = 'dropdown';
+      $tab[] = [
+         'id'       => '2',
+         'table'    => 'glpi_plugin_badges_badgetypes',
+         'field'    => 'name',
+         'name'     => __('Type'),
+         'datatype' => 'dropdown',
+      ];
 
-      $tab[3]['table'] = $this->getTable();
-      $tab[3]['field'] = 'serial';
-      $tab[3]['name']  = __('Serial number');
+      $tab[] = [
+         'id'    => '3',
+         'table' => $this->getTable(),
+         'field' => 'serial',
+         'name'  => __('Serial number'),
+      ];
 
-      $tab[4]['table']    = $this->getTable();
-      $tab[4]['field']    = 'date_affectation';
-      $tab[4]['name']     = __('Affectation date', 'badges');
-      $tab[4]['datatype'] = 'date';
+      $tab[] = [
+         'id'       => '4',
+         'table'    => $this->getTable(),
+         'field'    => 'date_affectation',
+         'name'     => __('Affectation date', 'badges'),
+         'datatype' => 'date',
+      ];
 
-      $tab[5]['table']    = $this->getTable();
-      $tab[5]['field']    = 'date_expiration';
-      $tab[5]['name']     = __('Date of end of validity', 'badges');
-      $tab[5]['datatype'] = 'date';
+      $tab[] = [
+         'id'       => '5',
+         'table'    => $this->getTable(),
+         'field'    => 'date_expiration',
+         'name'     => __('Date of end of validity', 'badges'),
+         'datatype' => 'date',
+      ];
 
-      $tab[6]['table']    = 'glpi_locations';
-      $tab[6]['field']    = 'completename';
-      $tab[6]['name']     = __('Location');
-      $tab[6]['datatype'] = 'dropdown';
+      $tab[] = [
+         'id'       => '6',
+         'table'    => 'glpi_locations',
+         'field'    => 'completename',
+         'name'     => __('Location'),
+         'datatype' => 'dropdown',
+      ];
 
-      $tab[7]['table']    = 'glpi_states';
-      $tab[7]['field']    = 'completename';
-      $tab[7]['name']     = __('Status');
-      $tab[7]['datatype'] = 'dropdown';
+      $tab[] = [
+         'id'       => '7',
+         'table'    => 'glpi_states',
+         'field'    => 'completename',
+         'name'     => __('Status'),
+         'datatype' => 'dropdown',
+      ];
 
-      $tab[8]['table']    = $this->getTable();
-      $tab[8]['field']    = 'comment';
-      $tab[8]['name']     = __('Comments');
-      $tab[8]['datatype'] = 'text';
+      $tab[] = [
+         'id'       => '8',
+         'table'    => $this->getTable(),
+         'field'    => 'comment',
+         'name'     => __('Comments'),
+         'datatype' => 'text',
+      ];
 
-      $tab[9]['table']    = $this->getTable();
-      $tab[9]['field']    = 'is_helpdesk_visible';
-      $tab[9]['name']     = __('Associable to a ticket');
-      $tab[9]['datatype'] = 'bool';
+      $tab[] = [
+         'id'       => '9',
+         'table'    => $this->getTable(),
+         'field'    => 'is_helpdesk_visible',
+         'name'     => __('Associable to a ticket'),
+         'datatype' => 'bool',
+      ];
 
-      $tab[10]['table']    = 'glpi_users';
-      $tab[10]['field']    = 'name';
-      $tab[10]['name']     = __('User');
-      $tab[10]['datatype'] = 'dropdown';
-      $tab[10]['right']    = 'all';
+      $tab[] = [
+         'id'       => '10',
+         'table'    => 'glpi_users',
+         'field'    => 'name',
+         'name'     => __('User'),
+         'datatype' => 'dropdown',
+         'right'    => 'all',
+      ];
 
-      $tab[11]['table']         = $this->getTable();
-      $tab[11]['field']         = 'date_mod';
-      $tab[11]['name']          = __('Last update');
-      $tab[11]['datatype']      = 'datetime';
-      $tab[11]['massiveaction'] = false;
+      $tab[] = [
+         'id'            => '11',
+         'table'         => $this->getTable(),
+         'field'         => 'date_mod',
+         'name'          => __('Last update'),
+         'datatype'      => 'datetime',
+         'massiveaction' => false,
+      ];
 
-      $tab[30]['table']    = $this->getTable();
-      $tab[30]['field']    = 'id';
-      $tab[30]['name']     = __('ID');
-      $tab[30]['datatype'] = 'number';
+      $tab[] = [
+         'id'       => '30',
+         'table'    => $this->getTable(),
+         'field'    => 'id',
+         'name'     => __('ID'),
+         'datatype' => 'number',
+      ];
 
-      $tab[80]['table']    = 'glpi_entities';
-      $tab[80]['field']    = 'completename';
-      $tab[80]['name']     = __('Entity');
-      $tab[80]['datatype'] = 'dropdown';
+      $tab[] = [
+         'id'       => '80',
+         'table'    => 'glpi_entities',
+         'field'    => 'completename',
+         'name'     => __('Entity'),
+         'datatype' => 'dropdown',
+      ];
 
-      $tab[81]['table'] = 'glpi_entities';
-      $tab[81]['field'] = 'entities_id';
-      $tab[81]['name']  = __('Entity') . "-" . __('ID');
+      $tab[] = [
+         'id'    => '81',
+         'table' => 'glpi_entities',
+         'field' => 'entities_id',
+         'name'  => __('Entity') . "-" . __('ID'),
+      ];
 
-      $tab[82]['table']    = $this->getTable();
-      $tab[82]['field']    = 'is_bookable';
-      $tab[82]['name']     = __('Bookable', 'badges');
-      $tab[82]['datatype'] = 'bool';
+      $tab[] = [
+         'id'       => '82',
+         'table'    => $this->getTable(),
+         'field'    => 'is_bookable',
+         'name'     => __('Bookable', 'badges'),
+         'datatype' => 'bool',
+      ];
 
       return $tab;
    }
