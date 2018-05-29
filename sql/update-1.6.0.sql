@@ -22,7 +22,6 @@ ALTER TABLE `glpi_plugin_badges_badges`
    CHANGE `notes` `notepad` longtext collate utf8_unicode_ci,
    CHANGE `comments` `comment` text collate utf8_unicode_ci,
    CHANGE `deleted` `is_deleted` tinyint(1) NOT NULL default '0',
-   CHANGE `recursive` `is_recursive` tinyint(1) NOT NULL default '0',
    ADD INDEX (`plugin_badges_badgetypes_id`),
    ADD INDEX (`users_id`),
    ADD INDEX (`locations_id`),
