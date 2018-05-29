@@ -13,7 +13,10 @@ CREATE TABLE `glpi_plugin_badges_badges` (
    `is_helpdesk_visible` int(11) NOT NULL default '1',
    `date_mod` datetime default NULL,
    `comment` text collate utf8_unicode_ci,
+   `notepad` longtext collate utf8_unicode_ci,
    `is_deleted` tinyint(1) NOT NULL default '0',
+        `is_bookable` tinyint(1) NOT NULL default '1',
+        `is_recursive` tinyint(1) NOT NULL default '0',
    PRIMARY KEY  (`id`),
    KEY `name` (`name`),
    KEY `entities_id` (`entities_id`),
@@ -23,7 +26,8 @@ CREATE TABLE `glpi_plugin_badges_badges` (
    KEY `states_id` (`states_id`),
    KEY `users_id` (`users_id`),
    KEY `is_helpdesk_visible` (`is_helpdesk_visible`),
-   KEY `is_deleted` (`is_deleted`)
+   KEY `is_deleted` (`is_deleted`),
+   KEY `is_recursive` (`is_recursive`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 DROP TABLE IF EXISTS `glpi_plugin_badges_badgetypes`;
@@ -35,6 +39,16 @@ DROP TABLE IF EXISTS `glpi_plugin_badges_badgetypes`;
    PRIMARY KEY  (`id`),
    KEY `name` (`name`),
    KEY `entities_id` (`entities_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+DROP TABLE IF EXISTS `glpi_plugin_badges_profiles`;
+CREATE TABLE `glpi_plugin_badges_profiles` (
+   `id` int(11) NOT NULL auto_increment,
+   `profiles_id` int(11) NOT NULL default '0' COMMENT 'RELATION to glpi_profiles (id)',
+   `badges` char(1) collate utf8_unicode_ci default NULL,
+   `open_ticket` char(1) collate utf8_unicode_ci default NULL,
+   PRIMARY KEY  (`id`),
+   KEY `profiles_id` (`profiles_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 DROP TABLE IF EXISTS `glpi_plugin_badges_notificationstates`;
@@ -50,12 +64,33 @@ CREATE TABLE `glpi_plugin_badges_configs` (
    `id` int(11) NOT NULL auto_increment,
    `delay_expired` varchar(50) collate utf8_unicode_ci NOT NULL default '30',
    `delay_whichexpire` varchar(50) collate utf8_unicode_ci NOT NULL default '30',
+   `delay_returnexpire` int(11) NOT NULL default '0',
    PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-INSERT INTO `glpi_plugin_badges_configs` VALUES (1, '30', '30');
+DROP TABLE IF EXISTS `glpi_plugin_badges_requests`;
+CREATE TABLE `glpi_plugin_badges_requests` (
+   `id` int(11) NOT NULL auto_increment,
+   `badges_id`  int(11) NOT NULL default '0',
+   `requesters_id`  int(11) NOT NULL default '0',
+   `visitor_firstname` varchar(255) collate utf8_unicode_ci default NULL,
+   `visitor_realname` varchar(255) collate utf8_unicode_ci default NULL,
+   `visitor_society` varchar(255) collate utf8_unicode_ci default NULL,
+   `affectation_date` datetime default NULL,
+   `return_date` datetime default NULL,
+   `is_affected`  tinyint(1) NOT NULL default '0',
+   PRIMARY KEY  (`id`),
+        KEY `badges_id` (`badges_id`),
+        KEY `requesters_id` (`requesters_id`),
+        KEY `is_affected` (`is_affected`),
+        KEY `affectation_date` (`affectation_date`),
+        KEY `return_date` (`return_date`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-INSERT INTO `glpi_notificationtemplates` VALUES(NULL, 'Alert Badges', 'PluginBadgesBadge', '2010-02-23 23:44:46','',NULL);
+INSERT INTO `glpi_plugin_badges_configs` VALUES (1, '30', '30', '30');
+
+INSERT INTO `glpi_notificationtemplates` (name, itemtype)
+VALUES('Alert Badges', 'PluginBadgesBadge');
 
 INSERT INTO `glpi_displaypreferences` VALUES (NULL,'PluginBadgesBadge','3','2','0');
 INSERT INTO `glpi_displaypreferences` VALUES (NULL,'PluginBadgesBadge','4','3','0');
