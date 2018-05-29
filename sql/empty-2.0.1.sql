@@ -25,7 +25,7 @@ CREATE TABLE `glpi_plugin_badges_badges` (
    KEY `states_id` (`states_id`),
    KEY `users_id` (`users_id`),
    KEY `is_helpdesk_visible` (`is_helpdesk_visible`),
-   KEY `is_deleted` (`is_deleted`),
+   KEY `is_deleted` (`is_deleted`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 DROP TABLE IF EXISTS `glpi_plugin_badges_badgetypes`;
