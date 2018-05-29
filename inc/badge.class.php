@@ -183,6 +183,14 @@ class PluginBadgesBadge extends CommonDBTM {
          'datatype' => 'bool',
       ];
 
+      $tab[] = [
+         'id'       => '86',
+         'table'    => $this->getTable(),
+         'field'    => 'is_recursive',
+         'name'     => __('Child entities'),
+         'datatype' => 'bool'
+      ];
+
       return $tab;
    }
 

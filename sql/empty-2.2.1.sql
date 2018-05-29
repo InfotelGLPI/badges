@@ -16,6 +16,7 @@ CREATE TABLE `glpi_plugin_badges_badges` (
    `notepad` longtext collate utf8_unicode_ci,
    `is_deleted` tinyint(1) NOT NULL default '0',
         `is_bookable` tinyint(1) NOT NULL default '1',
+        `is_recursive` tinyint(1) NOT NULL default '0',
    PRIMARY KEY  (`id`),
    KEY `name` (`name`),
    KEY `entities_id` (`entities_id`),
@@ -25,7 +26,8 @@ CREATE TABLE `glpi_plugin_badges_badges` (
    KEY `states_id` (`states_id`),
    KEY `users_id` (`users_id`),
    KEY `is_helpdesk_visible` (`is_helpdesk_visible`),
-   KEY `is_deleted` (`is_deleted`)
+   KEY `is_deleted` (`is_deleted`),
+   KEY `is_recursive` (`is_recursive`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 DROP TABLE IF EXISTS `glpi_plugin_badges_badgetypes`;
