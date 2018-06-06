@@ -2,6 +2,7 @@ DROP TABLE IF EXISTS `glpi_plugin_badges_badges`;
 CREATE TABLE `glpi_plugin_badges_badges` (
    `id` int(11) NOT NULL auto_increment,
    `entities_id` int(11) NOT NULL default '0',
+   `is_recursive` tinyint(1) NOT NULL default '0',
    `name` varchar(255) collate utf8_unicode_ci default NULL,
    `serial` varchar(255) collate utf8_unicode_ci default NULL,
    `plugin_badges_badgetypes_id` int(11) NOT NULL default '0' COMMENT 'RELATION to glpi_plugin_badges_badgetypes (id)',
@@ -15,8 +16,7 @@ CREATE TABLE `glpi_plugin_badges_badges` (
    `comment` text collate utf8_unicode_ci,
    `notepad` longtext collate utf8_unicode_ci,
    `is_deleted` tinyint(1) NOT NULL default '0',
-        `is_bookable` tinyint(1) NOT NULL default '1',
-        `is_recursive` tinyint(1) NOT NULL default '0',
+   `is_bookable` tinyint(1) NOT NULL default '1',
    PRIMARY KEY  (`id`),
    KEY `name` (`name`),
    KEY `entities_id` (`entities_id`),
