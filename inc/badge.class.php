@@ -135,6 +135,11 @@ class PluginBadgesBadge extends CommonDBTM {
       $tab[82]['name']     = __('Bookable', 'badges');
       $tab[82]['datatype'] = 'bool';
 
+      $tab[86]['table']    = $this->getTable();
+      $tab[86]['field']    = 'is_recursive';
+      $tab[86]['name']     = __('Child entities');
+      $tab[86]['datatype'] = 'bool';
+
       return $tab;
    }
 
