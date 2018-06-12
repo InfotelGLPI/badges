@@ -29,7 +29,7 @@
 
 include('../../../inc/includes.php');
 
-if ($_SESSION['glpiactiveprofile']['interface'] == 'central') {
+if (Session::getCurrentInterface() == 'central') {
    Html::header(PluginBadgesWizard::getTypeName(2), '', "assets", "pluginbadgesmenu");
 } else {
    Html::helpHeader(PluginBadgesWizard::getTypeName(2));
@@ -38,7 +38,7 @@ if ($_SESSION['glpiactiveprofile']['interface'] == 'central') {
 $wizard = new PluginBadgesWizard();
 $wizard->showMenu();
 
-if ($_SESSION['glpiactiveprofile']['interface'] == 'central') {
+if (Session::getCurrentInterface() == 'central') {
    Html::footer();
 } else {
    Html::helpFooter();
