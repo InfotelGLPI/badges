@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR Badges Development Team
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the GLPI - Badges plugin package.
 # 
 # Translators:
 # Kaya Zeren <kayazeren@gmail.com>, 2013,2015,2017
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GLPI Project - badges plugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-06 14:57+0200\n"
+"POT-Creation-Date: 2018-07-03 07:33+0200\n"
 "PO-Revision-Date: 2017-10-06 13:12+0000\n"
 "Last-Translator: Amandine Manceau\n"
 "Language-Team: Turkish (Turkey) (http://www.transifex.com/tsmr/GLPI_badges/language/tr_TR/)\n"
@@ -16,35 +16,36 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: tr_TR\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: setup.php:97 inc/badge.class.php:49 inc/menu.class.php:41
-#: inc/profile.class.php:177 inc/request.class.php:193
-#: inc/request.class.php:300
+#: inc/profile.class.php:177 inc/request.class.php:190
+#: inc/request.class.php:297
 msgid "Badge"
 msgid_plural "Badges"
 msgstr[0] "Yaka Kartları"
+msgstr[1] "Yaka Kartları"
 
-#: inc/badge.class.php:79 inc/badge.class.php:249 inc/request.class.php:473
+#: inc/badge.class.php:93 inc/badge.class.php:297 inc/request.class.php:470
 msgid "Affectation date"
 msgstr "Yürürlük tarihi"
 
-#: inc/badge.class.php:84 inc/badge.class.php:262
+#: inc/badge.class.php:101 inc/badge.class.php:310
 #: inc/notificationtargetbadge.class.php:81
 #: inc/notificationtargetbadge.class.php:127
 msgid "Date of end of validity"
 msgstr "Geçerlilik süresinin sonu"
 
-#: inc/badge.class.php:135 inc/badge.class.php:267
+#: inc/badge.class.php:182 inc/badge.class.php:315
 msgid "Bookable"
 msgstr "Ayırtılabilir"
 
-#: inc/badge.class.php:405 inc/notificationtargetbadge.class.php:53
+#: inc/badge.class.php:453 inc/notificationtargetbadge.class.php:53
 #: inc/notificationtargetbadge.class.php:71
 msgid "Badges which expires"
 msgstr "Süresi dolmuş yaka kartları"
 
-#: inc/badge.class.php:523 inc/notificationtargetbadge.class.php:52
+#: inc/badge.class.php:571 inc/notificationtargetbadge.class.php:52
 #: inc/notificationtargetbadge.class.php:68 inc/return.class.php:444
 msgid "Badges at the end of the validity"
 msgstr "Geçerlilik süresi dolan yaka kartları"
@@ -53,6 +54,7 @@ msgstr "Geçerlilik süresi dolan yaka kartları"
 msgid "Type of badge"
 msgid_plural "Types of badge"
 msgstr[0] "Yaka kartı türü"
+msgstr[1] "Yaka kartı türü"
 
 #: inc/config.class.php:48
 msgid "Plugin Setup"
@@ -80,8 +82,8 @@ msgid "Unused status for expiration mailing"
 msgstr "Süre dolma e-postası için kullanılmıyor durumu"
 
 #: inc/notificationtargetbadge.class.php:54
-#: inc/notificationtargetbadge.class.php:74 inc/request.class.php:247
-#: inc/request.class.php:253 inc/return.class.php:257 inc/wizard.class.php:68
+#: inc/notificationtargetbadge.class.php:74 inc/request.class.php:244
+#: inc/request.class.php:250 inc/return.class.php:257 inc/wizard.class.php:68
 #: inc/wizard.class.php:76 inc/wizard.class.php:77
 msgid "Access badge request"
 msgstr "Erişim yaka kartı isteği"
@@ -92,30 +94,30 @@ msgid "Allotted to"
 msgstr "Kullanıcısı"
 
 #: inc/notificationtargetbadge.class.php:99
-#: inc/notificationtargetbadge.class.php:129 inc/request.class.php:194
-#: inc/request.class.php:260 inc/request.class.php:298
-#: inc/request.class.php:470 inc/return.class.php:176 inc/return.class.php:325
+#: inc/notificationtargetbadge.class.php:129 inc/request.class.php:191
+#: inc/request.class.php:257 inc/request.class.php:295
+#: inc/request.class.php:467 inc/return.class.php:176 inc/return.class.php:325
 msgid "Visitor realname"
 msgstr "Ziyaretçinin gerçek adı"
 
 #: inc/notificationtargetbadge.class.php:100
-#: inc/notificationtargetbadge.class.php:130 inc/request.class.php:195
-#: inc/request.class.php:256 inc/request.class.php:297
-#: inc/request.class.php:471 inc/return.class.php:177 inc/return.class.php:323
+#: inc/notificationtargetbadge.class.php:130 inc/request.class.php:192
+#: inc/request.class.php:253 inc/request.class.php:294
+#: inc/request.class.php:468 inc/return.class.php:177 inc/return.class.php:323
 msgid "Visitor firstname"
 msgstr "Ziyaretçinin adı"
 
 #: inc/notificationtargetbadge.class.php:101
-#: inc/notificationtargetbadge.class.php:131 inc/request.class.php:196
-#: inc/request.class.php:267 inc/request.class.php:299
-#: inc/request.class.php:472 inc/return.class.php:178 inc/return.class.php:330
+#: inc/notificationtargetbadge.class.php:131 inc/request.class.php:193
+#: inc/request.class.php:264 inc/request.class.php:296
+#: inc/request.class.php:469 inc/return.class.php:178 inc/return.class.php:330
 msgid "Visitor society"
 msgstr "Ziyaretçinin topluluğu"
 
 #: inc/notificationtargetbadge.class.php:102
-#: inc/notificationtargetbadge.class.php:132 inc/request.class.php:128
-#: inc/request.class.php:197 inc/request.class.php:278
-#: inc/request.class.php:301 inc/return.class.php:179 inc/return.class.php:336
+#: inc/notificationtargetbadge.class.php:132 inc/request.class.php:126
+#: inc/request.class.php:194 inc/request.class.php:275
+#: inc/request.class.php:298 inc/return.class.php:179 inc/return.class.php:336
 #: inc/return.class.php:439
 msgid "Arrival date"
 msgstr "Varış tarihi"
@@ -128,38 +130,40 @@ msgstr "Yaka kartları isteği"
 msgid "Badges expired or badges which expires"
 msgstr "Süresi geçmiş ve geçmek üzere olan yaka kartları"
 
-#: inc/request.class.php:123
+#: inc/request.class.php:121
 msgid "Badges usage search"
 msgstr "Yaka kartları kullanımı araması"
 
-#: inc/request.class.php:134 inc/request.class.php:198
+#: inc/request.class.php:132 inc/request.class.php:195
 #: inc/return.class.php:180
 msgid "Return date"
 msgstr "Geri alma tarihi"
 
-#: inc/request.class.php:190 inc/request.class.php:220
+#: inc/request.class.php:187 inc/request.class.php:217
 msgid "Badge usage report"
 msgstr "Yaka kartı kullanım raporu"
 
-#: inc/request.class.php:271 inc/request.class.php:474
+#: inc/request.class.php:268 inc/request.class.php:471
 msgid "Available badge"
 msgid_plural "Available badges"
 msgstr[0] "Kullanılabilecek yaka kartları"
+msgstr[1] "Kullanılabilecek yaka kartları"
 
-#: inc/request.class.php:286
+#: inc/request.class.php:283
 msgid "Add to cart"
 msgstr "Sepete ekle"
 
-#: inc/request.class.php:295
+#: inc/request.class.php:292
 msgid "Cart"
 msgstr "Sepet"
 
-#: inc/request.class.php:410
+#: inc/request.class.php:407
 msgid "Badge affected"
 msgid_plural "Badges affected"
 msgstr[0] "yaka kartı etkilendi"
+msgstr[1] "yaka kartı etkilendi"
 
-#: inc/request.class.php:417
+#: inc/request.class.php:414
 msgid "Please add badges in cart"
 msgstr "Lütfen sepete yaka kartları ekleyin"
 
@@ -199,15 +203,15 @@ msgstr "Yaka kartı geri alındı"
 msgid "Badges return"
 msgstr "Yaka kartı geri alındı"
 
-#: inc/servicecatalog.class.php:59
+#: inc/servicecatalog.class.php:57
 msgid "Manage"
 msgstr "Yönetim"
 
-#: inc/servicecatalog.class.php:60
+#: inc/servicecatalog.class.php:57
 msgid "Temporary badges"
 msgstr "Geçici yaka kartları"
 
-#: inc/servicecatalog.class.php:67
+#: inc/servicecatalog.class.php:64
 msgid "Manage temporary badges"
 msgstr "Geçici yaka kartları yönetimi"
 
