@@ -110,6 +110,8 @@ class PluginBadgesBadge extends CommonDBTM {
          'datatype' => 'dropdown',
       ];
 
+      $tab = array_merge($tab, Location::rawSearchOptionsToAdd());
+
       $tab[] = [
          'id'       => '7',
          'table'    => 'glpi_states',
