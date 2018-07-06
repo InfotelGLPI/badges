@@ -79,12 +79,7 @@ class PluginBadgesBadge extends CommonDBTM {
          'datatype' => 'dropdown',
       ];
 
-      $tab[] = [
-         'id'    => '3',
-         'table' => $this->getTable(),
-         'field' => 'serial',
-         'name'  => __('Serial number'),
-      ];
+      $tab = array_merge($tab, Location::rawSearchOptionsToAdd());
 
       $tab[] = [
          'id'       => '4',
@@ -103,14 +98,12 @@ class PluginBadgesBadge extends CommonDBTM {
       ];
 
       $tab[] = [
-         'id'       => '6',
-         'table'    => 'glpi_locations',
-         'field'    => 'completename',
-         'name'     => __('Location'),
-         'datatype' => 'dropdown',
+         'id'    => '6',
+         'table' => $this->getTable(),
+         'field' => 'serial',
+         'name'  => __('Serial number'),
       ];
 
-      $tab = array_merge($tab, Location::rawSearchOptionsToAdd());
 
       $tab[] = [
          'id'       => '7',
@@ -183,6 +176,14 @@ class PluginBadgesBadge extends CommonDBTM {
          'field'    => 'is_bookable',
          'name'     => __('Bookable', 'badges'),
          'datatype' => 'bool',
+      ];
+
+      $tab[] = [
+         'id'       => '86',
+         'table'    => $this->getTable(),
+         'field'    => 'is_recursive',
+         'name'     => __('Child entities'),
+         'datatype' => 'bool'
       ];
 
       return $tab;
