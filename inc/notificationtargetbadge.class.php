@@ -61,6 +61,8 @@ class PluginBadgesNotificationTargetBadge extends NotificationTarget {
     */
    function addDataForTemplate($event, $options = []) {
 
+      $dbu = new DbUtils();
+
       $this->data['##badge.entity##']      = Dropdown::getDropdownName('glpi_entities', $options['entities_id']);
       $this->data['##lang.badge.entity##'] = __('Entity');
       switch ($event) {
@@ -88,7 +90,7 @@ class PluginBadgesNotificationTargetBadge extends NotificationTarget {
 
             $tmp['##badge.name##']           = $badge['name'];
             $tmp['##badge.serial##']         = $badge['serial'];
-            $tmp['##badge.users##']          = Html::clean(getUserName($badge["users_id"]));
+            $tmp['##badge.users##']          = Html::clean($dbu->getUserName($badge["users_id"]));
             $tmp['##badge.dateexpiration##'] = Html::convDate($badge['date_expiration']);
 
             $this->data['badges'][] = $tmp;
@@ -110,7 +112,7 @@ class PluginBadgesNotificationTargetBadge extends NotificationTarget {
             $tmp['##badgerequest.visitorfirstname##'] = $badge['visitor_firstname'];
             $tmp['##badgerequest.visitorsociety##']   = $badge['visitor_society'];
             $tmp['##badgerequest.arrivaldate##']      = Html::convDate($badge['affectation_date']);
-            $tmp['##badgerequest.requester##']        = Html::clean(getUserName(Session::getLoginUserID()));
+            $tmp['##badgerequest.requester##']        = Html::clean($dbu->getUserName(Session::getLoginUserID()));
 
             $this->data['badgerequest'][] = $tmp;
          }

@@ -103,16 +103,24 @@ class PluginBadgesNotificationState extends CommonDBTM {
     */
    public function showAddForm($target) {
 
+      $state = new self();
+      $states = $state->find();
+      $used = [];
+      foreach ($states as $data) {
+         $used[] = $data['states_id'];
+      }
+
       echo "<div align='center'><form method='post'  action=\"$target\">";
       echo "<table class='tab_cadre_fixe' cellpadding='5'><tr ><th colspan='2'>";
       echo __('Unused status for expiration mailing', 'badges');
       echo "</th></tr>";
       echo "<tr class='tab_bg_1'><td>";
-      Dropdown::show('State', ['name' => "states_id"]);
+      Dropdown::show('State', ['name' => "states_id",
+                               'used' => $used]);
       echo "</td>";
       echo "<td>";
       echo "<div align='center'>";
-      echo "<input type='submit' name='add' value=\"" . _sx('button', 'Add') . "\" class='submit' >";
+      echo Html::submit(_sx('button', 'Add'), ['name' => 'add']);
       echo "</div></td></tr>";
       echo "</table>";
       Html::closeForm();
@@ -130,33 +138,107 @@ class PluginBadgesNotificationState extends CommonDBTM {
       $query = "SELECT *
       FROM `" . $this->getTable() . "`
       ORDER BY `states_id` ASC ";
+
       if ($result = $DB->query($query)) {
          $number = $DB->numrows($result);
          if ($number != 0) {
+
+            Html::openMassiveActionsForm('mass' . __CLASS__ . $rand);
+            $massiveactionparams = ['item' => __CLASS__,
+                                    'container' => 'mass' . __CLASS__ . $rand];
+            Html::showMassiveActions($massiveactionparams);
 
             echo "<div align='center'>";
             echo "<form method='post' name='massiveaction_form$rand' id='massiveaction_form$rand'  action=\"$target\">";
             echo "<table class='tab_cadre_fixe' cellpadding='5'>";
             echo "<tr>";
-            echo "<th></th><th>" . __('Unused status for expiration mailing', 'badges') . "</th>";
+            echo "<th width='10'>" . Html::getCheckAllAsCheckbox('mass' . __CLASS__ . $rand) . "</th>";
+            echo "<th>" . __('Unused status for expiration mailing', 'badges') . "</th>";
             echo "</tr>";
             while ($ligne = $DB->fetch_array($result)) {
-               $ID = $ligne["id"];
+
                echo "<tr class='tab_bg_1'>";
-               echo "<td class='center' width='10'>";
-               echo "<input type='hidden' name='id' value='$ID'>";
-               echo "<input type='checkbox' name='item[$ID]' value='1'>";
+               echo "<td width='10'>";
+               Html::showMassiveActionCheckBox(__CLASS__, $ligne["id"]);
                echo "</td>";
                echo "<td>" . Dropdown::getDropdownName("glpi_states", $ligne["states_id"]) . "</td>";
                echo "</tr>";
             }
 
-            Html::openArrowMassives("massiveaction_form$rand", true);
-            Html::closeArrowMassives(['delete' => __('Delete permanently')]);
+            $paramsma['ontop'] = false;
+            Html::showMassiveActions($paramsma);
             echo "</table>";
             Html::closeForm();
             echo "</div>";
          }
+      }
+   }
+
+   /**
+    * Get the specific massive actions
+    *
+    * @since version 0.84
+    *
+    * @param $checkitem link item to check right   (default NULL)
+    *
+    * @return an $array of massive actions
+    */
+   public function getSpecificMassiveActions($checkitem = null) {
+
+
+      $actions['PluginBadgesNotificationState' . MassiveAction::CLASS_ACTION_SEPARATOR . 'purge'] = __('Delete');
+
+      return $actions;
+   }
+
+   /**
+    * @param MassiveAction $ma
+    *
+    * @return bool|false
+    */
+   /**
+    * @param MassiveAction $ma
+    *
+    * @return bool|false
+    */
+   static function showMassiveActionsSubForm(MassiveAction $ma) {
+
+      switch ($ma->getAction()) {
+         case 'purge':
+            echo Html::submit(_x('button', 'Post'), ['name' => 'massiveaction']);
+            return true;
+      }
+      return parent::showMassiveActionsSubForm($ma);
+   }
+
+   /**
+    * @since version 0.85
+    *
+    * @see CommonDBTM::processMassiveActionsForOneItemtype()
+    *
+    * @param MassiveAction $ma
+    * @param CommonDBTM    $item
+    * @param array         $ids
+    *
+    * @return nothing|void
+    */
+   static function processMassiveActionsForOneItemtype(MassiveAction $ma, CommonDBTM $item,
+                                                       array $ids) {
+
+      $state = new self();
+
+      switch ($ma->getAction()) {
+         case "purge":
+
+            foreach ($ids as $key) {
+               if ($state->delete(['id' => $key])) {
+                  $ma->itemDone($item->getType(), $key, MassiveAction::ACTION_OK);
+               } else {
+                  $ma->itemDone($item->getType(), $key, MassiveAction::ACTION_KO);
+               }
+
+            }
+            break;
       }
    }
 }

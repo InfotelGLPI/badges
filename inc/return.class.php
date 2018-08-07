@@ -180,9 +180,11 @@ class PluginBadgesReturn extends CommonDBTM {
          echo "<th>" . __('Return date', 'badges') . "</th>";
          echo "</tr>";
 
+         $dbu = new DbUtils();
+
          foreach ($fields as $field) {
             echo "<tr class='tab_bg_1'>";
-            echo "<td>" . getUserName($field['requesters_id']) . "</td>";
+            echo "<td>" . $dbu->getUserName($field['requesters_id']) . "</td>";
             echo "<td>" . stripslashes($field['visitor_realname']) . "</td>";
             echo "<td>" . stripslashes($field['visitor_firstname']) . "</td>";
             echo "<td>" . stripslashes($field['visitor_society']) . "</td>";
