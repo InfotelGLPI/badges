@@ -80,7 +80,7 @@ class PluginBadgesReturn extends CommonDBTM {
                $dbu = new DbUtils();
                return self::createTabEntry(PluginBadgesRequest::getTypeName(),
                                            $dbu->countElementsInTable($this->getTable(),
-                                                                "`badges_id` = '" . $item->getID() . "'"));
+                                                                      ["badges_id" => $item->getID()]));
             }
             return PluginBadgesRequest::getTypeName();
          }
