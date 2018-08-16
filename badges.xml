@@ -8,10 +8,12 @@
         <short>
             <fr><![CDATA[Gestion de badges. Ce plugin vous permet de gérer les badges de votre réseau et de les associer à des éléments de l’inventaire.<br />Un système d'alertes mail permet de vérifier les badges qui vont ou qui ont expirés.]]></fr>
             <en><![CDATA[Badges management. This plugin enables you to manage your badges into your network and associate them with elements of the inventory.<br />A mailing system allow to verify already expired or soon expired badges.]]></en>
+            <cs><![CDATA[Správa jmenovek. Tento zásuvný modul umožňuje spravovat jmenovky v síti a přiřazovat je k prvkům inventáře.<br />Systém posílání e-mailů umožňuje ověřovat jmenovky se skončenou platností nebo ty, kterým brzy končí.]]></cs>
         </short>
         <long>
             <fr><![CDATA[Ce plugin vous permet de gérer les badges de votre réseau et de les associer à des éléments de l’inventaire.<br />Un système d'alertes mail permet de vérifier les badges qui vont ou qui ont expirés.<br />- Utilisable depuis le helpdesk<br />- Peut être intégré au plugin environment.]]></fr>
             <en><![CDATA[This plugin enables you to manage your badges into your network and associate them with elements of the inventory.<br />A mailing system allow to verify already expired or soon expired badges.<br />- Can be used with helpdesk<br />- Can be integrated into Environment plugin.]]></en>
+            <cs><![CDATA[Správa jmenovek. Tento zásuvný modul umožňuje spravovat jmenovky v síti a přiřazovat je k prvkům inventáře.<br />Systém posílání e-mailů umožňuje ověřovat jmenovky se skončenou platností nebo ty, kterým brzy končí.<br />- Je možné použít se službou podpory<br />- Je možné začlenit do zásuvného modulu Prostředí.]]></cs>
         </long>
     </description>
     <homepage>https://github.com/InfotelGLPI/badges</homepage>
@@ -124,5 +126,10 @@
             <tag>Inventory</tag>
             <tag>Management</tag>
         </en>
+        <cs>
+            <tag>Jmenovky</tag>
+            <tag>Inventura</tag>
+            <tag>Správa</tag>
+        </cs>
     </tags>
 </root>
