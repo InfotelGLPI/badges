@@ -6,14 +6,14 @@
     <logo>https://raw.githubusercontent.com/InfotelGLPI/badges/master/badges.png</logo>
     <description>
         <short>
-            <fr><![CDATA[Gestion de badges. Ce plugin vous permet de gérer les badges de votre réseau et de les associer à des éléments de l’inventaire.<br />Un système d'alertes mail permet de vérifier les badges qui vont ou qui ont expirés.]]></fr>
+            <cs><![CDATA[Správa jmenovek. Tento zásuvný modul umožňuje spravovat jmenovky v síti a přiřazovat je k prvkům inventáře.<br />Systém posílání e-mailů umožňuje ověřovat jmenovky se skončenou nebo končící platností.]]></cs>
             <en><![CDATA[Badges management. This plugin enables you to manage your badges into your network and associate them with elements of the inventory.<br />A mailing system allow to verify already expired or soon expired badges.]]></en>
-            <cs><![CDATA[Správa jmenovek. Tento zásuvný modul umožňuje spravovat jmenovky v síti a přiřazovat je k prvkům inventáře.<br />Systém posílání e-mailů umožňuje ověřovat jmenovky se skončenou platností nebo ty, kterým brzy končí.]]></cs>
+            <fr><![CDATA[Gestion de badges. Ce plugin vous permet de gérer les badges de votre réseau et de les associer à des éléments de l’inventaire.<br />Un système d'alertes mail permet de vérifier les badges qui vont ou qui ont expirés.]]></fr>
         </short>
         <long>
-            <fr><![CDATA[Ce plugin vous permet de gérer les badges de votre réseau et de les associer à des éléments de l’inventaire.<br />Un système d'alertes mail permet de vérifier les badges qui vont ou qui ont expirés.<br />- Utilisable depuis le helpdesk<br />- Peut être intégré au plugin environment.]]></fr>
+            <cs><![CDATA[Správa jmenovek. Tento zásuvný modul umožňuje spravovat jmenovky v síti a přiřazovat je k prvkům inventáře.<br />Systém posílání e-mailů umožňuje ověřovat jmenovky se skončenou nebo končící platností.<br />- Je možné použít se službou podpory<br />- Je možné začlenit do zásuvného modulu Prostředí.]]></cs>
             <en><![CDATA[This plugin enables you to manage your badges into your network and associate them with elements of the inventory.<br />A mailing system allow to verify already expired or soon expired badges.<br />- Can be used with helpdesk<br />- Can be integrated into Environment plugin.]]></en>
-            <cs><![CDATA[Správa jmenovek. Tento zásuvný modul umožňuje spravovat jmenovky v síti a přiřazovat je k prvkům inventáře.<br />Systém posílání e-mailů umožňuje ověřovat jmenovky se skončenou platností nebo ty, kterým brzy končí.<br />- Je možné použít se službou podpory<br />- Je možné začlenit do zásuvného modulu Prostředí.]]></cs>
+            <fr><![CDATA[Ce plugin vous permet de gérer les badges de votre réseau et de les associer à des éléments de l’inventaire.<br />Un système d'alertes mail permet de vérifier les badges qui vont ou qui ont expirés.<br />- Utilisable depuis le helpdesk<br />- Peut être intégré au plugin environment.]]></fr>         
         </long>
     </description>
     <homepage>https://github.com/InfotelGLPI/badges</homepage>
@@ -107,29 +107,26 @@
         <lang>de_DE</lang>
         <lang>en_GB</lang>
         <lang>es_AR</lang>
-        <lang>es_ES</lang>
         <lang>fr_FR</lang>
         <lang>hr_HR</lang>
-        <lang>pt_BR</lang>
-        <lang>ro_RO</lang>
         <lang>tr_TR</lang>
     </langs>
     <license><![CDATA[GPL v2+]]></license>
     <tags>
-        <fr>
-            <tag>Badges</tag>
-            <tag>Inventaire</tag>
-            <tag>Gestion</tag>
-        </fr>
-        <en>
-            <tag>Badges</tag>
-            <tag>Inventory</tag>
-            <tag>Management</tag>
-        </en>
         <cs>
             <tag>Jmenovky</tag>
             <tag>Inventura</tag>
             <tag>Správa</tag>
         </cs>
+        <en>
+            <tag>Badges</tag>
+            <tag>Inventory</tag>
+            <tag>Management</tag>
+        </en>
+        <fr>
+            <tag>Badges</tag>
+            <tag>Inventaire</tag>
+            <tag>Gestion</tag>
+        </fr>
     </tags>
 </root>
