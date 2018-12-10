@@ -137,7 +137,7 @@ class PluginBadgesRequest extends CommonDBTM {
          echo "<td>";
          echo "<input type=\"button\" class=\"submit\" name=\"addToCart\" value=\"" . __('Search') . "\"
          onclick=\"badges_searchBadges('searchBadges','badges_formSearchBadges', 'badges_searchBadges');\" >";
-         echo "<input type='hidden' name='requesters_id' value='" . $item->fields['id'] . "' >";
+         echo Html::hidden('requesters_id', ['value' => $item->fields['id']]);
          echo "</td>";
          echo "</tr>";
          echo "</table></div>";
@@ -175,11 +175,15 @@ class PluginBadgesRequest extends CommonDBTM {
          $params[$key] = $val;
       }
 
-      $data = $this->find('`requesters_id` = ' . $requesters_id . " "
-                          . "AND `affectation_date` >= '" . $params['begin_date'] . "' "
-                          . "AND (`return_date` <= '" . $params['end_date'] . "' OR `return_date` IS NULL)",
-                          "`affectation_date` DESC");
-
+      $data = $this->find(['requesters_id' => $requesters_id,
+                           'affectation_date' => ['>=', $params['begin_date']],
+                           [
+                              "OR" => [
+                                 ['return_date' => ['<=', $params['end_date']]],
+                                  ['return_date' => NULL]
+                              ]
+                           ]],
+                          ["affectation_date DESC"]);
       $message = null;
       if (!empty($data)) {
          $message .= "<table class='tab_cadre_fixe'>";
@@ -382,7 +386,8 @@ class PluginBadgesRequest extends CommonDBTM {
          foreach ($params['badges_cart'] as $row) {
             list($success, $message) = $this->checkMandatoryFields($row);
             if ($success) {
-               $badgeExist = $this->find("`badges_id` = " . $row['badges_id'] . " AND `is_affected` = 1");
+               $badgeExist = $this->find(["badges_id"   => $row['badges_id'],
+                                          "is_affected" => 1]);
                if (empty($badgeExist)) {
                   $this->add(['visitor_realname'  => $row['visitor_realname'],
                                    'visitor_firstname' => $row['visitor_firstname'],
@@ -424,7 +429,7 @@ class PluginBadgesRequest extends CommonDBTM {
    function getUsedBadges() {
 
       $used  = [];
-      $datas = $this->find("`is_affected` = 1");
+      $datas = $this->find(["is_affected" => 1]);
       if (!empty($datas)) {
          foreach ($datas as $data) {
             $used[] = $data['badges_id'];
@@ -442,13 +447,13 @@ class PluginBadgesRequest extends CommonDBTM {
     *
     * @return type
     */
-   function getUserBadges($users_id, $condition = "1") {
+   function getUserBadges($users_id, $condition = []) {
 
-      $query = " `is_affected` = 1";
+      $query = ["is_affected" => 1];
       if (!empty($users_id)) {
-         $query .= " AND `requesters_id` = $users_id";
+         $query += ["requesters_id" => $users_id];
       }
-      $datas = $this->find("$query AND $condition");
+      $datas = $this->find($query + $condition);
 
       return $datas;
    }

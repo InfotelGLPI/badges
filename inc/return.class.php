@@ -121,10 +121,10 @@ class PluginBadgesReturn extends CommonDBTM {
          return false;
       }
 
-      $data = $this->find('`badges_id` = ' . $item->fields['id'], "`affectation_date` DESC");
+      $data = $this->find(['badges_id' => $item->fields['id']], ["affectation_date DESC"]);
 
       $badge   = new PluginBadgesBadge();
-      $canedit = $badge->can($item->fields['id'], 'w');
+      $canedit = $badge->can($item->fields['id'], UPDATE);
 
       if ($canedit) {
          echo "<form name='form' method='post' action='" . Toolbox::getItemTypeFormURL($this->getType()) . "'>";
@@ -143,9 +143,9 @@ class PluginBadgesReturn extends CommonDBTM {
 
          echo "<tr class='tab_bg_1'>";
          echo "<td class='tab_bg_2 center' colspan='6'>";
-         echo "<input type='submit' name='force_return' class='submit' value='" . __('Force badge restitution', 'badges') . "' >";
-         echo "<input type='hidden' name='return_badges_id' value='" . $item->fields['id'] . "' >";
-         echo "<input type='hidden' name='requesters_id' value='0'>";
+         echo Html::submit( __('Force badge restitution', 'badges'), ['name' => 'force_return']);
+         echo Html::hidden('return_badges_id', ['value' => $item->fields['id']]);
+         echo Html::hidden('requesters_id', ['value' => 0]);
          echo "</td>";
          echo "</tr>";
          echo "</table></div>";
@@ -316,7 +316,7 @@ class PluginBadgesReturn extends CommonDBTM {
     * @param type $badges_id
     */
    function loadBadgeInformation($users_id, $badges_id) {
-      $datas = $this->request->getUserBadges($users_id, "`badges_id` = $badges_id");
+      $datas = $this->request->getUserBadges($users_id, ["badges_id" => $badges_id]);
 
       if (!empty($datas)) {
          echo "<table class='tab_cadre_fixe badges_wizard_info'>";
@@ -355,7 +355,8 @@ class PluginBadgesReturn extends CommonDBTM {
 
       list($success, $message) = $this->checkMandatoryFields($params);
       if ($success) {
-         $datas = $this->request->getUserBadges($params['requesters_id'], "`badges_id` = " . $params['return_badges_id']);
+         $datas = $this->request->getUserBadges($params['requesters_id'],
+                                                ["badges_id" => $params['return_badges_id']]);
          foreach ($datas as $data) {
             $this->update(['id'          => $data['id'],
                                 'is_affected' => 0,
