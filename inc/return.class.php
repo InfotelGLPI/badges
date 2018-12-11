@@ -296,7 +296,7 @@ class PluginBadgesReturn extends CommonDBTM {
       echo "<td class='badges_wizard_button'>";
       echo "<div id='dialog-confirm'></div>";
       echo "<input type=\"button\" class=\"submit badge_next_button\" name=\"returnBadges\" 
-      value=\"" . __('Return', 'badges') . "\" onclick=\"badges_returnBadges('returnBadges','badges_wizardForm');\">";
+      value=\"" . __('Badges return', 'badges') . "\" onclick=\"badges_returnBadges('returnBadges','badges_wizardForm');\">";
       echo "<input type=\"button\" class=\"badge_previous_button submit\" name=\"previous\" 
       value=\"" . _sx('button', 'Cancel') . "\" onclick=\"badges_cancel('" . $CFG_GLPI['root_doc'] . "/plugins/badges/front/wizard.php');\">";
       echo "<input type='hidden' name='requesters_id' value='" . Session::getLoginUserID() . "'>";
@@ -337,7 +337,6 @@ class PluginBadgesReturn extends CommonDBTM {
             //            echo "</td>";
             echo "<td><b>" . __("Arrival date", "badges") . "</b></td>";
             echo "<td>" . Html::convDateTime($data['affectation_date']) . "</td>";
-            echo "<td colspan='2'></td>";
             echo "</tr>";
          }
          echo "</table>";

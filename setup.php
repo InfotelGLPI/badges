@@ -27,6 +27,8 @@
  --------------------------------------------------------------------------
  */
 
+define('PLUGIN_BADGES_VERSION', '2.5.0');
+
 // Init the hooks of the plugins -Needed
 function plugin_init_badges() {
    global $PLUGIN_HOOKS;
@@ -95,11 +97,16 @@ function plugin_version_badges() {
 
    return [
       'name'           => _n('Badge', 'Badges', 2, 'badges'),
-      'version'        => '2.5.0',
+      'version'        => PLUGIN_BADGES_VERSION,
       'author'         => "<a href='http://infotel.com/services/expertise-technique/glpi/'>Infotel</a>",
       'license'        => 'GPLv2+',
       'homepage'       => 'https://github.com/InfotelGLPI/badges',
-      'minGlpiVersion' => '9.4',
+      'requirements'   => [
+         'glpi' => [
+            'min' => '9.4',
+            'dev' => false
+         ]
+      ]
    ];
 }
 
@@ -108,8 +115,11 @@ function plugin_version_badges() {
  * @return bool
  */
 function plugin_badges_check_prerequisites() {
-   if (version_compare(GLPI_VERSION, '9.4', 'lt') || version_compare(GLPI_VERSION, '9.5', 'ge')) {
-      echo __('This plugin requires GLPI >= 9.4');
+   if (version_compare(GLPI_VERSION, '9.4', 'lt') 
+         || version_compare(GLPI_VERSION, '9.5', 'ge')) {
+      if (method_exists('Plugin', 'messageIncompatible')) {
+         echo Plugin::messageIncompatible('core', '9.4');
+      }
       return false;
    }
    return true;

@@ -35,7 +35,9 @@ this.badges_addToCart = function (action, toobserve, toupdate) {
                       object.usedBadges.push(row.value);
                   }
                 });
-                result += "<td><img style=\"cursor:pointer\" src=\"" + object.root_doc + "/plugins/badges/pics/delete.png\" onclick=\"badges.badges_removeCart('badges_cartRow" + data.rowId + "')\"></td></tr>";
+                result += "<td>" +
+                    "<a href='#' onclick=\"badges_removeCart('badges_cartRow" + data.rowId + "')\"><i class='fa fa-times-circle fa-2x' style='color:darkred'></i></a>" +
+                    "</td></tr>";
                 item_bloc.append(result);
                 item_bloc.css({"display": 'table'});
 
