@@ -338,7 +338,7 @@ class PluginBadgesRequest extends CommonDBTM {
 
       Dropdown::show("PluginBadgesBadge", ['name'      => 'badges_id',
                                                 'used'      => $used,
-                                                'condition' => ['is_bookable' => 1],
+                                                'condition' => "`is_bookable` = 1",
                                                 'entity'    => $_SESSION['glpiactive_entity']]);
       return;
    }
