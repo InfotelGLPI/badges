@@ -170,7 +170,7 @@ class PluginBadgesNotificationTargetBadge extends NotificationTarget {
     * @param $data
     * @param $options
     */
-   function getSpecificTargets($data, $options) {
+   function addSpecificTargets($data, $options) {
       switch ($data['items_id']) {
          case self::REQUESTER:
             if (isset($this->options['badgerequest'])) {
