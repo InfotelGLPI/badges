@@ -98,7 +98,7 @@ function plugin_version_badges() {
    return [
       'name'           => _n('Badge', 'Badges', 2, 'badges'),
       'version'        => PLUGIN_BADGES_VERSION,
-      'author'         => "<a href='http://infotel.com/services/expertise-technique/glpi/'>Infotel</a>",
+      'author'         => "<a href='http://blogglpi.infotel.com'>Infotel</a>",
       'license'        => 'GPLv2+',
       'homepage'       => 'https://github.com/InfotelGLPI/badges',
       'requirements'   => [
