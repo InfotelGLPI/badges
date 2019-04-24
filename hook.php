@@ -42,7 +42,7 @@ function plugin_badges_install() {
 
    if (!$DB->tableExists("glpi_plugin_badges") && !$DB->tableExists("glpi_plugin_badges_badgetypes")) {
       $install = true;
-      $DB->runFile(GLPI_ROOT . "/plugins/badges/sql/empty-2.4.1.sql");
+      $DB->runFile(GLPI_ROOT . "/plugins/badges/sql/empty-2.5.1.sql");
 
    } else if ($DB->tableExists("glpi_plugin_badges_users") && !$DB->tableExists("glpi_plugin_badges_default")) {
 
@@ -81,6 +81,11 @@ function plugin_badges_install() {
    //version 2.4.1
    if ($DB->tableExists("glpi_plugin_badges_badges") && !$DB->fieldExists("glpi_plugin_badges_badges", "is_recursive")) {
       $DB->runFile(GLPI_ROOT . "/plugins/badges/sql/update-2.4.1.sql");
+   }
+
+   //version 2.5.1
+   if ($DB->tableExists("glpi_plugin_badges_badgetypes") && !$DB->fieldExists("glpi_plugin_badges_badgetypes", "is_recursive")) {
+      $DB->runFile(GLPI_ROOT . "/plugins/badges/sql/update-2.5.1.sql");
    }
 
    if (!$DB->tableExists("glpi_plugin_badges_requests")) {

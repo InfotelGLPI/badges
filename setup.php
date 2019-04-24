@@ -27,7 +27,7 @@
  --------------------------------------------------------------------------
  */
 
-define('PLUGIN_BADGES_VERSION', '2.5.0');
+define('PLUGIN_BADGES_VERSION', '2.5.1');
 
 // Init the hooks of the plugins -Needed
 function plugin_init_badges() {
