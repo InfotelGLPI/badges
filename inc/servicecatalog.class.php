@@ -46,7 +46,14 @@ class PluginBadgesServicecatalog extends CommonGLPI {
    static function getMenuLogo() {
       global $CFG_GLPI;
 
-      return "<a class='bt-interface bt-badges' href='" . $CFG_GLPI['root_doc'] . "/plugins/badges/front/wizard.php'></a>";
+      $display =  "<a class='bt-interface' href='" . $CFG_GLPI['root_doc'] . "/plugins/badges/front/wizard.php'>";
+      $fasize  = "fa-6x";
+      $display .= "<div class='bt-img-responsive center'>";
+      $display .= "<i class='fa-menu-sc fas fa-id-badge $fasize'></i>";//$style
+      $display .= "</div>";
+      $display .= "</a>";
+
+      return $display;
 
    }
 

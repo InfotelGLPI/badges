@@ -243,8 +243,6 @@ class PluginBadgesRequest extends CommonDBTM {
 
       // Wizard title
       echo "<div class='badges_wizard_title'><p>";
-      echo "<img class='badges_wizard_img' src='" . $CFG_GLPI['root_doc'] . "/plugins/badges/pics/badgerequest.png' 
-      alt='badgerequest'/>&nbsp;";
       echo __("Access badge request", "badges");
       echo "</p></div>";
 

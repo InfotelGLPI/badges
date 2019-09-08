@@ -72,16 +72,14 @@ class PluginBadgesWizard extends CommonDBTM {
       // Badge request
       echo "<td class='center badges_menu_item'>";
       echo "<a  class='badges_menu_a' href=\"./wizard.form.php?action=badgerequest\">";
-      echo "<img class='badges_menu_img' src='" . $CFG_GLPI["root_doc"] . "/plugins/badges/pics/badgerequest.png' 
-      alt=\"" . __("Access badge request", "badges") . "\">";
+      echo "<i class='fas fa-id-badge fa-6x'></i>";
       echo "<br>" . __("Access badge request", "badges") . "<br>(" . __("For a limited time", "badges") . ")</a>";
       echo "</td>";
 
       // Badge return
       echo "<td class='center badges_menu_item'>";
       echo "<a  class='badges_menu_a' href=\"./wizard.form.php?action=badgereturn\">";
-      echo "<img class='badges_menu_img' src='" . $CFG_GLPI["root_doc"] . "/plugins/badges/pics/badgereturn.png' 
-      alt=\"" . __("Access badge return", "badges") . "\">";
+      echo "<i class='fas fa-arrow-alt-circle-left fa-6x'></i>";
       echo "<br>" . __("Access badge return", "badges") . "</a>";
       echo "</td>";
 
