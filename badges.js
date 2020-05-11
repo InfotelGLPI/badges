@@ -200,7 +200,7 @@ this.badges_removeCart = function (field_id) {
 
     // Remove element from used badges variable
    for (var i = 0; i < object.usedBadges.length; i++) {
-      if (thobjectis.usedBadges[i] === value) {
+      if (object.usedBadges[i] === value) {
           object.usedBadges.splice(i, 1);
       }
    }

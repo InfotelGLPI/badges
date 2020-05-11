@@ -252,14 +252,17 @@ class PluginBadgesRequest extends CommonDBTM {
       echo "<th colspan='4'>" . __("Access badge request", "badges") . "</th>";
       echo "</tr>";
       echo "<tr>";
-      echo "<td>" . __("Visitor firstname", "badges") . " <span class='red'>*</span></td>";
-      echo "<td>";
-      Html::autocompletionTextField($request, "visitor_firstname", ['name' => "visitor_firstname"]);
-      echo "</td>";
+
       echo "<td>" . __("Visitor realname", "badges") . " <span class='red'>*</span></td>";
       echo "<td>";
       Html::autocompletionTextField($request, "visitor_realname", ['name' => "visitor_realname"]);
       echo "</td>";
+
+      echo "<td>" . __("Visitor firstname", "badges") . " <span class='red'>*</span></td>";
+      echo "<td>";
+      Html::autocompletionTextField($request, "visitor_firstname", ['name' => "visitor_firstname"]);
+      echo "</td>";
+
       echo "</tr>";
 
       echo "<tr>";
@@ -282,12 +285,11 @@ class PluginBadgesRequest extends CommonDBTM {
 
       echo "<tr>";
       echo "<td class='center' colspan='4'>";
-      echo "<input type=\"button\" class=\"submit\" name=\"addToCart\" value=\"" . __('Add to cart', 'badges') . "\"
-      onclick=\"badges_addToCart('addToCart','badges_wizardForm', 'badges_cart');\" >";
+      echo "<a href='#' class='vsubmit' name='addToCart' 
+         onclick=\"badges_addToCart('addToCart','badges_wizardForm', 'badges_cart');\" >".__('Add to cart', 'badges')."</a>";
       echo "</td>";
       echo "</tr>";
       echo "</table>";
-
       // Cart
       echo "<br><div class='center'>";
       echo "<table class='tab_cadre_fixe badges_wizard_rank' id='badges_cart' style='display:none'>";
@@ -308,10 +310,10 @@ class PluginBadgesRequest extends CommonDBTM {
       echo "<tr>";
       echo "<td class='badges_wizard_button'>";
       echo "<div id='dialog-confirm'></div>";
-      echo "<input type=\"button\" class=\"submit badge_next_button\" name=\"addBadges\" value=\"" . _sx('button', 'Post') . "\" 
-      onclick=\"badges_addBadges('addBadges','badges_wizardForm');\">";
-      echo "<input type=\"button\" class=\"badge_previous_button submit\" name=\"previous\" value=\"" . _sx('button', 'Cancel') . "\" 
-      onclick=\"badges_cancel('" . $CFG_GLPI['root_doc'] . "/plugins/badges/front/wizard.php');\">";
+      echo "<a href='#' class='vsubmit badge_next_button' name='addBadges' 
+               onclick=\"badges_addBadges('addBadges','badges_wizardForm');\">"._sx('button', 'Post')."</a>";
+      echo "<a href='#' class='vsubmit badge_previous_button'  name='previous'
+               onclick=\"badges_cancel('" . $CFG_GLPI['root_doc'] . "/plugins/badges/front/wizard.php');\">"._sx('button', 'Cancel')."</a>";
       echo "</td>";
       echo "</tr>";
       echo "</table>";
