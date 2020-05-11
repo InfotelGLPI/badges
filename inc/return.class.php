@@ -248,13 +248,15 @@ class PluginBadgesReturn extends CommonDBTM {
 
       // Wizard title
       echo "<div class='badges_wizard_title'><p>";
+      echo "<i class='thumbnail fas fa-arrow-alt-circle-left fa-2x'></i>";
+      echo "&nbsp;";
       echo __("Access badge return", "badges");
       echo "</p></div>";
 
       // Add badges return
       echo "<table class='tab_cadre_fixe badges_wizard_rank'>";
       echo "<tr>";
-      echo "<th colspan='4'>" . __("Access badge request", "badges") . "</th>";
+      echo "<th colspan='4'>" . __("Access badge return", "badges") . "</th>";
       echo "</tr>";
 
       echo "<tr>";

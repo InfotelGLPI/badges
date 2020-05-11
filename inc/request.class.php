@@ -243,6 +243,8 @@ class PluginBadgesRequest extends CommonDBTM {
 
       // Wizard title
       echo "<div class='badges_wizard_title'><p>";
+      echo "<i class='thumbnail fas fa-id-badge fa-2x'></i>";
+      echo "&nbsp;";
       echo __("Access badge request", "badges");
       echo "</p></div>";
 
