@@ -27,7 +27,7 @@
  --------------------------------------------------------------------------
  */
 
-define('PLUGIN_BADGES_VERSION', '2.5.1');
+define('PLUGIN_BADGES_VERSION', '2.6.0');
 
 // Init the hooks of the plugins -Needed
 function plugin_init_badges() {
@@ -61,16 +61,18 @@ function plugin_init_badges() {
       }
 
       $plugin = new Plugin();
-      if (!$plugin->isActivated('environment') && Session::haveRight("plugin_badges", READ)) {
+      if (!$plugin->isActivated('environment')
+          && Session::haveRight("plugin_badges", READ)) {
          $PLUGIN_HOOKS['menu_toadd']['badges'] = ['assets' => 'PluginBadgesMenu'];
 
       }
 
-      if (Session::haveRight("plugin_badges", READ) && !class_exists('PluginServicecatalogMain')) {
+      if (Session::haveRight("plugin_badges", READ)
+          && !$plugin->isActivated('servicecatalog')) {
          $PLUGIN_HOOKS['helpdesk_menu_entry']['badges'] = '/front/wizard.php';
       }
 
-      if (class_exists('PluginServicecatalogMain')) {
+      if ($plugin->isActivated('servicecatalog')) {
          $PLUGIN_HOOKS['servicecatalog']['badges'] = ['PluginBadgesServicecatalog'];
       }
 
@@ -78,7 +80,7 @@ function plugin_init_badges() {
          $PLUGIN_HOOKS['use_massive_action']['badges'] = 1;
       }
 
-      if (class_exists('PluginBadgesBadge')) { // only if plugin activated
+      if ($plugin->isActivated('badges')) { // only if plugin activated
          $PLUGIN_HOOKS['plugin_datainjection_populate']['badges'] = 'plugin_datainjection_populate_badges';
       }
 
@@ -103,7 +105,7 @@ function plugin_version_badges() {
       'homepage'       => 'https://github.com/InfotelGLPI/badges',
       'requirements'   => [
          'glpi' => [
-            'min' => '9.4',
+            'min' => '9.5',
             'dev' => false
          ]
       ]
@@ -115,10 +117,10 @@ function plugin_version_badges() {
  * @return bool
  */
 function plugin_badges_check_prerequisites() {
-   if (version_compare(GLPI_VERSION, '9.4', 'lt') 
-         || version_compare(GLPI_VERSION, '9.5', 'ge')) {
+   if (version_compare(GLPI_VERSION, '9.5', 'lt')
+         || version_compare(GLPI_VERSION, '9.6', 'ge')) {
       if (method_exists('Plugin', 'messageIncompatible')) {
-         echo Plugin::messageIncompatible('core', '9.4');
+         echo Plugin::messageIncompatible('core', '9.5');
       }
       return false;
    }

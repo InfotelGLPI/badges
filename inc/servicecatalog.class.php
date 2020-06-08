@@ -43,25 +43,25 @@ class PluginBadgesServicecatalog extends CommonGLPI {
       return Session::haveRight(self::$rightname, READ);
    }
 
-   static function getMenuLogo() {
+   /**
+    * @return string
+    */
+   static function getMenuLink() {
       global $CFG_GLPI;
 
-      $display =  "<a class='bt-interface' href='" . $CFG_GLPI['root_doc'] . "/plugins/badges/front/wizard.php'>";
-      $fasize  = "fa-6x";
-      $display .= "<div class='bt-img-responsive center'>";
-      $display .= "<i class='fa-menu-sc fas fa-id-badge $fasize'></i>";//$style
-      $display .= "</div>";
-      $display .= "</a>";
+      return $CFG_GLPI['root_doc'] . "/plugins/badges/front/wizard.php";
+   }
 
-      return $display;
+   static function getMenuLogo() {
+
+      return "fas fa-id-badge";
 
    }
 
    static function getMenuTitle() {
       global $CFG_GLPI;
 
-      return "<a href='" . $CFG_GLPI['root_doc'] . "/plugins/badges/front/wizard.php' class='de-em'>
-      <span class='de-em'>" . __('Manage', 'servicecatalog') . " </span><span class='em'>" . __('Temporary badges', 'badges') . "</span></a>";
+      return __('Manage temporary badges', 'badges');
 
    }
 

@@ -50,7 +50,7 @@ class PluginBadgesNotificationState extends CommonDBTM {
          if ($DB->numrows($result) != 1) {
             return false;
          }
-         $this->fields = $DB->fetch_assoc($result);
+         $this->fields = $DB->fetchAssoc($result);
          if (is_array($this->fields) && count($this->fields)) {
             return true;
          } else {
@@ -72,7 +72,7 @@ class PluginBadgesNotificationState extends CommonDBTM {
       $queryChilds = "SELECT `states_id`
       FROM `" . $this->getTable() . "`";
       if ($resultChilds = $DB->query($queryChilds)) {
-         while ($dataChilds = $DB->fetch_array($resultChilds)) {
+         while ($dataChilds = $DB->fetchArray($resultChilds)) {
             $child = $dataChilds["states_id"];
             $queryBranch .= ",$child";
          }
@@ -155,7 +155,7 @@ class PluginBadgesNotificationState extends CommonDBTM {
             echo "<th width='10'>" . Html::getCheckAllAsCheckbox('mass' . __CLASS__ . $rand) . "</th>";
             echo "<th>" . __('Unused status for expiration mailing', 'badges') . "</th>";
             echo "</tr>";
-            while ($ligne = $DB->fetch_array($result)) {
+            while ($ligne = $DB->fetchArray($result)) {
 
                echo "<tr class='tab_bg_1'>";
                echo "<td width='10'>";
