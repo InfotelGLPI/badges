@@ -255,12 +255,12 @@ class PluginBadgesRequest extends CommonDBTM {
       echo "</tr>";
       echo "<tr>";
 
-      echo "<td>" . __("Visitor realname", "badges") . " <span class='red'>*</span></td>";
+      echo "<td>" . __("Visitor realname", "badges") . " <span style='color:red;'>*</span></td>";
       echo "<td>";
       Html::autocompletionTextField($request, "visitor_realname", ['name' => "visitor_realname"]);
       echo "</td>";
 
-      echo "<td>" . __("Visitor firstname", "badges") . " <span class='red'>*</span></td>";
+      echo "<td>" . __("Visitor firstname", "badges") . " <span style='color:red;'>*</span></td>";
       echo "<td>";
       Html::autocompletionTextField($request, "visitor_firstname", ['name' => "visitor_firstname"]);
       echo "</td>";
@@ -268,18 +268,18 @@ class PluginBadgesRequest extends CommonDBTM {
       echo "</tr>";
 
       echo "<tr>";
-      echo "<td>" . __("Visitor society", "badges") . " <span class='red'>*</span></td>";
+      echo "<td>" . __("Visitor society", "badges") . " <span style='color:red;'>*</span></td>";
       echo "<td>";
       Html::autocompletionTextField($request, "visitor_society", ['name' => "visitor_society"]);
       echo "</td>";
-      echo "<td>" . _n("Available badge", "Available badges", 2, "badges") . " <span class='red'>*</span></td>";
+      echo "<td>" . _n("Available badge", "Available badges", 2, "badges") . " <span style='color:red;'>*</span></td>";
       echo "<td id='badges_available'>";
       $this->loadAvailableBadges();
       echo "</td>";
       echo "</tr>";
 
       echo "<tr>";
-      echo "<td>" . __("Arrival date", "badges") . " <span class='red'>*</span></td>";
+      echo "<td>" . __("Arrival date", "badges") . " <span style='color:red;'>*</span></td>";
       echo "<td>";
       Html::showDateTimeField("affectation_date", ['value' => date('Y-m-d H:i:s')]);
       echo "</td>";

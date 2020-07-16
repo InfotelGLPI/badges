@@ -260,7 +260,7 @@ class PluginBadgesReturn extends CommonDBTM {
       echo "</tr>";
 
       echo "<tr>";
-      echo "<td>" . __("Badges in your possession", "badges") . " <span class='red'>*</span></td>";
+      echo "<td>" . __("Badges in your possession", "badges") . " <span style='color:red;'>*</span></td>";
       echo "<td>";
       $elements = [Dropdown::EMPTY_VALUE];
       foreach ($this->request->getUserBadges(Session::getLoginUserID()) as $val) {
