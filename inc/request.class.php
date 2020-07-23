@@ -315,7 +315,7 @@ class PluginBadgesRequest extends CommonDBTM {
       echo "<a href='#' class='vsubmit badge_next_button' name='addBadges' 
                onclick=\"badges_addBadges('addBadges','badges_wizardForm');\">"._sx('button', 'Post')."</a>";
       echo "<a href='#' class='vsubmit badge_previous_button'  name='previous'
-               onclick=\"badges_cancel('" . $CFG_GLPI['root_doc'] . PLUGINBADGES_DIR . "/front/wizard.php');\">"._sx('button', 'Cancel')."</a>";
+               onclick=\"badges_cancel('" . PLUGINBADGES_DIR . "/front/wizard.php');\">"._sx('button', 'Cancel')."</a>";
       echo "</td>";
       echo "</tr>";
       echo "</table>";
