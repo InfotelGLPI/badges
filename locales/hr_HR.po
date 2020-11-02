@@ -1,17 +1,20 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR Badges Development Team
 # This file is distributed under the same license as the GLPI - Badges plugin package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# NeoTrinity <tecvisor@yahoo.fr>, 2015-2017
+# Xavier CAILLAUD <thetsmr@gmail.com>, 2020
+# 
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: GLPI Project - badges plugin\n"
+"Project-Id-Version: GLPI - Badges plugin 2.3.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-07-20 09:04+0200\n"
-"PO-Revision-Date: 2020-07-20 07:12+0000\n"
-"Last-Translator: Xavier CAILLAUD <thetsmr@gmail.com>\n"
-"Language-Team: Croatian (Croatia) (http://www.transifex.com/infotelGLPI/GLPI_badges/language/hr_HR/)\n"
+"PO-Revision-Date: 2020-11-02 12:44+0000\n"
+"Last-Translator: Xavier CAILLAUD <thetsmr@gmail.com>, 2020\n"
+"Language-Team: Croatian (Croatia) (https://www.transifex.com/infotelGLPI/teams/12355/hr_HR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
