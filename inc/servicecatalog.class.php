@@ -49,7 +49,7 @@ class PluginBadgesServicecatalog extends CommonGLPI {
    static function getMenuLink() {
       global $CFG_GLPI;
 
-      return $CFG_GLPI['root_doc'] . "/plugins/badges/front/wizard.php";
+      return PLUGINBADGES_DIR . "/front/wizard.php";
    }
 
    static function getMenuLogo() {
