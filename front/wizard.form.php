@@ -29,15 +29,27 @@
 
 include('../../../inc/includes.php');
 
+$plugin = new Plugin();
 if (Session::getCurrentInterface() == 'central') {
    Html::header(PluginBadgesWizard::getTypeName(2), '', "assets", "pluginbadgesmenu");
 } else {
-   Html::helpHeader(PluginBadgesWizard::getTypeName(2));
+   if ($plugin->isActivated('servicecatalog')) {
+      PluginServicecatalogMain::showDefaultHeaderHelpdesk(PluginBadgesWizard::getTypeName(2));
+      echo "<br>";
+   } else {
+      Html::helpHeader(PluginBadgesWizard::getTypeName(2));
+   }
 }
 
 if (!empty($_GET['action'])) {
    $wizard = new PluginBadgesWizard();
    $wizard->showWizard($_GET['action']);
+}
+
+if (Session::getCurrentInterface() != 'central'
+    && $plugin->isActivated('servicecatalog')) {
+
+   PluginServicecatalogMain::showNavBarFooter('badges');
 }
 
 if (Session::getCurrentInterface() == 'central') {
