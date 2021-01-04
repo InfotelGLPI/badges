@@ -6,22 +6,18 @@
     text-align: left;
     font-size: 14px;
     width: 100%;
-    background-color: #ffffff;
+    /*background-color: #ffffff;*/
 
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     border-radius: 5px;
-
-    -moz-box-shadow: 0px 2px 5px #666;
-    -webkit-box-shadow: 0px 2px 5px #666;
-    box-shadow: 0px 2px 5px #666;
 }
 
 .badges_wizard_title {
     font-size: 18px;
     text-align: center;
     margin-bottom: 5px;
-    color: black;
+    /*color: black;*/
 }
 
 .badges_wizard_img {
@@ -48,7 +44,7 @@
     text-align: left;
     font-size: 14px;
     width: 900px;
-    background-color: #fff;
+    /*background-color: #fff;*/
 }
 
 .badges_wizard_form {
@@ -67,7 +63,7 @@
 
 .badges_wizard_info {
     border: 2px solid #ccc;
-    background-color: #fff;
+    /*background-color: #fff;*/
 }
 .badges_menu_a {
     display: block;

@@ -67,7 +67,7 @@ class PluginBadgesWizard extends CommonDBTM {
       echo "<tr>";
       echo "<th colspan='5'>" . __("Access badge request", "badges") . "</th>";
       echo "</tr>";
-      echo "<tr class='tab_bg_1' style='background-color:white;'>";
+      echo "<tr class='tab_bg_1'>";
 
       // Badge request
       echo "<td class='center badges_menu_item'>";
