@@ -30,11 +30,23 @@
 include('../../../inc/includes.php');
 
 $plugin = new Plugin();
-if ($plugin->isActivated("environment")) {
-   Html::header(PluginBadgesBadge::getTypeName(2), '', "assets", "pluginenvironmentdisplay", "badges");
+
+
+if (Session::getCurrentInterface() == 'central') {
+   if ($plugin->isActivated("environment")) {
+     Html::header(PluginBadgesBadge::getTypeName(2), '', "assets", "pluginenvironmentdisplay", "badges");
+  } else {
+     Html::header(PluginBadgesBadge::getTypeName(2), '', "assets", "pluginbadgesmenu");
+  }
 } else {
-   Html::header(PluginBadgesBadge::getTypeName(2), '', "assets", "pluginbadgesmenu");
+   if ($plugin->isActivated('servicecatalog')) {
+      PluginServicecatalogMain::showDefaultHeaderHelpdesk(PluginBadgesBadge::getTypeName(2));
+      echo "<br>";
+   } else {
+      Html::helpHeader(PluginBadgesBadge::getTypeName(2));
+   }
 }
+
 
 $badge = new PluginBadgesBadge();
 $badge->checkGlobal(READ);
@@ -47,4 +59,14 @@ if ($badge->canView()) {
    Html::displayRightError();
 }
 
-Html::footer();
+if (Session::getCurrentInterface() != 'central'
+    && $plugin->isActivated('servicecatalog')) {
+
+   PluginServicecatalogMain::showNavBarFooter('badges');
+}
+
+if (Session::getCurrentInterface() == 'central') {
+   Html::footer();
+} else {
+   Html::helpFooter();
+}

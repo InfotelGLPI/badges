@@ -76,12 +76,31 @@ if (isset($_POST["add"])) {
    $badge->checkGlobal(READ);
 
    $plugin = new Plugin();
+   if (Session::getCurrentInterface() == 'central') {
    if ($plugin->isActivated("environment")) {
-      Html::header(PluginBadgesBadge::getTypeName(2), '', "assets", "pluginenvironmentdisplay", "badges");
-   } else {
-      Html::header(PluginBadgesBadge::getTypeName(2), '', "assets", "pluginbadgesmenu");
-   }
+       Html::header(PluginBadgesBadge::getTypeName(2), '', "assets", "pluginenvironmentdisplay", "badges");
+    } else {
+       Html::header(PluginBadgesBadge::getTypeName(2), '', "assets", "pluginbadgesmenu");
+    }
+  } else {
+     if ($plugin->isActivated('servicecatalog')) {
+        PluginServicecatalogMain::showDefaultHeaderHelpdesk(PluginBadgesBadge::getTypeName(2), true);
+        echo "<br>";
+     } else {
+        Html::helpHeader(PluginBadgesBadge::getTypeName(2));
+     }
+  }
    $badge->display($_GET);
 
-   Html::footer();
+   if (Session::getCurrentInterface() != 'central'
+      && $plugin->isActivated('servicecatalog')) {
+
+     PluginServicecatalogMain::showNavBarFooter('badges');
+  }
+
+  if (Session::getCurrentInterface() == 'central') {
+     Html::footer();
+  } else {
+     Html::helpFooter();
+  }
 }

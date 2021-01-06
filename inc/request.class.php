@@ -63,7 +63,8 @@ class PluginBadgesRequest extends CommonDBTM {
    function getTabNameForItem(CommonGLPI $item, $withtemplate = 0) {
 
       if (!$withtemplate) {
-         if ($item->getType() == 'User') {
+         if ($item->getType() == 'User'
+         && Session::haveRight(self::$rightname, READ)) {
             if ($_SESSION['glpishow_count_on_tabs']) {
                return self::createTabEntry(self::getTypeName());
             }
