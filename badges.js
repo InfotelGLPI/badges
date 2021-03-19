@@ -17,7 +17,7 @@ this.badges_addToCart = function (action, toobserve, toupdate) {
     var formInput = getFormData(toobserve);
 
     $.ajax({
-         url: object.root_doc + '/plugins/badges/ajax/request.php',
+         url: object.root_doc + '/ajax/request.php',
          type: "POST",
          dataType: "json",
          data: 'action=' + action + '&' + formInput,
@@ -77,7 +77,7 @@ this.badges_addBadges = function (action, toobserve) {
     $.ajax({
          type: "POST",
          dataType: "json",
-         url: object.root_doc + '/plugins/badges/ajax/request.php',
+         url: object.root_doc + '/ajax/request.php',
          data: 'action=' + action + '&' + formInput,
          success: function (data) {
             $("#dialog-confirm").html(data.message);
@@ -112,7 +112,7 @@ this.badges_returnBadges = function (action, toobserve) {
     $.ajax({
          type: "POST",
          dataType: "json",
-         url: object.root_doc + '/plugins/badges/ajax/request.php',
+         url: object.root_doc + '/ajax/request.php',
          data: 'action=' + action + '&' + formInput,
          success: function (data) {
             $("#dialog-confirm").html(data.message);
@@ -145,7 +145,7 @@ this.badges_searchBadges = function (action, toobserve, toupdate) {
     $.ajax({
          type: "POST",
          dataType: "json",
-         url: object.root_doc + '/plugins/badges/ajax/request.php',
+         url: object.root_doc + '/ajax/request.php',
          data: 'action=' + action + '&' + formInput,
          success: function (data) {
             var result = data.message;
@@ -170,7 +170,7 @@ this.badges_reloadAvailableBadges = function () {
 
     $.ajax({
          type: "POST",
-         url: object.root_doc + '/plugins/badges/ajax/request.php',
+         url: object.root_doc + '/ajax/request.php',
          data: {
             'action': 'reloadAvailableBadges',
             'used': object.usedBadges

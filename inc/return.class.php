@@ -306,7 +306,7 @@ class PluginBadgesReturn extends CommonDBTM {
       echo "</table>";
 
       // Init javascript
-      echo Html::scriptBlock('$(document).ready(function() {badges_initJs("' . $CFG_GLPI['root_doc'] . '");});');
+      echo Html::scriptBlock('$(document).ready(function() {badges_initJs("' . PLUGINBADGES_WEBDIR . '");});');
 
    }
 

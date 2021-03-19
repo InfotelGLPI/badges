@@ -144,7 +144,7 @@ class PluginBadgesRequest extends CommonDBTM {
          echo "</table></div>";
 
          // Init javascript
-         echo Html::scriptBlock('$(document).ready(function() {badges_initJs("' . $CFG_GLPI['root_doc'] . '");});');
+         echo Html::scriptBlock('$(document).ready(function() {badges_initJs("' . PLUGINBADGES_WEBDIR . '");});');
 
          Html::closeForm();
       }
@@ -240,7 +240,7 @@ class PluginBadgesRequest extends CommonDBTM {
       Html::requireJs('badges');
 
       // Init javascript
-      echo Html::scriptBlock('$(document).ready(function() {badges_initJs("' . $CFG_GLPI['root_doc'] . '");});');
+      echo Html::scriptBlock('$(document).ready(function() {badges_initJs("' .PLUGINBADGES_WEBDIR . '");});');
 
       // Wizard title
       echo "<div class='badges_wizard_title'><p>";
