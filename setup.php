@@ -28,12 +28,11 @@
  */
 
 define('PLUGIN_BADGES_VERSION', '2.6.0');
-if (!defined("PLUGINBADGES_DIR")) {
-   define("PLUGINBADGES_DIR", Plugin::getPhpDir("badges"));
+if (!defined("PLUGIN_BADGES_DIR")) {
+   define("PLUGIN_BADGES_DIR", Plugin::getPhpDir("badges"));
+   define("PLUGIN_BADGES_DIR_NOFULL", Plugin::getPhpDir("badges",false));
 }
-if (!defined("PLUGINBADGES_WEBDIR")) {
-   define("PLUGINBADGES_WEBDIR", Plugin::getWebDir("badges"));
-}
+
 // Init the hooks of the plugins -Needed
 function plugin_init_badges() {
    global $PLUGIN_HOOKS;
@@ -46,7 +45,7 @@ function plugin_init_badges() {
    if (Session::getLoginUserID()) {
 
       $PLUGIN_HOOKS['add_javascript']['badges'][] = 'badges.js';
-
+      $PLUGIN_HOOKS["javascript"]['badges']     = [PLUGIN_BADGES_DIR_NOFULL."/plugins/badges/badges.js"];
       Plugin::registerClass('PluginBadgesBadge', [
          'linkuser_types'              => true,
          'document_types'              => true,

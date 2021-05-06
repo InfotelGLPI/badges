@@ -32,7 +32,7 @@ if (!defined('GLPI_ROOT')) {
 }
 
 /**
- * Class PluginBadgesMenu
+ * Class PluginBadgesWizard
  *
  * This class shows the plugin main page
  *

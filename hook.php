@@ -33,7 +33,7 @@
 function plugin_badges_install() {
    global $DB;
 
-   include_once(PLUGINBADGES_DIR . "/inc/profile.class.php");
+   include_once(PLUGIN_BADGES_DIR . "/inc/profile.class.php");
 
    $install   = false;
    $update78  = false;
@@ -43,38 +43,38 @@ function plugin_badges_install() {
    if (!$DB->tableExists("glpi_plugin_badges")
        && !$DB->tableExists("glpi_plugin_badges_badgetypes")) {
       $install = true;
-      $DB->runFile(PLUGINBADGES_DIR . "/sql/empty-2.6.0.sql");
+      $DB->runFile(PLUGIN_BADGES_DIR . "/sql/empty-2.6.0.sql");
 
    } else if ($DB->tableExists("glpi_plugin_badges_users")
               && !$DB->tableExists("glpi_plugin_badges_default")) {
 
       $update78 = true;
-      $DB->runFile(PLUGINBADGES_DIR . "/sql/update-1.4.sql");
-      $DB->runFile(PLUGINBADGES_DIR . "/sql/update-1.5.0.sql");
+      $DB->runFile(PLUGIN_BADGES_DIR . "/sql/update-1.4.sql");
+      $DB->runFile(PLUGIN_BADGES_DIR . "/sql/update-1.5.0.sql");
       plugin_badges_configure15();
-      $DB->runFile(PLUGINBADGES_DIR . "/sql/update-1.5.1.sql");
-      $DB->runFile(PLUGINBADGES_DIR . "/sql/update-1.6.0.sql");
+      $DB->runFile(PLUGIN_BADGES_DIR . "/sql/update-1.5.1.sql");
+      $DB->runFile(PLUGIN_BADGES_DIR . "/sql/update-1.6.0.sql");
 
    } else if ($DB->tableExists("glpi_plugin_badges_profiles")
               && $DB->fieldExists("glpi_plugin_badges_profiles", "interface")) {
 
       $update78 = true;
-      $DB->runFile(PLUGINBADGES_DIR . "/sql/update-1.5.0.sql");
+      $DB->runFile(PLUGIN_BADGES_DIR . "/sql/update-1.5.0.sql");
       plugin_badges_configure15();
-      $DB->runFile(PLUGINBADGES_DIR . "/sql/update-1.5.1.sql");
-      $DB->runFile(PLUGINBADGES_DIR . "/sql/update-1.6.0.sql");
+      $DB->runFile(PLUGIN_BADGES_DIR . "/sql/update-1.5.1.sql");
+      $DB->runFile(PLUGIN_BADGES_DIR . "/sql/update-1.6.0.sql");
 
    } else if ($DB->tableExists("glpi_plugin_badges")
               && !$DB->fieldExists("glpi_plugin_badges", "date_mod")) {
 
       $update78 = true;
-      $DB->runFile(PLUGINBADGES_DIR . "/sql/update-1.5.1.sql");
-      $DB->runFile(PLUGINBADGES_DIR . "/sql/update-1.6.0.sql");
+      $DB->runFile(PLUGIN_BADGES_DIR . "/sql/update-1.5.1.sql");
+      $DB->runFile(PLUGIN_BADGES_DIR . "/sql/update-1.6.0.sql");
 
    } else if (!$DB->tableExists("glpi_plugin_badges_badgetypes")) {
 
       $update78 = true;
-      $DB->runFile(PLUGINBADGES_DIR . "/sql/update-1.6.0.sql");
+      $DB->runFile(PLUGIN_BADGES_DIR . "/sql/update-1.6.0.sql");
 
    } else if ($DB->tableExists("glpi_plugin_badges_profiles")) {
 
@@ -85,18 +85,18 @@ function plugin_badges_install() {
    //version 2.4.1
    if ($DB->tableExists("glpi_plugin_badges_badges")
        && !$DB->fieldExists("glpi_plugin_badges_badges", "is_recursive")) {
-      $DB->runFile(PLUGINBADGES_DIR . "/sql/update-2.4.1.sql");
+      $DB->runFile(PLUGIN_BADGES_DIR . "/sql/update-2.4.1.sql");
    }
 
    //version 2.5.1
    if ($DB->tableExists("glpi_plugin_badges_badgetypes")
        && !$DB->fieldExists("glpi_plugin_badges_badgetypes", "is_recursive")) {
-      $DB->runFile(PLUGINBADGES_DIR . "/sql/update-2.5.1.sql");
+      $DB->runFile(PLUGIN_BADGES_DIR . "/sql/update-2.5.1.sql");
    }
 
    if (!$DB->tableExists("glpi_plugin_badges_requests")) {
       $update201 = true;
-      $DB->runFile(PLUGINBADGES_DIR . "/sql/update-2.0.1.sql");
+      $DB->runFile(PLUGIN_BADGES_DIR . "/sql/update-2.0.1.sql");
    }
 
    if ($install || $update201) {
@@ -279,8 +279,8 @@ function plugin_badges_configure15() {
 function plugin_badges_uninstall() {
    global $DB;
 
-   include_once(PLUGINBADGES_DIR . "/inc/profile.class.php");
-   include_once(PLUGINBADGES_DIR . "/inc/menu.class.php");
+   include_once(PLUGIN_BADGES_DIR . "/inc/profile.class.php");
+   include_once(PLUGIN_BADGES_DIR . "/inc/menu.class.php");
 
    $tables = ["glpi_plugin_badges_badges",
               "glpi_plugin_badges_badgetypes",

@@ -144,7 +144,7 @@ class PluginBadgesRequest extends CommonDBTM {
          echo "</table></div>";
 
          // Init javascript
-         echo Html::scriptBlock('$(document).ready(function() {badges_initJs("' . PLUGINBADGES_WEBDIR . '");});');
+         echo Html::scriptBlock('$(document).ready(function() {badges_initJs("' . $CFG_GLPI['root_doc']. PLUGIN_BADGES_DIR_NOFULL . '");});');
 
          Html::closeForm();
       }
@@ -240,7 +240,7 @@ class PluginBadgesRequest extends CommonDBTM {
       Html::requireJs('badges');
 
       // Init javascript
-      echo Html::scriptBlock('$(document).ready(function() {badges_initJs("' .PLUGINBADGES_WEBDIR . '");});');
+      echo Html::scriptBlock('$(document).ready(function() {badges_initJs("' .$CFG_GLPI['root_doc']. PLUGIN_BADGES_DIR_NOFULL . '");});');
 
       // Wizard title
       echo "<div class='badges_wizard_title'><p>";
@@ -316,7 +316,7 @@ class PluginBadgesRequest extends CommonDBTM {
       echo "<a href='#' class='vsubmit badge_next_button' name='addBadges' 
                onclick=\"badges_addBadges('addBadges','badges_wizardForm');\">"._sx('button', 'Post')."</a>";
       echo "<a href='#' class='vsubmit badge_previous_button'  name='previous'
-               onclick=\"badges_cancel('" . PLUGINBADGES_WEBDIR . "/front/wizard.php');\">"._sx('button', 'Cancel')."</a>";
+               onclick=\"badges_cancel('" . $CFG_GLPI['root_doc']. PLUGIN_BADGES_DIR_NOFULL . "/front/wizard.php');\">"._sx('button', 'Cancel')."</a>";
       echo "</td>";
       echo "</tr>";
       echo "</table>";

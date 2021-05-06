@@ -271,7 +271,7 @@ class PluginBadgesReturn extends CommonDBTM {
       echo "function badges_loadBadgeInformation(){";
       $params = ['action'    => 'loadBadgeInformation',
                       'badges_id' => '__VALUE__'];
-      Ajax::updateItemJsCode("badges_informations", PLUGINBADGES_WEBDIR . "/ajax/request.php",
+      Ajax::updateItemJsCode("badges_informations", $CFG_GLPI['root_doc']. PLUGIN_BADGES_DIR_NOFULL . "/ajax/request.php",
                              $params, "dropdown_return_badges_id$rand");
       echo "}";
       echo "</script>";
@@ -299,14 +299,14 @@ class PluginBadgesReturn extends CommonDBTM {
       echo "<a href='#' class='vsubmit badge_next_button' name='addBadges' 
                onclick=\"badges_returnBadges('returnBadges','badges_wizardForm');\">".__('Badges return', 'badges')."</a>";
       echo "<a href='#' class='vsubmit badge_previous_button'  name='previous'
-               onclick=\"badges_cancel('" . PLUGINBADGES_WEBDIR . "/front/wizard.php');\">"._sx('button', 'Cancel')."</a>";
+               onclick=\"badges_cancel('" . $CFG_GLPI['root_doc']. PLUGIN_BADGES_DIR_NOFULL . "/front/wizard.php');\">"._sx('button', 'Cancel')."</a>";
       echo "<input type='hidden' name='requesters_id' value='" . Session::getLoginUserID() . "'>";
       echo "</td>";
       echo "</tr>";
       echo "</table>";
 
       // Init javascript
-      echo Html::scriptBlock('$(document).ready(function() {badges_initJs("' . PLUGINBADGES_WEBDIR . '");});');
+      echo Html::scriptBlock('$(document).ready(function() {badges_initJs("' . $CFG_GLPI['root_doc']. PLUGIN_BADGES_DIR_NOFULL . '");});');
 
    }
 
