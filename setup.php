@@ -87,6 +87,10 @@ function plugin_init_badges() {
          $PLUGIN_HOOKS['plugin_datainjection_populate']['badges'] = 'plugin_datainjection_populate_badges';
       }
 
+      if ($plugin->isActivated('metademands')) { // only if plugin activated
+         $PLUGIN_HOOKS['metademands']['badges'] = ['PluginBadgesMetademand'];
+      }
+
       // Import from Data_Injection plugin
       $PLUGIN_HOOKS['migratetypes']['badges']  = 'plugin_datainjection_migratetypes_badges';
       $PLUGIN_HOOKS['redirect_page']['badges'] = 'front/wizard.php';
