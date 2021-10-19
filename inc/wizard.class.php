@@ -62,12 +62,14 @@ class PluginBadgesWizard extends CommonDBTM {
          return false;
       }
 
+      echo "<h3><div class='alert alert-secondary' role='alert'>";
+      echo "<i class='fas fas fa-id-badge'></i>&nbsp;";
+      echo  __("Access badge request", "badges");
+      echo "</div></h3>";
+
       echo "<div align='center'>";
       echo "<table class='tab_cadre' cellpadding='5'>";
-      echo "<tr>";
-      echo "<th colspan='5'>" . __("Access badge request", "badges") . "</th>";
-      echo "</tr>";
-      echo "<tr class='tab_bg_1'>";
+      echo "<tr class=''>";
 
       // Badge request
       echo "<td class='center badges_menu_item'>";
@@ -95,10 +97,6 @@ class PluginBadgesWizard extends CommonDBTM {
     */
    function showWizard($step) {
 
-      echo "<div class='badges_wizard'>";
-      echo "<form name='wizard_form' id='badges_wizardForm'
-                  method='post'>";
-
       switch ($step) {
          case 'badgerequest':
             $badgerequest = new PluginBadgesRequest();
@@ -110,8 +108,6 @@ class PluginBadgesWizard extends CommonDBTM {
             break;
       }
 
-      Html::closeForm();
-      echo "</div>";
    }
 
 }

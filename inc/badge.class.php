@@ -31,6 +31,8 @@ if (!defined('GLPI_ROOT')) {
    die("Sorry. You can't access directly to this file");
 }
 
+use Glpi\Application\View\TemplateRenderer;
+
 /**
  * Class PluginBadgesBadge
  */
@@ -241,98 +243,138 @@ class PluginBadgesBadge extends CommonDBTM {
       return $input;
    }
 
-   /**
-    * @param       $ID
-    * @param array $options
+    
+    /**
+    * Print the badge form
     *
-    * @return bool
-    */
+    * @param $ID        integer  ID of the item
+    * @param $options   array
+    *     - target filename : where to go when done.
+    *     - withtemplate boolean : template or basic item
+    *
+    * @return boolean item found
+    **/
    function showForm($ID, $options = []) {
-
       $this->initForm($ID, $options);
-      $this->showFormHeader($options);
+      TemplateRenderer::getInstance()->display('@badges/badge_form.html.twig', [
+         'item'   => $this,
+         'params' => $options,
+      ]);
 
-      echo "<tr class='tab_bg_1'>";
-
-      echo "<td>" . __('Name') . "</td>";
-      echo "<td>";
-      Html::autocompletionTextField($this, "name");
-      echo "</td>";
-
-      echo "<td>" . __('User') . "</td><td>";
-      User::dropdown(['value'  => $this->fields["users_id"],
-                           'entity' => $this->fields["entities_id"],
-                           'right'  => 'all']);
-      echo "</td>";
-
-      echo "</tr>";
-
-      echo "<tr class='tab_bg_1'>";
-
-      echo "<td>" . __('Location') . "</td><td>";
-      Location::dropdown(['value'  => $this->fields["locations_id"],
-                               'entity' => $this->fields["entities_id"]]);
-      echo "</td>";
-
-      echo "<td>" . __('Type') . "</td><td>";
-      Dropdown::show('PluginBadgesBadgeType', ['name'   => "plugin_badges_badgetypes_id",
-                                                    'value'  => $this->fields["plugin_badges_badgetypes_id"],
-                                                    'entity' => $this->fields["entities_id"]]);
-      echo "</td>";
-
-      echo "</tr>";
-
-      echo "<tr class='tab_bg_1'>";
-
-      echo "<td>" . __('Serial number') . "</td>";
-      echo "<td>";
-      Html::autocompletionTextField($this, "serial");
-      echo "</td>";
-
-      echo "<td>" . __('Status') . "</td><td>";
-      State::dropdown(['value' => $this->fields["states_id"]]);
-      echo "</td>";
-
-      echo "</tr>";
-
-      echo "<tr class='tab_bg_1'>";
-
-      echo "<td>" . __('Affectation date', 'badges') . "</td>";
-      echo "<td>";
-      Html::showDateField("date_affectation", ['value' => $this->fields["date_affectation"]]);
-      echo "</td>";
-
-      echo "<td>" . __('Associable to a ticket') . "</td><td>";
-      Dropdown::showYesNo('is_helpdesk_visible', $this->fields['is_helpdesk_visible']);
-      echo "</td>";
-
-      echo "</tr>";
-
-      echo "<tr class='tab_bg_1'>";
-
-      echo "<td>" . __('Date of end of validity', 'badges');
-      echo "</td>";
-      echo "<td>";
-      Html::showDateField("date_expiration", ['value' => $this->fields["date_expiration"]]);
-      echo "</td>";
-      echo "<td>" . __('Bookable', 'badges') . "</td><td>";
-      Dropdown::showYesNo('is_bookable', $this->fields['is_bookable']);
-      echo "</td>";
-      echo "</tr>";
-
-      echo "<tr class='tab_bg_1'>";
-
-      echo "<td>" . __('Comments') . "</td>";
-      echo "<td class='center' colspan='3'><textarea cols='115' rows='5' name='comment' >" .
-           $this->fields["comment"] . "</textarea>";
-
-      echo "</td>";
-      echo "</tr>";
-
-      $this->showFormButtons($options);
+//      if (isset($PLUGIN_HOOKS['add_template']) && count($PLUGIN_HOOKS['add_template'])) {
+//         foreach ($PLUGIN_HOOKS["add_template"] as $plugin => $folders) {
+//            $plugin_root_dir = \Plugin::getPhpDir($plugin, true);
+//            if (!\Plugin::isPluginActive($plugin)) {
+//               continue;
+//            }
+//            if (!is_array($folders)) {
+//               $folders = [$folders];
+//            }
+//            foreach ($folders as $folder) {
+//               if (file_exists($plugin_root_dir . "/$folder")) {
+//                  $paths[] = $plugin_root_dir . "/$folder";
+//               } else {
+//                  \Toolbox::logWarning("$folder folder not found from plugin $plugin!");
+//               }
+//            }
+//         }
+//      }
 
       return true;
    }
+   
+   ///**
+   // * @param       $ID
+   // * @param array $options
+   // *
+   // * @return bool
+   // */
+   //function showForm($ID, $options = []) {
+
+   //   $this->initForm($ID, $options);
+   //   $this->showFormHeader($options);
+
+   //   echo "<tr class='tab_bg_1'>";
+
+   //   echo "<td>" . __('Name') . "</td>";
+   //   echo "<td>";
+   //   Html::autocompletionTextField($this, "name");
+   //   echo "</td>";
+
+   //   echo "<td>" . __('User') . "</td><td>";
+   //   User::dropdown(['value'  => $this->fields["users_id"],
+   //                        'entity' => $this->fields["entities_id"],
+   //                        'right'  => 'all']);
+   //   echo "</td>";
+
+   //   echo "</tr>";
+
+   //   echo "<tr class='tab_bg_1'>";
+
+   //   echo "<td>" . __('Location') . "</td><td>";
+   //   Location::dropdown(['value'  => $this->fields["locations_id"],
+   //                            'entity' => $this->fields["entities_id"]]);
+   //   echo "</td>";
+
+   //   echo "<td>" . __('Type') . "</td><td>";
+   //   Dropdown::show('PluginBadgesBadgeType', ['name'   => "plugin_badges_badgetypes_id",
+   //                                                 'value'  => $this->fields["plugin_badges_badgetypes_id"],
+   //                                                 'entity' => $this->fields["entities_id"]]);
+   //   echo "</td>";
+
+   //   echo "</tr>";
+
+   //   echo "<tr class='tab_bg_1'>";
+
+   //   echo "<td>" . __('Serial number') . "</td>";
+   //   echo "<td>";
+   //   Html::autocompletionTextField($this, "serial");
+   //   echo "</td>";
+
+   //   echo "<td>" . __('Status') . "</td><td>";
+   //   State::dropdown(['value' => $this->fields["states_id"]]);
+   //   echo "</td>";
+
+   //   echo "</tr>";
+
+   //   echo "<tr class='tab_bg_1'>";
+
+   //   echo "<td>" . __('Affectation date', 'badges') . "</td>";
+   //   echo "<td>";
+   //   Html::showDateField("date_affectation", ['value' => $this->fields["date_affectation"]]);
+   //   echo "</td>";
+
+   //   echo "<td>" . __('Associable to a ticket') . "</td><td>";
+   //   Dropdown::showYesNo('is_helpdesk_visible', $this->fields['is_helpdesk_visible']);
+   //   echo "</td>";
+
+   //   echo "</tr>";
+
+   //   echo "<tr class='tab_bg_1'>";
+
+   //   echo "<td>" . __('Date of end of validity', 'badges');
+   //   echo "</td>";
+   //   echo "<td>";
+   //   Html::showDateField("date_expiration", ['value' => $this->fields["date_expiration"]]);
+   //   echo "</td>";
+   //   echo "<td>" . __('Bookable', 'badges') . "</td><td>";
+   //   Dropdown::showYesNo('is_bookable', $this->fields['is_bookable']);
+   //   echo "</td>";
+   //   echo "</tr>";
+
+   //   echo "<tr class='tab_bg_1'>";
+
+   //   echo "<td>" . __('Comments') . "</td>";
+   //   echo "<td class='center' colspan='3'><textarea cols='115' rows='5' name='comment' >" .
+   //        $this->fields["comment"] . "</textarea>";
+
+   //   echo "</td>";
+   //   echo "</tr>";
+
+   //   $this->showFormButtons($options);
+
+   //   return true;
+   //}
 
    //for search engine
    /**

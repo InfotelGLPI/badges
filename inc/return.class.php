@@ -143,7 +143,7 @@ class PluginBadgesReturn extends CommonDBTM {
 
          echo "<tr class='tab_bg_1'>";
          echo "<td class='tab_bg_2 center' colspan='6'>";
-         echo Html::submit( __('Force badge restitution', 'badges'), ['name' => 'force_return']);
+         echo Html::submit( __('Force badge restitution', 'badges'), ['name' => 'force_return', 'class' => 'btn btn-primary']);
          echo Html::hidden('return_badges_id', ['value' => $item->fields['id']]);
          echo Html::hidden('requesters_id', ['value' => 0]);
          echo "</td>";
@@ -232,7 +232,7 @@ class PluginBadgesReturn extends CommonDBTM {
       }
 
       if ($checkKo) {
-         return [false, sprintf(__("Mandatory fields are not filled. Please correct: %s"), implode(', ', $msg))];
+         return [false, "<div class='alert alert-important alert-warning d-flex'>".sprintf(__("Mandatory fields are not filled. Please correct: %s"), implode(', ', $msg))."</div>"];
       }
 
       return [true, null];
@@ -247,17 +247,17 @@ class PluginBadgesReturn extends CommonDBTM {
       Html::requireJs('badges');
 
       // Wizard title
-      echo "<div class='badges_wizard_title'><p>";
-      echo "<i class='thumbnail fas fa-arrow-alt-circle-left fa-2x'></i>";
-      echo "&nbsp;";
+      echo "<h3><div class='alert alert-secondary' role='alert'>";
+      echo "<i class='fas fas fa-arrow-alt-circle-left'></i>&nbsp;";
       echo __("Access badge return", "badges");
-      echo "</p></div>";
+      echo "</div></h3>";
+
+      echo "<div class='badges_wizard'>";
+      echo "<form name='wizard_form' id='badges_wizardForm'
+                  method='post'>";
 
       // Add badges return
       echo "<table class='tab_cadre_fixe badges_wizard_rank'>";
-      echo "<tr>";
-      echo "<th colspan='4'>" . __("Access badge return", "badges") . "</th>";
-      echo "</tr>";
 
       echo "<tr>";
       echo "<td>" . __("Badges in your possession", "badges") . " <span style='color:red;'>*</span></td>";
@@ -271,7 +271,7 @@ class PluginBadgesReturn extends CommonDBTM {
       echo "function badges_loadBadgeInformation(){";
       $params = ['action'    => 'loadBadgeInformation',
                       'badges_id' => '__VALUE__'];
-      Ajax::updateItemJsCode("badges_informations", $CFG_GLPI['root_doc']. PLUGIN_BADGES_DIR_NOFULL . "/ajax/request.php",
+      Ajax::updateItemJsCode("badges_informations", PLUGINBADGES_WEBDIR . "/ajax/request.php",
                              $params, "dropdown_return_badges_id$rand");
       echo "}";
       echo "</script>";
@@ -293,21 +293,27 @@ class PluginBadgesReturn extends CommonDBTM {
       // Footer
       echo "<br/><table width='100%'>";
       echo "<tr>";
-      echo "<td class='badges_wizard_button'>";
+      echo "<td>";
       echo "<div id='dialog-confirm'></div>";
 
-      echo "<a href='#' class='vsubmit badge_next_button' name='addBadges' 
-               onclick=\"badges_returnBadges('returnBadges','badges_wizardForm');\">".__('Badges return', 'badges')."</a>";
-      echo "<a href='#' class='vsubmit badge_previous_button'  name='previous'
-               onclick=\"badges_cancel('" . $CFG_GLPI['root_doc']. PLUGIN_BADGES_DIR_NOFULL . "/front/wizard.php');\">"._sx('button', 'Cancel')."</a>";
+      echo "<button form='' onclick=\"badges_cancel('" . PLUGINBADGES_WEBDIR . "/front/wizard.php');\" 
+        class='btn btn-info  badge_previous_button' />
+      " ._sx('button', 'Cancel') . "</button>";
+
+      echo "<button form='' onclick=\"badges_returnBadges('returnBadges','badges_wizardForm');\" 
+        class='btn btn-success  badge_next_button' />
+      " .__('Badges return', 'badges') . "</button>";
+
       echo "<input type='hidden' name='requesters_id' value='" . Session::getLoginUserID() . "'>";
       echo "</td>";
       echo "</tr>";
       echo "</table>";
 
       // Init javascript
-      echo Html::scriptBlock('$(document).ready(function() {badges_initJs("' . $CFG_GLPI['root_doc']. PLUGIN_BADGES_DIR_NOFULL . '");});');
+      echo Html::scriptBlock('$(document).ready(function() {badges_initJs("' . PLUGINBADGES_WEBDIR . '");});');
 
+      Html::closeForm();
+      echo "</div>";
    }
 
    /**

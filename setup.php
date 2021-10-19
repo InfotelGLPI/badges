@@ -28,11 +28,12 @@
  */
 
 define('PLUGIN_BADGES_VERSION', '2.6.0');
-if (!defined("PLUGIN_BADGES_DIR")) {
-   define("PLUGIN_BADGES_DIR", Plugin::getPhpDir("badges"));
-   define("PLUGIN_BADGES_DIR_NOFULL", Plugin::getPhpDir("badges",false));
+if (!defined("PLUGINBADGES_DIR")) {
+   define("PLUGINBADGES_DIR", Plugin::getPhpDir("badges"));
 }
-
+if (!defined("PLUGINBADGES_WEBDIR")) {
+   define("PLUGINBADGES_WEBDIR", Plugin::getWebDir("badges"));
+}
 // Init the hooks of the plugins -Needed
 function plugin_init_badges() {
    global $PLUGIN_HOOKS;
@@ -40,12 +41,12 @@ function plugin_init_badges() {
    $PLUGIN_HOOKS['csrf_compliant']['badges']   = true;
    $PLUGIN_HOOKS['assign_to_ticket']['badges'] = true;
    $PLUGIN_HOOKS['change_profile']['badges']   = ['PluginBadgesProfile', 'initProfile'];
-   $PLUGIN_HOOKS['add_css']['badges']          = ['badges.css'];
+   $PLUGIN_HOOKS['add_css']['badges']          = ['css/badges.css'];
 
    if (Session::getLoginUserID()) {
 
       $PLUGIN_HOOKS['add_javascript']['badges'][] = 'badges.js';
-      $PLUGIN_HOOKS["javascript"]['badges']     = [PLUGIN_BADGES_DIR_NOFULL."/plugins/badges/badges.js"];
+      $PLUGIN_HOOKS["javascript"]['badges']     = ["/plugins/badges/badges.js"];
       Plugin::registerClass('PluginBadgesBadge', [
          'linkuser_types'              => true,
          'document_types'              => true,
@@ -72,7 +73,7 @@ function plugin_init_badges() {
 
       if (Session::haveRight("plugin_badges", READ)
           && !$plugin->isActivated('servicecatalog')) {
-         $PLUGIN_HOOKS['helpdesk_menu_entry']['badges'] = '/front/wizard.php';
+         $PLUGIN_HOOKS['helpdesk_menu_entry']['badges'] = '/plugins/badges/front/wizard.php';
       }
 
       if ($plugin->isActivated('servicecatalog')) {
@@ -85,10 +86,6 @@ function plugin_init_badges() {
 
       if ($plugin->isActivated('badges')) { // only if plugin activated
          $PLUGIN_HOOKS['plugin_datainjection_populate']['badges'] = 'plugin_datainjection_populate_badges';
-      }
-
-      if ($plugin->isActivated('metademands')) { // only if plugin activated
-         $PLUGIN_HOOKS['metademands']['badges'] = ['PluginBadgesMetademand'];
       }
 
       // Import from Data_Injection plugin
@@ -112,7 +109,7 @@ function plugin_version_badges() {
       'homepage'       => 'https://github.com/InfotelGLPI/badges',
       'requirements'   => [
          'glpi' => [
-            'min' => '9.5',
+            'min' => '10',
             'dev' => false
          ]
       ]
@@ -124,15 +121,16 @@ function plugin_version_badges() {
  * @return bool
  */
 function plugin_badges_check_prerequisites() {
-   if (version_compare(GLPI_VERSION, '9.5', 'lt')
-         || version_compare(GLPI_VERSION, '9.6', 'ge')) {
+   if (version_compare(GLPI_VERSION, '10', 'lt')
+         || version_compare(GLPI_VERSION, '11', 'ge')) {
       if (method_exists('Plugin', 'messageIncompatible')) {
-         echo Plugin::messageIncompatible('core', '9.5');
+         echo Plugin::messageIncompatible('core', '10');
       }
       return false;
    }
    return true;
 }
+
 
 // Uninstall process for plugin : need to return true if succeeded
 //may display messages or add to message after redirect
