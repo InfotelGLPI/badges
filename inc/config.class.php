@@ -73,7 +73,7 @@ class PluginBadgesConfig extends CommonDBTM {
     * @param $target
     * @param $ID
     */
-   function showForm($target, $ID) {
+   function showConfigForm($target, $ID) {
 
       if (!$this->getFromDB($ID)) {
          $this->getEmpty();

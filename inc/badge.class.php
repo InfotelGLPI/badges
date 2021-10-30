@@ -662,8 +662,8 @@ class PluginBadgesBadge extends CommonDBTM {
       $notif  = new PluginBadgesNotificationState();
       $config = new PluginBadgesConfig();
 
-      $config->showForm($target, 1);
-      $notif->showForm($target);
+      $config->showConfigForm($target, 1);
+      $notif->showNotificationForm($target);
       $notif->showAddForm($target);
 
    }

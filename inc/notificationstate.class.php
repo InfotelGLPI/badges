@@ -130,7 +130,7 @@ class PluginBadgesNotificationState extends CommonDBTM {
    /**
     * @param $target
     */
-   public function showForm($target) {
+   public function showNotificationForm($target) {
       global $DB;
 
       $rand = mt_rand();
