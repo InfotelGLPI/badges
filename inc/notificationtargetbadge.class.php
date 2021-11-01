@@ -90,7 +90,7 @@ class PluginBadgesNotificationTargetBadge extends NotificationTarget {
 
             $tmp['##badge.name##']           = $badge['name'];
             $tmp['##badge.serial##']         = $badge['serial'];
-            $tmp['##badge.users##']          = Html::clean($dbu->getUserName($badge["users_id"]));
+            $tmp['##badge.users##']          = getUserName($badge["users_id"]);
             $tmp['##badge.dateexpiration##'] = Html::convDate($badge['date_expiration']);
 
             $this->data['badges'][] = $tmp;
@@ -112,7 +112,7 @@ class PluginBadgesNotificationTargetBadge extends NotificationTarget {
             $tmp['##badgerequest.visitorfirstname##'] = $badge['visitor_firstname'];
             $tmp['##badgerequest.visitorsociety##']   = $badge['visitor_society'];
             $tmp['##badgerequest.arrivaldate##']      = Html::convDate($badge['affectation_date']);
-            $tmp['##badgerequest.requester##']        = Html::clean($dbu->getUserName(Session::getLoginUserID()));
+            $tmp['##badgerequest.requester##']        = getUserName(Session::getLoginUserID());
 
             $this->data['badgerequest'][] = $tmp;
          }
