@@ -304,8 +304,7 @@ class PluginBadgesReturn extends CommonDBTM {
       echo "<button form='' onclick=\"badges_returnBadges('returnBadges','badges_wizardForm');\" 
         class='btn btn-success  badge_next_button' />
       " .__('Badges return', 'badges') . "</button>";
-
-      echo "<input type='hidden' name='requesters_id' value='" . Session::getLoginUserID() . "'>";
+      echo Html::hidden('requesters_id', ['value' => Session::getLoginUserID()]);
       echo "</td>";
       echo "</tr>";
       echo "</table>";

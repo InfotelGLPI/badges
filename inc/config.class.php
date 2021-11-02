@@ -99,7 +99,7 @@ class PluginBadgesConfig extends CommonDBTM {
       echo __('Badges expired for more than ', 'badges');
       echo "</td>";
       echo "<td>";
-      echo "&nbsp;<input type='text' size='15' name='delay_expired' value=\"$delay_expired\">";
+      echo Html::input('delay_expired', ['value' => $delay_expired, 'size' => 15]);
       echo "&nbsp;" . _n('Day', 'Days', 2) . " ( > " . Html::convDate($date_expired) . ")<br>";
       echo "</td>";
       echo "</tr>";
@@ -109,7 +109,8 @@ class PluginBadgesConfig extends CommonDBTM {
       echo __('Badges expiring in less than ', 'badges');
       echo "</td>";
       echo "<td>";
-      echo "&nbsp;<input type='text' size='15' name='delay_whichexpire' value=\"$delay_whichexpire\">";
+      echo "&nbsp;";
+      echo Html::input('delay_whichexpire', ['value' => $delay_whichexpire, 'size' => 15]);
       echo "&nbsp;" . _n('Day', 'Days', 2) . " ( < " . Html::convDate($date_whichexpire) . ")<br>";
       echo "</td>";
       echo "</tr>";
