@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GLPI - Badges plugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-01 12:16+0000\n"
+"POT-Creation-Date: 2021-11-02 08:53+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,7 +26,7 @@ msgid_plural "Badges"
 msgstr[0] ""
 msgstr[1] ""
 
-#: inc/badge.class.php:90 inc/request.class.php:490
+#: inc/badge.class.php:90 inc/request.class.php:491
 msgid "Affectation date"
 msgstr ""
 
@@ -45,7 +45,7 @@ msgid "Badges which expires"
 msgstr ""
 
 #: inc/badge.class.php:616 inc/notificationtargetbadge.class.php:52
-#: inc/notificationtargetbadge.class.php:70 inc/return.class.php:453
+#: inc/notificationtargetbadge.class.php:70 inc/return.class.php:454
 msgid "Badges at the end of the validity"
 msgstr ""
 
@@ -94,29 +94,29 @@ msgstr ""
 #: inc/notificationtargetbadge.class.php:101
 #: inc/notificationtargetbadge.class.php:131 inc/request.class.php:196
 #: inc/request.class.php:260 inc/request.class.php:307
-#: inc/request.class.php:487 inc/return.class.php:176 inc/return.class.php:334
+#: inc/request.class.php:488 inc/return.class.php:176 inc/return.class.php:335
 msgid "Visitor realname"
 msgstr ""
 
 #: inc/notificationtargetbadge.class.php:102
 #: inc/notificationtargetbadge.class.php:132 inc/request.class.php:197
 #: inc/request.class.php:265 inc/request.class.php:306
-#: inc/request.class.php:488 inc/return.class.php:177 inc/return.class.php:332
+#: inc/request.class.php:489 inc/return.class.php:177 inc/return.class.php:333
 msgid "Visitor firstname"
 msgstr ""
 
 #: inc/notificationtargetbadge.class.php:103
 #: inc/notificationtargetbadge.class.php:133 inc/request.class.php:198
 #: inc/request.class.php:273 inc/request.class.php:308
-#: inc/request.class.php:489 inc/return.class.php:178 inc/return.class.php:339
+#: inc/request.class.php:490 inc/return.class.php:178 inc/return.class.php:340
 msgid "Visitor society"
 msgstr ""
 
 #: inc/notificationtargetbadge.class.php:104
 #: inc/notificationtargetbadge.class.php:134 inc/request.class.php:127
 #: inc/request.class.php:199 inc/request.class.php:284
-#: inc/request.class.php:310 inc/return.class.php:179 inc/return.class.php:345
-#: inc/return.class.php:448
+#: inc/request.class.php:310 inc/return.class.php:179 inc/return.class.php:346
+#: inc/return.class.php:449
 msgid "Arrival date"
 msgstr ""
 
@@ -140,7 +140,7 @@ msgstr ""
 msgid "Badge usage report"
 msgstr ""
 
-#: inc/request.class.php:277 inc/request.class.php:491
+#: inc/request.class.php:277 inc/request.class.php:492
 msgid "Available badge"
 msgid_plural "Available badges"
 msgstr[0] ""
@@ -154,13 +154,13 @@ msgstr ""
 msgid "Cart"
 msgstr ""
 
-#: inc/request.class.php:427
+#: inc/request.class.php:428
 msgid "Badge affected"
 msgid_plural "Badges affected"
 msgstr[0] ""
 msgstr[1] ""
 
-#: inc/request.class.php:434
+#: inc/request.class.php:435
 msgid "Please add badges in cart"
 msgstr ""
 
@@ -188,11 +188,11 @@ msgstr ""
 msgid "Restitution date"
 msgstr ""
 
-#: inc/return.class.php:305 inc/return.class.php:389
+#: inc/return.class.php:306 inc/return.class.php:390
 msgid "Badges return"
 msgstr ""
 
-#: inc/return.class.php:371
+#: inc/return.class.php:372
 msgid "Badge returned"
 msgstr ""
 
