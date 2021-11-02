@@ -153,7 +153,7 @@ class PluginBadgesRequest extends CommonDBTM {
       $result = $this->listItems($item->fields['id'], ['begin_date' => $begin_date, 'end_date' => $end_date]);
       echo $result['message'];
       echo "</div>";
-
+      Html::requireJs('glpi_dialog');
       echo "<div id='dialog-confirm'></div>";
       return;
    }
@@ -253,7 +253,7 @@ class PluginBadgesRequest extends CommonDBTM {
                   method='post'>";
 
       // Add badges request
-      echo "<table class='tab_cadre_fixe badges_wizard_rank'>";
+      echo "<table class='tab_cadre_fixe badges_wizard_rank' style='width: 950px;'>";
 
       echo "<tr>";
 
@@ -316,6 +316,7 @@ class PluginBadgesRequest extends CommonDBTM {
       echo "<br/><table width='100%'>";
       echo "<tr>";
       echo "<td>";
+      Html::requireJs('glpi_dialog');
       echo "<div id='dialog-confirm'></div>";
 
       echo "<button form='' onclick=\"badges_cancel('" . PLUGINBADGES_WEBDIR . "/front/wizard.php');\" 
@@ -424,7 +425,7 @@ class PluginBadgesRequest extends CommonDBTM {
                }
             }
 
-            $message = _n('Badge affected', 'Badges affected', count($params['badges_cart']), 'badges');
+            $message = "<div class='alert alert-important alert-success d-flex'>"._n('Badge affected', 'Badges affected', count($params['badges_cart']), 'badges')."</div>";
             NotificationEvent::raiseEvent("AccessBadgeRequest", new PluginBadgesBadge(),
                                           ['entities_id'  => $_SESSION['glpiactive_entity'],
                                            'badgerequest' => $params['badges_cart']]);

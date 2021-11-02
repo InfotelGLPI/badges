@@ -68,7 +68,7 @@ class PluginBadgesWizard extends CommonDBTM {
       echo "</div></h3>";
 
       echo "<div align='center'>";
-      echo "<table class='tab_cadre' cellpadding='5'>";
+      echo "<table class='tab_cadre_fixe badges_wizard_rank' style='width: 950px;'>";
       echo "<tr class=''>";
 
       // Badge request

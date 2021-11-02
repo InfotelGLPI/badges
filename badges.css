@@ -6,7 +6,7 @@
     text-align: left;
     font-size: 14px;
     width: 100%;
-    /*background-color: #ffffff;*/
+    background-color: #ffffff;
 
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
@@ -62,11 +62,10 @@
 }
 
 .badges_wizard_info {
-    border: 2px solid #ccc;
+    border: 1px solid #ccc;
     /*background-color: #fff;*/
 }
 .badges_menu_a {
     display: block;
-    width: 150px;
     margin: 20px;
 }

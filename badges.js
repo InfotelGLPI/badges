@@ -45,18 +45,17 @@ this.badges_addToCart = function (action, toobserve, toupdate) {
                 badges_reloadAvailableBadges();
 
             } else {
-               $("#dialog-confirm").html(data.message);
-               $("#dialog-confirm").dialog({
-                  resizable: false,
-                  height: 180,
-                  width: 350,
-                  modal: true,
-                  buttons: {
-                     OK: function () {
-                         $(this).dialog("close");
+               glpi_html_dialog({
+                  title: __("Add to cart", "badges"),
+                  body: data.message,
+                  id: 'add_badges',
+                  buttons: [{
+                     label: __("Close"),
+                     click: function(event) {
+                        window.location.reload();
                      }
-                  }
-                 });
+                  }],
+               })
             }
          }
       });
@@ -80,20 +79,31 @@ this.badges_addBadges = function (action, toobserve) {
          url: object.root_doc + '/ajax/request.php',
          data: 'action=' + action + '&' + formInput,
          success: function (data) {
-            $("#dialog-confirm").html(data.message);
-            $("#dialog-confirm").dialog({
-               resizable: false,
-               height: 180,
-               width: 350,
-               modal: true,
-               buttons: {
-                  OK: function () {
-                      $(this).dialog("close");
-                      window.location.reload();
+            glpi_html_dialog({
+               title: __("Add to cart", "badges"),
+               body: data.message,
+               id: 'add_badges',
+               buttons: [{
+                  label: __("Close"),
+                  click: function(event) {
+                     window.location.reload();
                   }
-               }
-             });
-         }
+               }],
+            })
+         },
+       fail: function (data) {
+          glpi_html_dialog({
+             title: __("Add to cart", "badges"),
+             body: data.message,
+             id: 'add_badges',
+             buttons: [{
+                label: __("Close"),
+                click: function(event) {
+                   window.location.reload();
+                }
+             }],
+          })
+       }
       });
 };
 
@@ -115,19 +125,17 @@ this.badges_returnBadges = function (action, toobserve) {
          url: object.root_doc + '/ajax/request.php',
          data: 'action=' + action + '&' + formInput,
          success: function (data) {
-            $("#dialog-confirm").html(data.message);
-            $("#dialog-confirm").dialog({
-               resizable: false,
-               height: 180,
-               width: 350,
-               modal: true,
-               buttons: {
-                  OK: function () {
-                      $(this).dialog("close");
-                      window.location.reload();
+            glpi_html_dialog({
+               title: __("Badge return", "badges"),
+               body: data.message,
+               id: 'return_badges',
+               buttons: [{
+                  label: __("Close"),
+                  click: function(event) {
+                     window.location.reload();
                   }
-               }
-             });
+               }],
+            })
          }
       });
 };

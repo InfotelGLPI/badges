@@ -294,6 +294,7 @@ class PluginBadgesReturn extends CommonDBTM {
       echo "<br/><table width='100%'>";
       echo "<tr>";
       echo "<td>";
+      Html::requireJs('glpi_dialog');
       echo "<div id='dialog-confirm'></div>";
 
       echo "<button form='' onclick=\"badges_cancel('" . PLUGINBADGES_WEBDIR . "/front/wizard.php');\" 
@@ -368,7 +369,7 @@ class PluginBadgesReturn extends CommonDBTM {
                                 'is_affected' => 0,
                                 'return_date' => date('Y-m-d H:i:s')]);
          }
-         $message = __('Badge returned', 'badges');
+         $message = "<div class='alert alert-important alert-success d-flex'>".__('Badge returned', 'badges')."</div>";
       }
 
       return ['success' => $success,
