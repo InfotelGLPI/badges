@@ -27,7 +27,7 @@
  --------------------------------------------------------------------------
  */
 
-define('PLUGIN_BADGES_VERSION', '2.6.0');
+define('PLUGIN_BADGES_VERSION', '3.0.0');
 if (!defined("PLUGINBADGES_DIR")) {
    define("PLUGINBADGES_DIR", Plugin::getPhpDir("badges"));
 }
@@ -109,7 +109,7 @@ function plugin_version_badges() {
       'homepage'       => 'https://github.com/InfotelGLPI/badges',
       'requirements'   => [
          'glpi' => [
-            'min' => '10',
+            'min' => '10.0',
             'dev' => false
          ]
       ]
@@ -121,10 +121,10 @@ function plugin_version_badges() {
  * @return bool
  */
 function plugin_badges_check_prerequisites() {
-   if (version_compare(GLPI_VERSION, '10', 'lt')
-         || version_compare(GLPI_VERSION, '11', 'ge')) {
+   if (version_compare(GLPI_VERSION, '10.0', 'lt')
+         || version_compare(GLPI_VERSION, '11.0', 'ge')) {
       if (method_exists('Plugin', 'messageIncompatible')) {
-         echo Plugin::messageIncompatible('core', '10');
+         echo Plugin::messageIncompatible('core', '10.0');
       }
       return false;
    }
