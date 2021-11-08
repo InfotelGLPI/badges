@@ -43,7 +43,7 @@ function plugin_badges_install() {
    if (!$DB->tableExists("glpi_plugin_badges")
        && !$DB->tableExists("glpi_plugin_badges_badgetypes")) {
       $install = true;
-      $DB->runFile(PLUGINBADGES_DIR . "/sql/empty-2.6.0.sql");
+      $DB->runFile(PLUGINBADGES_DIR . "/sql/empty-3.0.0.sql");
 
    } else if ($DB->tableExists("glpi_plugin_badges_users")
               && !$DB->tableExists("glpi_plugin_badges_default")) {
