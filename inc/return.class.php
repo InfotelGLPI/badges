@@ -257,7 +257,7 @@ class PluginBadgesReturn extends CommonDBTM {
                   method='post'>";
 
       // Add badges return
-      echo "<table class='tab_cadre_fixe badges_wizard_rank'>";
+      echo "<table class='tab_cadre_fixe badges_wizard_rank' style='width: 400px;'>";
 
       echo "<tr>";
       echo "<td>" . __("Badges in your possession", "badges") . " <span style='color:red;'>*</span></td>";

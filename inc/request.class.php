@@ -136,7 +136,7 @@ class PluginBadgesRequest extends CommonDBTM {
          Html::showDateTimeField("end_date", ['value' => $end_date]);
          echo "</td>";
          echo "<td>";
-         echo "<input type=\"button\" class=\"submit\" name=\"addToCart\" value=\"" . __('Search') . "\"
+         echo "<input type='button' class='btn btn-primary' name='addToCart' value='" . __('Search') . "'
          onclick=\"badges_searchBadges('searchBadges','badges_formSearchBadges', 'badges_searchBadges');\" >";
          echo Html::hidden('requesters_id', ['value' => $item->fields['id']]);
          echo "</td>";
@@ -253,7 +253,7 @@ class PluginBadgesRequest extends CommonDBTM {
                   method='post'>";
 
       // Add badges request
-      echo "<table class='tab_cadre_fixe badges_wizard_rank' style='width: 950px;'>";
+      echo "<table class='tab_cadre_fixe badges_wizard_rank' style='width: 400px;'>";
 
       echo "<tr>";
 

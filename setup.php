@@ -110,35 +110,11 @@ function plugin_version_badges() {
       'requirements'   => [
          'glpi' => [
             'min' => '10.0',
+            'max' => '11.0',
             'dev' => false
          ]
       ]
    ];
-}
-
-// Optional : check prerequisites before install : may print errors or add to message after redirect
-/**
- * @return bool
- */
-function plugin_badges_check_prerequisites() {
-   if (version_compare(GLPI_VERSION, '10.0', 'lt')
-         || version_compare(GLPI_VERSION, '11.0', 'ge')) {
-      if (method_exists('Plugin', 'messageIncompatible')) {
-         echo Plugin::messageIncompatible('core', '10.0');
-      }
-      return false;
-   }
-   return true;
-}
-
-
-// Uninstall process for plugin : need to return true if succeeded
-//may display messages or add to message after redirect
-/**
- * @return bool
- */
-function plugin_badges_check_config() {
-   return true;
 }
 
 /**
