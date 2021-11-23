@@ -36,7 +36,7 @@ if (!defined("PLUGINBADGES_WEBDIR")) {
 }
 // Init the hooks of the plugins -Needed
 function plugin_init_badges() {
-   global $PLUGIN_HOOKS;
+   global $PLUGIN_HOOKS, $CFG_GLPI;
 
    $PLUGIN_HOOKS['csrf_compliant']['badges']   = true;
    $PLUGIN_HOOKS['assign_to_ticket']['badges'] = true;
@@ -68,6 +68,9 @@ function plugin_init_badges() {
       if (!$plugin->isActivated('environment')
           && Session::haveRight("plugin_badges", READ)) {
          $PLUGIN_HOOKS['menu_toadd']['badges'] = ['assets' => 'PluginBadgesMenu'];
+         if (!in_array('PluginBadgesBadge', $CFG_GLPI['globalsearch_types'])) {
+            array_push($CFG_GLPI['globalsearch_types'], 'PluginBadgesBadge');
+         }
 
       }
 
