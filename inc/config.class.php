@@ -118,7 +118,7 @@ class PluginBadgesConfig extends CommonDBTM {
       echo "<tr class='tab_bg_1'>";
       echo "<td class='center' colspan='4'>";
       echo Html::hidden('id', ['value' => $ID]);
-      echo Html::submit(_sx('button', 'Save'), ['name' => 'update']);
+      echo Html::submit(_sx('button', 'Save'), ['name' => 'update', 'class' => 'btn btn-primary']);
       echo "</td>";
       echo "</tr>";
       echo "</table>";
@@ -160,7 +160,7 @@ class PluginBadgesConfig extends CommonDBTM {
       echo "<tr class='tab_bg_1'>";
       echo "<td class='center' colspan='4'>";
       echo Html::hidden('id', ['value' => $ID]);
-      echo Html::submit(_sx('button', 'Save'), ['name' => 'update']);
+      echo Html::submit(_sx('button', 'Save'), ['name' => 'update', 'class' => 'btn btn-primary']);
       echo "</td>";
       echo "</tr>";
       echo "</table>";

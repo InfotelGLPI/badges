@@ -120,7 +120,7 @@ class PluginBadgesNotificationState extends CommonDBTM {
       echo "</td>";
       echo "<td>";
       echo "<div align='center'>";
-      echo Html::submit(_sx('button', 'Add'), ['name' => 'add']);
+      echo Html::submit(_sx('button', 'Add'), ['name' => 'add', 'class' => 'btn btn-primary']);
       echo "</div></td></tr>";
       echo "</table>";
       Html::closeForm();
