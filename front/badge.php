@@ -41,7 +41,6 @@ if (Session::getCurrentInterface() == 'central') {
 } else {
    if ($plugin->isActivated('servicecatalog')) {
       PluginServicecatalogMain::showDefaultHeaderHelpdesk(PluginBadgesBadge::getTypeName(2));
-      echo "<br>";
    } else {
       Html::helpHeader(PluginBadgesBadge::getTypeName(2));
    }

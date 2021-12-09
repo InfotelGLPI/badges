@@ -51,6 +51,12 @@ class PluginBadgesBadge extends CommonDBTM {
       return _n('Badge', 'Badges', $nb, 'badges');
    }
 
+   /**
+    * @return string
+    */
+   static function getIcon() {
+      return "ti ti-id";
+   }
 
    /**
     * @return array

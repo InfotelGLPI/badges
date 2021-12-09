@@ -1,11 +1,19 @@
+.badges_wizard_row {
+    width: 50%;
+}
+
 .badges_wizard_rank {
+    margin: 0 auto;
     padding: 5px;
     border: 1px solid #ccc;
+    z-index: 1;
+    text-align: left;
     font-size: 14px;
+    width: 100%;
     background-color: #ffffff;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
+    /*-moz-border-radius: 5px;*/
+    /*-webkit-border-radius: 5px;*/
+    /*border-radius: 5px;*/
 }
 
 .badges_wizard_title {
@@ -119,8 +127,4 @@
     font-size: 12px;
     /*background-color: #fff;*/
 }
-.badges_menu_a {
-    display: block;
-    width: 150px;
-    margin: 20px;
-}
+

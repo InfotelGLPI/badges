@@ -54,7 +54,18 @@ class PluginBadgesServicecatalog extends CommonGLPI {
 
    static function getMenuLogo() {
 
-      return "fas fa-id-badge";
+      return PluginBadgesBadge::getIcon();
+
+   }
+
+   /**
+    * @return string
+    * @throws \GlpitestSQLError
+    */
+   static function getMenuLogoCss() {
+
+      $addstyle = "font-size: 4.5em;";
+      return $addstyle;
 
    }
 

@@ -248,14 +248,14 @@ class PluginBadgesReturn extends CommonDBTM {
 
       // Wizard title
       echo "<h3><div class='alert alert-secondary' role='alert'>";
-      echo "<i class='fas fas fa-arrow-alt-circle-left'></i>&nbsp;";
+      echo "<i class='ti ti-receipt-refund'></i>&nbsp;";
       echo __("Access badge return", "badges");
       echo "</div></h3>";
 
-      echo "<div class='badges_wizard'>";
       echo "<form name='wizard_form' id='badges_wizardForm'
                   method='post'>";
 
+      echo "<div style='overflow-x:auto;'>";
       // Add badges return
       echo "<table class='tab_cadre_fixe badges_wizard_rank' style='width: 400px;'>";
 
@@ -308,12 +308,12 @@ class PluginBadgesReturn extends CommonDBTM {
       echo "</td>";
       echo "</tr>";
       echo "</table>";
-
+      echo "</div>";
       // Init javascript
       echo Html::scriptBlock('$(document).ready(function() {badges_initJs("' . PLUGINBADGES_WEBDIR . '");});');
 
       Html::closeForm();
-      echo "</div>";
+
    }
 
    /**

@@ -36,7 +36,7 @@ this.badges_addToCart = function (action, toobserve, toupdate) {
                   }
                 });
                 result += "<td>" +
-                    "<a href='#' onclick=\"badges_removeCart('badges_cartRow" + data.rowId + "')\"><i class='fa fa-times-circle fa-2x' style='color:darkred'></i></a>" +
+                    "<a href='#' onclick=\"badges_removeCart('badges_cartRow" + data.rowId + "')\"><i class='ti ti-circle-x fa-2x' style='color:darkred'></i></a>" +
                     "</td></tr>";
                 item_bloc.append(result);
                 item_bloc.css({"display": 'table'});

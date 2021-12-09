@@ -54,16 +54,9 @@ class PluginBadgesMenu extends CommonGLPI {
          $menu['links']['add'] = PluginBadgesBadge::getFormURL(false);
       }
 
-      $menu['icon']    = self::getIcon();
+      $menu['icon']    = PluginBadgesBadge::getIcon();
 
       return $menu;
-   }
-
-   /**
-    * @return string
-    */
-   static function getIcon() {
-      return "fas fa-id-badge";
    }
 
    static function removeRightsFromSession() {

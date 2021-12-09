@@ -85,7 +85,6 @@ if (isset($_POST["add"])) {
   } else {
      if ($plugin->isActivated('servicecatalog')) {
         PluginServicecatalogMain::showDefaultHeaderHelpdesk(PluginBadgesBadge::getTypeName(2), true);
-        echo "<br>";
      } else {
         Html::helpHeader(PluginBadgesBadge::getTypeName(2));
      }

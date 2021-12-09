@@ -63,31 +63,28 @@ class PluginBadgesWizard extends CommonDBTM {
       }
 
       echo "<h3><div class='alert alert-secondary' role='alert'>";
-      echo "<i class='fas fas fa-id-badge'></i>&nbsp;";
+      echo "<i class='".PluginBadgesBadge::getIcon()."'></i>&nbsp;";
       echo  __("Access badge request", "badges");
       echo "</div></h3>";
 
-      echo "<div align='center'>";
-      echo "<table class='tab_cadre_fixe badges_wizard_rank' style='width: 400px;'>";
-      echo "<tr class=''>";
+      echo "<div class='row badges_wizard_row' style='margin: 0 auto;'>";
 
       // Badge request
-      echo "<td class='center'>";
-      echo "<a  class='badges_menu_a' href=\"./wizard.form.php?action=badgerequest\">";
-      echo "<i class='fas fa-id-badge fa-6x'></i>";
+      echo "<div class='center col-md-5 badges_wizard_rank'>";
+      echo "<a class='badges_menu_a' href=\"./wizard.form.php?action=badgerequest\">";
+      echo "<i class='".PluginBadgesBadge::getIcon()."' style='font-size: 4.5em;'></i>";
       echo "<br><br>" . __("Access badge request", "badges") . "<br>(" . __("For a limited time", "badges") . ")</a>";
-      echo "</td>";
-
+      echo "</div>";
+      echo "<div style='width: 10px;'></div>";
       // Badge return
-      echo "<td class='center'>";
-      echo "<a  class='badges_menu_a' href=\"./wizard.form.php?action=badgereturn\">";
-      echo "<i class='fas fa-arrow-alt-circle-left fa-6x'></i>";
+      echo "<div class='center col-md-5 badges_wizard_rank'>";
+      echo "<a class='badges_menu_a' href=\"./wizard.form.php?action=badgereturn\">";
+      echo "<i class='ti ti-receipt-refund' style='font-size: 4.5em;'></i>";
       echo "<br><br>" . __("Access badge return", "badges") . "</a>";
-      echo "</td>";
+      echo "</div>";
 
-      echo "</tr>";
-      echo "</table></div>";
-      return;
+      echo "</div>";
+
    }
 
    /**

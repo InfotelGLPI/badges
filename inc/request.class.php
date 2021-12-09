@@ -244,14 +244,14 @@ class PluginBadgesRequest extends CommonDBTM {
 
 
       echo "<h3><div class='alert alert-secondary' role='alert'>";
-      echo "<i class='fas fas fa-id-badge'></i>&nbsp;";
+      echo "<i class='".PluginBadgesBadge::getIcon()."'></i>&nbsp;";
       echo __("Access badge request", "badges");
       echo "</div></h3>";
 
-      echo "<div class='badges_wizard'>";
       echo "<form name='wizard_form' id='badges_wizardForm'
                   method='post'>";
 
+      echo "<div style='overflow-x:auto;'>";
       // Add badges request
       echo "<table class='tab_cadre_fixe badges_wizard_rank' style='width: 400px;'>";
 
@@ -293,11 +293,13 @@ class PluginBadgesRequest extends CommonDBTM {
       echo "<td class='center' colspan='4'>";
       echo "<button form='' onclick=\"badges_addToCart('addToCart','badges_wizardForm', 'badges_cart');\" 
       class='btn btn-success' />
-      <i class='fas fa-plus'></i>&nbsp;
+      <i class='ti ti-plus'></i>&nbsp;
       " .__('Add to cart', 'badges') . "</button>";
       echo "</td>";
       echo "</tr>";
       echo "</table>";
+
+
       // Cart
       echo "<br><div class='center'>";
       echo "<table class='tab_cadre_fixe badges_wizard_rank' id='badges_cart' style='display:none'>";
