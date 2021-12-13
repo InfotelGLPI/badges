@@ -28,12 +28,13 @@
  */
 
 define('PLUGIN_BADGES_VERSION', '3.0.0');
-if (!defined("PLUGINBADGES_DIR")) {
-   define("PLUGINBADGES_DIR", Plugin::getPhpDir("badges"));
+
+if (!defined("PLUGIN_BADGES_DIR")) {
+   define("PLUGIN_BADGES_DIR", Plugin::getPhpDir("badges"));
+   define("PLUGIN_BADGES_NOTFULL_DIR", Plugin::getPhpDir("badges",false));
+   define("PLUGIN_BADGES_WEBDIR", Plugin::getWebDir("badges"));
 }
-if (!defined("PLUGINBADGES_WEBDIR")) {
-   define("PLUGINBADGES_WEBDIR", Plugin::getWebDir("badges"));
-}
+
 // Init the hooks of the plugins -Needed
 function plugin_init_badges() {
    global $PLUGIN_HOOKS, $CFG_GLPI;
@@ -46,7 +47,7 @@ function plugin_init_badges() {
    if (Session::getLoginUserID()) {
 
       $PLUGIN_HOOKS['add_javascript']['badges'][] = 'badges.js';
-      $PLUGIN_HOOKS["javascript"]['badges']     = ["/plugins/badges/badges.js"];
+      $PLUGIN_HOOKS["javascript"]['badges']     = [PLUGIN_BADGES_NOTFULL_DIR."/badges.js"];
       Plugin::registerClass('PluginBadgesBadge', [
          'linkuser_types'              => true,
          'document_types'              => true,
@@ -76,7 +77,7 @@ function plugin_init_badges() {
 
       if (Session::haveRight("plugin_badges", READ)
           && !$plugin->isActivated('servicecatalog')) {
-         $PLUGIN_HOOKS['helpdesk_menu_entry']['badges'] = '/plugins/badges/front/wizard.php';
+         $PLUGIN_HOOKS['helpdesk_menu_entry']['badges'] = PLUGIN_BADGES_NOTFULL_DIR.'/front/wizard.php';
       }
 
       if ($plugin->isActivated('servicecatalog')) {

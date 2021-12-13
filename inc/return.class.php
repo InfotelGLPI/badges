@@ -271,7 +271,7 @@ class PluginBadgesReturn extends CommonDBTM {
       echo "function badges_loadBadgeInformation(){";
       $params = ['action'    => 'loadBadgeInformation',
                       'badges_id' => '__VALUE__'];
-      Ajax::updateItemJsCode("badges_informations", PLUGINBADGES_WEBDIR . "/ajax/request.php",
+      Ajax::updateItemJsCode("badges_informations", PLUGIN_BADGES_WEBDIR . "/ajax/request.php",
                              $params, "dropdown_return_badges_id$rand");
       echo "}";
       echo "</script>";
@@ -297,7 +297,7 @@ class PluginBadgesReturn extends CommonDBTM {
       Html::requireJs('glpi_dialog');
       echo "<div id='dialog-confirm'></div>";
 
-      echo "<button form='' onclick=\"badges_cancel('" . PLUGINBADGES_WEBDIR . "/front/wizard.php');\" 
+      echo "<button form='' onclick=\"badges_cancel('" . PLUGIN_BADGES_WEBDIR . "/front/wizard.php');\" 
         class='btn btn-info  badge_previous_button' />
       " ._sx('button', 'Cancel') . "</button>";
 
@@ -310,7 +310,7 @@ class PluginBadgesReturn extends CommonDBTM {
       echo "</table>";
       echo "</div>";
       // Init javascript
-      echo Html::scriptBlock('$(document).ready(function() {badges_initJs("' . PLUGINBADGES_WEBDIR . '");});');
+      echo Html::scriptBlock('$(document).ready(function() {badges_initJs("' . PLUGIN_BADGES_WEBDIR . '");});');
 
       Html::closeForm();
 

@@ -25,15 +25,9 @@
         <author>Infotel</author>
     </authors>
     <versions>
-        <version>
-            <num>3.0.0</num>
-            <compatibility>~10.0</compatibility>
-            <download_url>https://github.com/InfotelGLPI/badges/releases/download/3.0.0/glpi-badges-3.0.0.tar.gz</download_url>
-        </version>
          <version>
             <num>2.6.0</num>
-            <compatibility>~9.5</compatibility>
-             <download_url>https://github.com/InfotelGLPI/badges/releases/download/2.6.0/glpi-badges-2.6.0.tar.gz</download_url>
+            <compatibility>9.5</compatibility>
         </version>
          <version>
             <num>2.5.0</num>
