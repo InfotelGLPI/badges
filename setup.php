@@ -27,7 +27,7 @@
  --------------------------------------------------------------------------
  */
 
-define('PLUGIN_BADGES_VERSION', '3.0.0');
+define('PLUGIN_BADGES_VERSION', '3.0.0-beta');
 
 if (!defined("PLUGIN_BADGES_DIR")) {
    define("PLUGIN_BADGES_DIR", Plugin::getPhpDir("badges"));
