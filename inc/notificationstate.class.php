@@ -205,7 +205,7 @@ class PluginBadgesNotificationState extends CommonDBTM {
 
       switch ($ma->getAction()) {
          case 'purge':
-            echo Html::submit(_x('button', 'Post'), ['name' => 'massiveaction']);
+            echo Html::submit(_x('button', 'Post'), ['name' => 'massiveaction', 'class' => 'btn btn-primary']);
             return true;
       }
       return parent::showMassiveActionsSubForm($ma);
