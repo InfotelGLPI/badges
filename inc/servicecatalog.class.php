@@ -52,6 +52,15 @@ class PluginBadgesServicecatalog extends CommonGLPI {
       return PLUGIN_BADGES_WEBDIR . "/front/wizard.php";
    }
 
+   /**
+    * @return string
+    */
+   static function getNavBarLink() {
+      global $CFG_GLPI;
+
+      return PLUGIN_BADGES_NOTFULL_DIR . "/front/wizard.php";
+   }
+
    static function getMenuLogo() {
 
       return PluginBadgesBadge::getIcon();
