@@ -3,7 +3,7 @@
  * @version $Id: HEADER 15930 2011-10-30 15:47:55Z tsmr $
  -------------------------------------------------------------------------
  badges plugin for GLPI
- Copyright (C) 2009-2016 by the badges Development Team.
+ Copyright (C) 2009-2022 by the badges Development Team.
 
  https://github.com/InfotelGLPI/badges
  -------------------------------------------------------------------------
@@ -257,6 +257,7 @@ class PluginBadgesBadge extends CommonDBTM {
     * @param $options   array
     *     - target filename : where to go when done.
     *     - withtemplate boolean : template or basic item
+    *
     *
     * @return boolean item found
     **/
