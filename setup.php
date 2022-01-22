@@ -94,7 +94,7 @@ function plugin_init_badges() {
 
       // Import from Data_Injection plugin
       $PLUGIN_HOOKS['migratetypes']['badges']  = 'plugin_datainjection_migratetypes_badges';
-      $PLUGIN_HOOKS['redirect_page']['badges'] = 'front/wizard.php';
+      $PLUGIN_HOOKS['redirect_page']['badges'] = PLUGIN_BADGES_NOTFULL_DIR.'/front/wizard.php';
    }
 }
 
