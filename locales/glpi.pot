@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GLPI - Badges plugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-20 15:08+0000\n"
+"POT-Creation-Date: 2022-01-14 08:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -39,12 +39,12 @@ msgstr ""
 msgid "Bookable"
 msgstr ""
 
-#: inc/badge.class.php:504 inc/notificationtargetbadge.class.php:53
+#: inc/badge.class.php:505 inc/notificationtargetbadge.class.php:53
 #: inc/notificationtargetbadge.class.php:73
 msgid "Badges which expires"
 msgstr ""
 
-#: inc/badge.class.php:622 inc/notificationtargetbadge.class.php:52
+#: inc/badge.class.php:623 inc/notificationtargetbadge.class.php:52
 #: inc/notificationtargetbadge.class.php:70 inc/return.class.php:453
 msgid "Badges at the end of the validity"
 msgstr ""
