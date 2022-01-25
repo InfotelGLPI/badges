@@ -32,7 +32,7 @@ if (!defined('GLPI_ROOT')) {
 }
 
 /**
- * Class PluginBadgesMenu
+ * Class PluginBadgesReturn
  *
  * This class shows the plugin main page
  *
@@ -298,11 +298,11 @@ class PluginBadgesReturn extends CommonDBTM {
       echo "<div id='dialog-confirm'></div>";
 
       echo "<button form='' onclick=\"badges_cancel('" . PLUGIN_BADGES_WEBDIR . "/front/wizard.php');\" 
-        class='btn btn-info  badge_previous_button' />
+        class='submit btn btn-info  badge_previous_button' />
       " ._sx('button', 'Cancel') . "</button>";
 
       echo "<button form='' onclick=\"badges_returnBadges('returnBadges','badges_wizardForm');\" 
-        class='btn btn-success  badge_next_button' />
+        class='submit btn btn-success badge_next_button' />
       " .__('Badges return', 'badges') . "</button>";
       echo Html::hidden('requesters_id', ['value' => Session::getLoginUserID()]);
       echo "</td>";

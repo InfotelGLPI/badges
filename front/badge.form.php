@@ -80,7 +80,7 @@ if (isset($_POST["add"])) {
    if ($plugin->isActivated("environment")) {
        Html::header(PluginBadgesBadge::getTypeName(2), '', "assets", "pluginenvironmentdisplay", "badges");
     } else {
-       Html::header(PluginBadgesBadge::getTypeName(2), '', "assets", "pluginbadgesmenu");
+       Html::header(PluginBadgesBadge::getTypeName(2), '', "assets", "pluginbadgesbadge");
     }
   } else {
      if ($plugin->isActivated('servicecatalog')) {

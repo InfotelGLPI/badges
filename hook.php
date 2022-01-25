@@ -376,7 +376,7 @@ function plugin_badges_uninstall() {
    foreach (PluginBadgesProfile::getAllRights() as $right) {
       $profileRight->deleteByCriteria(['name' => $right['field']]);
    }
-   PluginBadgesMenu::removeRightsFromSession();
+   PluginBadgesBadge::removeRightsFromSession();
 
    PluginBadgesProfile::removeRightsFromSession();
 

@@ -31,7 +31,7 @@ include('../../../inc/includes.php');
 
 $plugin = new Plugin();
 if (Session::getCurrentInterface() == 'central') {
-   Html::header(PluginBadgesWizard::getTypeName(2), '', "assets", "pluginbadgesmenu");
+   Html::header(PluginBadgesWizard::getTypeName(2), '', "assets", "pluginbadgesbadge");
 } else {
    if ($plugin->isActivated('servicecatalog')) {
       PluginServicecatalogMain::showDefaultHeaderHelpdesk(PluginBadgesWizard::getTypeName(2));

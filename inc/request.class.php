@@ -32,7 +32,7 @@ if (!defined('GLPI_ROOT')) {
 }
 
 /**
- * Class PluginBadgesMenu
+ * Class PluginBadgesRequest
  *
  * This class shows the plugin main page
  *
@@ -136,7 +136,7 @@ class PluginBadgesRequest extends CommonDBTM {
          Html::showDateTimeField("end_date", ['value' => $end_date]);
          echo "</td>";
          echo "<td>";
-         echo "<input type='button' class='btn btn-primary' name='addToCart' value='" . __('Search') . "'
+         echo "<input type='button' class='submit btn btn-primary' name='addToCart' value='" . __('Search') . "'
          onclick=\"badges_searchBadges('searchBadges','badges_formSearchBadges', 'badges_searchBadges');\" >";
          echo Html::hidden('requesters_id', ['value' => $item->fields['id']]);
          echo "</td>";
@@ -292,7 +292,7 @@ class PluginBadgesRequest extends CommonDBTM {
       echo "<tr>";
       echo "<td class='center' colspan='4'>";
       echo "<button form='' onclick=\"badges_addToCart('addToCart','badges_wizardForm', 'badges_cart');\" 
-      class='btn btn-success' />
+      class='submit btn btn-success' />
       <i class='ti ti-plus'></i>&nbsp;
       " .__('Add to cart', 'badges') . "</button>";
       echo "</td>";
@@ -322,11 +322,11 @@ class PluginBadgesRequest extends CommonDBTM {
       echo "<div id='dialog-confirm'></div>";
 
       echo "<button form='' onclick=\"badges_cancel('" . PLUGIN_BADGES_WEBDIR . "/front/wizard.php');\" 
-        class='btn btn-info badge_previous_button' />
+        class='submit btn btn-info badge_previous_button' />
       " ._sx('button', 'Cancel') . "</button>";
 
       echo "<button form='' onclick=\"badges_addBadges('addBadges','badges_wizardForm');\" 
-        class='btn btn-success badge_next_button' />
+        class='submit btn btn-success badge_next_button' />
       " ._sx('button', 'Post') . "</button>";
 
       echo "</td>";

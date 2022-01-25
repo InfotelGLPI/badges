@@ -249,8 +249,8 @@ class PluginBadgesBadge extends CommonDBTM {
       return $input;
    }
 
-    
-    /**
+
+   /**
     * Print the badge form
     *
     * @param $ID        integer  ID of the item
@@ -268,28 +268,28 @@ class PluginBadgesBadge extends CommonDBTM {
          'params' => $options,
       ]);
 
-//      if (isset($PLUGIN_HOOKS['add_template']) && count($PLUGIN_HOOKS['add_template'])) {
-//         foreach ($PLUGIN_HOOKS["add_template"] as $plugin => $folders) {
-//            $plugin_root_dir = \Plugin::getPhpDir($plugin, true);
-//            if (!\Plugin::isPluginActive($plugin)) {
-//               continue;
-//            }
-//            if (!is_array($folders)) {
-//               $folders = [$folders];
-//            }
-//            foreach ($folders as $folder) {
-//               if (file_exists($plugin_root_dir . "/$folder")) {
-//                  $paths[] = $plugin_root_dir . "/$folder";
-//               } else {
-//                  \Toolbox::logWarning("$folder folder not found from plugin $plugin!");
-//               }
-//            }
-//         }
-//      }
+      //      if (isset($PLUGIN_HOOKS['add_template']) && count($PLUGIN_HOOKS['add_template'])) {
+      //         foreach ($PLUGIN_HOOKS["add_template"] as $plugin => $folders) {
+      //            $plugin_root_dir = \Plugin::getPhpDir($plugin, true);
+      //            if (!\Plugin::isPluginActive($plugin)) {
+      //               continue;
+      //            }
+      //            if (!is_array($folders)) {
+      //               $folders = [$folders];
+      //            }
+      //            foreach ($folders as $folder) {
+      //               if (file_exists($plugin_root_dir . "/$folder")) {
+      //                  $paths[] = $plugin_root_dir . "/$folder";
+      //               } else {
+      //                  \Toolbox::logWarning("$folder folder not found from plugin $plugin!");
+      //               }
+      //            }
+      //         }
+      //      }
 
       return true;
    }
-   
+
    ///**
    // * @param       $ID
    // * @param array $options
@@ -410,6 +410,7 @@ class PluginBadgesBadge extends CommonDBTM {
    }
 
    //Massive Action
+
    /**
     * @param null $checkitem
     *
@@ -447,18 +448,18 @@ class PluginBadgesBadge extends CommonDBTM {
    }
 
    /**
-    * @since version 0.85
-    *
-    * @see CommonDBTM::processMassiveActionsForOneItemtype()
-    *
     * @param MassiveAction $ma
     * @param CommonDBTM    $item
     * @param array         $ids
     *
     * @return nothing|void
+    * @since version 0.85
+    *
+    * @see CommonDBTM::processMassiveActionsForOneItemtype()
+    *
     */
    static function processMassiveActionsForOneItemtype(MassiveAction $ma, CommonDBTM $item,
-                                                       array $ids) {
+                                                       array         $ids) {
 
       switch ($ma->getAction()) {
          case "transfer" :
@@ -492,6 +493,7 @@ class PluginBadgesBadge extends CommonDBTM {
 
 
    // Cron action
+
    /**
     * @param $name
     *
@@ -604,7 +606,7 @@ class PluginBadgesBadge extends CommonDBTM {
       $query_whichexpire = self::queryBadgesWhichExpire();
 
       $querys = [PluginBadgesNotificationTargetBadge::BadgesWhichExpire => $query_whichexpire,
-                      PluginBadgesNotificationTargetBadge::ExpiredBadges     => $query_expired];
+                 PluginBadgesNotificationTargetBadge::ExpiredBadges     => $query_expired];
 
       $badge_infos    = [];
       $badge_messages = [];
@@ -633,7 +635,7 @@ class PluginBadgesBadge extends CommonDBTM {
             Plugin::loadLang('badges');
 
             if (NotificationEvent::raiseEvent($type, new PluginBadgesBadge(), ['entities_id' => $entity,
-                                                                                    'badges'      => $badges])
+                                                                               'badges'      => $badges])
             ) {
                $message     = $badge_messages[$type][$entity];
                $cron_status = 1;
@@ -673,5 +675,29 @@ class PluginBadgesBadge extends CommonDBTM {
       $notif->showNotificationForm($target);
       $notif->showAddForm($target);
 
+   }
+
+   static function getMenuContent() {
+
+      $menu                    = [];
+      $menu['title']           = self::getMenuName();
+      $menu['page']            = self::getSearchURL(false);
+      $menu['links']['search'] = self::getSearchURL(false);
+      $menu['links']['lists']  = "";
+      if (self::canCreate()) {
+         $menu['links']['add'] = self::getFormURL(false);
+      }
+      $menu['icon'] = self::getIcon();
+
+      return $menu;
+   }
+
+   static function removeRightsFromSession() {
+      if (isset($_SESSION['glpimenu']['assets']['types']['PluginBadgesBadge'])) {
+         unset($_SESSION['glpimenu']['assets']['types']['PluginBadgesBadge']);
+      }
+      if (isset($_SESSION['glpimenu']['assets']['content']['pluginbadgesbadge'])) {
+         unset($_SESSION['glpimenu']['assets']['content']['pluginbadgesbadge']);
+      }
    }
 }

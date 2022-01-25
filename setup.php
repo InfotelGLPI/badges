@@ -68,7 +68,7 @@ function plugin_init_badges() {
       $plugin = new Plugin();
       if (!$plugin->isActivated('environment')
           && Session::haveRight("plugin_badges", READ)) {
-         $PLUGIN_HOOKS['menu_toadd']['badges'] = ['assets' => 'PluginBadgesMenu'];
+         $PLUGIN_HOOKS['menu_toadd']['badges'] = ['assets' => 'PluginBadgesBadge'];
          if (!in_array('PluginBadgesBadge', $CFG_GLPI['globalsearch_types'])) {
             array_push($CFG_GLPI['globalsearch_types'], 'PluginBadgesBadge');
          }
