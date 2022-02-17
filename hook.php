@@ -280,7 +280,6 @@ function plugin_badges_uninstall() {
    global $DB;
 
    include_once(PLUGIN_BADGES_DIR . "/inc/profile.class.php");
-   include_once(PLUGIN_BADGES_DIR . "/inc/menu.class.php");
 
    $tables = ["glpi_plugin_badges_badges",
               "glpi_plugin_badges_badgetypes",
