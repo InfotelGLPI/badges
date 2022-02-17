@@ -78,6 +78,7 @@ function plugin_init_badges() {
       if (Session::haveRight("plugin_badges", READ)
           && !$plugin->isActivated('servicecatalog')) {
          $PLUGIN_HOOKS['helpdesk_menu_entry']['badges'] = PLUGIN_BADGES_NOTFULL_DIR.'/front/wizard.php';
+         $PLUGIN_HOOKS['helpdesk_menu_entry_icon']['badges'] = PluginBadgesBadge::getIcon();
       }
 
       if ($plugin->isActivated('servicecatalog')) {
