@@ -78,7 +78,8 @@ class PluginBadgesBadgeInjection extends PluginBadgesBadge
       //Remove some options because some fields cannot be imported
       $notimportable            = [11, 30, 80];
       $options['ignore_fields'] = $notimportable;
-      $options['displaytype']   = ["dropdown"       => [2, 6, 7],
+      $options['displaytype']   = ["dropdown"       => [2, 7],
+                                        "text"           => [6],
                                         "user"           => [10],
                                         "multiline_text" => [8],
                                         "date"           => [4, 5],
