@@ -29,17 +29,14 @@
 
 include('../../../inc/includes.php');
 
-$plugin = new Plugin();
-
-
 if (Session::getCurrentInterface() == 'central') {
-   if ($plugin->isActivated("environment")) {
+   if (Plugin::isPluginActive("environment")) {
      Html::header(PluginBadgesBadge::getTypeName(2), '', "assets", "pluginenvironmentdisplay", "badges");
   } else {
      Html::header(PluginBadgesBadge::getTypeName(2), '', "assets", "pluginbadgesbadge");
   }
 } else {
-   if ($plugin->isActivated('servicecatalog')) {
+   if (Plugin::isPluginActive('servicecatalog')) {
       PluginServicecatalogMain::showDefaultHeaderHelpdesk(PluginBadgesBadge::getTypeName(2));
    } else {
       Html::helpHeader(PluginBadgesBadge::getTypeName(2));
@@ -59,7 +56,7 @@ if ($badge->canView()) {
 }
 
 if (Session::getCurrentInterface() != 'central'
-    && $plugin->isActivated('servicecatalog')) {
+    && Plugin::isPluginActive('servicecatalog')) {
 
    PluginServicecatalogMain::showNavBarFooter('badges');
 }

@@ -75,15 +75,14 @@ if (isset($_POST["add"])) {
 
    $badge->checkGlobal(READ);
 
-   $plugin = new Plugin();
    if (Session::getCurrentInterface() == 'central') {
-   if ($plugin->isActivated("environment")) {
+   if (Plugin::isPluginActive("environment")) {
        Html::header(PluginBadgesBadge::getTypeName(2), '', "assets", "pluginenvironmentdisplay", "badges");
     } else {
        Html::header(PluginBadgesBadge::getTypeName(2), '', "assets", "pluginbadgesbadge");
     }
   } else {
-     if ($plugin->isActivated('servicecatalog')) {
+     if (('servicecatalog')) {
         PluginServicecatalogMain::showDefaultHeaderHelpdesk(PluginBadgesBadge::getTypeName(2), true);
      } else {
         Html::helpHeader(PluginBadgesBadge::getTypeName(2));
@@ -92,7 +91,7 @@ if (isset($_POST["add"])) {
    $badge->display($_GET);
 
    if (Session::getCurrentInterface() != 'central'
-      && $plugin->isActivated('servicecatalog')) {
+      && Plugin::isPluginActive('servicecatalog')) {
 
      PluginServicecatalogMain::showNavBarFooter('badges');
   }

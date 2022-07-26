@@ -65,8 +65,7 @@ function plugin_init_badges() {
          PluginResourcesResource::registerType('PluginBadgesBadge');
       }
 
-      $plugin = new Plugin();
-      if (!$plugin->isActivated('environment')
+      if (!Plugin::isPluginActive('environment')
           && Session::haveRight("plugin_badges", READ)) {
          $PLUGIN_HOOKS['menu_toadd']['badges'] = ['assets' => 'PluginBadgesBadge'];
          if (!in_array('PluginBadgesBadge', $CFG_GLPI['globalsearch_types'])) {
@@ -76,12 +75,12 @@ function plugin_init_badges() {
       }
 
       if (Session::haveRight("plugin_badges", READ)
-          && !$plugin->isActivated('servicecatalog')) {
+          && !Plugin::isPluginActive('servicecatalog')) {
          $PLUGIN_HOOKS['helpdesk_menu_entry']['badges'] = PLUGIN_BADGES_NOTFULL_DIR.'/front/wizard.php';
          $PLUGIN_HOOKS['helpdesk_menu_entry_icon']['badges'] = PluginBadgesBadge::getIcon();
       }
 
-      if ($plugin->isActivated('servicecatalog')) {
+      if (Plugin::isPluginActive('servicecatalog')) {
          $PLUGIN_HOOKS['servicecatalog']['badges'] = ['PluginBadgesServicecatalog'];
       }
 
@@ -89,7 +88,7 @@ function plugin_init_badges() {
          $PLUGIN_HOOKS['use_massive_action']['badges'] = 1;
       }
 
-      if ($plugin->isActivated('badges')) { // only if plugin activated
+      if (Plugin::isPluginActive('badges')) { // only if plugin activated
          $PLUGIN_HOOKS['plugin_datainjection_populate']['badges'] = 'plugin_datainjection_populate_badges';
       }
 

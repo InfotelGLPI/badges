@@ -29,11 +29,10 @@
 
 include('../../../inc/includes.php');
 
-$plugin = new Plugin();
 if (Session::getCurrentInterface() == 'central') {
    Html::header(PluginBadgesWizard::getTypeName(2), '', "assets", "pluginbadgesbadge");
 } else {
-   if ($plugin->isActivated('servicecatalog')) {
+   if (Plugin::isPluginActive('servicecatalog')) {
       PluginServicecatalogMain::showDefaultHeaderHelpdesk(PluginBadgesWizard::getTypeName(2));
    } else {
       Html::helpHeader(PluginBadgesWizard::getTypeName(2));
@@ -44,7 +43,7 @@ $wizard = new PluginBadgesWizard();
 $wizard->showMenu();
 
 if (Session::getCurrentInterface() != 'central'
-    && $plugin->isActivated('servicecatalog')) {
+    && Plugin::isPluginActive('servicecatalog')) {
 
    PluginServicecatalogMain::showNavBarFooter('badges');
 }

@@ -402,8 +402,7 @@ function plugin_badges_AssignToTicket($types) {
  */
 function plugin_badges_getDatabaseRelations() {
 
-   $plugin = new Plugin();
-   if ($plugin->isActivated("badges")) {
+   if (Plugin::isPluginActive("badges")) {
       return ["glpi_plugin_badges_badgetypes" => ["glpi_plugin_badges_badges" => "plugin_badges_badgetypes_id"],
               "glpi_entities"                 => ["glpi_plugin_badges_badges"     => "entities_id",
                                                   "glpi_plugin_badges_badgetypes" => "entities_id"],
@@ -422,8 +421,7 @@ function plugin_badges_getDatabaseRelations() {
  */
 function plugin_badges_getDropdown() {
 
-   $plugin = new Plugin();
-   if ($plugin->isActivated("badges")) {
+   if (Plugin::isPluginActive("badges")) {
       return ["PluginBadgesBadgeType" => PluginBadgesBadgeType::getTypeName(2)];
    } else {
       return [];
