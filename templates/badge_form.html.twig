@@ -113,9 +113,9 @@
                         {# }) }} #}
                         {# {% endif %} #}
 
-                        {# {% if item.isField('is_active') %} #}
-                        {# {{ fields.dropdownYesNo('is_active', item.fields['is_active'], __('Active')) }} #}
-                        {# {% endif %} #}
+                         {% if item.isField('is_bookable') %}
+                         {{ fields.dropdownYesNo('is_bookable', item.fields['is_bookable'], __('Bookable', 'badges')) }}
+                         {% endif %}
 
                     </div> {# .row #}
                 </div> {# .row #}
