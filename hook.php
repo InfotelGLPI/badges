@@ -368,7 +368,7 @@ function plugin_badges_uninstall() {
       PluginDatainjectionModel::clean(['itemtype' => 'PluginBadgesBadge']);
    }
 
-   CronTask::Unregister('PluginBadgesReturn');
+   CronTask::Unregister('badges');
 
    //Delete rights associated with the plugin
    $profileRight = new ProfileRight();

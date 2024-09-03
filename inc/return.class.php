@@ -400,7 +400,7 @@ class PluginBadgesReturn extends CommonDBTM {
       $config = new PluginBadgesConfig();
 
       $config->getFromDB('1');
-      $delay = $config->fields["delay_returnexpire"];
+      $delay = $config->fields["delay_returnexpire"]??"";
 
       $query = null;
       if (!empty($delay)) {
