@@ -288,7 +288,7 @@ function plugin_badges_uninstall() {
               "glpi_plugin_badges_requests"];
 
    foreach ($tables as $table) {
-      $DB->query("DROP TABLE IF EXISTS `$table`;");
+      $DB->dropTable($table);
    }
 
    //old versions
@@ -301,7 +301,7 @@ function plugin_badges_uninstall() {
               "glpi_plugin_badges_default"];
 
    foreach ($tables as $table) {
-      $DB->query("DROP TABLE IF EXISTS `$table`;");
+      $DB->dropTable($table);
    }
 
    $notif   = new Notification();
@@ -361,7 +361,7 @@ function plugin_badges_uninstall() {
                    "glpi_dropdowntranslations"];
 
    foreach ($tables_glpi as $table_glpi) {
-      $DB->query("DELETE FROM `$table_glpi` WHERE `itemtype` LIKE 'PluginBadges%';");
+       $DB->delete($table_glpi, ['itemtype' => ['LIKE' => 'PluginBadges%']]);
    }
 
    if (class_exists('PluginDatainjectionModel')) {
