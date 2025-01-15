@@ -113,7 +113,6 @@ class PluginBadgesRequest extends CommonDBTM {
       $end_date   = date('Y-m-d H:i:s');
 
       if ($canedit) {
-         Html::requireJs('badges');
 
          echo "<form name='form' method='post' action='" . Toolbox::getItemTypeFormURL($this->getType()) . "' id='badges_formSearchBadges'>";
          echo "<div align='center'>";
@@ -144,7 +143,8 @@ class PluginBadgesRequest extends CommonDBTM {
          echo "</table></div>";
 
          // Init javascript
-         echo Html::scriptBlock('$(document).ready(function() {badges_initJs("' . PLUGIN_BADGES_WEBDIR . '");});');
+          $root = $CFG_GLPI['root_doc'] . '/plugins/badges';
+         echo Html::scriptBlock('$(document).ready(function() {badges_initJs("' . $root . '");});');
 
          Html::closeForm();
       }
@@ -237,10 +237,9 @@ class PluginBadgesRequest extends CommonDBTM {
       $request = new PluginBadgesRequest();
       $request->getEmpty();
 
-      Html::requireJs('badges');
-
       // Init javascript
-      echo Html::scriptBlock('$(document).ready(function() {badges_initJs("' . PLUGIN_BADGES_WEBDIR . '");});');
+       $root = $CFG_GLPI['root_doc'] . '/plugins/badges';
+      echo Html::scriptBlock('$(document).ready(function() {badges_initJs("' . $root . '");});');
 
 
       echo "<h3><div class='alert alert-secondary' role='alert'>";
@@ -321,7 +320,8 @@ class PluginBadgesRequest extends CommonDBTM {
       Html::requireJs('glpi_dialog');
       echo "<div id='dialog-confirm'></div>";
 
-      echo "<button form='' onclick=\"badges_cancel('" . PLUGIN_BADGES_WEBDIR . "/front/wizard.php');\" 
+       $root = $CFG_GLPI['root_doc'] . '/plugins/badges';
+      echo "<button form='' onclick=\"badges_cancel('" . $root . "/front/wizard.php');\" 
         class='submit btn btn-info badge_previous_button' />
       " ._sx('button', 'Cancel') . "</button>";
 

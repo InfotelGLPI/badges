@@ -30,6 +30,9 @@
 /**
  * @return bool
  */
+ 
+use Glpi\Search\SearchOption;
+
 function plugin_badges_install() {
    global $DB;
 
@@ -438,7 +441,7 @@ function plugin_badges_getDropdown() {
  */
 function plugin_badges_displayConfigItem($type, $ID, $data, $num) {
 
-   $searchopt =& Search::getOptions($type);
+    $searchopt  = SearchOption::getOptionsForItemtype($type);
    $table     = $searchopt[$ID]["table"];
    $field     = $searchopt[$ID]["field"];
 

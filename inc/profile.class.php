@@ -52,6 +52,10 @@ class PluginBadgesProfile extends CommonDBTM
         return '';
     }
 
+    static function getIcon() {
+        return "ti ti-id";
+    }
+
     /**
      * @param CommonGLPI $item
      * @param int        $tabnum

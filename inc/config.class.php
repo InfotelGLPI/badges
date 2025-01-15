@@ -63,7 +63,8 @@ class PluginBadgesConfig extends CommonDBTM {
 
       if ($item->getType() == 'CronTask') {
 
-         $target = PLUGIN_BADGES_WEBDIR . "/front/notification.state.php";
+          $root = $CFG_GLPI['root_doc'] . '/plugins/badges';
+         $target = $root . "/front/notification.state.php";
          PluginBadgesBadge::configCron($target);
       }
       return true;
