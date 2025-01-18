@@ -59,28 +59,24 @@ class PluginBadgesBadgeType extends CommonDropdown {
       global $DB;
 
       if ($ID > 0) {
-         // Not already transfer
-         // Search init item
-         $query = "SELECT *
-                   FROM `glpi_plugin_badges_badgetypes`
-                   WHERE `id` = '$ID'";
 
-         if ($result = $DB->query($query)) {
-            if ($DB->numrows($result)) {
-               $data                 = $DB->fetchAssoc($result);
-               $data                 = Toolbox::addslashes_deep($data);
-               $input['name']        = $data['name'];
-               $input['entities_id'] = $entity;
-               $temp                 = new self();
-               $newID                = $temp->getID();
+          $table = self::getTable();
+          $iterator = $DB->request([
+              'FROM'   => $table,
+              'WHERE'  => ['id' => $ID]
+          ]);
 
-               if ($newID < 0) {
+          foreach ($iterator as $data) {
+              $input['name']        = $data['name'];
+              $input['entities_id'] = $entity;
+              $temp                 = new self();
+              $newID                = $temp->getID();
+              if ($newID < 0) {
                   $newID = $temp->import($input);
-               }
+              }
 
-               return $newID;
-            }
-         }
+              return $newID;
+          }
       }
       return 0;
    }

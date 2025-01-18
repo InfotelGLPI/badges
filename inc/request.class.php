@@ -52,7 +52,16 @@ class PluginBadgesRequest extends CommonDBTM {
       return __('Badges request', 'badges');
    }
 
-   /**
+    /**
+     * @return string
+     */
+    static function getIcon()
+    {
+        return "ti ti-id";
+    }
+
+
+    /**
     * Display tab for each users
     *
     * @param CommonGLPI $item

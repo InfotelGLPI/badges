@@ -64,7 +64,16 @@ class PluginBadgesReturn extends CommonDBTM {
       return __('Badge return', 'badges');
    }
 
-   /**
+    /**
+     * @return string
+     */
+    static function getIcon()
+    {
+        return "ti ti-receipt-refund";
+    }
+
+
+    /**
     * Display tab for each users
     *
     * @param CommonGLPI $item
@@ -396,26 +405,42 @@ class PluginBadgesReturn extends CommonDBTM {
    /**
     * @return null|string
     */
-   static function queryBadgesReturnExpire() {
+    static function queryBadgesReturnExpire()
+    {
+        $config = new PluginBadgesConfig();
 
-      $config = new PluginBadgesConfig();
+        $config->getFromDB('1');
+        $delay = $config->fields["delay_returnexpire"] ?? "";
 
-      $config->getFromDB('1');
-      $delay = $config->fields["delay_returnexpire"]??"";
+        $query = null;
+        if (!empty($delay)) {
+            $requesttable = PluginBadgesRequest::getTable();
+            $badgetable = PluginBadgesBadge::getTable();
+            $query = [
+                'FROM' => $requesttable,
+                'LEFT JOIN' => [
+                    $badgetable => [
+                        'ON' => [
+                            $requesttable => 'badges_id',
+                            $badgetable => 'id'
+                        ]
+                    ]
+                ],
+                'WHERE' => [
+                    $requesttable . 'is_affected' => '1',
+                    'NOT' => [
+                        $requesttable . 'affectation_date' => 'NULL'
+                    ],
+                    [
+                        TIME_TO_SEC(TIMEDIFF(NOW(), $requesttable . `affectation_date`)) => ['>', $delay],
+                    ]
+                ]
+            ];
+        }
 
-      $query = null;
-      if (!empty($delay)) {
-         $query = "SELECT *
-            FROM `glpi_plugin_badges_requests`
-            LEFT JOIN `glpi_plugin_badges_badges`
-               ON (`glpi_plugin_badges_requests`.`badges_id` = `glpi_plugin_badges_badges`.`id`)
-            WHERE `glpi_plugin_badges_requests`.`affectation_date` IS NOT NULL
-            AND `glpi_plugin_badges_requests`.`is_affected` = '1'
-            AND TIME_TO_SEC(TIMEDIFF(NOW(),`glpi_plugin_badges_requests`.`affectation_date`)) > $delay ";
-      }
 
-      return $query;
-   }
+        return $query;
+    }
 
    /**
     * Cron action on badges : ExpiredBadges or BadgesWhichExpire
