@@ -27,6 +27,8 @@
  --------------------------------------------------------------------------
  */
 
+use Glpi\Exception\Http\AccessDeniedHttpException;
+
 include('../../../inc/includes.php');
 
 if (Session::getCurrentInterface() == 'central') {
@@ -52,7 +54,7 @@ if ($badge->canView()) {
    Search::show("PluginBadgesBadge");
 
 } else {
-   Html::displayRightError();
+    throw new AccessDeniedHttpException();
 }
 
 if (Session::getCurrentInterface() != 'central'
