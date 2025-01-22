@@ -48,7 +48,7 @@ function plugin_init_badges()
 
     if (Session::getLoginUserID()) {
 
-        $PLUGIN_HOOKS[Hooks::ADD_CSS]['badges'] = ['css/badges.scss'];
+        $PLUGIN_HOOKS[Hooks::ADD_CSS]['badges'] = ['css/badges.css'];
         $PLUGIN_HOOKS[Hooks::ADD_JAVASCRIPT]['badges'] = ['badges.js'];
 
         Plugin::registerClass('PluginBadgesBadge', [

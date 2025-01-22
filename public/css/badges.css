@@ -9,13 +9,7 @@
     z-index: 1;
     text-align: left;
     font-size: 14px;
-    //width: 100%;
-    //@if not $is-dark {
-    //    background-color: #FFFFFF;
-    //}
-    /*-moz-border-radius: 5px;*/
-    /*-webkit-border-radius: 5px;*/
-    /*border-radius: 5px;*/
+    background-color: var(--tblr-bg-surface) !important;
 }
 
 .badges_wizard_title {
@@ -23,6 +17,10 @@
     text-align: center;
     margin-bottom: 5px;
     /*color: black;*/
+}
+
+table.badges_wizard_rank tr td {
+    padding: 15px;
 }
 
 .badges_wizard_img {

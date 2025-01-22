@@ -261,7 +261,7 @@ class PluginBadgesRequest extends CommonDBTM {
 
       echo "<div style='overflow-x:auto;'>";
       // Add badges request
-      echo "<table class='tab_cadre_fixe badges_wizard_rank' style='width: 400px;'>";
+      echo "<table class='badges_wizard_rank'>";
 
       echo "<tr>";
 
