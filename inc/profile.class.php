@@ -47,7 +47,7 @@ class PluginBadgesProfile extends CommonDBTM
     public function getTabNameForItem(CommonGLPI $item, $withtemplate = 0)
     {
         if ($item->getType() == 'Profile') {
-            return PluginBadgesBadge::getTypeName(2);
+            return self::createTabEntry(PluginBadgesBadge::getTypeName(2));
         }
         return '';
     }

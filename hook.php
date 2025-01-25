@@ -227,19 +227,28 @@ function plugin_badges_install() {
       foreach ($notepad_tables as $t) {
          // Migrate data
          if ($DB->fieldExists($t, 'notepad')) {
-            $query = "SELECT id, notepad
-                      FROM `$t`
-                      WHERE notepad IS NOT NULL
-                            AND notepad <>'';";
-            foreach ($DB->request($query) as $data) {
-               $iq = "INSERT INTO `glpi_notepads`
+             $iterator = $DB->request([
+                 'SELECT' => [
+                     'notepad',
+                     'id'
+                 ],
+                 'FROM' => $t,
+                 'WHERE' => [
+                     'NOT' => ['notepad' => null],
+                     'notepad' => ['<>', '']
+                 ],
+             ]);
+             if (count($iterator) > 0) {
+                 foreach ($iterator as $data) {
+                     $iq = "INSERT INTO `glpi_notepads`
                              (`itemtype`, `items_id`, `content`, `date`, `date_mod`)
                       VALUES ('PluginBadgesBadge', '" . $data['id'] . "',
                               '" . addslashes($data['notepad']) . "', NOW(), NOW())";
-               $DB->doQuery($iq);
-            }
-            $query = "ALTER TABLE `glpi_plugin_badges_badges` DROP COLUMN `notepad`;";
-            $DB->doQuery($query);
+                     $DB->doQuery($iq);
+                 }
+             }
+             $query = "ALTER TABLE `glpi_plugin_badges_badges` DROP COLUMN `notepad`;";
+             $DB->doQuery($query);
          }
       }
    }
@@ -311,30 +320,38 @@ function plugin_badges_uninstall() {
    $options = ['itemtype' => 'PluginBadgesBadge',
                'event'    => 'ExpiredBadges',
                'FIELDS'   => 'id'];
-   foreach ($DB->request('glpi_notifications', $options) as $data) {
-      $notif->delete($data);
-   }
+    foreach ($DB->request([
+        'FROM' => 'glpi_notifications',
+        'WHERE' => $options]) as $data) {
+        $notif->delete($data);
+    }
 
    $options = ['itemtype' => 'PluginBadgesBadge',
                'event'    => 'BadgesWhichExpire',
                'FIELDS'   => 'id'];
-   foreach ($DB->request('glpi_notifications', $options) as $data) {
-      $notif->delete($data);
-   }
+    foreach ($DB->request([
+        'FROM' => 'glpi_notifications',
+        'WHERE' => $options]) as $data) {
+        $notif->delete($data);
+    }
 
    $options = ['itemtype' => 'PluginBadgesBadge',
                'event'    => 'BadgesReturn',
                'FIELDS'   => 'id'];
-   foreach ($DB->request('glpi_notifications', $options) as $data) {
-      $notif->delete($data);
-   }
+    foreach ($DB->request([
+        'FROM' => 'glpi_notifications',
+        'WHERE' => $options]) as $data) {
+        $notif->delete($data);
+    }
 
    $options = ['itemtype' => 'PluginBadgesBadge',
                'event'    => 'AccessBadgeRequest',
                'FIELDS'   => 'id'];
-   foreach ($DB->request('glpi_notifications', $options) as $data) {
-      $notif->delete($data);
-   }
+    foreach ($DB->request([
+        'FROM' => 'glpi_notifications',
+        'WHERE' => $options]) as $data) {
+        $notif->delete($data);
+    }
 
    //templates
    $template       = new NotificationTemplate();
@@ -342,19 +359,27 @@ function plugin_badges_uninstall() {
    $notif_template = new Notification_NotificationTemplate();
    $options        = ['itemtype' => 'PluginBadgesBadge',
                       'FIELDS'   => 'id'];
-   foreach ($DB->request('glpi_notificationtemplates', $options) as $data) {
-      $options_template = ['notificationtemplates_id' => $data['id'],
-                           'FIELDS'                   => 'id'];
+    foreach ($DB->request([
+        'FROM' => 'glpi_notificationtemplates',
+        'WHERE' => $options]) as $data) {
+        $options_template = [
+            'notificationtemplates_id' => $data['id'],
+            'FIELDS' => 'id'
+        ];
 
-      foreach ($DB->request('glpi_notificationtemplatetranslations', $options_template) as $data_template) {
-         $translation->delete($data_template);
-      }
-      $template->delete($data);
+        foreach ($DB->request([
+            'FROM' => 'glpi_notificationtemplatetranslations',
+            'WHERE' => $options_template]) as $data_template) {
+            $translation->delete($data_template);
+        }
+        $template->delete($data);
 
-      foreach ($DB->request('glpi_notifications_notificationtemplates', $options_template) as $data_template) {
-         $notif_template->delete($data_template);
-      }
-   }
+        foreach ($DB->request([
+            'FROM' => 'glpi_notifications_notificationtemplates',
+            'WHERE' => $options_template]) as $data_template) {
+            $notif_template->delete($data_template);
+        }
+    }
    $tables_glpi = ["glpi_displaypreferences",
                    "glpi_documents_items",
                    "glpi_savedsearches",
