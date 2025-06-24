@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GLPI - Badges plugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-25 12:04+0000\n"
+"POT-Creation-Date: 2025-06-24 13:49+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: setup.php:111 inc/badge.class.php:53 inc/metademand.class.php:63
+#: setup.php:115 inc/badge.class.php:53 inc/metademand.class.php:63
 #: inc/profile.class.php:192 inc/request.class.php:204
 #: inc/request.class.php:319
 msgid "Badge"
