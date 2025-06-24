@@ -29,11 +29,15 @@
 
 use Glpi\Plugin\Hooks;
 
+Global $CFG_GLPI;
+
 define('PLUGIN_BADGES_VERSION', '3.0.0');
 
 if (!defined("PLUGIN_BADGES_DIR")) {
     define("PLUGIN_BADGES_DIR", Plugin::getPhpDir("badges"));
     define("PLUGIN_BADGES_NOTFULL_DIR", Plugin::getPhpDir("badges", false));
+    $root = $CFG_GLPI['root_doc'] . '/plugins/badges';
+    define("PLUGIN_BADGES_WEBDIR", $root);
 }
 
 // Init the hooks of the plugins -Needed

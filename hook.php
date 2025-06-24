@@ -197,12 +197,14 @@ function plugin_badges_install() {
    }
 
    if ($update78) {
-      $query_  = "SELECT *
-            FROM `glpi_plugin_badges_profiles` ";
-      $result_ = $DB->doQuery($query_);
-      if ($DB->numrows($result_) > 0) {
-
-         while ($data = $DB->fetchArray($result_)) {
+       $iterator = $DB->request([
+           'SELECT' => [
+               'id'
+           ],
+           'FROM' => 'glpi_plugin_badges_profiles',
+       ]);
+       if (count($iterator) > 0) {
+           foreach ($iterator as $data) {
             $query = "UPDATE `glpi_plugin_badges_profiles`
                   SET `profiles_id` = '" . $data["id"] . "'
                   WHERE `id` = '" . $data["id"] . "';";
