@@ -211,7 +211,7 @@ class PluginBadgesReturn extends CommonDBTM {
          echo "<tr>";
          echo "<th colspan='6'>" . __('Badge requests history', 'badges') . "</th>";
          echo "</tr>";
-         echo "<tr><td class='center'>" . __('No item found') . "</td></tr>";
+         echo "<tr><td class='center'>" . __('No results found') . "</td></tr>";
          echo "</table>";
          echo "</div>";
       }

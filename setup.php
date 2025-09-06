@@ -1,4 +1,5 @@
 <?php
+
 /*
  * @version $Id: HEADER 15930 2011-10-30 15:47:55Z tsmr $
  -------------------------------------------------------------------------
@@ -29,7 +30,7 @@
 
 use Glpi\Plugin\Hooks;
 
-Global $CFG_GLPI;
+global $CFG_GLPI;
 
 define('PLUGIN_BADGES_VERSION', '3.0.0');
 
@@ -60,7 +61,7 @@ function plugin_init_badges()
             'document_types' => true,
             'helpdesk_visible_types' => true,
             'ticket_types' => true,
-            'notificationtemplates_types' => true
+            'notificationtemplates_types' => true,
         ]);
 
         Plugin::registerClass('PluginBadgesProfile', ['addtabon' => 'Profile']);
@@ -121,9 +122,9 @@ function plugin_version_badges()
             'glpi' => [
                 'min' => '11.0',
                 'max' => '12.0',
-                'dev' => false
-            ]
-        ]
+                'dev' => false,
+            ],
+        ],
     ];
 }
 

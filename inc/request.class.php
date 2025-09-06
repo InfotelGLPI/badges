@@ -230,7 +230,7 @@ class PluginBadgesRequest extends CommonDBTM {
          $message .= "<tr>";
          $message .= "<th colspan='6'>" . __('Badge usage report', 'badges') . "</th>";
          $message .= "</tr>";
-         $message .= "<tr><td class='center'>" . __('No item found') . "</td></tr>";
+         $message .= "<tr><td class='center'>" . __('No results found') . "</td></tr>";
          $message .= "</table>";
       }
 
