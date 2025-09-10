@@ -27,18 +27,21 @@
  --------------------------------------------------------------------------
  */
 
-if (!defined('GLPI_ROOT')) {
-    die("Sorry. You can't access directly to this file");
-}
+namespace GlpiPlugin\Badges;
+
+use CommonDBTM;
+use Dropdown;
+use Html;
+use MassiveAction;
 
 /**
- * Class PluginBadgesNotificationState
+ * Class NotificationState
  */
-class PluginBadgesNotificationState extends CommonDBTM
+class NotificationState extends CommonDBTM
 {
 
     /**
-     * @return string
+     * @return array
      */
     public function findStates()
     {
@@ -146,13 +149,13 @@ class PluginBadgesNotificationState extends CommonDBTM
      *
      * @param $checkitem link item to check right   (default NULL)
      *
-     * @return an $array of massive actions
+     * @return array $array of massive actions
      * @since version 0.84
      *
      */
     public function getSpecificMassiveActions($checkitem = null)
     {
-        $actions['PluginBadgesNotificationState' . MassiveAction::CLASS_ACTION_SEPARATOR . 'purge'] = __('Delete');
+        $actions['GlpiPlugin\Badges\NotificationState;' . MassiveAction::CLASS_ACTION_SEPARATOR . 'purge'] = __('Delete');
 
         return $actions;
     }

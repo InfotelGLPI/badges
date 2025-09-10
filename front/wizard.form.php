@@ -27,31 +27,31 @@
  --------------------------------------------------------------------------
  */
 
-include('../../../inc/includes.php');
+use GlpiPlugin\Badges\Badge;
+use GlpiPlugin\Badges\Wizard;
 
 if (Session::getCurrentInterface() == 'central') {
-   Html::header(PluginBadgesWizard::getTypeName(2), '', "assets", "pluginbadgesbadge");
+    Html::header(Wizard::getTypeName(2), '', "assets", Badge::class);
 } else {
-   if (Plugin::isPluginActive('servicecatalog')) {
-      PluginServicecatalogMain::showDefaultHeaderHelpdesk(PluginBadgesWizard::getTypeName(2));
-   } else {
-      Html::helpHeader(PluginBadgesWizard::getTypeName(2));
-   }
+    if (Plugin::isPluginActive('servicecatalog')) {
+        PluginServicecatalogMain::showDefaultHeaderHelpdesk(Wizard::getTypeName(2));
+    } else {
+        Html::helpHeader(Wizard::getTypeName(2));
+    }
 }
 
 if (!empty($_GET['action'])) {
-   $wizard = new PluginBadgesWizard();
-   $wizard->showWizard($_GET['action']);
+    $wizard = new Wizard();
+    $wizard->showWizard($_GET['action']);
 }
 
 if (Session::getCurrentInterface() != 'central'
     && Plugin::isPluginActive('servicecatalog')) {
-
-   PluginServicecatalogMain::showNavBarFooter('badges');
+    PluginServicecatalogMain::showNavBarFooter('badges');
 }
 
 if (Session::getCurrentInterface() == 'central') {
-   Html::footer();
+    Html::footer();
 } else {
-   Html::helpFooter();
+    Html::helpFooter();
 }

@@ -27,68 +27,72 @@
  --------------------------------------------------------------------------
  */
 
-if (!defined('GLPI_ROOT')) {
-   die("Sorry. You can't access directly to this file");
-}
+namespace GlpiPlugin\Badges;
+
+use PluginDatainjectionCommonInjectionLib;
+use PluginDatainjectionInjectionInterface;
+use Search;
 
 /**
- * Class PluginBadgesBadgeInjection
+ * Class BadgeInjection
  */
-class PluginBadgesBadgeInjection extends PluginBadgesBadge
-   implements PluginDatainjectionInjectionInterface {
+#[AllowDynamicProperties]
+class BadgeInjection extends Badge implements PluginDatainjectionInjectionInterface
+{
 
    /**
     * @return mixed
     */
-   static function getTable($classname = null) {
-
-      $parenttype = get_parent_class();
-      return $parenttype::getTable();
-
-   }
+    static function getTable($classname = null)
+    {
+        return Badge::getTable();
+    }
 
    /**
     * @return bool
     */
-   function isPrimaryType() {
-      return true;
-   }
+    function isPrimaryType()
+    {
+        return true;
+    }
 
    /**
     * @return array
     */
-   function connectedTo() {
-      return [];
-   }
+    function connectedTo()
+    {
+        return [];
+    }
 
    /**
     * @param string $primary_type
     *
     * @return array|the
     */
-   function getOptions($primary_type = '') {
+    function getOptions($primary_type = '')
+    {
 
-      $tab = Search::getOptions(get_parent_class($this));
+        $tab = Search::getOptions(get_parent_class($this));
 
-      //Specific to location
-      $tab[4]['checktype'] = 'date';
-      $tab[5]['checktype'] = 'date';
+       //Specific to location
+        $tab[4]['checktype'] = 'date';
+        $tab[5]['checktype'] = 'date';
 
-      //$blacklist = PluginDatainjectionCommonInjectionLib::getBlacklistedOptions();
-      //Remove some options because some fields cannot be imported
-      $notimportable            = [11, 30, 80];
-      $options['ignore_fields'] = $notimportable;
-      $options['displaytype']   = ["dropdown"       => [2, 7],
+       //$blacklist = PluginDatainjectionCommonInjectionLib::getBlacklistedOptions();
+       //Remove some options because some fields cannot be imported
+        $notimportable            = [11, 30, 80];
+        $options['ignore_fields'] = $notimportable;
+        $options['displaytype']   = ["dropdown"       => [2, 7],
                                         "text"           => [6],
                                         "user"           => [10],
                                         "multiline_text" => [8],
                                         "date"           => [4, 5],
                                         "bool"           => [9]];
 
-      $tab = PluginDatainjectionCommonInjectionLib::addToSearchOptions($tab, $options, $this);
+        $tab = PluginDatainjectionCommonInjectionLib::addToSearchOptions($tab, $options, $this);
 
-      return $tab;
-   }
+        return $tab;
+    }
 
    /**
     * Standard method to delete an object into glpi
@@ -101,11 +105,12 @@ class PluginBadgesBadgeInjection extends PluginBadgesBadge
     * @internal param fields $fields to add into glpi
     * @internal param options $options used during creation
     */
-   function deleteObject($values = [], $options = []) {
-      $lib = new PluginDatainjectionCommonInjectionLib($this, $values, $options);
-      $lib->deleteObject();
-      return $lib->getInjectionResults();
-   }
+    function deleteObject($values = [], $options = [])
+    {
+        $lib = new PluginDatainjectionCommonInjectionLib($this, $values, $options);
+        $lib->deleteObject();
+        return $lib->getInjectionResults();
+    }
 
    /**
     * Standard method to add an object into glpi
@@ -118,10 +123,11 @@ class PluginBadgesBadgeInjection extends PluginBadgesBadge
     * @internal param fields $values to add into glpi
     * @internal param options $options used during creation
     */
-   function addOrUpdateObject($values = [], $options = []) {
+    function addOrUpdateObject($values = [], $options = [])
+    {
 
-      $lib = new PluginDatainjectionCommonInjectionLib($this, $values, $options);
-      $lib->processAddOrUpdate();
-      return $lib->getInjectionResults();
-   }
+        $lib = new PluginDatainjectionCommonInjectionLib($this, $values, $options);
+        $lib->processAddOrUpdate();
+        return $lib->getInjectionResults();
+    }
 }

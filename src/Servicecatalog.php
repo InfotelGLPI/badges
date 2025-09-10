@@ -1,4 +1,5 @@
 <?php
+
 /*
  * @version $Id: HEADER 15930 2011-10-30 15:47:55Z tsmr $
  -------------------------------------------------------------------------
@@ -27,80 +28,75 @@
  --------------------------------------------------------------------------
  */
 
+namespace GlpiPlugin\Badges;
 
-if (!defined('GLPI_ROOT')) {
-    die("Sorry. You can't access directly to this file");
-}
+use CommonGLPI;
+use Session;
 
-
-class PluginBadgesServicecatalog extends CommonGLPI
+class Servicecatalog extends CommonGLPI
 {
+    public static $rightname = 'plugin_badges';
 
-    static $rightname = 'plugin_badges';
+    public $dohistory = false;
 
-    var $dohistory = false;
-
-    static function canUse()
+    public static function canUse()
     {
         return Session::haveRight(self::$rightname, READ);
     }
 
-   /**
-    * @return string
-    */
-    static function getMenuLink()
+    /**
+     * @return string
+     */
+    public static function getMenuLink()
     {
         $root = PLUGIN_BADGES_WEBDIR;
         return $root . "/front/wizard.php";
     }
 
-   /**
-    * @return string
-    */
-    static function getNavBarLink()
+    /**
+     * @return string
+     */
+    public static function getNavBarLink()
     {
-        global $CFG_GLPI;
-
         return PLUGIN_BADGES_WEBDIR . "/front/wizard.php";
     }
 
-    static function getMenuLogo()
+    public static function getMenuLogo()
     {
 
-        return PluginBadgesBadge::getIcon();
+        return Badge::getIcon();
     }
 
-   /**
-    * @return string
-    * @throws \GlpitestSQLError
-    */
-    static function getMenuLogoCss()
+    /**
+     * @return string
+     * @throws \GlpitestSQLError
+     */
+    public static function getMenuLogoCss()
     {
 
         $addstyle = "font-size: 4.5em;";
         return $addstyle;
     }
 
-    static function getMenuTitle()
-    {
-        global $CFG_GLPI;
-
-        return __('Manage temporary badges', 'badges');
-    }
-
-
-    static function getMenuComment()
+    public static function getMenuTitle()
     {
 
         return __('Manage temporary badges', 'badges');
     }
 
-    static function getLinkList()
+
+    public static function getMenuComment()
+    {
+
+        return __('Manage temporary badges', 'badges');
+    }
+
+    public static function getLinkList()
     {
         return "";
     }
 
-    static function getList()
+    public static function getList()
     {
         return "";
     }

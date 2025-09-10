@@ -27,16 +27,23 @@
  --------------------------------------------------------------------------
  */
 
-if (!defined('GLPI_ROOT')) {
-    die("Sorry. You can't access directly to this file");
-}
+namespace GlpiPlugin\Badges;
 
+use CommonDBTM;
+use Dropdown;
 use Glpi\Application\View\TemplateRenderer;
 use Glpi\DBAL\QueryExpression;
+use Html;
+use Location;
+use MassiveAction;
+use NotificationEvent;
+use Plugin;
+use Session;
+
 /**
- * Class PluginBadgesBadge
+ * Class Badge
  */
-class PluginBadgesBadge extends CommonDBTM
+class Badge extends CommonDBTM
 {
 
     public $dohistory = true;
@@ -46,7 +53,7 @@ class PluginBadgesBadge extends CommonDBTM
     /**
      * @param int $nb
      *
-     * @return translated
+     * @return string
      */
     static function getTypeName($nb = 0)
     {
@@ -209,7 +216,7 @@ class PluginBadgesBadge extends CommonDBTM
     {
         $ong = [];
         $this->addDefaultFormTab($ong);
-        $this->addStandardTab('PluginBadgesReturn', $ong, $options);
+        $this->addStandardTab(BadgeReturn::class, $ong, $options);
         $this->addStandardTab('Item_Ticket', $ong, $options);
         $this->addStandardTab('Item_Problem', $ong, $options);
         $this->addStandardTab('Document_Item', $ong, $options);
@@ -418,7 +425,7 @@ class PluginBadgesBadge extends CommonDBTM
     /**
      * @param null $checkitem
      *
-     * @return an
+     * @return array
      */
     function getSpecificMassiveActions($checkitem = null)
     {
@@ -429,7 +436,7 @@ class PluginBadgesBadge extends CommonDBTM
             && Session::isMultiEntitiesMode()
             && $isadmin
         ) {
-            $actions['PluginBadgesBadge' . MassiveAction::CLASS_ACTION_SEPARATOR . 'transfer'] = __('Transfer');
+            $actions['GlpiPlugin\Badges\Badge' . MassiveAction::CLASS_ACTION_SEPARATOR . 'transfer'] = __('Transfer');
         }
         return $actions;
     }
@@ -472,10 +479,10 @@ class PluginBadgesBadge extends CommonDBTM
             case "transfer" :
                 $input = $ma->getInput();
 
-                if ($item->getType() == 'PluginBadgesBadge') {
+                if ($item->getType() == Badge::class) {
                     foreach ($ids as $key) {
                         $item->getFromDB($key);
-                        $type = PluginBadgesBadgeType::transfer(
+                        $type = BadgeType::transfer(
                             $item->fields["plugin_badges_badgetypes_id"],
                             $input['entities_id']
                         );
@@ -528,8 +535,8 @@ class PluginBadgesBadge extends CommonDBTM
     {
         global $DB;
 
-        $config = new PluginBadgesConfig();
-        $notif = new PluginBadgesNotificationState();
+        $config = new Config();
+        $notif = new NotificationState();
 
         $config->getFromDB('1');
         $delay = $config->fields["delay_expired"];
@@ -555,8 +562,8 @@ class PluginBadgesBadge extends CommonDBTM
     {
         global $DB;
 
-        $config = new PluginBadgesConfig();
-        $notif = new PluginBadgesNotificationState();
+        $config = new Config();
+        $notif = new NotificationState();
 
         $config->getFromDB('1');
         $delay = $config->fields["delay_whichexpire"];
@@ -598,8 +605,8 @@ class PluginBadgesBadge extends CommonDBTM
         $query_whichexpire = self::queryBadgesWhichExpire();
 
         $querys = [
-            PluginBadgesNotificationTargetBadge::BadgesWhichExpire => $query_whichexpire,
-            PluginBadgesNotificationTargetBadge::ExpiredBadges => $query_expired
+            NotificationTargetBadge::BadgesWhichExpire => $query_whichexpire,
+            NotificationTargetBadge::ExpiredBadges => $query_expired
         ];
 
         $badge_infos = [];
@@ -627,7 +634,7 @@ class PluginBadgesBadge extends CommonDBTM
             foreach ($badge_infos[$type] as $entity => $badges) {
                 Plugin::loadLang('badges');
 
-                if (NotificationEvent::raiseEvent($type, new PluginBadgesBadge(), [
+                if (NotificationEvent::raiseEvent($type, new Badge(), [
                     'entities_id' => $entity,
                     'badges' => $badges
                 ])
@@ -676,8 +683,8 @@ class PluginBadgesBadge extends CommonDBTM
      */
     static function configCron($target)
     {
-        $notif = new PluginBadgesNotificationState();
-        $config = new PluginBadgesConfig();
+        $notif = new NotificationState();
+        $config = new Config();
 
         $config->showConfigForm($target, 1);
         $notif->showNotificationForm($target);
@@ -701,11 +708,11 @@ class PluginBadgesBadge extends CommonDBTM
 
     static function removeRightsFromSession()
     {
-        if (isset($_SESSION['glpimenu']['assets']['types']['PluginBadgesBadge'])) {
-            unset($_SESSION['glpimenu']['assets']['types']['PluginBadgesBadge']);
+        if (isset($_SESSION['glpimenu']['assets']['types'][Badge::class])) {
+            unset($_SESSION['glpimenu']['assets']['types'][Badge::class]);
         }
-        if (isset($_SESSION['glpimenu']['assets']['content']['pluginbadgesbadge'])) {
-            unset($_SESSION['glpimenu']['assets']['content']['pluginbadgesbadge']);
+        if (isset($_SESSION['glpimenu']['assets']['content'][Badge::class])) {
+            unset($_SESSION['glpimenu']['assets']['content'][Badge::class]);
         }
     }
 }

@@ -27,7 +27,7 @@
  --------------------------------------------------------------------------
  */
 
-include('../../../inc/includes.php');
+use GlpiPlugin\Badges\Badge;
 
 if (!isset($_GET["id"])) {
    $_GET["id"] = "";
@@ -36,7 +36,7 @@ if (!isset($_GET["withtemplate"])) {
    $_GET["withtemplate"] = "";
 }
 
-$badge = new PluginBadgesBadge();
+$badge = new Badge();
 
 if (isset($_POST["add"])) {
 
@@ -76,16 +76,12 @@ if (isset($_POST["add"])) {
    $badge->checkGlobal(READ);
 
    if (Session::getCurrentInterface() == 'central') {
-   if (Plugin::isPluginActive("environment")) {
-       Html::header(PluginBadgesBadge::getTypeName(2), '', "assets", "pluginenvironmentdisplay", "badges");
-    } else {
-       Html::header(PluginBadgesBadge::getTypeName(2), '', "assets", "pluginbadgesbadge");
-    }
+       Html::header(Badge::getTypeName(2), '', "assets", Badge::class);
   } else {
      if (Plugin::isPluginActive('servicecatalog')) {
-        PluginServicecatalogMain::showDefaultHeaderHelpdesk(PluginBadgesBadge::getTypeName(2), true);
+        PluginServicecatalogMain::showDefaultHeaderHelpdesk(Badge::getTypeName(2), true);
      } else {
-        Html::helpHeader(PluginBadgesBadge::getTypeName(2));
+        Html::helpHeader(Badge::getTypeName(2));
      }
   }
    $badge->display($_GET);

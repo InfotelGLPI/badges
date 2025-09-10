@@ -29,6 +29,11 @@
  */
 
 use Glpi\Plugin\Hooks;
+use GlpiPlugin\Badges\Badge;
+use GlpiPlugin\Badges\BadgeReturn;
+use GlpiPlugin\Badges\Profile;
+use GlpiPlugin\Badges\Request;
+use GlpiPlugin\Badges\Servicecatalog;
 
 global $CFG_GLPI;
 
@@ -36,7 +41,6 @@ define('PLUGIN_BADGES_VERSION', '3.0.0');
 
 if (!defined("PLUGIN_BADGES_DIR")) {
     define("PLUGIN_BADGES_DIR", Plugin::getPhpDir("badges"));
-//    define("PLUGIN_BADGES_NOTFULL_DIR", Plugin::getPhpDir("badges", false));
     $root = $CFG_GLPI['root_doc'] . '/plugins/badges';
     define("PLUGIN_BADGES_WEBDIR", $root);
 }
@@ -48,15 +52,14 @@ function plugin_init_badges()
 
     $PLUGIN_HOOKS['csrf_compliant']['badges'] = true;
     $PLUGIN_HOOKS['assign_to_ticket']['badges'] = true;
-    $PLUGIN_HOOKS['change_profile']['badges'] = ['PluginBadgesProfile', 'initProfile'];
+    $PLUGIN_HOOKS['change_profile']['badges'] = [Profile::class, 'initProfile'];
 
 
     if (Session::getLoginUserID()) {
-
         $PLUGIN_HOOKS[Hooks::ADD_CSS]['badges'] = ['css/badges.css'];
         $PLUGIN_HOOKS[Hooks::ADD_JAVASCRIPT]['badges'] = ['badges.js'];
 
-        Plugin::registerClass('PluginBadgesBadge', [
+        Plugin::registerClass(Badge::class, [
             'assignable_types' => true,
             'document_types' => true,
             'helpdesk_visible_types' => true,
@@ -64,31 +67,31 @@ function plugin_init_badges()
             'notificationtemplates_types' => true,
         ]);
 
-        Plugin::registerClass('PluginBadgesProfile', ['addtabon' => 'Profile']);
-        Plugin::registerClass('PluginBadgesConfig', ['addtabon' => 'CronTask']);
-        Plugin::registerClass('PluginBadgesReturn', ['addtabon' => 'CronTask']);
-        Plugin::registerClass('PluginBadgesRequest', ['addtabon' => 'User']);
+        Plugin::registerClass(Profile::class, ['addtabon' => 'Profile']);
+        Plugin::registerClass(Config::class, ['addtabon' => 'CronTask']);
+        Plugin::registerClass(BadgeReturn::class, ['addtabon' => 'CronTask']);
+        Plugin::registerClass(Request::class, ['addtabon' => 'User']);
 
         if (class_exists('PluginResourcesResource')) {
-            PluginResourcesResource::registerType('PluginBadgesBadge');
+            PluginResourcesResource::registerType(Badge::class);
         }
 
         if (!Plugin::isPluginActive('environment')
             && Session::haveRight("plugin_badges", READ)) {
-            $PLUGIN_HOOKS['menu_toadd']['badges'] = ['assets' => 'PluginBadgesBadge'];
-            if (!in_array('PluginBadgesBadge', $CFG_GLPI['globalsearch_types'])) {
-                array_push($CFG_GLPI['globalsearch_types'], 'PluginBadgesBadge');
+            $PLUGIN_HOOKS['menu_toadd']['badges'] = ['assets' => Badge::class];
+            if (!in_array(Badge::class, $CFG_GLPI['globalsearch_types'])) {
+                array_push($CFG_GLPI['globalsearch_types'], Badge::class);
             }
         }
 
         if (Session::haveRight("plugin_badges", READ)
             && !Plugin::isPluginActive('servicecatalog')) {
             $PLUGIN_HOOKS['helpdesk_menu_entry']['badges'] =  PLUGIN_BADGES_WEBDIR . '/front/wizard.php';
-            $PLUGIN_HOOKS['helpdesk_menu_entry_icon']['badges'] = PluginBadgesBadge::getIcon();
+            $PLUGIN_HOOKS['helpdesk_menu_entry_icon']['badges'] = Badge::getIcon();
         }
 
         if (Plugin::isPluginActive('servicecatalog')) {
-            $PLUGIN_HOOKS['servicecatalog']['badges'] = ['PluginBadgesServicecatalog'];
+            $PLUGIN_HOOKS['servicecatalog']['badges'] = [Servicecatalog::class];
         }
 
         if (Session::haveRight("plugin_badges", UPDATE)) {
@@ -135,6 +138,6 @@ function plugin_version_badges()
  */
 function plugin_datainjection_migratetypes_badges($types)
 {
-    $types[1600] = 'PluginBadgesBadge';
+    $types[1600] = Badge::class;
     return $types;
 }

@@ -27,7 +27,8 @@
  --------------------------------------------------------------------------
  */
 
-include("../../../inc/includes.php");
+use GlpiPlugin\Badges\Request;
+use GlpiPlugin\Badges\BadgeReturn;
 
 Session::checkLoginUser();
 //Html::header_nocache();
@@ -35,19 +36,19 @@ Session::checkLoginUser();
 switch ($_POST['action']) {
    case 'addToCart':
       header('Content-Type: application/json; charset=UTF-8"');
-      $request = new PluginBadgesRequest();
+      $request = new Request();
       echo json_encode($request->addToCart($_POST));
       break;
 
    case 'addBadges':
       header('Content-Type: application/json; charset=UTF-8"');
-      $request = new PluginBadgesRequest();
+      $request = new Request();
       echo json_encode($request->addBadges($_POST));
       break;
 
    case 'reloadAvailableBadges':
       header("Content-Type: text/html; charset=UTF-8");
-      $request = new PluginBadgesRequest();
+      $request = new Request();
       if (!isset($_POST['used'])) {
          $_POST['used'] = [];
       }
@@ -56,19 +57,19 @@ switch ($_POST['action']) {
 
    case 'loadBadgeInformation':
       header("Content-Type: text/html; charset=UTF-8");
-      $return = new PluginBadgesReturn();
+      $return = new BadgeReturn();
       $return->loadBadgeInformation(Session::getLoginUserID(), $_POST['badges_id']);
       break;
 
    case 'returnBadges':
       header('Content-Type: application/json; charset=UTF-8"');
-      $return = new PluginBadgesReturn();
+      $return = new BadgeReturn();
       echo json_encode($return->returnBadge($_POST));
       break;
 
    case 'searchBadges':
       header('Content-Type: application/json; charset=UTF-8"');
-      $request = new PluginBadgesRequest();
+      $request = new BadgeReturn();
       echo json_encode($request->listItems($_POST['requesters_id'], $_POST));
       break;
 }

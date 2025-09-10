@@ -93,6 +93,6 @@ INSERT INTO `glpi_plugin_badges_configs` VALUES (1, '30', '30', '30');
 INSERT INTO `glpi_notificationtemplates` (name, itemtype)
 VALUES('Alert Badges', 'PluginBadgesBadge');
 
-INSERT INTO `glpi_displaypreferences` VALUES (NULL,'PluginBadgesBadge','3','2','0');
-INSERT INTO `glpi_displaypreferences` VALUES (NULL,'PluginBadgesBadge','4','3','0');
-INSERT INTO `glpi_displaypreferences` VALUES (NULL,'PluginBadgesBadge','5','4','0');
+INSERT INTO `glpi_displaypreferences` VALUES (NULL,'GlpiPlugin\\Badges\\Badge','3','2','0', 'central');
+INSERT INTO `glpi_displaypreferences` VALUES (NULL,'GlpiPlugin\\Badges\\Badge','4','3','0', 'central');
+INSERT INTO `glpi_displaypreferences` VALUES (NULL,'GlpiPlugin\\Badges\\Badge','5','4','0', 'central');

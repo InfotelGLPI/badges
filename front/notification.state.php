@@ -27,30 +27,25 @@
  --------------------------------------------------------------------------
  */
 
-include('../../../inc/includes.php');
+use GlpiPlugin\Badges\Config;
+use GlpiPlugin\Badges\NotificationState;
 
 Session::checkRight("config", UPDATE);
 
-$config = new PluginBadgesConfig();
-$notif = new PluginBadgesNotificationState();
+$config = new Config();
+$notif = new NotificationState();
 
 if (isset($_POST["add"])) {
-
-   $notif->addNotificationState($_POST['states_id']);
-   Html::back();
-
-} else if (isset($_POST["delete"])) {
-
-   foreach ($_POST["item"] as $key => $val) {
-      if ($val == 1) {
-         $notif->delete(['id' => $key]);
-      }
-   }
-   Html::back();
-
-} else if (isset($_POST["update"])) {
-
-   $config->update($_POST);
-   Html::back();
-
+    $notif->addNotificationState($_POST['states_id']);
+    Html::back();
+} elseif (isset($_POST["delete"])) {
+    foreach ($_POST["item"] as $key => $val) {
+        if ($val == 1) {
+            $notif->delete(['id' => $key]);
+        }
+    }
+    Html::back();
+} elseif (isset($_POST["update"])) {
+    $config->update($_POST);
+    Html::back();
 }

@@ -27,32 +27,37 @@
  --------------------------------------------------------------------------
  */
 
-if (!defined('GLPI_ROOT')) {
-   die("Sorry. You can't access directly to this file");
-}
+namespace GlpiPlugin\Badges;
+
+use Ajax;
+use CommonDBTM;
+use CommonGLPI;
+use DbUtils;
+use Dropdown;
+use Html;
+use NotificationEvent;
+use Session;
+use Toolbox;
 
 /**
- * Class PluginBadgesReturn
+ * Class BadgeReturn
  *
  * This class shows the plugin main page
  *
  * @package    Badges
  * @author     Ludovic Dupont
  */
-class PluginBadgesReturn extends CommonDBTM {
-
+class BadgeReturn extends CommonDBTM
+{
    private $request;
 
    static $rightname = "plugin_badges";
 
-   /**
-    * PluginBadgesReturn constructor.
-    */
    function __construct() {
       parent::__construct();
 
       $this->forceTable("glpi_plugin_badges_requests");
-      $this->request = new PluginBadgesRequest();
+      $this->request = new Request();
    }
 
    /**
@@ -84,14 +89,14 @@ class PluginBadgesReturn extends CommonDBTM {
    function getTabNameForItem(CommonGLPI $item, $withtemplate = 0) {
 
       if (!$withtemplate) {
-         if ($item->getType() == 'PluginBadgesBadge') {
+         if ($item->getType() == Badge::class) {
             if ($_SESSION['glpishow_count_on_tabs']) {
                $dbu = new DbUtils();
-               return self::createTabEntry(PluginBadgesRequest::getTypeName(),
+               return self::createTabEntry(Request::getTypeName(),
                                            $dbu->countElementsInTable($this->getTable(),
                                                                       ["badges_id" => $item->getID()]));
             }
-            return PluginBadgesRequest::getTypeName();
+            return Request::getTypeName();
          }
       }
       return '';
@@ -111,7 +116,7 @@ class PluginBadgesReturn extends CommonDBTM {
    static function displayTabContentForItem(CommonGLPI $item, $tabnum = 1, $withtemplate = 0) {
       $field = new self();
 
-      if ($item->getType() == 'PluginBadgesBadge') {
+      if ($item->getType() == Badge::class) {
          $field->showForBadge($item);
       }
       return true;
@@ -132,7 +137,7 @@ class PluginBadgesReturn extends CommonDBTM {
 
       $data = $this->find(['badges_id' => $item->fields['id']], ["affectation_date DESC"]);
 
-      $badge   = new PluginBadgesBadge();
+      $badge   = new Badge();
       $canedit = $badge->can($item->fields['id'], UPDATE);
 
       if ($canedit) {
@@ -145,7 +150,7 @@ class PluginBadgesReturn extends CommonDBTM {
 
          echo "<tr class='tab_bg_1'>";
          echo "<td class='center'>";
-         $return = new PluginBadgesReturn();
+         $return = new BadgeReturn();
          $return->loadBadgeInformation(0, $item->fields['id']);
          echo "</td>";
          echo "</tr>";
@@ -162,7 +167,7 @@ class PluginBadgesReturn extends CommonDBTM {
       }
 
       $this->listItems($data);
-      return;
+
    }
 
 
@@ -407,15 +412,15 @@ class PluginBadgesReturn extends CommonDBTM {
     */
     static function queryBadgesReturnExpire()
     {
-        $config = new PluginBadgesConfig();
+        $config = new Config();
 
         $config->getFromDB('1');
         $delay = $config->fields["delay_returnexpire"] ?? "";
 
         $query = null;
         if (!empty($delay)) {
-            $requesttable = PluginBadgesRequest::getTable();
-            $badgetable = PluginBadgesBadge::getTable();
+            $requesttable = Request::getTable();
+            $badgetable = Badge::getTable();
             $query = [
                 'FROM' => $requesttable,
                 'LEFT JOIN' => [
@@ -461,7 +466,7 @@ class PluginBadgesReturn extends CommonDBTM {
 
       $query_returnexpire = self::queryBadgesReturnExpire();
 
-      $querys = [PluginBadgesNotificationTargetBadge::BadgesReturn => $query_returnexpire];
+      $querys = [NotificationTargetBadge::BadgesReturn => $query_returnexpire];
 
       $badge_infos    = [];
       $badge_messages = [];
@@ -494,7 +499,7 @@ class PluginBadgesReturn extends CommonDBTM {
                                        'affectation_date'  => $badge['affectation_date'],
                                        'requesters_id'     => $badge['requesters_id']];
             }
-            if (NotificationEvent::raiseEvent($type, new PluginBadgesBadge(), ['entities_id'  => $entity,
+            if (NotificationEvent::raiseEvent($type, new Badge(), ['entities_id'  => $entity,
                                                                                     'badges'       => $badges,
                                                                                     'badgerequest' => $badgerequest])
             ) {
@@ -525,7 +530,7 @@ class PluginBadgesReturn extends CommonDBTM {
     * @param $target
     */
    static function configCron($target) {
-      $config = new PluginBadgesConfig();
+      $config = new Config();
       $config->showFormBadgeReturn($target, 1);
    }
 }

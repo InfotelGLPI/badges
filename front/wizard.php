@@ -27,17 +27,20 @@
  --------------------------------------------------------------------------
  */
 
+use GlpiPlugin\Badges\Badge;
+use GlpiPlugin\Badges\Wizard;
+
 if (Session::getCurrentInterface() == 'central') {
-    Html::header(PluginBadgesWizard::getTypeName(2), '', "assets", "pluginbadgesbadge");
+    Html::header(Wizard::getTypeName(2), '', "assets", Badge::class);
 } else {
     if (Plugin::isPluginActive('servicecatalog')) {
-        PluginServicecatalogMain::showDefaultHeaderHelpdesk(PluginBadgesWizard::getTypeName(2));
+        PluginServicecatalogMain::showDefaultHeaderHelpdesk(Wizard::getTypeName(2));
     } else {
-        Html::helpHeader(PluginBadgesWizard::getTypeName(2));
+        Html::helpHeader(Wizard::getTypeName(2));
     }
 }
 
-$wizard = new PluginBadgesWizard();
+$wizard = new Wizard();
 $wizard->showMenu();
 
 if (Session::getCurrentInterface() != 'central'

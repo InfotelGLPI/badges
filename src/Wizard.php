@@ -27,19 +27,19 @@
  --------------------------------------------------------------------------
  */
 
-if (!defined('GLPI_ROOT')) {
-    die("Sorry. You can't access directly to this file");
-}
+namespace GlpiPlugin\Badges;
+
+use CommonDBTM;
 
 /**
- * Class PluginBadgesWizard
+ * Class Wizard
  *
  * This class shows the plugin main page
  *
  * @package    Badges
  * @author     Ludovic Dupont
  */
-class PluginBadgesWizard extends CommonDBTM
+class Wizard extends CommonDBTM
 {
 
     static $rightname = "plugin_badges";
@@ -59,14 +59,13 @@ class PluginBadgesWizard extends CommonDBTM
     */
     function showMenu()
     {
-        global $CFG_GLPI;
 
         if (!$this->canView()) {
             return false;
         }
 
         echo "<h3><div class='alert alert-secondary' role='alert'>";
-        echo "<i class='".PluginBadgesBadge::getIcon()."'></i>&nbsp;";
+        echo "<i class='".Badge::getIcon()."'></i>&nbsp;";
         echo  __("Access badge request", "badges");
         echo "</div></h3>";
 
@@ -75,7 +74,7 @@ class PluginBadgesWizard extends CommonDBTM
        // Badge request
         echo "<div class='center col-md-5 badges_wizard_rank'>";
         echo "<a class='badges_menu_a' href=\"./wizard.form.php?action=badgerequest\">";
-        echo "<i class='".PluginBadgesBadge::getIcon()."' style='font-size: 4.5em;'></i>";
+        echo "<i class='".Badge::getIcon()."' style='font-size: 4.5em;'></i>";
         echo "<br><br>" . __("Access badge request", "badges") . "<br>(" . __("For a limited time", "badges") . ")</a>";
         echo "</div>";
         echo "<div style='width: 10px;'></div>";
@@ -99,11 +98,11 @@ class PluginBadgesWizard extends CommonDBTM
 
         switch ($step) {
             case 'badgerequest':
-                $badgerequest = new PluginBadgesRequest();
+                $badgerequest = new Request();
                 $badgerequest->showBadgeRequest();
                 break;
             case 'badgereturn':
-                $badgereturn = new PluginBadgesReturn();
+                $badgereturn = new BadgeReturn();
                 $badgereturn->showBadgeReturn();
                 break;
         }

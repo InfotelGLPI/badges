@@ -28,43 +28,35 @@
  */
 
 use Glpi\Exception\Http\AccessDeniedHttpException;
-
-include('../../../inc/includes.php');
+use GlpiPlugin\Badges\Badge;
 
 if (Session::getCurrentInterface() == 'central') {
-   if (Plugin::isPluginActive("environment")) {
-     Html::header(PluginBadgesBadge::getTypeName(2), '', "assets", "pluginenvironmentdisplay", "badges");
-  } else {
-     Html::header(PluginBadgesBadge::getTypeName(2), '', "assets", "pluginbadgesbadge");
-  }
+    Html::header(Badge::getTypeName(2), '', "assets", Badge::class);
 } else {
-   if (Plugin::isPluginActive('servicecatalog')) {
-      PluginServicecatalogMain::showDefaultHeaderHelpdesk(PluginBadgesBadge::getTypeName(2));
-   } else {
-      Html::helpHeader(PluginBadgesBadge::getTypeName(2));
-   }
+    if (Plugin::isPluginActive('servicecatalog')) {
+        PluginServicecatalogMain::showDefaultHeaderHelpdesk(Badge::getTypeName(2));
+    } else {
+        Html::helpHeader(Badge::getTypeName(2));
+    }
 }
 
 
-$badge = new PluginBadgesBadge();
+$badge = new Badge();
 $badge->checkGlobal(READ);
 
 if ($badge->canView()) {
-
-   Search::show("PluginBadgesBadge");
-
+    Search::show(Badge::class);
 } else {
     throw new AccessDeniedHttpException();
 }
 
 if (Session::getCurrentInterface() != 'central'
     && Plugin::isPluginActive('servicecatalog')) {
-
-   PluginServicecatalogMain::showNavBarFooter('badges');
+    PluginServicecatalogMain::showNavBarFooter('badges');
 }
 
 if (Session::getCurrentInterface() == 'central') {
-   Html::footer();
+    Html::footer();
 } else {
-   Html::helpFooter();
+    Html::helpFooter();
 }

@@ -55,10 +55,10 @@
 
                         {% if item.isField('plugin_badges_badgetypes_id') %}
                             {{ fields.dropdownField(
-                                "PluginBadgesBadgeType",
+                                "BadgeType",
                                 "plugin_badges_badgetypes_id",
                                 item.fields['plugin_badges_badgetypes_id'],
-                                "PluginBadgesBadgeType"|itemtype_name,
+                                "BadgeType"|itemtype_name,
                             ) }}
                         {% endif %}
 

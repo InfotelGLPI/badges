@@ -1,4 +1,5 @@
 <?php
+
 /*
  * @version $Id: HEADER 15930 2011-10-30 15:47:55Z tsmr $
  -------------------------------------------------------------------------
@@ -27,14 +28,18 @@
  --------------------------------------------------------------------------
  */
 
-if (!defined('GLPI_ROOT')) {
-    die("Sorry. You can't access directly to this file");
-}
+namespace GlpiPlugin\Badges;
+
+use CommonGLPI;
+use DbUtils;
+use Html;
+use ProfileRight;
+use Session;
 
 /**
- * Class PluginBadgesProfile
+ * Class Profile
  */
-class PluginBadgesProfile extends CommonDBTM
+class Profile extends \Profile
 {
     public static $rightname = "profile";
 
@@ -47,12 +52,13 @@ class PluginBadgesProfile extends CommonDBTM
     public function getTabNameForItem(CommonGLPI $item, $withtemplate = 0)
     {
         if ($item->getType() == 'Profile') {
-            return self::createTabEntry(PluginBadgesBadge::getTypeName(2));
+            return self::createTabEntry(Badge::getTypeName(2));
         }
         return '';
     }
 
-    static function getIcon() {
+    public static function getIcon()
+    {
         return "ti ti-id";
     }
 
@@ -72,7 +78,7 @@ class PluginBadgesProfile extends CommonDBTM
             self::addDefaultProfileInfos(
                 $ID,
                 ['plugin_badges'             => 0,
-                      'plugin_badges_open_ticket' => 0]
+                    'plugin_badges_open_ticket' => 0]
             );
             $prof->showForm($ID);
         }
@@ -88,7 +94,7 @@ class PluginBadgesProfile extends CommonDBTM
         self::addDefaultProfileInfos(
             $ID,
             ['plugin_badges'             => 127,
-                  'plugin_badges_open_ticket' => 1],
+                'plugin_badges_open_ticket' => 1],
             true
         );
     }
@@ -133,7 +139,7 @@ class PluginBadgesProfile extends CommonDBTM
      * @param bool $openform
      * @param bool $closeform
      *
-     * @return nothing
+     * @return void
      * @internal param int $items_id id of the profile
      * @internal param value $target url of target
      *
@@ -143,18 +149,18 @@ class PluginBadgesProfile extends CommonDBTM
         echo "<div class='firstbloc'>";
         if (($canedit = Session::haveRightsOr(self::$rightname, [CREATE, UPDATE, PURGE]))
             && $openform) {
-            $profile = new Profile();
+            $profile = new \Profile();
             echo "<form method='post' action='" . $profile->getFormURL() . "'>";
         }
 
-        $profile = new Profile();
+        $profile = new \Profile();
         $profile->getFromDB($profiles_id);
-      //      if ($profile->getField('interface') == 'central') {
+        //      if ($profile->getField('interface') == 'central') {
         $rights = $this->getAllRights();
         $profile->displayRightsChoiceMatrix($rights, ['canedit'       => $canedit,
-                                                           'default_class' => 'tab_bg_2',
-                                                           'title'         => __('General')]);
-      //      }
+            'default_class' => 'tab_bg_2',
+            'title'         => __('General')]);
+        //      }
         echo "<table class='tab_cadre_fixehov'>";
         echo "<tr class='tab_bg_1'><th colspan='4'>" . __('Helpdesk') . "</th></tr>\n";
 
@@ -163,7 +169,7 @@ class PluginBadgesProfile extends CommonDBTM
         echo "<td width='20%'>" . __('Associable items to a ticket') . "</td>";
         echo "<td colspan='5'>";
         Html::showCheckbox(['name'    => '_plugin_badges_open_ticket',
-                                 'checked' => $effective_rights['plugin_badges_open_ticket']]);
+            'checked' => $effective_rights['plugin_badges_open_ticket']]);
         echo "</td></tr>\n";
         echo "</table>";
 
@@ -177,7 +183,7 @@ class PluginBadgesProfile extends CommonDBTM
             Html::closeForm();
         }
         echo "</div>";
-        return;
+
     }
 
     /**
@@ -188,16 +194,16 @@ class PluginBadgesProfile extends CommonDBTM
     public static function getAllRights($all = false)
     {
         $rights = [
-           ['itemtype' => 'PluginBadgesBadge',
-                 'label'    => _n('Badge', 'Badges', 2, 'badges'),
-                 'field'    => 'plugin_badges'
-           ],
+            ['itemtype' => Badge::class,
+                'label'    => _n('Badge', 'Badges', 2, 'badges'),
+                'field'    => 'plugin_badges',
+            ],
         ];
 
         if ($all) {
-            $rights[] = ['itemtype' => 'PluginBadgesBadge',
-                              'label'    => __('Associable items to a ticket'),
-                              'field'    => 'plugin_badges_open_ticket'];
+            $rights[] = ['itemtype' => Badge::class,
+                'label'    => __('Associable items to a ticket'),
+                'field'    => 'plugin_badges_open_ticket'];
         }
 
         return $rights;
@@ -247,22 +253,21 @@ class PluginBadgesProfile extends CommonDBTM
 
         $it = $DB->request([
             'FROM' => 'glpi_plugin_badges_profiles',
-            'WHERE' => ['profiles_id' => $profiles_id]
+            'WHERE' => ['profiles_id' => $profiles_id],
         ]);
         foreach ($it as $profile_data) {
             $matching       = ['badges'      => 'plugin_badges',
-                                    'open_ticket' => 'plugin_badges_open_ticket'];
+                'open_ticket' => 'plugin_badges_open_ticket'];
             $current_rights = ProfileRight::getProfileRights($profiles_id, array_values($matching));
             foreach ($matching as $old => $new) {
                 if (!isset($current_rights[$old])) {
                     $DB->update('glpi_profilerights', ['rights' => self::translateARight($profile_data[$old])], [
                         'name'        => $new,
-                        'profiles_id' => $profiles_id
+                        'profiles_id' => $profiles_id,
                     ]);
                 }
             }
         }
-        return;
     }
 
     /**
@@ -286,7 +291,7 @@ class PluginBadgesProfile extends CommonDBTM
         //Migration old rights in new ones
         $it = $DB->request([
             'SELECT' => ['id'],
-            'FROM' => 'glpi_profiles'
+            'FROM' => 'glpi_profiles',
         ]);
         foreach ($it as $prof) {
             self::migrateOneProfile($prof['id']);
@@ -295,8 +300,8 @@ class PluginBadgesProfile extends CommonDBTM
             'FROM' => 'glpi_profilerights',
             'WHERE' => [
                 'profiles_id' => $_SESSION['glpiactiveprofile']['id'],
-                'name' => ['LIKE', '%plugin_badges%']
-            ]
+                'name' => ['LIKE', '%plugin_badges%'],
+            ],
         ]);
         foreach ($it as $prof) {
             if (isset($_SESSION['glpiactiveprofile'])) {

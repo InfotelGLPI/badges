@@ -27,7 +27,14 @@
  --------------------------------------------------------------------------
  */
 
-include('../../../inc/includes.php');
+use GlpiPlugin\Badges\BadgeReturn;
 
-$dropdown = new PluginBadgesBadgeType();
-include(GLPI_ROOT . "/front/dropdown.common.form.php");
+$return = new BadgeReturn();
+
+if (isset($_POST["force_return"])) {
+    $return->check(-1, UPDATE, $_POST);
+    $result = $return->returnBadge($_POST);
+    Session::addMessageAfterRedirect($result['message']);
+
+    Html::back();
+}

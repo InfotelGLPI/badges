@@ -22,56 +22,59 @@
  */
 
 
-if (!defined('GLPI_ROOT')) {
-   die("Sorry. You can't access directly to this file");
-}
+namespace GlpiPlugin\Badges;
 
+use CommonGLPI;
 
 /**
- * Class PluginBadgesMetademand
+ * Class Metademand
  */
-class PluginBadgesMetademand extends CommonGLPI {
+class Metademand extends CommonGLPI
+{
 
-   static $rightname = 'plugin_metademands';
+    static $rightname = 'plugin_metademands';
 
-   var $dohistory = false;
+    var $dohistory = false;
 
-   /**
-    * @return array
-    */
-   static function addFieldItems() {
+    /**
+     * @return array
+     */
+    static function addFieldItems()
+    {
+        return [
+            Badge::class,
+        ];
+    }
 
-      return ['PluginBadgesBadge',
-      ];
-   }
+    /**
+     * @return array
+     */
+    static function addDropdownFieldItems()
+    {
+        $name = Badge::getTypeName(2);
+        return [$name => [Badge::class => Badge::getTypeName()]];
+        //       return ['PluginBadgesBadge',
+        //       ];
+    }
 
-   /**
-    * @return array
-    */
-   static function addDropdownFieldItems() {
+    /**
+     * @return array
+     */
+    static function getFieldItemsName()
+    {
+        $prefix = _n('Badge', 'Badges', 2, 'badges') . " - ";
+        return [
+            Badge::class => $prefix . Badge::getTypeName(1),
+        ];
+    }
 
-      return [PluginBadgesBadge::getTypeName(2)=>['PluginBadgesBadge'=>PluginBadgesBadge::getTypeName()]];
-      //		return ['PluginBadgesBadge',
-      //		];
-   }
-
-   /**
-    * @return array
-    */
-   static function getFieldItemsName() {
-
-      $prefix = _n('Badge', 'Badges', 2, 'badges') . " - ";
-      return ['PluginBadgesBadge' => $prefix . PluginBadgesBadge::getTypeName(1),
-      ];
-   }
-
-   /**
-    * @return array
-    */
-   static function getFieldItemsType() {
-
-      return ['PluginBadgesBadge' => 'dropdown',
-      ];
-   }
-
+    /**
+     * @return array
+     */
+    static function getFieldItemsType()
+    {
+        return [
+            Badge::class => 'dropdown',
+        ];
+    }
 }
