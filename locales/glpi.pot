@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GLPI - Badges plugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-06 09:55+0000\n"
+"POT-Creation-Date: 2025-09-10 09:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -82,7 +82,7 @@ msgstr ""
 
 #: inc/notificationtargetbadge.class.php:54
 #: inc/notificationtargetbadge.class.php:76 inc/request.class.php:256
-#: inc/wizard.class.php:67 inc/wizard.class.php:76
+#: inc/wizard.class.php:70 inc/wizard.class.php:79
 msgid "Access badge request"
 msgstr ""
 
@@ -180,7 +180,7 @@ msgstr ""
 msgid "Badges in your possession"
 msgstr ""
 
-#: inc/return.class.php:259 inc/wizard.class.php:83
+#: inc/return.class.php:259 inc/wizard.class.php:86
 msgid "Access badge return"
 msgstr ""
 
@@ -196,14 +196,14 @@ msgstr ""
 msgid "Badge returned"
 msgstr ""
 
-#: inc/servicecatalog.class.php:84 inc/servicecatalog.class.php:91
+#: inc/servicecatalog.class.php:88 inc/servicecatalog.class.php:95
 msgid "Manage temporary badges"
 msgstr ""
 
-#: inc/wizard.class.php:52
+#: inc/wizard.class.php:54
 msgid "Badges wizard"
 msgstr ""
 
-#: inc/wizard.class.php:76
+#: inc/wizard.class.php:79
 msgid "For a limited time"
 msgstr ""
