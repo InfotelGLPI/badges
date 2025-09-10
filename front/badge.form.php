@@ -82,7 +82,7 @@ if (isset($_POST["add"])) {
        Html::header(PluginBadgesBadge::getTypeName(2), '', "assets", "pluginbadgesbadge");
     }
   } else {
-     if (('servicecatalog')) {
+     if (Plugin::isPluginActive('servicecatalog')) {
         PluginServicecatalogMain::showDefaultHeaderHelpdesk(PluginBadgesBadge::getTypeName(2), true);
      } else {
         Html::helpHeader(PluginBadgesBadge::getTypeName(2));
