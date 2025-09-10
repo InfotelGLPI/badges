@@ -305,12 +305,12 @@ class PluginBadgesReturn extends CommonDBTM {
       Html::requireJs('glpi_dialog');
       echo "<div id='dialog-confirm'></div>";
 
-       $root = $CFG_GLPI['root_doc'] . '/plugins/badges';
-      echo "<button form='' onclick=\"badges_cancel('" . $root . "/front/wizard.php');\" 
+       $root = PLUGIN_BADGES_WEBDIR;
+      echo "<button form='' onclick=\"badges_cancel('" . $root . "/front/wizard.php');\"
         class='submit btn btn-info  badge_previous_button' />
       " ._sx('button', 'Cancel') . "</button>";
 
-      echo "<button form='' onclick=\"badges_returnBadges('returnBadges','badges_wizardForm');\" 
+      echo "<button form='' onclick=\"badges_returnBadges('returnBadges','badges_wizardForm');\"
         class='submit btn btn-success badge_next_button' />
       " .__('Badges return', 'badges') . "</button>";
       echo Html::hidden('requesters_id', ['value' => Session::getLoginUserID()]);

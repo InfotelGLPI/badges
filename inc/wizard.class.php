@@ -28,7 +28,7 @@
  */
 
 if (!defined('GLPI_ROOT')) {
-   die("Sorry. You can't access directly to this file");
+    die("Sorry. You can't access directly to this file");
 }
 
 /**
@@ -39,72 +39,73 @@ if (!defined('GLPI_ROOT')) {
  * @package    Badges
  * @author     Ludovic Dupont
  */
-class PluginBadgesWizard extends CommonDBTM {
+class PluginBadgesWizard extends CommonDBTM
+{
 
-   static $rightname = "plugin_badges";
+    static $rightname = "plugin_badges";
 
    /**
     * @param int $nb
     *
     * @return string|translated
     */
-   static function getTypeName($nb = 0) {
-      return __('Badges wizard', 'badges');
-   }
+    static function getTypeName($nb = 0)
+    {
+        return __('Badges wizard', 'badges');
+    }
 
    /**
     * Show config menu
     */
-   function showMenu() {
-      global $CFG_GLPI;
+    function showMenu()
+    {
+        global $CFG_GLPI;
 
-      if (!$this->canView()) {
-         return false;
-      }
+        if (!$this->canView()) {
+            return false;
+        }
 
-      echo "<h3><div class='alert alert-secondary' role='alert'>";
-      echo "<i class='".PluginBadgesBadge::getIcon()."'></i>&nbsp;";
-      echo  __("Access badge request", "badges");
-      echo "</div></h3>";
+        echo "<h3><div class='alert alert-secondary' role='alert'>";
+        echo "<i class='".PluginBadgesBadge::getIcon()."'></i>&nbsp;";
+        echo  __("Access badge request", "badges");
+        echo "</div></h3>";
 
-      echo "<div class='row badges_wizard_row' style='margin: 0 auto;'>";
+        echo "<div class='row badges_wizard_row' style='margin: 0 auto;'>";
 
-      // Badge request
-      echo "<div class='center col-md-5 badges_wizard_rank'>";
-      echo "<a class='badges_menu_a' href=\"./wizard.form.php?action=badgerequest\">";
-      echo "<i class='".PluginBadgesBadge::getIcon()."' style='font-size: 4.5em;'></i>";
-      echo "<br><br>" . __("Access badge request", "badges") . "<br>(" . __("For a limited time", "badges") . ")</a>";
-      echo "</div>";
-      echo "<div style='width: 10px;'></div>";
-      // Badge return
-      echo "<div class='center col-md-5 badges_wizard_rank'>";
-      echo "<a class='badges_menu_a' href=\"./wizard.form.php?action=badgereturn\">";
-      echo "<i class='ti ti-receipt-refund' style='font-size: 4.5em;'></i>";
-      echo "<br><br>" . __("Access badge return", "badges") . "</a>";
-      echo "</div>";
+       // Badge request
+        echo "<div class='center col-md-5 badges_wizard_rank'>";
+        echo "<a class='badges_menu_a' href=\"./wizard.form.php?action=badgerequest\">";
+        echo "<i class='".PluginBadgesBadge::getIcon()."' style='font-size: 4.5em;'></i>";
+        echo "<br><br>" . __("Access badge request", "badges") . "<br>(" . __("For a limited time", "badges") . ")</a>";
+        echo "</div>";
+        echo "<div style='width: 10px;'></div>";
+       // Badge return
+        echo "<div class='center col-md-5 badges_wizard_rank'>";
+        echo "<a class='badges_menu_a' href=\"./wizard.form.php?action=badgereturn\">";
+        echo "<i class='ti ti-receipt-refund' style='font-size: 4.5em;'></i>";
+        echo "<br><br>" . __("Access badge return", "badges") . "</a>";
+        echo "</div>";
 
-      echo "</div>";
-
-   }
+        echo "</div>";
+    }
 
    /**
     * Show wizard form of the current step
     *
     * @param $step
     */
-   function showWizard($step) {
+    function showWizard($step)
+    {
 
-      switch ($step) {
-         case 'badgerequest':
-            $badgerequest = new PluginBadgesRequest();
-            $badgerequest->showBadgeRequest();
-            break;
-         case 'badgereturn':
-            $badgereturn = new PluginBadgesReturn();
-            $badgereturn->showBadgeReturn();
-            break;
-      }
-
-   }
-
+        switch ($step) {
+            case 'badgerequest':
+                $badgerequest = new PluginBadgesRequest();
+                $badgerequest->showBadgeRequest();
+                break;
+            case 'badgereturn':
+                $badgereturn = new PluginBadgesReturn();
+                $badgereturn->showBadgeReturn();
+                break;
+        }
+    }
 }

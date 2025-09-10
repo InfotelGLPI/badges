@@ -29,73 +29,79 @@
 
 
 if (!defined('GLPI_ROOT')) {
-   die("Sorry. You can't access directly to this file");
+    die("Sorry. You can't access directly to this file");
 }
 
 
-class PluginBadgesServicecatalog extends CommonGLPI {
+class PluginBadgesServicecatalog extends CommonGLPI
+{
 
-   static $rightname = 'plugin_badges';
+    static $rightname = 'plugin_badges';
 
-   var $dohistory = false;
+    var $dohistory = false;
 
-   static function canUse() {
-      return Session::haveRight(self::$rightname, READ);
-   }
-
-   /**
-    * @return string
-    */
-   static function getMenuLink() {
-      global $CFG_GLPI;
-       $root = $CFG_GLPI['root_doc'] . '/plugins/badges';
-      return $root . "/front/wizard.php";
-   }
+    static function canUse()
+    {
+        return Session::haveRight(self::$rightname, READ);
+    }
 
    /**
     * @return string
     */
-   static function getNavBarLink() {
-      global $CFG_GLPI;
+    static function getMenuLink()
+    {
+        $root = PLUGIN_BADGES_WEBDIR;
+        return $root . "/front/wizard.php";
+    }
 
-      return PLUGIN_BADGES_NOTFULL_DIR . "/front/wizard.php";
-   }
+   /**
+    * @return string
+    */
+    static function getNavBarLink()
+    {
+        global $CFG_GLPI;
 
-   static function getMenuLogo() {
+        return PLUGIN_BADGES_WEBDIR . "/front/wizard.php";
+    }
 
-      return PluginBadgesBadge::getIcon();
+    static function getMenuLogo()
+    {
 
-   }
+        return PluginBadgesBadge::getIcon();
+    }
 
    /**
     * @return string
     * @throws \GlpitestSQLError
     */
-   static function getMenuLogoCss() {
+    static function getMenuLogoCss()
+    {
 
-      $addstyle = "font-size: 4.5em;";
-      return $addstyle;
+        $addstyle = "font-size: 4.5em;";
+        return $addstyle;
+    }
 
-   }
+    static function getMenuTitle()
+    {
+        global $CFG_GLPI;
 
-   static function getMenuTitle() {
-      global $CFG_GLPI;
-
-      return __('Manage temporary badges', 'badges');
-
-   }
+        return __('Manage temporary badges', 'badges');
+    }
 
 
-   static function getMenuComment() {
+    static function getMenuComment()
+    {
 
-      return __('Manage temporary badges', 'badges');
-   }
+        return __('Manage temporary badges', 'badges');
+    }
 
-   static function getLinkList() {
-      return "";
-   }
+    static function getLinkList()
+    {
+        return "";
+    }
 
-   static function getList() {
-      return "";
-   }
+    static function getList()
+    {
+        return "";
+    }
 }

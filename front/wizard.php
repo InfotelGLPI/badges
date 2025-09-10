@@ -27,16 +27,14 @@
  --------------------------------------------------------------------------
  */
 
-include('../../../inc/includes.php');
-
 if (Session::getCurrentInterface() == 'central') {
-   Html::header(PluginBadgesWizard::getTypeName(2), '', "assets", "pluginbadgesbadge");
+    Html::header(PluginBadgesWizard::getTypeName(2), '', "assets", "pluginbadgesbadge");
 } else {
-   if (Plugin::isPluginActive('servicecatalog')) {
-      PluginServicecatalogMain::showDefaultHeaderHelpdesk(PluginBadgesWizard::getTypeName(2));
-   } else {
-      Html::helpHeader(PluginBadgesWizard::getTypeName(2));
-   }
+    if (Plugin::isPluginActive('servicecatalog')) {
+        PluginServicecatalogMain::showDefaultHeaderHelpdesk(PluginBadgesWizard::getTypeName(2));
+    } else {
+        Html::helpHeader(PluginBadgesWizard::getTypeName(2));
+    }
 }
 
 $wizard = new PluginBadgesWizard();
@@ -44,12 +42,11 @@ $wizard->showMenu();
 
 if (Session::getCurrentInterface() != 'central'
     && Plugin::isPluginActive('servicecatalog')) {
-
-   PluginServicecatalogMain::showNavBarFooter('badges');
+    PluginServicecatalogMain::showNavBarFooter('badges');
 }
 
 if (Session::getCurrentInterface() == 'central') {
-   Html::footer();
+    Html::footer();
 } else {
-   Html::helpFooter();
+    Html::helpFooter();
 }

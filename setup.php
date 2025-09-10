@@ -36,7 +36,7 @@ define('PLUGIN_BADGES_VERSION', '3.0.0');
 
 if (!defined("PLUGIN_BADGES_DIR")) {
     define("PLUGIN_BADGES_DIR", Plugin::getPhpDir("badges"));
-    define("PLUGIN_BADGES_NOTFULL_DIR", Plugin::getPhpDir("badges", false));
+//    define("PLUGIN_BADGES_NOTFULL_DIR", Plugin::getPhpDir("badges", false));
     $root = $CFG_GLPI['root_doc'] . '/plugins/badges';
     define("PLUGIN_BADGES_WEBDIR", $root);
 }
@@ -83,7 +83,7 @@ function plugin_init_badges()
 
         if (Session::haveRight("plugin_badges", READ)
             && !Plugin::isPluginActive('servicecatalog')) {
-            $PLUGIN_HOOKS['helpdesk_menu_entry']['badges'] =  $CFG_GLPI['root_doc'] . '/plugins/badges/front/wizard.php';
+            $PLUGIN_HOOKS['helpdesk_menu_entry']['badges'] =  PLUGIN_BADGES_WEBDIR . '/front/wizard.php';
             $PLUGIN_HOOKS['helpdesk_menu_entry_icon']['badges'] = PluginBadgesBadge::getIcon();
         }
 
@@ -101,7 +101,7 @@ function plugin_init_badges()
 
         // Import from Data_Injection plugin
         $PLUGIN_HOOKS['migratetypes']['badges'] = 'plugin_datainjection_migratetypes_badges';
-        $PLUGIN_HOOKS['redirect_page']['badges'] = $CFG_GLPI['root_doc'] . '/plugins/badges/front/wizard.php';
+        $PLUGIN_HOOKS['redirect_page']['badges'] = PLUGIN_BADGES_WEBDIR . '/front/wizard.php';
     }
 }
 
