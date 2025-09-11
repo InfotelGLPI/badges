@@ -32,19 +32,15 @@
  * @return bool
  */
 
-use Glpi\Plugin\Hooks;
 use Glpi\Search\SearchOption;
 use GlpiPlugin\Badges\Badge;
+use GlpiPlugin\Badges\BadgeInjection;
 use GlpiPlugin\Badges\BadgeType;
 use GlpiPlugin\Badges\Profile;
-use GlpiPlugin\Badges\BadgesInjection;
-use GlpiPlugin\Badges\Request;
 
 function plugin_badges_install()
 {
     global $DB;
-
-    include_once(PLUGIN_BADGES_DIR . "/inc/profile.class.php");
 
     $install   = false;
     $update78  = false;
@@ -54,7 +50,7 @@ function plugin_badges_install()
     if (!$DB->tableExists("glpi_plugin_badges")
        && !$DB->tableExists("glpi_plugin_badges_badgetypes")) {
         $install = true;
-        $DB->runFile(PLUGIN_BADGES_DIR . "/sql/empty-3.0.0.sql");
+        $DB->runFile(PLUGIN_BADGES_DIR . "/sql/empty-3.1.0.sql");
     } elseif ($DB->tableExists("glpi_plugin_badges_users")
               && !$DB->tableExists("glpi_plugin_badges_default")) {
         $update78 = true;
@@ -82,6 +78,12 @@ function plugin_badges_install()
         $update85 = true;
     }
 
+    //version 2.0.1
+    if (!$DB->tableExists("glpi_plugin_badges_requests")) {
+        $update201 = true;
+        $DB->runFile(PLUGIN_BADGES_DIR . "/sql/update-2.0.1.sql");
+    }
+
     //version 2.4.1
     if ($DB->tableExists("glpi_plugin_badges_badges")
        && !$DB->fieldExists("glpi_plugin_badges_badges", "is_recursive")) {
@@ -94,10 +96,7 @@ function plugin_badges_install()
         $DB->runFile(PLUGIN_BADGES_DIR . "/sql/update-2.5.1.sql");
     }
 
-    if (!$DB->tableExists("glpi_plugin_badges_requests")) {
-        $update201 = true;
-        $DB->runFile(PLUGIN_BADGES_DIR . "/sql/update-2.0.1.sql");
-    }
+    $DB->runFile(PLUGIN_BADGES_DIR . "/sql/update-3.1.0.sql");
 
     if ($install || $update201) {
         // Badge request notification
@@ -213,14 +212,14 @@ function plugin_badges_install()
                DROP `name` ;";
         $DB->doQuery($query);
 
-        Plugin::migrateItemType(
-            [1600 => Badge::class],
-            ["glpi_savedsearches", "glpi_savedsearches_users", "glpi_displaypreferences",
-                "glpi_documents_items",
-                "glpi_infocoms",
-                "glpi_logs",
-                "glpi_items_tickets"]
-        );
+//        Plugin::migrateItemType(
+//            [1600 => Badge::class],
+//            ["glpi_savedsearches", "glpi_savedsearches_users", "glpi_displaypreferences",
+//                "glpi_documents_items",
+//                "glpi_infocoms",
+//                "glpi_logs",
+//                "glpi_items_tickets"]
+//        );
     }
 
     if ($update85) {
@@ -244,7 +243,7 @@ function plugin_badges_install()
                     foreach ($iterator as $data) {
                         $iq = "INSERT INTO `glpi_notepads`
                              (`itemtype`, `items_id`, `content`, `date`, `date_mod`)
-                      VALUES ('GlpiPlugin\Badges\Badge', '" . $data['id'] . "',
+                      VALUES ('GlpiPlugin\\Badges\\Badge', '" . $data['id'] . "',
                               '" . addslashes($data['notepad']) . "', NOW(), NOW())";
                         $DB->doQuery($iq);
                     }
@@ -294,8 +293,6 @@ function plugin_badges_uninstall()
 {
     global $DB;
 
-    include_once(PLUGIN_BADGES_DIR . "/inc/profile.class.php");
-
     $tables = ["glpi_plugin_badges_badges",
         "glpi_plugin_badges_badgetypes",
         "glpi_plugin_badges_configs",
@@ -303,7 +300,7 @@ function plugin_badges_uninstall()
         "glpi_plugin_badges_requests"];
 
     foreach ($tables as $table) {
-        $DB->dropTable($table);
+        $DB->dropTable($table, true);
     }
 
     //old versions
@@ -316,7 +313,7 @@ function plugin_badges_uninstall()
         "glpi_plugin_badges_default"];
 
     foreach ($tables as $table) {
-        $DB->dropTable($table);
+        $DB->dropTable($table, true);
     }
 
     $notif   = new Notification();
