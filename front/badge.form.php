@@ -28,6 +28,7 @@
  */
 
 use GlpiPlugin\Badges\Badge;
+use GlpiPlugin\Servicecatalog\Main;
 
 if (!isset($_GET["id"])) {
    $_GET["id"] = "";
@@ -79,7 +80,7 @@ if (isset($_POST["add"])) {
        Html::header(Badge::getTypeName(2), '', "assets", Badge::class);
   } else {
      if (Plugin::isPluginActive('servicecatalog')) {
-        PluginServicecatalogMain::showDefaultHeaderHelpdesk(Badge::getTypeName(2), true);
+        Main::showDefaultHeaderHelpdesk(Badge::getTypeName(2), true);
      } else {
         Html::helpHeader(Badge::getTypeName(2));
      }
@@ -89,7 +90,7 @@ if (isset($_POST["add"])) {
    if (Session::getCurrentInterface() != 'central'
       && Plugin::isPluginActive('servicecatalog')) {
 
-     PluginServicecatalogMain::showNavBarFooter('badges');
+     Main::showNavBarFooter('badges');
   }
 
   if (Session::getCurrentInterface() == 'central') {

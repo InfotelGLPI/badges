@@ -29,12 +29,13 @@
 
 use Glpi\Exception\Http\AccessDeniedHttpException;
 use GlpiPlugin\Badges\Badge;
+use GlpiPlugin\Servicecatalog\Main;
 
 if (Session::getCurrentInterface() == 'central') {
     Html::header(Badge::getTypeName(2), '', "assets", Badge::class);
 } else {
     if (Plugin::isPluginActive('servicecatalog')) {
-        PluginServicecatalogMain::showDefaultHeaderHelpdesk(Badge::getTypeName(2));
+        Main::showDefaultHeaderHelpdesk(Badge::getTypeName(2));
     } else {
         Html::helpHeader(Badge::getTypeName(2));
     }
@@ -52,7 +53,7 @@ if ($badge->canView()) {
 
 if (Session::getCurrentInterface() != 'central'
     && Plugin::isPluginActive('servicecatalog')) {
-    PluginServicecatalogMain::showNavBarFooter('badges');
+    Main::showNavBarFooter('badges');
 }
 
 if (Session::getCurrentInterface() == 'central') {

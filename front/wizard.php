@@ -29,12 +29,13 @@
 
 use GlpiPlugin\Badges\Badge;
 use GlpiPlugin\Badges\Wizard;
+use GlpiPlugin\Servicecatalog\Main;
 
 if (Session::getCurrentInterface() == 'central') {
     Html::header(Wizard::getTypeName(2), '', "assets", Badge::class);
 } else {
     if (Plugin::isPluginActive('servicecatalog')) {
-        PluginServicecatalogMain::showDefaultHeaderHelpdesk(Wizard::getTypeName(2));
+        Main::showDefaultHeaderHelpdesk(Wizard::getTypeName(2));
     } else {
         Html::helpHeader(Wizard::getTypeName(2));
     }
@@ -45,7 +46,7 @@ $wizard->showMenu();
 
 if (Session::getCurrentInterface() != 'central'
     && Plugin::isPluginActive('servicecatalog')) {
-    PluginServicecatalogMain::showNavBarFooter('badges');
+    Main::showNavBarFooter('badges');
 }
 
 if (Session::getCurrentInterface() == 'central') {
