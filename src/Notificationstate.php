@@ -155,7 +155,7 @@ class NotificationState extends CommonDBTM
      */
     public function getSpecificMassiveActions($checkitem = null)
     {
-        $actions['GlpiPlugin\Badges\NotificationState;' . MassiveAction::CLASS_ACTION_SEPARATOR . 'purge'] = __('Delete');
+        $actions['GlpiPlugin\Badges\NotificationState' . MassiveAction::CLASS_ACTION_SEPARATOR . 'purge'] = __('Delete');
 
         return $actions;
     }
