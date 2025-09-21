@@ -1,5 +1,5 @@
 
-UPDATE `glpi_displaypreferences` SET `itemtype` = 'GlpiPlugin\\Badges\\Badge' WHERE `glpi_displaypreferences`.`itemtype` = 'PluginBadgesBadge';
+UPDATE `glpi_displaypreferences` SET `itemtype` = 'GlpiPlugin\\Badges\\Badge' WHERE `itemtype` = 'PluginBadgesBadge';
 UPDATE `glpi_notificationtemplates` SET `itemtype` = 'GlpiPlugin\\Badges\\Badge' WHERE `itemtype` = 'PluginBadgesBadge';
 UPDATE `glpi_notifications` SET `itemtype` = 'GlpiPlugin\\Badges\\Badge' WHERE `itemtype` = 'PluginBadgesBadge';
 UPDATE `glpi_impactrelations` SET `itemtype_source` = 'GlpiPlugin\\Badges\\Badge' WHERE `itemtype_source` = 'PluginBadgesBadge';

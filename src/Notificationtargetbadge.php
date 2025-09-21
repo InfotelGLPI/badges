@@ -32,7 +32,9 @@ namespace GlpiPlugin\Badges;
 
 use DbUtils;
 use Dropdown;
+use Html;
 use NotificationTarget;
+use Session;
 
 /**
  * Class NotificationTargetBadge

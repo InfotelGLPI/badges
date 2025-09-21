@@ -73,14 +73,14 @@ class Wizard extends CommonDBTM
 
        // Badge request
         echo "<div class='center col-md-5 badges_wizard_rank'>";
-        echo "<a class='badges_menu_a' href=\"./wizard.form.php?action=badgerequest\">";
+        echo "<a class='badges_menu_a' href='".PLUGIN_BADGES_WEBDIR."/front/wizard.form.php?action=badgerequest'>";
         echo "<i class='".Badge::getIcon()."' style='font-size: 4.5em;'></i>";
         echo "<br><br>" . __("Access badge request", "badges") . "<br>(" . __("For a limited time", "badges") . ")</a>";
         echo "</div>";
         echo "<div style='width: 10px;'></div>";
        // Badge return
         echo "<div class='center col-md-5 badges_wizard_rank'>";
-        echo "<a class='badges_menu_a' href=\"./wizard.form.php?action=badgereturn\">";
+        echo "<a class='badges_menu_a' href='".PLUGIN_BADGES_WEBDIR."/front/wizard.form.php?action=badgereturn'>";
         echo "<i class='ti ti-receipt-refund' style='font-size: 4.5em;'></i>";
         echo "<br><br>" . __("Access badge return", "badges") . "</a>";
         echo "</div>";

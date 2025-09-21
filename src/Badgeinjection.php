@@ -29,6 +29,7 @@
 
 namespace GlpiPlugin\Badges;
 
+use AllowDynamicProperties;
 use PluginDatainjectionCommonInjectionLib;
 use PluginDatainjectionInjectionInterface;
 use Search;
