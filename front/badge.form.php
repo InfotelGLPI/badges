@@ -31,71 +31,59 @@ use GlpiPlugin\Badges\Badge;
 use GlpiPlugin\Servicecatalog\Main;
 
 if (!isset($_GET["id"])) {
-   $_GET["id"] = "";
+    $_GET["id"] = "";
 }
 if (!isset($_GET["withtemplate"])) {
-   $_GET["withtemplate"] = "";
+    $_GET["withtemplate"] = "";
 }
 
 $badge = new Badge();
 
 if (isset($_POST["add"])) {
-
-   $badge->check(-1, CREATE, $_POST);
-   $newID = $badge->add($_POST);
-   if ($_SESSION['glpibackcreated']) {
-      Html::redirect($badge->getFormURL() . "?id=" . $newID);
-   }
-   Html::back();
-
-} else if (isset($_POST["delete"])) {
-
-   $badge->check($_POST['id'], DELETE);
-   $badge->delete($_POST);
-   $badge->redirectToList();
-
-} else if (isset($_POST["restore"])) {
-
-   $badge->check($_POST['id'], PURGE);
-   $badge->restore($_POST);
-   $badge->redirectToList();
-
-} else if (isset($_POST["purge"])) {
-
-   $badge->check($_POST['id'], PURGE);
-   $badge->delete($_POST, 1);
-   $badge->redirectToList();
-
-} else if (isset($_POST["update"])) {
-
-   $badge->check($_POST['id'], UPDATE);
-   $badge->update($_POST);
-   Html::back();
-
+    $badge->check(-1, CREATE, $_POST);
+    $newID = $badge->add($_POST);
+    if ($_SESSION['glpibackcreated']) {
+        Html::redirect($badge->getFormURL() . "?id=" . $newID);
+    }
+    Html::back();
+} elseif (isset($_POST["delete"])) {
+    $badge->check($_POST['id'], DELETE);
+    $badge->delete($_POST);
+    $badge->redirectToList();
+} elseif (isset($_POST["restore"])) {
+    $badge->check($_POST['id'], PURGE);
+    $badge->restore($_POST);
+    $badge->redirectToList();
+} elseif (isset($_POST["purge"])) {
+    $badge->check($_POST['id'], PURGE);
+    $badge->delete($_POST, 1);
+    $badge->redirectToList();
+} elseif (isset($_POST["update"])) {
+    $badge->check($_POST['id'], UPDATE);
+    $badge->update($_POST);
+    Html::back();
 } else {
+    $badge->checkGlobal(READ);
 
-   $badge->checkGlobal(READ);
+    if (Session::getCurrentInterface() == 'central') {
+        Html::header(Badge::getTypeName(2), '', "assets", Badge::class);
+    } else {
+        if (Plugin::isPluginActive('servicecatalog')) {
+            Main::showDefaultHeaderHelpdesk(Badge::getTypeName(2), true);
+        } else {
+            Html::helpHeader(Badge::getTypeName(2));
+        }
+    }
+    $badge->display($_GET);
 
-   if (Session::getCurrentInterface() == 'central') {
-       Html::header(Badge::getTypeName(2), '', "assets", Badge::class);
-  } else {
-     if (Plugin::isPluginActive('servicecatalog')) {
-        Main::showDefaultHeaderHelpdesk(Badge::getTypeName(2), true);
-     } else {
-        Html::helpHeader(Badge::getTypeName(2));
-     }
-  }
-   $badge->display($_GET);
-
-   if (Session::getCurrentInterface() != 'central'
+    if (Session::getCurrentInterface() != 'central'
       && Plugin::isPluginActive('servicecatalog')) {
+        Main::showNavBarFooter('badges');
+    }
 
-     Main::showNavBarFooter('badges');
-  }
-
-  if (Session::getCurrentInterface() == 'central') {
-     Html::footer();
-  } else {
-     Html::helpFooter();
-  }
+    if (Session::getCurrentInterface() == 'central') {
+        Html::footer();
+    } else {
+        Html::helpFooter();
+    }
 }
