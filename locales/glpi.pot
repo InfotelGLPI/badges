@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR Badges Development Team
-# This file is distributed under the same license as the GLPI - Badges plugin package.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: GLPI - Badges plugin\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-22 17:22+0000\n"
+"POT-Creation-Date: 2025-09-23 12:10+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,154 +18,32 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: setup.php:119 src/Badge.php:60 src/Metademand.php:65 src/Profile.php:198
-#: src/Request.php:217 src/Request.php:332
-msgid "Badge"
-msgid_plural "Badges"
-msgstr[0] ""
-msgstr[1] ""
-
-#: src/Badge.php:106 src/Request.php:523
-msgid "Affectation date"
-msgstr ""
-
-#: src/Badge.php:114 src/Notificationtargetbadge.php:89
-#: src/Notificationtargetbadge.php:136
-msgid "Date of end of validity"
-msgstr ""
-
-#: src/Badge.php:195
-msgid "Bookable"
-msgstr ""
-
-#: src/Badge.php:524 src/Notificationtargetbadge.php:58
-#: src/Notificationtargetbadge.php:79
-msgid "Badges which expires"
-msgstr ""
-
-#: src/Badge.php:626 src/BadgeReturn.php:484 src/Notificationtargetbadge.php:57
-#: src/Notificationtargetbadge.php:76
-msgid "Badges at the end of the validity"
-msgstr ""
-
-#: src/BadgeReturn.php:69 src/BadgeReturn.php:148
-msgid "Badge return"
-msgstr ""
-
-#: src/BadgeReturn.php:160
-msgid "Force badge restitution"
-msgstr ""
-
-#: src/BadgeReturn.php:185 src/BadgeReturn.php:217
-msgid "Badge requests history"
-msgstr ""
-
-#: src/BadgeReturn.php:190 src/BadgeReturn.php:349
-#: src/Notificationtargetbadge.php:107 src/Notificationtargetbadge.php:138
-#: src/Request.php:218 src/Request.php:281 src/Request.php:330
-#: src/Request.php:520
-msgid "Visitor realname"
-msgstr ""
-
-#: src/BadgeReturn.php:191 src/BadgeReturn.php:347
-#: src/Notificationtargetbadge.php:108 src/Notificationtargetbadge.php:139
-#: src/Request.php:219 src/Request.php:286 src/Request.php:329
-#: src/Request.php:521
-msgid "Visitor firstname"
-msgstr ""
-
-#: src/BadgeReturn.php:192 src/BadgeReturn.php:354
-#: src/Notificationtargetbadge.php:109 src/Notificationtargetbadge.php:140
-#: src/Request.php:220 src/Request.php:294 src/Request.php:331
-#: src/Request.php:522
-msgid "Visitor society"
-msgstr ""
-
-#: src/BadgeReturn.php:193 src/BadgeReturn.php:360 src/BadgeReturn.php:479
-#: src/Notificationtargetbadge.php:110 src/Notificationtargetbadge.php:141
-#: src/Request.php:145 src/Request.php:221 src/Request.php:305
-#: src/Request.php:333
-msgid "Arrival date"
-msgstr ""
-
-#: src/BadgeReturn.php:194 src/Request.php:151 src/Request.php:222
-msgid "Return date"
-msgstr ""
-
-#: src/BadgeReturn.php:237 src/BadgeReturn.php:275
-msgid "Badges in your possession"
+#: src/Request.php:269 src/Notificationtargetbadge.php:59
+#: src/Notificationtargetbadge.php:82 src/Wizard.php:69 src/Wizard.php:78
+msgid "Access badge request"
 msgstr ""
 
 #: src/BadgeReturn.php:264 src/Wizard.php:85
 msgid "Access badge return"
 msgstr ""
 
-#: src/BadgeReturn.php:299
-msgid "Restitution date"
+#: src/Request.php:318
+msgid "Add to cart"
 msgstr ""
 
-#: src/BadgeReturn.php:320 src/BadgeReturn.php:404
-msgid "Badges return"
-msgstr ""
-
-#: src/BadgeReturn.php:386
-msgid "Badge returned"
-msgstr ""
-
-#: src/Badgetype.php:50
-msgid "Type of badge"
-msgid_plural "Types of badge"
-msgstr[0] ""
-msgstr[1] ""
-
-#: src/Config.php:53
-msgid "Plugin Setup"
-msgstr ""
-
-#: src/Config.php:100 src/Config.php:150
-msgid "Time of checking of validity of the badges"
-msgstr ""
-
-#: src/Config.php:106
-msgid "Badges expired for more than "
-msgstr ""
-
-#: src/Config.php:116
-msgid "Badges expiring in less than "
-msgstr ""
-
-#: src/Config.php:156 src/Notificationtargetbadge.php:60
-#: src/Notificationtargetbadge.php:85
-msgid "Badge return delay"
-msgstr ""
-
-#: src/Notificationstate.php:87 src/Notificationstate.php:126
-msgid "Unused status for expiration mailing"
-msgstr ""
-
-#: src/Notificationtargetbadge.php:59 src/Notificationtargetbadge.php:82
-#: src/Request.php:269 src/Wizard.php:69 src/Wizard.php:78
-msgid "Access badge request"
+#: src/Request.php:523 src/Badge.php:106 templates/badge_form.html.twig:86
+msgid "Affectation date"
 msgstr ""
 
 #: src/Notificationtargetbadge.php:91 src/Notificationtargetbadge.php:137
 msgid "Allotted to"
 msgstr ""
 
-#: src/Notificationtargetbadge.php:151 src/Request.php:60
-msgid "Badges request"
-msgstr ""
-
-#: src/Notificationtargetbadge.php:157
-msgid "Badges expired or badges which expires"
-msgstr ""
-
-#: src/Request.php:140
-msgid "Badges usage search"
-msgstr ""
-
-#: src/Request.php:214 src/Request.php:243
-msgid "Badge usage report"
+#: src/Request.php:145 src/Request.php:221 src/Request.php:305
+#: src/Request.php:333 src/BadgeReturn.php:193 src/BadgeReturn.php:360
+#: src/BadgeReturn.php:479 src/Notificationtargetbadge.php:110
+#: src/Notificationtargetbadge.php:141
+msgid "Arrival date"
 msgstr ""
 
 #: src/Request.php:298 src/Request.php:524
@@ -174,13 +52,12 @@ msgid_plural "Available badges"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/Request.php:318
-msgid "Add to cart"
-msgstr ""
-
-#: src/Request.php:327
-msgid "Cart"
-msgstr ""
+#: setup.php:119 src/Request.php:217 src/Request.php:332 src/Metademand.php:65
+#: src/Profile.php:198 src/Badge.php:60
+msgid "Badge"
+msgid_plural "Badges"
+msgstr[0] ""
+msgstr[1] ""
 
 #: src/Request.php:454
 msgid "Badge affected"
@@ -188,18 +65,170 @@ msgid_plural "Badges affected"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/Request.php:464
-msgid "Please add badges in cart"
+#: src/BadgeReturn.php:185 src/BadgeReturn.php:217
+msgid "Badge requests history"
 msgstr ""
 
-#: src/Servicecatalog.php:84 src/Servicecatalog.php:91
-msgid "Manage temporary badges"
+#: src/BadgeReturn.php:69 src/BadgeReturn.php:148
+msgid "Badge return"
+msgstr ""
+
+#: src/Config.php:156 src/Notificationtargetbadge.php:60
+#: src/Notificationtargetbadge.php:85
+msgid "Badge return delay"
+msgstr ""
+
+#: src/BadgeReturn.php:386
+msgid "Badge returned"
+msgstr ""
+
+#: src/Request.php:214 src/Request.php:243
+msgid "Badge usage report"
+msgstr ""
+
+#: src/BadgeReturn.php:484 src/Notificationtargetbadge.php:57
+#: src/Notificationtargetbadge.php:76 src/Badge.php:626
+msgid "Badges at the end of the validity"
+msgstr ""
+
+#: src/Config.php:106
+msgid "Badges expired for more than "
+msgstr ""
+
+#: src/Notificationtargetbadge.php:157
+msgid "Badges expired or badges which expires"
+msgstr ""
+
+#: src/Config.php:116
+msgid "Badges expiring in less than "
+msgstr ""
+
+#: src/BadgeReturn.php:237 src/BadgeReturn.php:275
+msgid "Badges in your possession"
+msgstr ""
+
+#: src/Request.php:60 src/Notificationtargetbadge.php:151
+msgid "Badges request"
+msgstr ""
+
+#: src/BadgeReturn.php:320 src/BadgeReturn.php:404
+msgid "Badges return"
+msgstr ""
+
+#: src/Request.php:140
+msgid "Badges usage search"
+msgstr ""
+
+#: src/Notificationtargetbadge.php:58 src/Notificationtargetbadge.php:79
+#: src/Badge.php:524
+msgid "Badges which expires"
 msgstr ""
 
 #: src/Wizard.php:54
 msgid "Badges wizard"
 msgstr ""
 
+#: src/Badge.php:195 templates/badge_form.html.twig:116
+msgid "Bookable"
+msgstr ""
+
+#: src/Request.php:327
+msgid "Cart"
+msgstr ""
+
+#: templates/badge_form.html.twig:100
+msgid "Comment"
+msgid_plural "Comments"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Notificationtargetbadge.php:89 src/Notificationtargetbadge.php:136
+#: src/Badge.php:114 templates/badge_form.html.twig:91
+msgid "Date of end of validity"
+msgstr ""
+
+#: templates/badge_form.html.twig:92
+msgid "Empty for infinite"
+msgstr ""
+
 #: src/Wizard.php:78
 msgid "For a limited time"
+msgstr ""
+
+#: src/BadgeReturn.php:160
+msgid "Force badge restitution"
+msgstr ""
+
+#: src/Servicecatalog.php:84 src/Servicecatalog.php:91
+msgid "Manage temporary badges"
+msgstr ""
+
+#: templates/badge_form.html.twig:26
+msgid "Name"
+msgstr ""
+
+#: templates/badge_form.html.twig:109
+msgid "Picture"
+msgid_plural "Pictures"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Request.php:464
+msgid "Please add badges in cart"
+msgstr ""
+
+#: src/Config.php:53
+msgid "Plugin Setup"
+msgstr ""
+
+#: src/BadgeReturn.php:299
+msgid "Restitution date"
+msgstr ""
+
+#: src/Request.php:151 src/Request.php:222 src/BadgeReturn.php:194
+msgid "Return date"
+msgstr ""
+
+#: templates/badge_form.html.twig:69
+msgid "Serial number"
+msgstr ""
+
+#: templates/badge_form.html.twig:78
+msgid "Status"
+msgstr ""
+
+#: templates/badge_form.html.twig:26
+msgid "Surname"
+msgstr ""
+
+#: src/Config.php:100 src/Config.php:150
+msgid "Time of checking of validity of the badges"
+msgstr ""
+
+#: src/Badgetype.php:50
+msgid "Type of badge"
+msgid_plural "Types of badge"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Notificationstate.php:87 src/Notificationstate.php:126
+msgid "Unused status for expiration mailing"
+msgstr ""
+
+#: src/Request.php:219 src/Request.php:286 src/Request.php:329
+#: src/Request.php:521 src/BadgeReturn.php:191 src/BadgeReturn.php:347
+#: src/Notificationtargetbadge.php:108 src/Notificationtargetbadge.php:139
+msgid "Visitor firstname"
+msgstr ""
+
+#: src/Request.php:218 src/Request.php:281 src/Request.php:330
+#: src/Request.php:520 src/BadgeReturn.php:190 src/BadgeReturn.php:349
+#: src/Notificationtargetbadge.php:107 src/Notificationtargetbadge.php:138
+msgid "Visitor realname"
+msgstr ""
+
+#: src/Request.php:220 src/Request.php:294 src/Request.php:331
+#: src/Request.php:522 src/BadgeReturn.php:192 src/BadgeReturn.php:354
+#: src/Notificationtargetbadge.php:109 src/Notificationtargetbadge.php:140
+msgid "Visitor society"
 msgstr ""
