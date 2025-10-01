@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-23 12:10+0000\n"
+"POT-Creation-Date: 2025-10-01 07:36+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,12 +18,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: src/Request.php:269 src/Notificationtargetbadge.php:59
-#: src/Notificationtargetbadge.php:82 src/Wizard.php:69 src/Wizard.php:78
+#: src/Notificationtargetbadge.php:59 src/Notificationtargetbadge.php:82
+#: src/Wizard.php:69 src/Wizard.php:78 src/Request.php:269
 msgid "Access badge request"
 msgstr ""
 
-#: src/BadgeReturn.php:264 src/Wizard.php:85
+#: src/Wizard.php:85 src/BadgeReturn.php:264
 msgid "Access badge return"
 msgstr ""
 
@@ -31,7 +31,7 @@ msgstr ""
 msgid "Add to cart"
 msgstr ""
 
-#: src/Request.php:523 src/Badge.php:106 templates/badge_form.html.twig:86
+#: src/Badge.php:106 src/Request.php:523 templates/badge_form.html.twig:86
 msgid "Affectation date"
 msgstr ""
 
@@ -39,10 +39,10 @@ msgstr ""
 msgid "Allotted to"
 msgstr ""
 
+#: src/Notificationtargetbadge.php:110 src/Notificationtargetbadge.php:141
 #: src/Request.php:145 src/Request.php:221 src/Request.php:305
 #: src/Request.php:333 src/BadgeReturn.php:193 src/BadgeReturn.php:360
-#: src/BadgeReturn.php:479 src/Notificationtargetbadge.php:110
-#: src/Notificationtargetbadge.php:141
+#: src/BadgeReturn.php:479
 msgid "Arrival date"
 msgstr ""
 
@@ -52,8 +52,8 @@ msgid_plural "Available badges"
 msgstr[0] ""
 msgstr[1] ""
 
-#: setup.php:119 src/Request.php:217 src/Request.php:332 src/Metademand.php:65
-#: src/Profile.php:198 src/Badge.php:60
+#: setup.php:120 src/Badge.php:60 src/Profile.php:198 src/Request.php:217
+#: src/Request.php:332 src/Metademand.php:65
 msgid "Badge"
 msgid_plural "Badges"
 msgstr[0] ""
@@ -73,8 +73,8 @@ msgstr ""
 msgid "Badge return"
 msgstr ""
 
-#: src/Config.php:156 src/Notificationtargetbadge.php:60
-#: src/Notificationtargetbadge.php:85
+#: src/Notificationtargetbadge.php:60 src/Notificationtargetbadge.php:85
+#: src/Config.php:156
 msgid "Badge return delay"
 msgstr ""
 
@@ -86,8 +86,8 @@ msgstr ""
 msgid "Badge usage report"
 msgstr ""
 
-#: src/BadgeReturn.php:484 src/Notificationtargetbadge.php:57
-#: src/Notificationtargetbadge.php:76 src/Badge.php:626
+#: src/Notificationtargetbadge.php:57 src/Notificationtargetbadge.php:76
+#: src/Badge.php:626 src/BadgeReturn.php:484
 msgid "Badges at the end of the validity"
 msgstr ""
 
@@ -107,7 +107,7 @@ msgstr ""
 msgid "Badges in your possession"
 msgstr ""
 
-#: src/Request.php:60 src/Notificationtargetbadge.php:151
+#: src/Notificationtargetbadge.php:151 src/Request.php:60
 msgid "Badges request"
 msgstr ""
 
@@ -215,20 +215,20 @@ msgstr[1] ""
 msgid "Unused status for expiration mailing"
 msgstr ""
 
+#: src/Notificationtargetbadge.php:108 src/Notificationtargetbadge.php:139
 #: src/Request.php:219 src/Request.php:286 src/Request.php:329
 #: src/Request.php:521 src/BadgeReturn.php:191 src/BadgeReturn.php:347
-#: src/Notificationtargetbadge.php:108 src/Notificationtargetbadge.php:139
 msgid "Visitor firstname"
 msgstr ""
 
+#: src/Notificationtargetbadge.php:107 src/Notificationtargetbadge.php:138
 #: src/Request.php:218 src/Request.php:281 src/Request.php:330
 #: src/Request.php:520 src/BadgeReturn.php:190 src/BadgeReturn.php:349
-#: src/Notificationtargetbadge.php:107 src/Notificationtargetbadge.php:138
 msgid "Visitor realname"
 msgstr ""
 
+#: src/Notificationtargetbadge.php:109 src/Notificationtargetbadge.php:140
 #: src/Request.php:220 src/Request.php:294 src/Request.php:331
 #: src/Request.php:522 src/BadgeReturn.php:192 src/BadgeReturn.php:354
-#: src/Notificationtargetbadge.php:109 src/Notificationtargetbadge.php:140
 msgid "Visitor society"
 msgstr ""
