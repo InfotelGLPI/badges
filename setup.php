@@ -34,6 +34,7 @@ use GlpiPlugin\Badges\BadgeReturn;
 use GlpiPlugin\Badges\Profile;
 use GlpiPlugin\Badges\Request;
 use GlpiPlugin\Badges\Servicecatalog;
+use GlpiPlugin\Resources\Resource;
 
 global $CFG_GLPI;
 
@@ -72,8 +73,8 @@ function plugin_init_badges()
         Plugin::registerClass(BadgeReturn::class, ['addtabon' => 'CronTask']);
         Plugin::registerClass(Request::class, ['addtabon' => 'User']);
 
-        if (class_exists('PluginResourcesResource')) {
-            PluginResourcesResource::registerType(Badge::class);
+        if (class_exists(Resource::class)) {
+            Resource::registerType(Badge::class);
         }
 
         if (!Plugin::isPluginActive('environment')

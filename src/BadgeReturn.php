@@ -142,7 +142,7 @@ class BadgeReturn extends CommonDBTM
 
       if ($canedit) {
          echo "<form name='form' method='post' action='" . Toolbox::getItemTypeFormURL($this->getType()) . "'>";
-         echo "<div align='center'>";
+         echo "<div class='center'>";
          echo "<table class='tab_cadre_fixe'>";
          echo "<tr>";
          echo "<th colspan='6'>" . __('Badge return', 'badges') . "</th>";

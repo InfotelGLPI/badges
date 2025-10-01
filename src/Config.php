@@ -92,7 +92,7 @@ class Config extends CommonDBTM
         $date_expired     = date("Y-m-d", mktime(0, 0, 0, date("m"), date("d") - $delay_expired, date("y")));
         $date_whichexpire = date("Y-m-d", mktime(0, 0, 0, date("m"), date("d") + $delay_whichexpire, date("y")));
 
-        echo "<div align='center'>";
+        echo "<div class='center'>";
         echo "<form method='post' action=\"$target\">";
         echo "<table class='tab_cadre_fixe'>";
         echo "<tr class='tab_bg_1'>";
@@ -142,7 +142,7 @@ class Config extends CommonDBTM
 
         $this->getFromDB($ID);
 
-        echo "<div align='center'>";
+        echo "<div class='center'>";
         echo "<form method='post' action=\"$target\">";
         echo "<table class='tab_cadre_fixe'>";
         echo "<tr class='tab_bg_1'>";
