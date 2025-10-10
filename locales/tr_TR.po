@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-02 07:29+0000\n"
+"POT-Creation-Date: 2025-10-10 13:52+0000\n"
 "PO-Revision-Date: 2020-11-02 15:44+0000\n"
 "Last-Translator: Kaya Zeren <kayazeren@gmail.com>, 2025\n"
 "Language-Team: Turkish (Turkey) (https://app.transifex.com/infotelGLPI/teams/12355/tr_TR/)\n"
@@ -35,7 +35,7 @@ msgstr "Erişim yaka kartı geri alma"
 msgid "Add to cart"
 msgstr "Sepete ekle"
 
-#: src/Badge.php:106 src/Request.php:523 templates/badge_form.html.twig:86
+#: src/Badge.php:106 src/Request.php:523
 msgid "Affectation date"
 msgstr "Yürürlük tarihi"
 
@@ -132,7 +132,8 @@ msgstr "Süresi dolmuş yaka kartları"
 msgid "Badges wizard"
 msgstr "Yaka kartları yardımcısı"
 
-#: src/Badge.php:195 templates/badge_form.html.twig:116
+#: src/Badge.php:195
+#: /home/runner/work/badges/badges/templates/badge_form.html.twig:116
 msgid "Bookable"
 msgstr "Ayırtılabilir"
 
@@ -140,20 +141,10 @@ msgstr "Ayırtılabilir"
 msgid "Cart"
 msgstr "Sepet"
 
-#: templates/badge_form.html.twig:100
-msgid "Comment"
-msgid_plural "Comments"
-msgstr[0] "Açıklama"
-msgstr[1] "Açıklamalar"
-
 #: src/Badge.php:114 src/NotificationTargetBadge.php:89
-#: src/NotificationTargetBadge.php:136 templates/badge_form.html.twig:91
+#: src/NotificationTargetBadge.php:136
 msgid "Date of end of validity"
 msgstr "Geçerlilik süresinin sonu"
-
-#: templates/badge_form.html.twig:92
-msgid "Empty for infinite"
-msgstr "Süresiz olması için boş bırakın"
 
 #: src/Wizard.php:78
 msgid "For a limited time"
@@ -166,16 +157,6 @@ msgstr "Yaka kartını geri almaya zorla"
 #: src/Servicecatalog.php:84 src/Servicecatalog.php:91
 msgid "Manage temporary badges"
 msgstr "Geçici yaka kartları yönetimi"
-
-#: templates/badge_form.html.twig:26
-msgid "Name"
-msgstr "Ad"
-
-#: templates/badge_form.html.twig:109
-msgid "Picture"
-msgid_plural "Pictures"
-msgstr[0] "Fotoğraf"
-msgstr[1] "Fotoğraflar"
 
 #: src/Request.php:464
 msgid "Please add badges in cart"
@@ -192,18 +173,6 @@ msgstr "Geri verme tarihi"
 #: src/Request.php:151 src/Request.php:222 src/BadgeReturn.php:194
 msgid "Return date"
 msgstr "Geri alma tarihi"
-
-#: templates/badge_form.html.twig:69
-msgid "Serial number"
-msgstr "Seri numarası"
-
-#: templates/badge_form.html.twig:78
-msgid "Status"
-msgstr "Durum"
-
-#: templates/badge_form.html.twig:26
-msgid "Surname"
-msgstr "Soyad"
 
 #: src/Config.php:100 src/Config.php:150
 msgid "Time of checking of validity of the badges"
