@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR Badges Development Team
-# This file is distributed under the same license as the GLPI - Badges plugin package.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
@@ -10,9 +10,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: GLPI - Badges plugin\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-03 06:48+0000\n"
+"POT-Creation-Date: 2025-10-10 13:52+0000\n"
 "PO-Revision-Date: 2020-11-02 15:44+0000\n"
 "Last-Translator: Michael Schieferer, 2022\n"
 "Language-Team: German (Germany) (https://app.transifex.com/infotelGLPI/teams/12355/de_DE/)\n"
@@ -22,193 +22,186 @@ msgstr ""
 "Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: setup.php:109 inc/badge.class.php:51 inc/metademand.class.php:63
-#: inc/profile.class.php:188 inc/request.class.php:195
-#: inc/request.class.php:311
-msgid "Badge"
-msgid_plural "Badges"
-msgstr[0] "Karte"
-msgstr[1] "Karten"
-
-#: inc/badge.class.php:96 inc/request.class.php:493
-msgid "Affectation date"
-msgstr "Aktivierungsdatum"
-
-#: inc/badge.class.php:104 inc/notificationtargetbadge.class.php:83
-#: inc/notificationtargetbadge.class.php:129
-msgid "Date of end of validity"
-msgstr "Ablaufdatum der Gültigkeit"
-
-#: inc/badge.class.php:185
-msgid "Bookable"
-msgstr "Buchbar"
-
-#: inc/badge.class.php:507 inc/notificationtargetbadge.class.php:53
-#: inc/notificationtargetbadge.class.php:73
-msgid "Badges which expires"
-msgstr "Ablaufende Karten"
-
-#: inc/badge.class.php:625 inc/notificationtargetbadge.class.php:52
-#: inc/notificationtargetbadge.class.php:70 inc/return.class.php:453
-msgid "Badges at the end of the validity"
-msgstr "Karten nahe dem Ablaufdatum"
-
-#: inc/badgetype.class.php:48
-msgid "Type of badge"
-msgid_plural "Types of badge"
-msgstr[0] "Kartentyp"
-msgstr[1] "Kartentypen"
-
-#: inc/config.class.php:48
-msgid "Plugin Setup"
-msgstr "Plugin-Einrichtung"
-
-#: inc/config.class.php:93 inc/config.class.php:142
-msgid "Time of checking of validity of the badges"
-msgstr "Überprüfungszeit der Kartengültigkeit"
-
-#: inc/config.class.php:99
-msgid "Badges expired for more than "
-msgstr "Abgelaufene Karten älter als"
-
-#: inc/config.class.php:109
-msgid "Badges expiring in less than "
-msgstr "Auslaufenden Karten in weniger als"
-
-#: inc/config.class.php:148 inc/notificationtargetbadge.class.php:55
-#: inc/notificationtargetbadge.class.php:79
-msgid "Badge return delay"
-msgstr "Karten mit verspäteter Rückgabe"
-
-#: inc/notificationstate.class.php:115 inc/notificationstate.class.php:156
-msgid "Unused status for expiration mailing"
-msgstr "Unbenutzter Status für Ablaufmailing"
-
-#: inc/notificationtargetbadge.class.php:54
-#: inc/notificationtargetbadge.class.php:76 inc/request.class.php:248
-#: inc/wizard.class.php:67 inc/wizard.class.php:76
+#: src/Wizard.php:69 src/Wizard.php:78 src/Request.php:269
+#: src/NotificationTargetBadge.php:59 src/NotificationTargetBadge.php:82
 msgid "Access badge request"
 msgstr "Anfrage für Karte"
 
-#: inc/notificationtargetbadge.class.php:85
-#: inc/notificationtargetbadge.class.php:130
+#: src/Wizard.php:85 src/BadgeReturn.php:264
+msgid "Access badge return"
+msgstr "Kartenretouren"
+
+#: src/Request.php:318
+msgid "Add to cart"
+msgstr "In den Warenkorb legen"
+
+#: src/Badge.php:106 src/Request.php:523
+msgid "Affectation date"
+msgstr "Aktivierungsdatum"
+
+#: src/NotificationTargetBadge.php:91 src/NotificationTargetBadge.php:137
 msgid "Allotted to"
 msgstr "Zugeteilt"
 
-#: inc/notificationtargetbadge.class.php:101
-#: inc/notificationtargetbadge.class.php:131 inc/request.class.php:196
-#: inc/request.class.php:260 inc/request.class.php:309
-#: inc/request.class.php:490 inc/return.class.php:176 inc/return.class.php:334
-msgid "Visitor realname"
-msgstr "Besucher Nachname"
-
-#: inc/notificationtargetbadge.class.php:102
-#: inc/notificationtargetbadge.class.php:132 inc/request.class.php:197
-#: inc/request.class.php:265 inc/request.class.php:308
-#: inc/request.class.php:491 inc/return.class.php:177 inc/return.class.php:332
-msgid "Visitor firstname"
-msgstr "Besucher Vorname"
-
-#: inc/notificationtargetbadge.class.php:103
-#: inc/notificationtargetbadge.class.php:133 inc/request.class.php:198
-#: inc/request.class.php:273 inc/request.class.php:310
-#: inc/request.class.php:492 inc/return.class.php:178 inc/return.class.php:339
-msgid "Visitor society"
-msgstr "Besuchergesellschaft"
-
-#: inc/notificationtargetbadge.class.php:104
-#: inc/notificationtargetbadge.class.php:134 inc/request.class.php:127
-#: inc/request.class.php:199 inc/request.class.php:284
-#: inc/request.class.php:312 inc/return.class.php:179 inc/return.class.php:345
-#: inc/return.class.php:448
+#: src/Request.php:145 src/Request.php:221 src/Request.php:305
+#: src/Request.php:333 src/BadgeReturn.php:193 src/BadgeReturn.php:360
+#: src/BadgeReturn.php:479 src/NotificationTargetBadge.php:110
+#: src/NotificationTargetBadge.php:141
 msgid "Arrival date"
 msgstr "Ankunftsdatum"
 
-#: inc/notificationtargetbadge.class.php:144 inc/request.class.php:52
-msgid "Badges request"
-msgstr "Kartenanfrage"
-
-#: inc/notificationtargetbadge.class.php:150
-msgid "Badges expired or badges which expires"
-msgstr "Karte läuft ab oder ist bereits abgelaufen"
-
-#: inc/request.class.php:122
-msgid "Badges usage search"
-msgstr "Kartennutzung"
-
-#: inc/request.class.php:133 inc/request.class.php:200
-#: inc/return.class.php:180
-msgid "Return date"
-msgstr "Rückgabedatum"
-
-#: inc/request.class.php:192 inc/request.class.php:222
-msgid "Badge usage report"
-msgstr "Karten-Nutzungsbericht"
-
-#: inc/request.class.php:277 inc/request.class.php:494
+#: src/Request.php:298 src/Request.php:524
 msgid "Available badge"
 msgid_plural "Available badges"
 msgstr[0] "Verfügbare Karte"
 msgstr[1] "Verfügbare Karten"
 
-#: inc/request.class.php:297
-msgid "Add to cart"
-msgstr "In den Warenkorb legen"
+#: setup.php:120 src/Badge.php:60 src/Profile.php:198 src/Request.php:217
+#: src/Request.php:332 src/Metademand.php:65
+msgid "Badge"
+msgid_plural "Badges"
+msgstr[0] "Karte"
+msgstr[1] "Karten"
 
-#: inc/request.class.php:306
-msgid "Cart"
-msgstr "Warenkorb"
-
-#: inc/request.class.php:430
+#: src/Request.php:454
 msgid "Badge affected"
 msgid_plural "Badges affected"
 msgstr[0] "Betroffene Karte"
 msgstr[1] "Betroffene Karten"
 
-#: inc/request.class.php:437
-msgid "Please add badges in cart"
-msgstr "Bitte Karten in den Warenkorb legen"
-
-#: inc/return.class.php:64 inc/return.class.php:134
-msgid "Badge return"
-msgstr "Karten-Rückgabe"
-
-#: inc/return.class.php:146
-msgid "Force badge restitution"
-msgstr "Erzwinge Karten-Rückgabe"
-
-#: inc/return.class.php:171 inc/return.class.php:203
+#: src/BadgeReturn.php:185 src/BadgeReturn.php:217
 msgid "Badge requests history"
 msgstr "Verlauf der Kartenanforderungen"
 
-#: inc/return.class.php:223 inc/return.class.php:263
-msgid "Badges in your possession"
-msgstr "Karten in Ihrem Besitz"
+#: src/BadgeReturn.php:69 src/BadgeReturn.php:148
+msgid "Badge return"
+msgstr "Karten-Rückgabe"
 
-#: inc/return.class.php:252 inc/wizard.class.php:83
-msgid "Access badge return"
-msgstr "Kartenretouren"
+#: src/Config.php:156 src/NotificationTargetBadge.php:60
+#: src/NotificationTargetBadge.php:85
+msgid "Badge return delay"
+msgstr "Karten mit verspäteter Rückgabe"
 
-#: inc/return.class.php:286
-msgid "Restitution date"
-msgstr "Rückgabedatum"
-
-#: inc/return.class.php:306 inc/return.class.php:389
-msgid "Badges return"
-msgstr "Karten im Rücklauf"
-
-#: inc/return.class.php:371
+#: src/BadgeReturn.php:386
 msgid "Badge returned"
 msgstr "Karten zurückgegeben"
 
-#: inc/servicecatalog.class.php:84 inc/servicecatalog.class.php:91
-msgid "Manage temporary badges"
-msgstr "Verwaltung temporärer Karten"
+#: src/Request.php:214 src/Request.php:243
+msgid "Badge usage report"
+msgstr "Karten-Nutzungsbericht"
 
-#: inc/wizard.class.php:52
+#: src/Badge.php:626 src/BadgeReturn.php:484
+#: src/NotificationTargetBadge.php:57 src/NotificationTargetBadge.php:76
+msgid "Badges at the end of the validity"
+msgstr "Karten nahe dem Ablaufdatum"
+
+#: src/Config.php:106
+msgid "Badges expired for more than "
+msgstr "Abgelaufene Karten älter als"
+
+#: src/NotificationTargetBadge.php:157
+msgid "Badges expired or badges which expires"
+msgstr "Karte läuft ab oder ist bereits abgelaufen"
+
+#: src/Config.php:116
+msgid "Badges expiring in less than "
+msgstr "Auslaufenden Karten in weniger als"
+
+#: src/BadgeReturn.php:237 src/BadgeReturn.php:275
+msgid "Badges in your possession"
+msgstr "Karten in Ihrem Besitz"
+
+#: src/Request.php:60 src/NotificationTargetBadge.php:151
+msgid "Badges request"
+msgstr "Kartenanfrage"
+
+#: src/BadgeReturn.php:320 src/BadgeReturn.php:404
+msgid "Badges return"
+msgstr "Karten im Rücklauf"
+
+#: src/Request.php:140
+msgid "Badges usage search"
+msgstr "Kartennutzung"
+
+#: src/Badge.php:524 src/NotificationTargetBadge.php:58
+#: src/NotificationTargetBadge.php:79
+msgid "Badges which expires"
+msgstr "Ablaufende Karten"
+
+#: src/Wizard.php:54
 msgid "Badges wizard"
 msgstr "Kartenassistent"
 
-#: inc/wizard.class.php:76
+#: src/Badge.php:195
+#: /home/runner/work/badges/badges/templates/badge_form.html.twig:116
+msgid "Bookable"
+msgstr "Buchbar"
+
+#: src/Request.php:327
+msgid "Cart"
+msgstr "Warenkorb"
+
+#: src/Badge.php:114 src/NotificationTargetBadge.php:89
+#: src/NotificationTargetBadge.php:136
+msgid "Date of end of validity"
+msgstr "Ablaufdatum der Gültigkeit"
+
+#: src/Wizard.php:78
 msgid "For a limited time"
 msgstr "Für eine begrenzte Zeit"
+
+#: src/BadgeReturn.php:160
+msgid "Force badge restitution"
+msgstr "Erzwinge Karten-Rückgabe"
+
+#: src/Servicecatalog.php:84 src/Servicecatalog.php:91
+msgid "Manage temporary badges"
+msgstr "Verwaltung temporärer Karten"
+
+#: src/Request.php:464
+msgid "Please add badges in cart"
+msgstr "Bitte Karten in den Warenkorb legen"
+
+#: src/Config.php:53
+msgid "Plugin Setup"
+msgstr "Plugin-Einrichtung"
+
+#: src/BadgeReturn.php:299
+msgid "Restitution date"
+msgstr "Rückgabedatum"
+
+#: src/Request.php:151 src/Request.php:222 src/BadgeReturn.php:194
+msgid "Return date"
+msgstr "Rückgabedatum"
+
+#: src/Config.php:100 src/Config.php:150
+msgid "Time of checking of validity of the badges"
+msgstr "Überprüfungszeit der Kartengültigkeit"
+
+#: src/BadgeType.php:50
+msgid "Type of badge"
+msgid_plural "Types of badge"
+msgstr[0] "Kartentyp"
+msgstr[1] "Kartentypen"
+
+#: src/NotificationState.php:87 src/NotificationState.php:126
+msgid "Unused status for expiration mailing"
+msgstr "Unbenutzter Status für Ablaufmailing"
+
+#: src/Request.php:219 src/Request.php:286 src/Request.php:329
+#: src/Request.php:521 src/BadgeReturn.php:191 src/BadgeReturn.php:347
+#: src/NotificationTargetBadge.php:108 src/NotificationTargetBadge.php:139
+msgid "Visitor firstname"
+msgstr "Besucher Vorname"
+
+#: src/Request.php:218 src/Request.php:281 src/Request.php:330
+#: src/Request.php:520 src/BadgeReturn.php:190 src/BadgeReturn.php:349
+#: src/NotificationTargetBadge.php:107 src/NotificationTargetBadge.php:138
+msgid "Visitor realname"
+msgstr "Besucher Nachname"
+
+#: src/Request.php:220 src/Request.php:294 src/Request.php:331
+#: src/Request.php:522 src/BadgeReturn.php:192 src/BadgeReturn.php:354
+#: src/NotificationTargetBadge.php:109 src/NotificationTargetBadge.php:140
+msgid "Visitor society"
+msgstr "Besuchergesellschaft"
