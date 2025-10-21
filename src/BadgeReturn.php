@@ -34,6 +34,7 @@ use CommonDBTM;
 use CommonGLPI;
 use DbUtils;
 use Dropdown;
+use Glpi\DBAL\QueryExpression;
 use Html;
 use NotificationEvent;
 use Session;
@@ -408,10 +409,12 @@ class BadgeReturn extends CommonDBTM
    }
 
    /**
-    * @return null|string
+    * @return array
     */
     static function queryBadgesReturnExpire()
     {
+        global $DB;
+
         $config = new Config();
 
         $config->getFromDB('1');
@@ -437,7 +440,7 @@ class BadgeReturn extends CommonDBTM
                         $requesttable . 'affectation_date' => 'NULL'
                     ],
                     [
-                        TIME_TO_SEC(TIMEDIFF(NOW(), $requesttable . `affectation_date`)) => ['>', $delay],
+                        new QueryExpression("TIME_TO_SEC(TIMEDIFF(NOW(), " . $DB->quoteName($requesttable . 'affectation_date') . ")) > $delay"),
                     ]
                 ]
             ];

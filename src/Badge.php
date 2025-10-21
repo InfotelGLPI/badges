@@ -529,7 +529,7 @@ class Badge extends CommonDBTM
     }
 
     /**
-     * @return string
+     * @return array
      */
     static function queryExpiredBadges()
     {
@@ -544,8 +544,7 @@ class Badge extends CommonDBTM
         return [
             'FROM'   => self::getTable(),
             'WHERE'  => [
-                'NOT' => ['date_expiration' => null],
-                'NOT' => [
+                'NOT' => ['date_expiration' => null,
                     'states_id' => $notif->findStates()
                 ],
                 'is_deleted'   => 0,
@@ -556,7 +555,7 @@ class Badge extends CommonDBTM
     }
 
     /**
-     * @return string
+     * @return array
      */
     static function queryBadgesWhichExpire()
     {
@@ -571,17 +570,14 @@ class Badge extends CommonDBTM
         return [
             'FROM'   => self::getTable(),
             'WHERE'  => [
-                'NOT' => ['date_expiration' => null],
-                'NOT' => [
-                    'states_id' => $notif->findStates()
-                ],
+                'NOT' => ['date_expiration' => null,
+                        'states_id' => $notif->findStates()],
                 'is_deleted'   => 0,
                 new QueryExpression("DATEDIFF(CURDATE(), " . $DB->quoteName('date_expiration') . ") > -$delay"),
                 new QueryExpression("DATEDIFF(CURDATE(), " . $DB->quoteName('date_expiration') . ") < 0")
             ]
         ];
 
-        return $query;
     }
 
 
