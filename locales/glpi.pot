@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-10 13:52+0000\n"
+"POT-Creation-Date: 2025-10-21 13:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,7 +23,7 @@ msgstr ""
 msgid "Access badge request"
 msgstr ""
 
-#: src/Wizard.php:85 src/BadgeReturn.php:264
+#: src/Wizard.php:85 src/BadgeReturn.php:265
 msgid "Access badge return"
 msgstr ""
 
@@ -40,8 +40,8 @@ msgid "Allotted to"
 msgstr ""
 
 #: src/Request.php:145 src/Request.php:221 src/Request.php:305
-#: src/Request.php:333 src/BadgeReturn.php:193 src/BadgeReturn.php:360
-#: src/BadgeReturn.php:479 src/NotificationTargetBadge.php:110
+#: src/Request.php:333 src/BadgeReturn.php:194 src/BadgeReturn.php:361
+#: src/BadgeReturn.php:482 src/NotificationTargetBadge.php:110
 #: src/NotificationTargetBadge.php:141
 msgid "Arrival date"
 msgstr ""
@@ -65,11 +65,11 @@ msgid_plural "Badges affected"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/BadgeReturn.php:185 src/BadgeReturn.php:217
+#: src/BadgeReturn.php:186 src/BadgeReturn.php:218
 msgid "Badge requests history"
 msgstr ""
 
-#: src/BadgeReturn.php:69 src/BadgeReturn.php:148
+#: src/BadgeReturn.php:70 src/BadgeReturn.php:149
 msgid "Badge return"
 msgstr ""
 
@@ -78,7 +78,7 @@ msgstr ""
 msgid "Badge return delay"
 msgstr ""
 
-#: src/BadgeReturn.php:386
+#: src/BadgeReturn.php:387
 msgid "Badge returned"
 msgstr ""
 
@@ -86,7 +86,7 @@ msgstr ""
 msgid "Badge usage report"
 msgstr ""
 
-#: src/Badge.php:626 src/BadgeReturn.php:484 src/NotificationTargetBadge.php:57
+#: src/Badge.php:622 src/BadgeReturn.php:487 src/NotificationTargetBadge.php:57
 #: src/NotificationTargetBadge.php:76
 msgid "Badges at the end of the validity"
 msgstr ""
@@ -103,7 +103,7 @@ msgstr ""
 msgid "Badges expiring in less than "
 msgstr ""
 
-#: src/BadgeReturn.php:237 src/BadgeReturn.php:275
+#: src/BadgeReturn.php:238 src/BadgeReturn.php:276
 msgid "Badges in your possession"
 msgstr ""
 
@@ -111,7 +111,7 @@ msgstr ""
 msgid "Badges request"
 msgstr ""
 
-#: src/BadgeReturn.php:320 src/BadgeReturn.php:404
+#: src/BadgeReturn.php:321 src/BadgeReturn.php:405
 msgid "Badges return"
 msgstr ""
 
@@ -145,7 +145,7 @@ msgstr ""
 msgid "For a limited time"
 msgstr ""
 
-#: src/BadgeReturn.php:160
+#: src/BadgeReturn.php:161
 msgid "Force badge restitution"
 msgstr ""
 
@@ -161,11 +161,11 @@ msgstr ""
 msgid "Plugin Setup"
 msgstr ""
 
-#: src/BadgeReturn.php:299
+#: src/BadgeReturn.php:300
 msgid "Restitution date"
 msgstr ""
 
-#: src/Request.php:151 src/Request.php:222 src/BadgeReturn.php:194
+#: src/Request.php:151 src/Request.php:222 src/BadgeReturn.php:195
 msgid "Return date"
 msgstr ""
 
@@ -184,19 +184,19 @@ msgid "Unused status for expiration mailing"
 msgstr ""
 
 #: src/Request.php:219 src/Request.php:286 src/Request.php:329
-#: src/Request.php:521 src/BadgeReturn.php:191 src/BadgeReturn.php:347
+#: src/Request.php:521 src/BadgeReturn.php:192 src/BadgeReturn.php:348
 #: src/NotificationTargetBadge.php:108 src/NotificationTargetBadge.php:139
 msgid "Visitor firstname"
 msgstr ""
 
 #: src/Request.php:218 src/Request.php:281 src/Request.php:330
-#: src/Request.php:520 src/BadgeReturn.php:190 src/BadgeReturn.php:349
+#: src/Request.php:520 src/BadgeReturn.php:191 src/BadgeReturn.php:350
 #: src/NotificationTargetBadge.php:107 src/NotificationTargetBadge.php:138
 msgid "Visitor realname"
 msgstr ""
 
 #: src/Request.php:220 src/Request.php:294 src/Request.php:331
-#: src/Request.php:522 src/BadgeReturn.php:192 src/BadgeReturn.php:354
+#: src/Request.php:522 src/BadgeReturn.php:193 src/BadgeReturn.php:355
 #: src/NotificationTargetBadge.php:109 src/NotificationTargetBadge.php:140
 msgid "Visitor society"
 msgstr ""
