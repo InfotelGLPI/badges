@@ -4,16 +4,16 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Xavier CAILLAUD <thetsmr@gmail.com>, 2020
+# Xavier CAILLAUD <thetsmr@gmail.com>, 2025
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-10 13:52+0000\n"
+"POT-Creation-Date: 2025-10-31 18:02+0000\n"
 "PO-Revision-Date: 2020-11-02 15:44+0000\n"
-"Last-Translator: Xavier CAILLAUD <thetsmr@gmail.com>, 2020\n"
+"Last-Translator: Xavier CAILLAUD <thetsmr@gmail.com>, 2025\n"
 "Language-Team: French (France) (https://app.transifex.com/infotelGLPI/teams/12355/fr_FR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26,7 +26,7 @@ msgstr ""
 msgid "Access badge request"
 msgstr "Demande de badge d'accès"
 
-#: src/Wizard.php:85 src/BadgeReturn.php:264
+#: src/Wizard.php:85 src/BadgeReturn.php:265
 msgid "Access badge return"
 msgstr "Retourner un badge d'accès"
 
@@ -34,7 +34,7 @@ msgstr "Retourner un badge d'accès"
 msgid "Add to cart"
 msgstr "Ajouter au panier"
 
-#: src/Badge.php:106 src/Request.php:523
+#: src/Badge.php:106 src/Request.php:523 templates/badge_form.html.twig:86
 msgid "Affectation date"
 msgstr "Date d'affectation"
 
@@ -43,8 +43,8 @@ msgid "Allotted to"
 msgstr "Attribué à"
 
 #: src/Request.php:145 src/Request.php:221 src/Request.php:305
-#: src/Request.php:333 src/BadgeReturn.php:193 src/BadgeReturn.php:360
-#: src/BadgeReturn.php:479 src/NotificationTargetBadge.php:110
+#: src/Request.php:333 src/BadgeReturn.php:194 src/BadgeReturn.php:361
+#: src/BadgeReturn.php:482 src/NotificationTargetBadge.php:110
 #: src/NotificationTargetBadge.php:141
 msgid "Arrival date"
 msgstr "Date d'arrivée"
@@ -71,11 +71,11 @@ msgstr[0] "Badge affecté"
 msgstr[1] "Badges affectés"
 msgstr[2] "Badges affectés"
 
-#: src/BadgeReturn.php:185 src/BadgeReturn.php:217
+#: src/BadgeReturn.php:186 src/BadgeReturn.php:218
 msgid "Badge requests history"
 msgstr "Historique des demandes de badges"
 
-#: src/BadgeReturn.php:69 src/BadgeReturn.php:148
+#: src/BadgeReturn.php:70 src/BadgeReturn.php:149
 msgid "Badge return"
 msgstr "Retourner un badge"
 
@@ -84,7 +84,7 @@ msgstr "Retourner un badge"
 msgid "Badge return delay"
 msgstr "Délai de retour des badges"
 
-#: src/BadgeReturn.php:386
+#: src/BadgeReturn.php:387
 msgid "Badge returned"
 msgstr "Badge retourné"
 
@@ -92,7 +92,7 @@ msgstr "Badge retourné"
 msgid "Badge usage report"
 msgstr "Rapport des badges utilisés"
 
-#: src/Badge.php:626 src/BadgeReturn.php:484
+#: src/Badge.php:622 src/BadgeReturn.php:487
 #: src/NotificationTargetBadge.php:57 src/NotificationTargetBadge.php:76
 msgid "Badges at the end of the validity"
 msgstr "Badges expirés"
@@ -109,7 +109,7 @@ msgstr "Badges expirés ou badges qui vont expirer"
 msgid "Badges expiring in less than "
 msgstr "Badges qui vont expirer dans moins de"
 
-#: src/BadgeReturn.php:237 src/BadgeReturn.php:275
+#: src/BadgeReturn.php:238 src/BadgeReturn.php:276
 msgid "Badges in your possession"
 msgstr "Badges en votre possession"
 
@@ -117,7 +117,7 @@ msgstr "Badges en votre possession"
 msgid "Badges request"
 msgstr "Demande de badge"
 
-#: src/BadgeReturn.php:320 src/BadgeReturn.php:404
+#: src/BadgeReturn.php:321 src/BadgeReturn.php:405
 msgid "Badges return"
 msgstr "Retourner un badge"
 
@@ -134,8 +134,7 @@ msgstr "Badges qui vont expirer"
 msgid "Badges wizard"
 msgstr "Assistant  de réservation de badges"
 
-#: src/Badge.php:195
-#: /home/runner/work/badges/badges/templates/badge_form.html.twig:116
+#: src/Badge.php:195 templates/badge_form.html.twig:116
 msgid "Bookable"
 msgstr "Réservable"
 
@@ -143,22 +142,44 @@ msgstr "Réservable"
 msgid "Cart"
 msgstr "Panier"
 
+#: templates/badge_form.html.twig:100
+msgid "Comment"
+msgid_plural "Comments"
+msgstr[0] "Commentaire"
+msgstr[1] "Commentaires"
+msgstr[2] "Commentaires"
+
 #: src/Badge.php:114 src/NotificationTargetBadge.php:89
-#: src/NotificationTargetBadge.php:136
+#: src/NotificationTargetBadge.php:136 templates/badge_form.html.twig:91
 msgid "Date of end of validity"
 msgstr "Date de fin de validité"
+
+#: templates/badge_form.html.twig:92
+msgid "Empty for infinite"
+msgstr "Vide pour infini"
 
 #: src/Wizard.php:78
 msgid "For a limited time"
 msgstr "Pour un temps limité"
 
-#: src/BadgeReturn.php:160
+#: src/BadgeReturn.php:161
 msgid "Force badge restitution"
 msgstr "Forcer la restitution d'un badge"
 
 #: src/Servicecatalog.php:84 src/Servicecatalog.php:91
 msgid "Manage temporary badges"
 msgstr "Gérer les badges temporaires"
+
+#: templates/badge_form.html.twig:26
+msgid "Name"
+msgstr "Nom"
+
+#: templates/badge_form.html.twig:109
+msgid "Picture"
+msgid_plural "Pictures"
+msgstr[0] "Image"
+msgstr[1] "Images"
+msgstr[2] "Images"
 
 #: src/Request.php:464
 msgid "Please add badges in cart"
@@ -168,13 +189,25 @@ msgstr "Veuillez ajouter un badge dans le panier"
 msgid "Plugin Setup"
 msgstr "Configuration du plugin"
 
-#: src/BadgeReturn.php:299
+#: src/BadgeReturn.php:300
 msgid "Restitution date"
 msgstr "Date de restitution"
 
-#: src/Request.php:151 src/Request.php:222 src/BadgeReturn.php:194
+#: src/Request.php:151 src/Request.php:222 src/BadgeReturn.php:195
 msgid "Return date"
 msgstr "Date de retour"
+
+#: templates/badge_form.html.twig:69
+msgid "Serial number"
+msgstr "Numéro de série"
+
+#: templates/badge_form.html.twig:78
+msgid "Status"
+msgstr "Statut"
+
+#: templates/badge_form.html.twig:26
+msgid "Surname"
+msgstr "Surnom"
 
 #: src/Config.php:100 src/Config.php:150
 msgid "Time of checking of validity of the badges"
@@ -192,19 +225,19 @@ msgid "Unused status for expiration mailing"
 msgstr "Statuts non utilisés dans l'envoi des emails d'expiration"
 
 #: src/Request.php:219 src/Request.php:286 src/Request.php:329
-#: src/Request.php:521 src/BadgeReturn.php:191 src/BadgeReturn.php:347
+#: src/Request.php:521 src/BadgeReturn.php:192 src/BadgeReturn.php:348
 #: src/NotificationTargetBadge.php:108 src/NotificationTargetBadge.php:139
 msgid "Visitor firstname"
 msgstr "Prénom du visiteur"
 
 #: src/Request.php:218 src/Request.php:281 src/Request.php:330
-#: src/Request.php:520 src/BadgeReturn.php:190 src/BadgeReturn.php:349
+#: src/Request.php:520 src/BadgeReturn.php:191 src/BadgeReturn.php:350
 #: src/NotificationTargetBadge.php:107 src/NotificationTargetBadge.php:138
 msgid "Visitor realname"
 msgstr "Nom du visiteur"
 
 #: src/Request.php:220 src/Request.php:294 src/Request.php:331
-#: src/Request.php:522 src/BadgeReturn.php:192 src/BadgeReturn.php:354
+#: src/Request.php:522 src/BadgeReturn.php:193 src/BadgeReturn.php:355
 #: src/NotificationTargetBadge.php:109 src/NotificationTargetBadge.php:140
 msgid "Visitor society"
 msgstr "Société du visiteur"
