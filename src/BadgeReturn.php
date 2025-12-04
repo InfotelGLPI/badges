@@ -435,7 +435,7 @@ class BadgeReturn extends CommonDBTM
                     ]
                 ],
                 'WHERE' => [
-                    $requesttable . 'is_affected' => '1',
+                    $requesttable . '.is_affected' => '1',
                     'NOT' => [
                         $requesttable . 'affectation_date' => 'NULL'
                     ],
