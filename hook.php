@@ -46,7 +46,7 @@ function plugin_badges_install()
     if (!$DB->tableExists("glpi_plugin_badges")
        && !$DB->tableExists("glpi_plugin_badges_badgetypes")) {
         $install = true;
-        $DB->runFile(PLUGIN_BADGES_DIR . "/sql/empty-3.1.0.sql");
+        $DB->runFile(PLUGIN_BADGES_DIR . "/sql/empty-3.1.3.sql");
     } elseif ($DB->tableExists("glpi_plugin_badges_users")
               && !$DB->tableExists("glpi_plugin_badges_default")) {
         $update78 = true;
@@ -93,6 +93,11 @@ function plugin_badges_install()
     }
 
     $DB->runFile(PLUGIN_BADGES_DIR . "/sql/update-3.1.0.sql");
+
+    //version 3.1.3
+    if (!$DB->fieldExists("glpi_plugin_badges_badges", "users_id_tech")) {
+        $DB->runFile(PLUGIN_BADGES_DIR . "/sql/update-3.1.3.sql");
+    }
 
     if ($install || $update201) {
         // Badge request notification
