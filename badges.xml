@@ -26,6 +26,11 @@
     </authors>
     <versions>
         <version>
+            <num>3.1.4</num>
+            <compatibility>~11.0</compatibility>
+            <download_url>https://github.com/InfotelGLPI/badges/releases/download/3.1.4/glpi-badges-3.1.4.tar.bz2</download_url>
+        </version>
+        <version>
             <num>3.1.3</num>
             <compatibility>~11.0</compatibility>
             <download_url>https://github.com/InfotelGLPI/badges/releases/download/3.1.3/glpi-badges-3.1.3.tar.bz2</download_url>
