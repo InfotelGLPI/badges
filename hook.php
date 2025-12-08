@@ -101,6 +101,8 @@ function plugin_badges_install()
 
     $DB->runFile(PLUGIN_BADGES_DIR . "/sql/update-3.1.4.sql");
 
+    $DB->runFile(PLUGIN_BADGES_DIR . "/sql/update-3.1.5.sql");
+
     //DisplayPreferences Migration
     $classes = ['PluginBadgesBadge' => Badge::class];
 
