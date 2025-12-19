@@ -5,15 +5,16 @@
 # 
 # Translators:
 # Xavier CAILLAUD <thetsmr@gmail.com>, 2020
+# Milo Ivir <mail@milotype.de>, 2025
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-10 13:52+0000\n"
+"POT-Creation-Date: 2025-12-08 11:40+0000\n"
 "PO-Revision-Date: 2020-11-02 15:44+0000\n"
-"Last-Translator: Xavier CAILLAUD <thetsmr@gmail.com>, 2020\n"
+"Last-Translator: Milo Ivir <mail@milotype.de>, 2025\n"
 "Language-Team: Croatian (Croatia) (https://app.transifex.com/infotelGLPI/teams/12355/hr_HR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,27 +25,27 @@ msgstr ""
 #: src/Wizard.php:69 src/Wizard.php:78 src/Request.php:269
 #: src/NotificationTargetBadge.php:59 src/NotificationTargetBadge.php:82
 msgid "Access badge request"
-msgstr "Zahtjev pristupne značke"
+msgstr "Zahtjev za značku pristupa"
 
-#: src/Wizard.php:85 src/BadgeReturn.php:264
+#: src/Wizard.php:85 src/BadgeReturn.php:265
 msgid "Access badge return"
-msgstr "Povratak značke pristupa"
+msgstr "Vraćanje značke pristupa"
 
 #: src/Request.php:318
 msgid "Add to cart"
-msgstr "Dodati u košaricu"
+msgstr "Dodaj u košaricu"
 
-#: src/Badge.php:106 src/Request.php:523
+#: src/Badge.php:106 src/Request.php:523 templates/badge_form.html.twig:86
 msgid "Affectation date"
-msgstr "Datum afektacije"
+msgstr "Datum primjene"
 
 #: src/NotificationTargetBadge.php:91 src/NotificationTargetBadge.php:137
 msgid "Allotted to"
 msgstr "Pripisuje se"
 
 #: src/Request.php:145 src/Request.php:221 src/Request.php:305
-#: src/Request.php:333 src/BadgeReturn.php:193 src/BadgeReturn.php:360
-#: src/BadgeReturn.php:479 src/NotificationTargetBadge.php:110
+#: src/Request.php:333 src/BadgeReturn.php:194 src/BadgeReturn.php:361
+#: src/BadgeReturn.php:482 src/NotificationTargetBadge.php:110
 #: src/NotificationTargetBadge.php:141
 msgid "Arrival date"
 msgstr "Datum dolaska"
@@ -71,55 +72,55 @@ msgstr[0] "Dodijeljena značka"
 msgstr[1] "Dodijeljene značke"
 msgstr[2] "Dodijeljene značke"
 
-#: src/BadgeReturn.php:185 src/BadgeReturn.php:217
+#: src/BadgeReturn.php:186 src/BadgeReturn.php:218
 msgid "Badge requests history"
 msgstr "Povijest zahtjeva znački"
 
-#: src/BadgeReturn.php:69 src/BadgeReturn.php:148
+#: src/BadgeReturn.php:70 src/BadgeReturn.php:149
 msgid "Badge return"
-msgstr "Povratak značke"
+msgstr "Vraćanje značke"
 
 #: src/Config.php:156 src/NotificationTargetBadge.php:60
 #: src/NotificationTargetBadge.php:85
 msgid "Badge return delay"
-msgstr "Rok za povratak značke"
+msgstr "Odgoda vraćanja značke"
 
-#: src/BadgeReturn.php:386
+#: src/BadgeReturn.php:387
 msgid "Badge returned"
 msgstr "Vraćena značka"
 
 #: src/Request.php:214 src/Request.php:243
 msgid "Badge usage report"
-msgstr "Izvještaj korištenja znački"
+msgstr "Izvještaj o korištenju značke"
 
-#: src/Badge.php:626 src/BadgeReturn.php:484
+#: src/Badge.php:622 src/BadgeReturn.php:487
 #: src/NotificationTargetBadge.php:57 src/NotificationTargetBadge.php:76
 msgid "Badges at the end of the validity"
-msgstr "Značke na kraju važenja"
+msgstr "Značke pri kraju valjanosti"
 
 #: src/Config.php:106
 msgid "Badges expired for more than "
-msgstr "Značke istekla više od"
+msgstr "Značke su istekle više od"
 
 #: src/NotificationTargetBadge.php:157
 msgid "Badges expired or badges which expires"
-msgstr "Istekle značke ili značke koje istječu"
+msgstr "Istekle značke ili značke koje isteču"
 
 #: src/Config.php:116
 msgid "Badges expiring in less than "
-msgstr "Značke koji istječu za manje od"
+msgstr "Značke koji isteču za manje od "
 
-#: src/BadgeReturn.php:237 src/BadgeReturn.php:275
+#: src/BadgeReturn.php:238 src/BadgeReturn.php:276
 msgid "Badges in your possession"
-msgstr "Značke koje posjedujete"
+msgstr "Značke koje posjeduješ"
 
 #: src/Request.php:60 src/NotificationTargetBadge.php:151
 msgid "Badges request"
-msgstr "Zahtjev značke"
+msgstr "Zahtjev za značke"
 
-#: src/BadgeReturn.php:320 src/BadgeReturn.php:404
+#: src/BadgeReturn.php:321 src/BadgeReturn.php:405
 msgid "Badges return"
-msgstr "Povratak značke"
+msgstr "Vraćanje znački"
 
 #: src/Request.php:140
 msgid "Badges usage search"
@@ -128,14 +129,13 @@ msgstr "Pretraživanje korištenja znački"
 #: src/Badge.php:524 src/NotificationTargetBadge.php:58
 #: src/NotificationTargetBadge.php:79
 msgid "Badges which expires"
-msgstr "Značke koje istječu"
+msgstr "Značke koje isteču"
 
 #: src/Wizard.php:54
 msgid "Badges wizard"
 msgstr "Pomoćnik za rezervaciju znački"
 
-#: src/Badge.php:195
-#: /home/runner/work/badges/badges/templates/badge_form.html.twig:116
+#: src/Badge.php:195 templates/badge_form.html.twig:116
 msgid "Bookable"
 msgstr "Mogućnost rezerviranja"
 
@@ -143,38 +143,72 @@ msgstr "Mogućnost rezerviranja"
 msgid "Cart"
 msgstr "Košarica"
 
+#: templates/badge_form.html.twig:100
+msgid "Comment"
+msgid_plural "Comments"
+msgstr[0] "Komentar"
+msgstr[1] "Komentari"
+msgstr[2] "Komentari"
+
 #: src/Badge.php:114 src/NotificationTargetBadge.php:89
-#: src/NotificationTargetBadge.php:136
+#: src/NotificationTargetBadge.php:136 templates/badge_form.html.twig:91
 msgid "Date of end of validity"
 msgstr "Datum kraja valjanosti"
+
+#: templates/badge_form.html.twig:92
+msgid "Empty for infinite"
+msgstr "Prazno za beskonačno"
 
 #: src/Wizard.php:78
 msgid "For a limited time"
 msgstr "Za ograničeno vrijeme"
 
-#: src/BadgeReturn.php:160
+#: src/BadgeReturn.php:161
 msgid "Force badge restitution"
-msgstr "Prisiljavajući povratak značke"
+msgstr "Prisili obnovu značke"
 
 #: src/Servicecatalog.php:84 src/Servicecatalog.php:91
 msgid "Manage temporary badges"
-msgstr "Upravljanje privremenih značaka"
+msgstr "Upravljaj privremenim značkama"
+
+#: templates/badge_form.html.twig:26
+msgid "Name"
+msgstr "Ime"
+
+#: templates/badge_form.html.twig:109
+msgid "Picture"
+msgid_plural "Pictures"
+msgstr[0] "Slika"
+msgstr[1] "Slike"
+msgstr[2] "Slike"
 
 #: src/Request.php:464
 msgid "Please add badges in cart"
-msgstr "Dodajte značke u košaricu"
+msgstr "Dodaj značke u košaricu"
 
 #: src/Config.php:53
 msgid "Plugin Setup"
 msgstr "Konfiguracija dodatka"
 
-#: src/BadgeReturn.php:299
+#: src/BadgeReturn.php:300
 msgid "Restitution date"
-msgstr "Datum povratka"
+msgstr "Datum povrata"
 
-#: src/Request.php:151 src/Request.php:222 src/BadgeReturn.php:194
+#: src/Request.php:151 src/Request.php:222 src/BadgeReturn.php:195
 msgid "Return date"
-msgstr "Datum povratka"
+msgstr "Datum vraćanja"
+
+#: templates/badge_form.html.twig:69
+msgid "Serial number"
+msgstr "Serijski broj"
+
+#: templates/badge_form.html.twig:78
+msgid "Status"
+msgstr "Stanje"
+
+#: templates/badge_form.html.twig:26
+msgid "Surname"
+msgstr "Prezime"
 
 #: src/Config.php:100 src/Config.php:150
 msgid "Time of checking of validity of the badges"
@@ -189,22 +223,22 @@ msgstr[2] "Vrste značke"
 
 #: src/NotificationState.php:87 src/NotificationState.php:126
 msgid "Unused status for expiration mailing"
-msgstr "Neiskorišteni statusi za mailing isteknuća"
+msgstr "Neiskorišteno stanje za obavijest o isteku valjanosti"
 
 #: src/Request.php:219 src/Request.php:286 src/Request.php:329
-#: src/Request.php:521 src/BadgeReturn.php:191 src/BadgeReturn.php:347
+#: src/Request.php:521 src/BadgeReturn.php:192 src/BadgeReturn.php:348
 #: src/NotificationTargetBadge.php:108 src/NotificationTargetBadge.php:139
 msgid "Visitor firstname"
 msgstr "Ime posjetitelja"
 
 #: src/Request.php:218 src/Request.php:281 src/Request.php:330
-#: src/Request.php:520 src/BadgeReturn.php:190 src/BadgeReturn.php:349
+#: src/Request.php:520 src/BadgeReturn.php:191 src/BadgeReturn.php:350
 #: src/NotificationTargetBadge.php:107 src/NotificationTargetBadge.php:138
 msgid "Visitor realname"
 msgstr "Prezime posjetitelja"
 
 #: src/Request.php:220 src/Request.php:294 src/Request.php:331
-#: src/Request.php:522 src/BadgeReturn.php:192 src/BadgeReturn.php:354
+#: src/Request.php:522 src/BadgeReturn.php:193 src/BadgeReturn.php:355
 #: src/NotificationTargetBadge.php:109 src/NotificationTargetBadge.php:140
 msgid "Visitor society"
 msgstr "Tvrtka posjetitelja"
