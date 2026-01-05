@@ -1,4 +1,5 @@
 <?php
+
 /*
  * @version $Id: HEADER 15930 2011-10-30 15:47:55Z tsmr $
  -------------------------------------------------------------------------
@@ -36,48 +37,51 @@ use CommonDropdown;
  */
 class BadgeType extends CommonDropdown
 {
+    public static $rightname         = "dropdown";
+    public $can_be_translated = true;
 
-    static $rightname         = "dropdown";
-    var    $can_be_translated = true;
-
-   /**
-    * @param int $nb
-    *
-    * @return string
-    */
-    static function getTypeName($nb = 0)
+    /**
+     * @param int $nb
+     *
+     * @return string
+     */
+    public static function getTypeName($nb = 0)
     {
         return _n('Type of badge', 'Types of badge', $nb, 'badges');
     }
 
+    public static function getIcon()
+    {
+        return "ti ti-id";
+    }
 
-   /**
-    * @param $ID
-    * @param $entity
-    *
-    * @return ID|int|the
-    */
-    static function transfer($ID, $entity)
+    /**
+     * @param $ID
+     * @param $entity
+     *
+     * @return int
+     */
+    public static function transfer($ID, $entity)
     {
         global $DB;
 
         if ($ID > 0) {
             $table = self::getTable();
             $iterator = $DB->request([
-              'FROM'   => $table,
-              'WHERE'  => ['id' => $ID]
+                'FROM'   => $table,
+                'WHERE'  => ['id' => $ID],
             ]);
 
             foreach ($iterator as $data) {
-                 $input['name']        = $data['name'];
-                 $input['entities_id'] = $entity;
-                 $temp                 = new self();
-                 $newID                = $temp->getID();
+                $input['name']        = $data['name'];
+                $input['entities_id'] = $entity;
+                $temp                 = new self();
+                $newID                = $temp->getID();
                 if ($newID < 0) {
                     $newID = $temp->import($input);
                 }
 
-                 return $newID;
+                return $newID;
             }
         }
         return 0;

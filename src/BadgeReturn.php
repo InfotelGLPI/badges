@@ -437,10 +437,10 @@ class BadgeReturn extends CommonDBTM
                 'WHERE' => [
                     $requesttable . '.is_affected' => '1',
                     'NOT' => [
-                        $requesttable . 'affectation_date' => 'NULL'
+                        $requesttable . '.affectation_date' => 'NULL'
                     ],
                     [
-                        new QueryExpression("TIME_TO_SEC(TIMEDIFF(NOW(), " . $DB->quoteName($requesttable . 'affectation_date') . ")) > $delay"),
+                        new QueryExpression("TIME_TO_SEC(TIMEDIFF(NOW(), " . $DB->quoteName($requesttable . '.affectation_date') . ")) > $delay"),
                     ]
                 ]
             ];

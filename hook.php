@@ -46,7 +46,7 @@ function plugin_badges_install()
     if (!$DB->tableExists("glpi_plugin_badges")
        && !$DB->tableExists("glpi_plugin_badges_badgetypes")) {
         $install = true;
-        $DB->runFile(PLUGIN_BADGES_DIR . "/sql/empty-3.1.3.sql");
+        $DB->runFile(PLUGIN_BADGES_DIR . "/sql/empty-3.1.6.sql");
     } elseif ($DB->tableExists("glpi_plugin_badges_users")
               && !$DB->tableExists("glpi_plugin_badges_default")) {
         $update78 = true;
@@ -247,7 +247,7 @@ function plugin_badges_install()
 
     Profile::initProfile();
     Profile::createFirstAccess($_SESSION['glpiactiveprofile']['id']);
-    $migration = new Migration("2.2.0");
+    $migration = new Migration(PLUGIN_BADGES_VERSION);
     $migration->dropTable('glpi_plugin_badges_profiles');
 
     return true;
