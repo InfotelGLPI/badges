@@ -55,10 +55,13 @@
 
                         {% if item.isField('plugin_badges_badgetypes_id') %}
                             {{ fields.dropdownField(
-                                "BadgeType",
+                                "GlpiPlugin\\Badges\\BadgeType",
                                 "plugin_badges_badgetypes_id",
                                 item.fields['plugin_badges_badgetypes_id'],
-                                "BadgeType"|itemtype_name,
+                                "GlpiPlugin\\Badges\\BadgeType"|itemtype_name,
+                                {
+                                    'entity': item.fields['entities_id'],
+                                }
                             ) }}
                         {% endif %}
 
