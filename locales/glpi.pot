@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-08 11:40+0000\n"
+"POT-Creation-Date: 2026-01-05 08:44+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -31,7 +31,7 @@ msgstr ""
 msgid "Add to cart"
 msgstr ""
 
-#: src/Badge.php:106 src/Request.php:523 templates/badge_form.html.twig:86
+#: src/Badge.php:106 src/Request.php:523 templates/badge_form.html.twig:89
 msgid "Affectation date"
 msgstr ""
 
@@ -128,7 +128,7 @@ msgstr ""
 msgid "Badges wizard"
 msgstr ""
 
-#: src/Badge.php:195 templates/badge_form.html.twig:116
+#: src/Badge.php:195 templates/badge_form.html.twig:119
 msgid "Bookable"
 msgstr ""
 
@@ -136,18 +136,18 @@ msgstr ""
 msgid "Cart"
 msgstr ""
 
-#: templates/badge_form.html.twig:100
+#: templates/badge_form.html.twig:103
 msgid "Comment"
 msgid_plural "Comments"
 msgstr[0] ""
 msgstr[1] ""
 
 #: src/Badge.php:114 src/NotificationTargetBadge.php:89
-#: src/NotificationTargetBadge.php:136 templates/badge_form.html.twig:91
+#: src/NotificationTargetBadge.php:136 templates/badge_form.html.twig:94
 msgid "Date of end of validity"
 msgstr ""
 
-#: templates/badge_form.html.twig:92
+#: templates/badge_form.html.twig:95
 msgid "Empty for infinite"
 msgstr ""
 
@@ -167,7 +167,7 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: templates/badge_form.html.twig:109
+#: templates/badge_form.html.twig:112
 msgid "Picture"
 msgid_plural "Pictures"
 msgstr[0] ""
@@ -189,11 +189,11 @@ msgstr ""
 msgid "Return date"
 msgstr ""
 
-#: templates/badge_form.html.twig:69
+#: templates/badge_form.html.twig:72
 msgid "Serial number"
 msgstr ""
 
-#: templates/badge_form.html.twig:78
+#: templates/badge_form.html.twig:81
 msgid "Status"
 msgstr ""
 
