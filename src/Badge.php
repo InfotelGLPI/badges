@@ -541,17 +541,21 @@ class Badge extends CommonDBTM
         $config->getFromDB('1');
         $delay = $config->fields["delay_expired"];
 
-        return [
+        $criteria = [
             'FROM'   => self::getTable(),
             'WHERE'  => [
-                'NOT' => ['date_expiration' => null,
-                    'states_id' => $notif->findStates()
+                'NOT' => ['date_expiration' => null
                 ],
                 'is_deleted'   => 0,
                 new QueryExpression("DATEDIFF(CURDATE(), " . $DB->quoteName('date_expiration') . ") > $delay"),
                 new QueryExpression("DATEDIFF(CURDATE(), " . $DB->quoteName('date_expiration') . ") > 0")
             ]
         ];
+
+        if (count($notif->findStates()) > 0) {
+            $criteria['WHERE'] = $criteria['WHERE'] + ['states_id' => $notif->findStates()];
+        }
+        return $criteria;
     }
 
     /**
@@ -567,16 +571,20 @@ class Badge extends CommonDBTM
         $config->getFromDB('1');
         $delay = $config->fields["delay_whichexpire"];
 
-        return [
+        $criteria = [
             'FROM'   => self::getTable(),
             'WHERE'  => [
-                'NOT' => ['date_expiration' => null,
-                        'states_id' => $notif->findStates()],
+                'NOT' => ['date_expiration' => null],
                 'is_deleted'   => 0,
                 new QueryExpression("DATEDIFF(CURDATE(), " . $DB->quoteName('date_expiration') . ") > -$delay"),
                 new QueryExpression("DATEDIFF(CURDATE(), " . $DB->quoteName('date_expiration') . ") < 0")
             ]
         ];
+
+        if (count($notif->findStates()) > 0) {
+            $criteria['WHERE'] = $criteria['WHERE'] + ['states_id' => $notif->findStates()];
+        }
+        return $criteria;
 
     }
 
