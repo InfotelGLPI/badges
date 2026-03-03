@@ -67,8 +67,6 @@ class NotificationTargetBadge extends NotificationTarget
     public function addDataForTemplate($event, $options = [])
     {
 
-        $dbu = new DbUtils();
-
         $this->data['##badge.entity##']      = Dropdown::getDropdownName('glpi_entities', $options['entities_id']);
         $this->data['##lang.badge.entity##'] = __('Entity');
         switch ($event) {
@@ -184,7 +182,7 @@ class NotificationTargetBadge extends NotificationTarget
             case self::REQUESTER:
                 if (isset($this->options['badgerequest'])) {
                     foreach ($this->options['badgerequest'] as $badgeRequest) {
-                        $this->target_object->fields['requesters_id'] = $badgeRequest['requesters_id'];
+                        $this->obj->fields['requesters_id'] = $badgeRequest['requesters_id'];
                         $this->addUserByField("requesters_id");
                     }
                 }

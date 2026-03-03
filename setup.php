@@ -31,6 +31,7 @@
 use Glpi\Plugin\Hooks;
 use GlpiPlugin\Badges\Badge;
 use GlpiPlugin\Badges\BadgeReturn;
+use GlpiPlugin\Badges\Config;
 use GlpiPlugin\Badges\Profile;
 use GlpiPlugin\Badges\Request;
 use GlpiPlugin\Badges\Servicecatalog;

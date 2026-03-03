@@ -32,6 +32,7 @@ namespace GlpiPlugin\Badges;
 use CommonDBTM;
 use CommonGLPI;
 use Dropdown;
+use Glpi\Application\View\TemplateRenderer;
 use Html;
 
 /**
@@ -39,22 +40,27 @@ use Html;
  */
 class Config extends CommonDBTM
 {
-
+    public static $rightname = "config";
    /**
     * @param CommonGLPI $item
     * @param int        $withtemplate
     *
-    * @return string|translated
+    * @return string
     */
     function getTabNameForItem(CommonGLPI $item, $withtemplate = 0)
     {
 
-        if ($item->getType() == 'CronTask' && $item->getField('name') == "BadgesAlert") {
-            return __('Plugin Setup', 'badges');
+        if ($item->getType() == 'CronTask'
+            && $item->getField('name') == "BadgesAlert") {
+            return self::createTabEntry(__s('Plugin Setup', 'badges'));
         }
         return '';
     }
 
+    public static function getIcon()
+    {
+        return "ti ti-id";
+    }
 
    /**
     * @param CommonGLPI $item
@@ -65,73 +71,52 @@ class Config extends CommonDBTM
     */
     static function displayTabContentForItem(CommonGLPI $item, $tabnum = 1, $withtemplate = 0)
     {
-        global $CFG_GLPI;
-
         if ($item->getType() == 'CronTask') {
-            $root = $CFG_GLPI['root_doc'] . '/plugins/badges';
-            $target = $root . "/front/notification.state.php";
+            $target = PLUGIN_BADGES_WEBDIR . "/front/notification.state.php";
             Badge::configCron($target);
         }
         return true;
     }
 
-   /**
-    * @param $target
-    * @param $ID
-    */
-    function showConfigForm($target, $ID)
+
+    /**
+     * @param $target
+     * @param $ID
+     */
+    public function showConfigForm($target)
     {
 
-        if (!$this->getFromDB($ID)) {
-            $this->getEmpty();
+        if (!$this->canCreate()) {
+            return false;
         }
 
-        $delay_expired     = $this->fields["delay_expired"];
-        $delay_whichexpire = $this->fields["delay_whichexpire"];
+        $canedit = true;
 
-        $date_expired     = date("Y-m-d", mktime(0, 0, 0, date("m"), date("d") - $delay_expired, date("y")));
-        $date_whichexpire = date("Y-m-d", mktime(0, 0, 0, date("m"), date("d") + $delay_whichexpire, date("y")));
+        if ($canedit) {
+            $ID = 1;
+            $this->getFromDB($ID);
+            $delay_expired = $this->fields["delay_expired"];
+            $delay_whichexpire = $this->fields["delay_whichexpire"];
+            $delay_stamp_first = mktime(0, 0, 0, date("m"), date("d") - $delay_expired, date("y"));
+            $delay_stamp_next = mktime(0, 0, 0, date("m"), date("d") + $delay_whichexpire, date("y"));
+            $date_first = date("Y-m-d", $delay_stamp_first);
+            $date_next = date("Y-m-d", $delay_stamp_next);
 
-        echo "<div class='center'>";
-        echo "<form method='post' action=\"$target\">";
-        echo "<table class='tab_cadre_fixe'>";
-        echo "<tr class='tab_bg_1'>";
-        echo "<th colspan='4'>";
-        echo __('Time of checking of validity of the badges', 'badges');
-        echo "</th>";
-        echo "</tr>";
-
-        echo "<tr class='tab_bg_1'>";
-        echo "<td>";
-        echo __('Badges expired for more than ', 'badges');
-        echo "</td>";
-        echo "<td>";
-        echo Html::input('delay_expired', ['value' => $delay_expired, 'size' => 15]);
-        echo "&nbsp;" . _n('Day', 'Days', 2) . " ( > " . Html::convDate($date_expired) . ")<br>";
-        echo "</td>";
-        echo "</tr>";
-
-        echo "<tr class='tab_bg_1'>";
-        echo "<td>";
-        echo __('Badges expiring in less than ', 'badges');
-        echo "</td>";
-        echo "<td>";
-        echo "&nbsp;";
-        echo Html::input('delay_whichexpire', ['value' => $delay_whichexpire, 'size' => 15]);
-        echo "&nbsp;" . _n('Day', 'Days', 2) . " ( < " . Html::convDate($date_whichexpire) . ")<br>";
-        echo "</td>";
-        echo "</tr>";
-
-        echo "<tr class='tab_bg_1'>";
-        echo "<td class='center' colspan='4'>";
-        echo Html::hidden('id', ['value' => $ID]);
-        echo Html::submit(_sx('button', 'Save'), ['name' => 'update', 'class' => 'btn btn-primary']);
-        echo "</td>";
-        echo "</tr>";
-        echo "</table>";
-        Html::closeForm();
-        echo "</div>";
+            TemplateRenderer::getInstance()->display(
+                '@badges/config.html.twig',
+                [
+                    'id'                => 1,
+                    'item'              => $this,
+                    'config'            => $this->fields,
+                    'action'            => $target,
+                    'date_first'            => Html::convDate($date_first),
+                    'date_next'            => Html::convDate($date_next),
+                ],
+            );
+        }
+        return true;
     }
+
 
    /**
     * @param $target

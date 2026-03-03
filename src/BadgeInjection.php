@@ -1,4 +1,5 @@
 <?php
+
 /*
  * @version $Id: HEADER 15930 2011-10-30 15:47:55Z tsmr $
  -------------------------------------------------------------------------
@@ -40,73 +41,72 @@ use Search;
 #[AllowDynamicProperties]
 class BadgeInjection extends Badge implements PluginDatainjectionInjectionInterface
 {
-
-   /**
-    * @return mixed
-    */
-    static function getTable($classname = null)
+    /**
+     * @return mixed
+     */
+    public static function getTable($classname = null)
     {
         return Badge::getTable();
     }
 
-   /**
-    * @return bool
-    */
-    function isPrimaryType()
+    /**
+     * @return bool
+     */
+    public function isPrimaryType()
     {
         return true;
     }
 
-   /**
-    * @return array
-    */
-    function connectedTo()
+    /**
+     * @return array
+     */
+    public function connectedTo()
     {
         return [];
     }
 
-   /**
-    * @param string $primary_type
-    *
-    * @return array|the
-    */
-    function getOptions($primary_type = '')
+    /**
+     * @param string $primary_type
+     *
+     * @return array|the
+     */
+    public function getOptions($primary_type = '')
     {
 
         $tab = Search::getOptions(get_parent_class($this));
 
-       //Specific to location
+        //Specific to location
         $tab[4]['checktype'] = 'date';
         $tab[5]['checktype'] = 'date';
 
-       //$blacklist = PluginDatainjectionCommonInjectionLib::getBlacklistedOptions();
-       //Remove some options because some fields cannot be imported
+        //$blacklist = PluginDatainjectionCommonInjectionLib::getBlacklistedOptions();
+        //Remove some options because some fields cannot be imported
         $notimportable            = [11, 30, 80];
         $options['ignore_fields'] = $notimportable;
         $options['displaytype']   = ["dropdown"       => [2, 7],
-                                        "text"           => [6],
-                                        "user"           => [10],
-                                        "multiline_text" => [8],
-                                        "date"           => [4, 5],
-                                        "bool"           => [9]];
+            "text"           => [6],
+            "user"           => [10],
+            "multiline_text" => [8],
+            "date"           => [4, 5],
+            "bool"           => [9]];
 
         $tab = PluginDatainjectionCommonInjectionLib::addToSearchOptions($tab, $options, $this);
 
         return $tab;
     }
 
-   /**
-    * Standard method to add an object into glpi
-    * WILL BE INTEGRATED INTO THE CORE IN 0.80
-    *
-    * @param array|fields  $values
-    * @param array|options $options
-    *
-    * @return an array of IDs of newly created objects : for example array(Computer=>1, Networkport=>10)
-    * @internal param fields $values to add into glpi
-    * @internal param options $options used during creation
-    */
-    function addOrUpdateObject($values = [], $options = [])
+    /**
+     * Standard method to add an object into glpi
+     * WILL BE INTEGRATED INTO THE CORE IN 0.80
+     *
+     * @param array|fields  $values
+     * @param array|options $options
+     *
+     * @return an array of IDs of newly created objects : for example array(Computer=>1, Networkport=>10)
+     * @internal param fields $values to add into glpi
+     * @internal param options $options used during creation
+     */
+    public function addOrUpdateObject($values = [], $options = [])
     {
 
         $lib = new PluginDatainjectionCommonInjectionLib($this, $values, $options);
