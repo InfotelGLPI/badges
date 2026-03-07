@@ -160,7 +160,7 @@ msgstr "Geçerlilik süresinin sonu"
 msgid "Day"
 msgid_plural "Days"
 msgstr[0] "Gün"
-msgstr[1] "Gün"
+msgstr[1] "Günler"
 
 #: templates/badge_form.html.twig:123
 msgid "Empty for infinite"
