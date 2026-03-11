@@ -66,6 +66,7 @@ function plugin_init_badges()
             'document_types' => true,
             'helpdesk_visible_types' => true,
             'ticket_types' => true,
+            'state_types' => true,
             'notificationtemplates_types' => true,
         ]);
 

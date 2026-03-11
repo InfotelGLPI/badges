@@ -31,25 +31,27 @@ namespace GlpiPlugin\Badges;
 
 use CommonDBTM;
 use Dropdown;
+use DropdownVisibility;
 use Glpi\Application\View\TemplateRenderer;
 use Glpi\DBAL\QueryExpression;
+use Glpi\Features\State;
 use Html;
 use Location;
 use MassiveAction;
 use NotificationEvent;
 use Plugin;
 use Session;
-
+use Glpi\Features\StateInterface;
 /**
  * Class Badge
  */
-class Badge extends CommonDBTM
+class Badge extends CommonDBTM implements StateInterface
 {
 
     public $dohistory = true;
     static $rightname = "plugin_badges";
     protected $usenotepad = true;
-
+    use State;
     /**
      * @param int $nb
      *
@@ -129,6 +131,7 @@ class Badge extends CommonDBTM
             'field' => 'completename',
             'name' => __('Status'),
             'datatype' => 'dropdown',
+            'condition'          => $this->getStateVisibilityCriteria(),
         ];
 
         $tab[] = [
@@ -606,5 +609,28 @@ class Badge extends CommonDBTM
         if (isset($_SESSION['glpimenu']['assets']['content'][Badge::class])) {
             unset($_SESSION['glpimenu']['assets']['content'][Badge::class]);
         }
+    }
+
+    public function getStateVisibilityCriteria(): array
+    {
+        return  [
+            'LEFT JOIN' => [
+                DropdownVisibility::getTable() => [
+                    'ON' => [
+                        DropdownVisibility::getTable() => 'items_id',
+                        \State::getTable() => 'id', [
+                            'AND' => [
+                                DropdownVisibility::getTable() . '.itemtype' => \State::getType(),
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+            'WHERE' => [
+                DropdownVisibility::getTable() . '.itemtype' => \State::getType(),
+                DropdownVisibility::getTable() . '.visible_itemtype' => static::class,
+                DropdownVisibility::getTable() . '.is_visible' => 1,
+            ],
+        ];;
     }
 }

@@ -109,6 +109,7 @@
                                 __("Status"),
                                 {
                                     'entity': item.fields['entities_id'],
+                                    'condition': item.getStateVisibilityCriteria()
                                 }
                             ) }}
                         {% endif %}
