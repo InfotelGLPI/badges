@@ -191,5 +191,10 @@ class Config extends CommonDBTM
                     'delay_returnexpire' => 30]
             );
         }
+
+        if (!$DB->fieldExists($table, "delay_returnexpire")) {
+            $migration->addField($table, "delay_returnexpire", "int {$default_key_sign} NOT NULL DEFAULT '0'");
+            $migration->migrationOneTable($table);
+        }
     }
 }

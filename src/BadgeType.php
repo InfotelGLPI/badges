@@ -112,5 +112,10 @@ class BadgeType extends CommonDropdown
 
             $DB->doQuery($query);
         }
+
+        if (!$DB->fieldExists($table, "is_recursive")) {
+            $migration->addField($table, "is_recursive", "tinyint(1) NOT NULL DEFAULT '0'");
+            $migration->migrationOneTable($table);
+        }
     }
 }

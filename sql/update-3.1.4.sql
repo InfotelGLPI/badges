@@ -1,1 +1,0 @@
-DELETE FROM `glpi_crontasks` WHERE `itemtype` LIKE 'PluginBadges%';

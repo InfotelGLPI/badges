@@ -707,5 +707,92 @@ class Badge extends CommonDBTM implements StateInterface
                     'interface' => 'central']
             );
         }
+
+        if (!$DB->fieldExists($table, "is_bookable")) {
+            $migration->addField($table, "is_bookable", "tinyint(1) NOT NULL DEFAULT '1'");
+            $migration->migrationOneTable($table);
+        }
+
+        if (!$DB->fieldExists($table, "is_recursive")) {
+            $migration->addField($table, "is_recursive", "tinyint(1) NOT NULL DEFAULT '0'");
+            $migration->migrationOneTable($table);
+        }
+
+        if (!$DB->fieldExists($table, "users_id_tech")) {
+            $migration->addField($table, "users_id_tech", "int {$default_key_sign} NOT NULL DEFAULT '0' COMMENT 'RELATION to glpi_users (id)'");
+            $migration->migrationOneTable($table);
+        }
+
+        //DisplayPreferences Migration
+        $classes = ['PluginBadgesBadge' => Badge::class];
+
+        foreach ($classes as $old => $new) {
+            $displayusers = $DB->request([
+                'SELECT' => [
+                    'users_id'
+                ],
+                'DISTINCT' => true,
+                'FROM' => 'glpi_displaypreferences',
+                'WHERE' => [
+                    'itemtype' => $old,
+                ],
+            ]);
+
+            if (count($displayusers) > 0) {
+                foreach ($displayusers as $displayuser) {
+                    $iterator = $DB->request([
+                        'SELECT' => [
+                            'num',
+                            'id'
+                        ],
+                        'FROM' => 'glpi_displaypreferences',
+                        'WHERE' => [
+                            'itemtype' => $old,
+                            'users_id' => $displayuser['users_id'],
+                            'interface' => 'central'
+                        ],
+                    ]);
+
+                    if (count($iterator) > 0) {
+                        foreach ($iterator as $data) {
+                            $iterator2 = $DB->request([
+                                'SELECT' => [
+                                    'id'
+                                ],
+                                'FROM' => 'glpi_displaypreferences',
+                                'WHERE' => [
+                                    'itemtype' => $new,
+                                    'users_id' => $displayuser['users_id'],
+                                    'num' => $data['num'],
+                                    'interface' => 'central'
+                                ],
+                            ]);
+                            if (count($iterator2) > 0) {
+                                foreach ($iterator2 as $dataid) {
+                                    $query = $DB->buildDelete(
+                                        'glpi_displaypreferences',
+                                        [
+                                            'id' => $dataid['id'],
+                                        ]
+                                    );
+                                    $DB->doQuery($query);
+                                }
+                            } else {
+                                $query = $DB->buildUpdate(
+                                    'glpi_displaypreferences',
+                                    [
+                                        'itemtype' => $new,
+                                    ],
+                                    [
+                                        'id' => $data['id'],
+                                    ]
+                                );
+                                $DB->doQuery($query);
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }
