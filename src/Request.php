@@ -32,8 +32,10 @@ namespace GlpiPlugin\Badges;
 
 use CommonDBTM;
 use CommonGLPI;
+use DBConnection;
 use Dropdown;
 use Html;
+use Migration;
 use NotificationEvent;
 use Session;
 use Toolbox;
@@ -537,5 +539,37 @@ class Request extends CommonDBTM
         }
 
         return [true, null];
+    }
+
+    public static function install(Migration $migration)
+    {
+        global $DB;
+
+        $default_charset   = DBConnection::getDefaultCharset();
+        $default_collation = DBConnection::getDefaultCollation();
+        $default_key_sign  = DBConnection::getDefaultPrimaryKeySignOption();
+        $table  = self::getTable();
+
+        if (!$DB->tableExists($table)) {
+            $query = "CREATE TABLE `$table` (
+                        `id` int {$default_key_sign} NOT NULL auto_increment,
+                        `badges_id`  int {$default_key_sign} NOT NULL default '0',
+                        `requesters_id`  int {$default_key_sign} NOT NULL default '0',
+                        `visitor_firstname` varchar(255) collate utf8mb4_unicode_ci DEFAULT NULL,
+                        `visitor_realname` varchar(255) collate utf8mb4_unicode_ci DEFAULT NULL,
+                        `visitor_society` varchar(255) collate utf8mb4_unicode_ci DEFAULT NULL,
+                        `affectation_date` timestamp NULL DEFAULT NULL,
+                        `return_date` timestamp NULL DEFAULT NULL,
+                        `is_affected`  tinyint NOT NULL DEFAULT '0',
+                        PRIMARY KEY  (`id`),
+                        KEY `badges_id` (`badges_id`),
+                        KEY `requesters_id` (`requesters_id`),
+                        KEY `is_affected` (`is_affected`),
+                        KEY `affectation_date` (`affectation_date`),
+                        KEY `return_date` (`return_date`)
+               ) ENGINE=InnoDB DEFAULT CHARSET={$default_charset} COLLATE={$default_collation} ROW_FORMAT=DYNAMIC;";
+
+            $DB->doQuery($query);
+        }
     }
 }

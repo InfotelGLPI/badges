@@ -31,9 +31,11 @@ namespace GlpiPlugin\Badges;
 
 use CommonDBTM;
 use CommonGLPI;
+use DBConnection;
 use Dropdown;
 use Glpi\Application\View\TemplateRenderer;
 use Html;
+use Migration;
 
 /**
  * Class Config
@@ -159,5 +161,35 @@ class Config extends CommonDBTM
         echo "</table>";
         Html::closeForm();
         echo "</div>";
+    }
+
+    public static function install(Migration $migration)
+    {
+        global $DB;
+
+        $default_charset   = DBConnection::getDefaultCharset();
+        $default_collation = DBConnection::getDefaultCollation();
+        $default_key_sign  = DBConnection::getDefaultPrimaryKeySignOption();
+        $table  = self::getTable();
+
+        if (!$DB->tableExists($table)) {
+            $query = "CREATE TABLE `$table` (
+                        `id` int {$default_key_sign} NOT NULL auto_increment,
+                        `delay_expired` varchar(50) collate utf8mb4_unicode_ci NOT NULL DEFAULT '30',
+                        `delay_whichexpire` varchar(50) collate utf8mb4_unicode_ci NOT NULL DEFAULT '30',
+                        `delay_returnexpire` int {$default_key_sign} NOT NULL DEFAULT '0',
+                        PRIMARY KEY  (`id`)
+               ) ENGINE=InnoDB DEFAULT CHARSET={$default_charset} COLLATE={$default_collation} ROW_FORMAT=DYNAMIC;";
+
+            $DB->doQuery($query);
+
+            $DB->insert(
+                $table,
+                ['id' => 1,
+                    'delay_expired' => 30,
+                    'delay_whichexpire' => 30,
+                    'delay_returnexpire' => 30]
+            );
+        }
     }
 }

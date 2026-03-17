@@ -30,10 +30,12 @@
 namespace GlpiPlugin\Badges;
 
 use CommonDBTM;
+use DBConnection;
 use Dropdown;
 use Glpi\Application\View\TemplateRenderer;
 use Html;
 use MassiveAction;
+use Migration;
 
 if (!defined('GLPI_ROOT')) {
     die("Sorry. You can't access directly to this file");
@@ -149,5 +151,26 @@ class NotificationState extends CommonDBTM
         $forbidden[] = 'delete';
         $forbidden[] = 'restore';
         return $forbidden;
+    }
+
+    public static function install(Migration $migration)
+    {
+        global $DB;
+
+        $default_charset   = DBConnection::getDefaultCharset();
+        $default_collation = DBConnection::getDefaultCollation();
+        $default_key_sign  = DBConnection::getDefaultPrimaryKeySignOption();
+        $table  = self::getTable();
+
+        if (!$DB->tableExists($table)) {
+            $query = "CREATE TABLE `$table` (
+                        `id` int {$default_key_sign} NOT NULL auto_increment,
+                        `states_id` int {$default_key_sign} NOT NULL DEFAULT '0' COMMENT 'RELATION to glpi_states (id)',
+                        PRIMARY KEY  (`id`),
+                        KEY `states_id` (`states_id`)
+               ) ENGINE=InnoDB DEFAULT CHARSET={$default_charset} COLLATE={$default_collation} ROW_FORMAT=DYNAMIC;";
+
+            $DB->doQuery($query);
+        }
     }
 }

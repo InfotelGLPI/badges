@@ -30,6 +30,7 @@
 namespace GlpiPlugin\Badges;
 
 use CommonDBTM;
+use DBConnection;
 use Dropdown;
 use DropdownVisibility;
 use Glpi\Application\View\TemplateRenderer;
@@ -38,6 +39,7 @@ use Glpi\Features\State;
 use Html;
 use Location;
 use MassiveAction;
+use Migration;
 use NotificationEvent;
 use Plugin;
 use Session;
@@ -631,6 +633,79 @@ class Badge extends CommonDBTM implements StateInterface
                 DropdownVisibility::getTable() . '.visible_itemtype' => static::class,
                 DropdownVisibility::getTable() . '.is_visible' => 1,
             ],
-        ];;
+        ];
+    }
+
+    public static function install(Migration $migration)
+    {
+        global $DB;
+
+        $default_charset   = DBConnection::getDefaultCharset();
+        $default_collation = DBConnection::getDefaultCollation();
+        $default_key_sign  = DBConnection::getDefaultPrimaryKeySignOption();
+        $table  = self::getTable();
+
+        if (!$DB->tableExists($table)) {
+            $query = "CREATE TABLE `$table` (
+                        `id` int {$default_key_sign} NOT NULL auto_increment,
+                        `entities_id` int {$default_key_sign} NOT NULL DEFAULT '0',
+                        `is_recursive` tinyint NOT NULL default '0',
+                        `name` varchar(255) collate utf8mb4_unicode_ci DEFAULT NULL,
+                        `serial` varchar(255) collate utf8mb4_unicode_ci DEFAULT NULL,
+                        `plugin_badges_badgetypes_id` int {$default_key_sign} NOT NULL default '0' COMMENT 'RELATION to glpi_plugin_badges_badgetypes (id)',
+                        `locations_id` int {$default_key_sign} NOT NULL default '0' COMMENT 'RELATION to glpi_locations (id)',
+                        `date_affectation` timestamp NULL DEFAULT NULL,
+                        `date_expiration` timestamp NULL DEFAULT NULL,
+                        `states_id` int {$default_key_sign} NOT NULL DEFAULT '0' COMMENT 'RELATION to glpi_states (id)',
+                        `users_id` int {$default_key_sign} NOT NULL DEFAULT '0' COMMENT 'RELATION to glpi_users (id)',
+                        `users_id_tech` int {$default_key_sign} NOT NULL DEFAULT '0' COMMENT 'RELATION to glpi_users (id)',
+                        `is_helpdesk_visible` int {$default_key_sign} NOT NULL DEFAULT '1',
+                        `date_mod` timestamp NULL DEFAULT NULL,
+                        `comment` text collate utf8mb4_unicode_ci,
+                        `notepad` longtext collate utf8mb4_unicode_ci,
+                        `is_deleted` tinyint NOT NULL DEFAULT '0',
+                        `is_bookable` tinyint NOT NULL DEFAULT '1',
+                        PRIMARY KEY  (`id`),
+                        KEY `name` (`name`),
+                        KEY `entities_id` (`entities_id`),
+                        KEY `is_recursive` (`is_recursive`),
+                        KEY `plugin_badges_badgetypes_id` (`plugin_badges_badgetypes_id`),
+                        KEY `locations_id` (`locations_id`),
+                        KEY `date_expiration` (`date_expiration`),
+                        KEY `states_id` (`states_id`),
+                        KEY `users_id` (`users_id`),
+                        KEY `is_helpdesk_visible` (`is_helpdesk_visible`),
+                        KEY `is_deleted` (`is_deleted`)
+               ) ENGINE=InnoDB DEFAULT CHARSET={$default_charset} COLLATE={$default_collation} ROW_FORMAT=DYNAMIC;";
+
+            $DB->doQuery($query);
+
+            $DB->insert(
+                'glpi_displaypreferences',
+                ['itemtype' => self::class,
+                    'num' => 3,
+                    'rank' => 2,
+                    'users_id' => 0,
+                    'interface' => 'central']
+            );
+
+            $DB->insert(
+                'glpi_displaypreferences',
+                ['itemtype' => self::class,
+                    'num' => 4,
+                    'rank' => 3,
+                    'users_id' => 0,
+                    'interface' => 'central']
+            );
+
+            $DB->insert(
+                'glpi_displaypreferences',
+                ['itemtype' => self::class,
+                    'num' => 5,
+                    'rank' => 4,
+                    'users_id' => 0,
+                    'interface' => 'central']
+            );
+        }
     }
 }

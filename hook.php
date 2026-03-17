@@ -32,7 +32,11 @@ use Glpi\Search\SearchOption;
 use GlpiPlugin\Badges\Badge;
 use GlpiPlugin\Badges\BadgeInjection;
 use GlpiPlugin\Badges\BadgeType;
+use GlpiPlugin\Badges\Config;
+use GlpiPlugin\Badges\NotificationState;
+use GlpiPlugin\Badges\NotificationTargetBadge;
 use GlpiPlugin\Badges\Profile;
+use GlpiPlugin\Badges\Request;
 
 function plugin_badges_install()
 {
@@ -46,30 +50,46 @@ function plugin_badges_install()
     if (!$DB->tableExists("glpi_plugin_badges")
        && !$DB->tableExists("glpi_plugin_badges_badgetypes")) {
         $install = true;
-        $DB->runFile(PLUGIN_BADGES_DIR . "/sql/empty-3.1.6.sql");
+
+        $migration = new Migration(PLUGIN_BADGES_VERSION);
+        Badge::install($migration);
+        BadgeType::install($migration);
+        Config::install($migration);
+        NotificationState::install($migration);
+        Request::install($migration);
+        NotificationTargetBadge::install($migration);
+
     } elseif ($DB->tableExists("glpi_plugin_badges_users")
               && !$DB->tableExists("glpi_plugin_badges_default")) {
+
         $update78 = true;
         $DB->runFile(PLUGIN_BADGES_DIR . "/sql/update-1.4.sql");
         $DB->runFile(PLUGIN_BADGES_DIR . "/sql/update-1.5.0.sql");
         plugin_badges_configure15();
         $DB->runFile(PLUGIN_BADGES_DIR . "/sql/update-1.5.1.sql");
         $DB->runFile(PLUGIN_BADGES_DIR . "/sql/update-1.6.0.sql");
+
     } elseif ($DB->tableExists("glpi_plugin_badges_profiles")
               && $DB->fieldExists("glpi_plugin_badges_profiles", "interface")) {
+
         $update78 = true;
         $DB->runFile(PLUGIN_BADGES_DIR . "/sql/update-1.5.0.sql");
         plugin_badges_configure15();
         $DB->runFile(PLUGIN_BADGES_DIR . "/sql/update-1.5.1.sql");
         $DB->runFile(PLUGIN_BADGES_DIR . "/sql/update-1.6.0.sql");
+
     } elseif ($DB->tableExists("glpi_plugin_badges")
               && !$DB->fieldExists("glpi_plugin_badges", "date_mod")) {
+
         $update78 = true;
         $DB->runFile(PLUGIN_BADGES_DIR . "/sql/update-1.5.1.sql");
         $DB->runFile(PLUGIN_BADGES_DIR . "/sql/update-1.6.0.sql");
+
     } elseif (!$DB->tableExists("glpi_plugin_badges_badgetypes")) {
+
         $update78 = true;
         $DB->runFile(PLUGIN_BADGES_DIR . "/sql/update-1.6.0.sql");
+
     } elseif ($DB->tableExists("glpi_plugin_badges_profiles")) {
         $update85 = true;
     }
@@ -438,6 +458,14 @@ function plugin_badges_uninstall()
 {
     global $DB;
 
+    //Delete rights associated with the plugin
+    $profileRight = new ProfileRight();
+    foreach (Profile::getAllRights() as $right) {
+        $profileRight->deleteByCriteria(['name' => $right['field']]);
+    }
+
+    Profile::removeRightsFromSession();
+
     $tables = ["glpi_plugin_badges_badges",
         "glpi_plugin_badges_badgetypes",
         "glpi_plugin_badges_configs",
@@ -516,15 +544,6 @@ function plugin_badges_uninstall()
     }
 
     CronTask::Unregister('badges');
-
-    //Delete rights associated with the plugin
-    $profileRight = new ProfileRight();
-    foreach (Profile::getAllRights() as $right) {
-        $profileRight->deleteByCriteria(['name' => $right['field']]);
-    }
-    Badge::removeRightsFromSession();
-
-    Profile::removeRightsFromSession();
 
     return true;
 }

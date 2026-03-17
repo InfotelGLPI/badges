@@ -31,6 +31,8 @@
 namespace GlpiPlugin\Badges;
 
 use CommonDropdown;
+use DBConnection;
+use Migration;
 
 /**
  * Class BadgeType
@@ -85,5 +87,30 @@ class BadgeType extends CommonDropdown
             }
         }
         return 0;
+    }
+
+    public static function install(Migration $migration)
+    {
+        global $DB;
+
+        $default_charset   = DBConnection::getDefaultCharset();
+        $default_collation = DBConnection::getDefaultCollation();
+        $default_key_sign  = DBConnection::getDefaultPrimaryKeySignOption();
+        $table  = self::getTable();
+
+        if (!$DB->tableExists($table)) {
+            $query = "CREATE TABLE `$table` (
+                        `id` int {$default_key_sign} NOT NULL auto_increment,
+                        `entities_id` int {$default_key_sign} NOT NULL DEFAULT '0',
+                        `name` varchar(255) collate utf8mb4_unicode_ci DEFAULT NULL,
+                        `comment` text collate utf8mb4_unicode_ci,
+                        `is_recursive` tinyint NOT NULL DEFAULT '0',
+                        PRIMARY KEY  (`id`),
+                        KEY `name` (`name`),
+                        KEY `entities_id` (`entities_id`)
+               ) ENGINE=InnoDB DEFAULT CHARSET={$default_charset} COLLATE={$default_collation} ROW_FORMAT=DYNAMIC;";
+
+            $DB->doQuery($query);
+        }
     }
 }

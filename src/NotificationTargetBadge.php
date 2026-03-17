@@ -33,6 +33,7 @@ namespace GlpiPlugin\Badges;
 use DbUtils;
 use Dropdown;
 use Html;
+use Migration;
 use NotificationTarget;
 use Session;
 
@@ -188,5 +189,16 @@ class NotificationTargetBadge extends NotificationTarget
                 }
                 break;
         }
+    }
+
+    public static function install(Migration $migration)
+    {
+        global $DB;
+
+        $DB->insert(
+            'glpi_notificationtemplates',
+                ['name' => 'Alert Badges',
+                'itemtype' => Badge::class]
+        );
     }
 }
