@@ -35,13 +35,13 @@ Session::checkLoginUser();
 
 switch ($_POST['action']) {
    case 'addToCart':
-      header('Content-Type: application/json; charset=UTF-8"');
+      header('Content-Type: application/json; charset=UTF-8');
       $request = new Request();
       echo json_encode($request->addToCart($_POST));
       break;
 
    case 'addBadges':
-      header('Content-Type: application/json; charset=UTF-8"');
+      header('Content-Type: application/json; charset=UTF-8');
       $request = new Request();
       echo json_encode($request->addBadges($_POST));
       break;
@@ -62,14 +62,15 @@ switch ($_POST['action']) {
       break;
 
    case 'returnBadges':
-      header('Content-Type: application/json; charset=UTF-8"');
+      header('Content-Type: application/json; charset=UTF-8');
       $return = new BadgeReturn();
+      $_POST['requesters_id'] = Session::getLoginUserID();
       echo json_encode($return->returnBadge($_POST));
       break;
 
    case 'searchBadges':
-      header('Content-Type: application/json; charset=UTF-8"');
+      header('Content-Type: application/json; charset=UTF-8');
       $request = new BadgeReturn();
-      echo json_encode($request->listItems($_POST['requesters_id'], $_POST));
+      echo json_encode($request->listItems(Session::getLoginUserID(), $_POST));
       break;
 }

@@ -228,9 +228,9 @@ class Request extends CommonDBTM
                 $message .= "<tr class='tab_bg_1'>";
                 $badge->getFromDB($field['badges_id']);
                 $message .= "<td>" . $badge->getLink() . "</td>";
-                $message .= "<td>" . stripslashes($field['visitor_realname']) . "</td>";
-                $message .= "<td>" . stripslashes($field['visitor_firstname']) . "</td>";
-                $message .= "<td>" . stripslashes($field['visitor_society']) . "</td>";
+                $message .= "<td>" . htmlspecialchars(stripslashes($field['visitor_realname']), ENT_QUOTES) . "</td>";
+                $message .= "<td>" . htmlspecialchars(stripslashes($field['visitor_firstname']), ENT_QUOTES) . "</td>";
+                $message .= "<td>" . htmlspecialchars(stripslashes($field['visitor_society']), ENT_QUOTES) . "</td>";
                 $message .= "<td>" . Html::convDateTime($field['affectation_date']) . "</td>";
                 $message .= "<td>" . Html::convDateTime($field['return_date']) . "</td>";
                 $message .= "</tr>";

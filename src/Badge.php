@@ -326,7 +326,7 @@ class Badge extends CommonDBTM implements StateInterface
         $isadmin = static::canUpdate();
         $actions = parent::getSpecificMassiveActions($checkitem);
 
-        if (Session::haveRight('transfer', READ && Session::isMultiEntitiesMode() && $isadmin)
+        if (Session::haveRight('transfer', READ)
             && Session::isMultiEntitiesMode()
             && $isadmin
         ) {

@@ -211,9 +211,9 @@ class BadgeReturn extends CommonDBTM
             foreach ($fields as $field) {
                 echo "<tr class='tab_bg_1'>";
                 echo "<td>" . $dbu->getUserName($field['requesters_id']) . "</td>";
-                echo "<td>" . stripslashes($field['visitor_realname']) . "</td>";
-                echo "<td>" . stripslashes($field['visitor_firstname']) . "</td>";
-                echo "<td>" . stripslashes($field['visitor_society']) . "</td>";
+                echo "<td>" . htmlspecialchars(stripslashes($field['visitor_realname']), ENT_QUOTES) . "</td>";
+                echo "<td>" . htmlspecialchars(stripslashes($field['visitor_firstname']), ENT_QUOTES) . "</td>";
+                echo "<td>" . htmlspecialchars(stripslashes($field['visitor_society']), ENT_QUOTES) . "</td>";
                 echo "<td>" . Html::convDateTime($field['affectation_date']) . "</td>";
                 echo "<td>" . Html::convDateTime($field['return_date']) . "</td>";
                 echo "</tr>";
@@ -364,14 +364,14 @@ class BadgeReturn extends CommonDBTM
             foreach ($datas as $data) {
                 echo "<tr>";
                 echo "<td><b>" . __("Visitor firstname", "badges") . "</b></td>";
-                echo "<td>" . stripslashes($data['visitor_firstname']) . "</td>";
+                echo "<td>" . htmlspecialchars(stripslashes($data['visitor_firstname']), ENT_QUOTES) . "</td>";
                 echo "<td><b>" . __("Visitor realname", "badges") . "</b></td>";
-                echo "<td>" . stripslashes($data['visitor_realname']) . "</td>";
+                echo "<td>" . htmlspecialchars(stripslashes($data['visitor_realname']), ENT_QUOTES) . "</td>";
                 echo "</tr>";
 
                 echo "<tr>";
                 echo "<td><b>" . __("Visitor society", "badges") . "</b></td>";
-                echo "<td>" . stripslashes($data['visitor_society']) . "</td>";
+                echo "<td>" . htmlspecialchars(stripslashes($data['visitor_society']), ENT_QUOTES) . "</td>";
                 //            echo "<td><b>".__s("Available badge", "Availabe badges", "badges")."</b></td>";
                 //            echo "<td>";
                 //            $this->request->loadAvailableBadges();

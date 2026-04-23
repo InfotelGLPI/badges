@@ -81,6 +81,16 @@ class Config extends CommonDBTM
     }
 
 
+    public function prepareInputForUpdate($input)
+    {
+        foreach (['delay_expired', 'delay_whichexpire', 'delay_returnexpire'] as $field) {
+            if (isset($input[$field])) {
+                $input[$field] = (int) $input[$field];
+            }
+        }
+        return $input;
+    }
+
     /**
      * @param $target
      * @param $ID

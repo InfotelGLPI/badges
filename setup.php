@@ -52,9 +52,9 @@ function plugin_init_badges()
 {
     global $PLUGIN_HOOKS, $CFG_GLPI;
 
-    $PLUGIN_HOOKS['csrf_compliant']['badges'] = true;
-    $PLUGIN_HOOKS['assign_to_ticket']['badges'] = true;
-    $PLUGIN_HOOKS['change_profile']['badges'] = [Profile::class, 'initProfile'];
+    $PLUGIN_HOOKS[Hooks::CSRF_COMPLIANT]['badges'] = true;
+    $PLUGIN_HOOKS[Hooks::ASSIGN_TO_TICKET]['badges'] = true;
+    $PLUGIN_HOOKS[Hooks::CHANGE_PROFILE]['badges'] = [Profile::class, 'initProfile'];
 
 
     if (Session::getLoginUserID()) {
@@ -81,7 +81,7 @@ function plugin_init_badges()
 
         if (!Plugin::isPluginActive('environment')
             && Session::haveRight("plugin_badges", READ)) {
-            $PLUGIN_HOOKS['menu_toadd']['badges'] = ['assets' => Badge::class];
+            $PLUGIN_HOOKS[Hooks::MENU_TOADD]['badges'] = ['assets' => Badge::class];
             if (!in_array(Badge::class, $CFG_GLPI['globalsearch_types'])) {
                 array_push($CFG_GLPI['globalsearch_types'], Badge::class);
             }
@@ -89,8 +89,8 @@ function plugin_init_badges()
 
         if (Session::haveRight("plugin_badges", READ)
             && !Plugin::isPluginActive('servicecatalog')) {
-            $PLUGIN_HOOKS['helpdesk_menu_entry']['badges'] =  PLUGIN_BADGES_WEBDIR . '/front/wizard.php';
-            $PLUGIN_HOOKS['helpdesk_menu_entry_icon']['badges'] = Badge::getIcon();
+            $PLUGIN_HOOKS[Hooks::HELPDESK_MENU_ENTRY]['badges'] = PLUGIN_BADGES_WEBDIR . '/front/wizard.php';
+            $PLUGIN_HOOKS[Hooks::HELPDESK_MENU_ENTRY_ICON]['badges'] = Badge::getIcon();
         }
 
         if (Plugin::isPluginActive('servicecatalog')) {
@@ -98,7 +98,7 @@ function plugin_init_badges()
         }
 
         if (Session::haveRight("plugin_badges", UPDATE)) {
-            $PLUGIN_HOOKS['use_massive_action']['badges'] = 1;
+            $PLUGIN_HOOKS[Hooks::USE_MASSIVE_ACTION]['badges'] = 1;
         }
 
         if (Plugin::isPluginActive('badges')) { // only if plugin activated
