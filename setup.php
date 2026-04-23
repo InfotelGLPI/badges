@@ -52,7 +52,6 @@ function plugin_init_badges()
 {
     global $PLUGIN_HOOKS, $CFG_GLPI;
 
-    $PLUGIN_HOOKS[Hooks::CSRF_COMPLIANT]['badges'] = true;
     $PLUGIN_HOOKS[Hooks::ASSIGN_TO_TICKET]['badges'] = true;
     $PLUGIN_HOOKS[Hooks::CHANGE_PROFILE]['badges'] = [Profile::class, 'initProfile'];
 

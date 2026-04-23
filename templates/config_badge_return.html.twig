@@ -1,0 +1,51 @@
+{#
+# -------------------------------------------------------------------------
+# Badges plugin for GLPI
+# -------------------------------------------------------------------------
+#
+# LICENSE
+#
+# This file is part of Badges.
+#
+# Badges is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# Badges is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with Badges. If not, see <http://www.gnu.org/licenses/>.
+# -------------------------------------------------------------------------
+# @copyright Copyright (C) 2009-2022 by the badges Development Team.
+# @license   GPLv2 https://www.gnu.org/licenses/gpl-2.0.html
+# @link      https://github.com/InfotelGLPI/badges
+# -------------------------------------------------------------------------
+#}
+
+<div class="center">
+    <form method="post" action="{{ action }}">
+        <input type="hidden" name="_glpi_csrf_token" value="{{ csrf_token() }}">
+        <input type="hidden" name="id" value="{{ id }}">
+        <table class="tab_cadre_fixe">
+            <tr class="tab_bg_1">
+                <th colspan="4">{{ __('Time of checking of validity of the badges', 'badges') }}</th>
+            </tr>
+            <tr class="tab_bg_1">
+                <td>{{ __('Badge return delay', 'badges') }}&nbsp;</td>
+                <td>{{ dropdown_html|raw }}</td>
+            </tr>
+            <tr class="tab_bg_1">
+                <td class="center" colspan="4">
+                    <button type="submit" name="update" class="btn btn-primary">
+                        <i class="ti ti-device-floppy"></i>
+                        <span>{{ _x('button', 'Save') }}</span>
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>

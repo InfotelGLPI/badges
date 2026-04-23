@@ -1,0 +1,58 @@
+{#
+# -------------------------------------------------------------------------
+# Badges plugin for GLPI
+# -------------------------------------------------------------------------
+#
+# LICENSE
+#
+# This file is part of Badges.
+#
+# Badges is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# Badges is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with Badges. If not, see <http://www.gnu.org/licenses/>.
+# -------------------------------------------------------------------------
+# @copyright Copyright (C) 2009-2022 by the badges Development Team.
+# @license   GPLv2 https://www.gnu.org/licenses/gpl-2.0.html
+# @link      https://github.com/InfotelGLPI/badges
+# -------------------------------------------------------------------------
+#}
+
+{% if canedit %}
+<form name="form" method="post" action="{{ form_url }}" id="badges_formSearchBadges">
+    <input type="hidden" name="_glpi_csrf_token" value="{{ csrf_token() }}">
+    <div class="center">
+        <table class="tab_cadre_fixe">
+            <tr>
+                <th colspan="6">{{ __('Badges usage search', 'badges') }}</th>
+            </tr>
+            <tr class="tab_bg_1">
+                <td>{{ __('Arrival date', 'badges') }}</td>
+                <td>{{ begin_date_field|raw }}</td>
+                <td>{{ __('Return date', 'badges') }}</td>
+                <td>{{ end_date_field|raw }}</td>
+                <td>
+                    <input type="button" class="submit btn btn-primary" name="addToCart"
+                           value="{{ __('Search') }}"
+                           onclick="badges_searchBadges('searchBadges','badges_formSearchBadges', 'badges_searchBadges');">
+                    <input type="hidden" name="requesters_id" value="{{ requesters_id }}">
+                </td>
+            </tr>
+        </table>
+    </div>
+    <script>$(document).ready(function() {badges_initJs("{{ web_dir|e('js') }}");});</script>
+</form>
+{% endif %}
+
+<div class="center" id="badges_searchBadges">
+    {{ initial_results|raw }}
+</div>
+<div id="dialog-confirm"></div>

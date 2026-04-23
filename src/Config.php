@@ -136,41 +136,24 @@ class Config extends CommonDBTM
     */
     public function showFormBadgeReturn($target, $ID)
     {
-
         $this->getFromDB($ID);
 
-        echo "<div class='center'>";
-        echo "<form method='post' action=\"$target\">";
-        echo "<table class='tab_cadre_fixe'>";
-        echo "<tr class='tab_bg_1'>";
-        echo "<th colspan='4'>";
-        echo __('Time of checking of validity of the badges', 'badges');
-        echo "</th>";
-        echo "</tr>";
+        ob_start();
+        Dropdown::showTimeStamp("delay_returnexpire", [
+            'min'             => DAY_TIMESTAMP,
+            'max'             => 52 * WEEK_TIMESTAMP,
+            'step'            => DAY_TIMESTAMP,
+            'value'           => $this->fields["delay_returnexpire"],
+            'addfirstminutes' => true,
+            'inhours'         => false,
+        ]);
+        $dropdown_html = ob_get_clean();
 
-        echo "<tr class='tab_bg_1'>";
-        echo "<td>";
-        echo __('Badge return delay', 'badges') . "&nbsp;";
-        echo "</td>";
-        echo "<td>";
-        Dropdown::showTimeStamp("delay_returnexpire", ['min'             => DAY_TIMESTAMP,
-                                                          'max'             => 52 * WEEK_TIMESTAMP,
-                                                          'step'            => DAY_TIMESTAMP,
-                                                          'value'           => $this->fields["delay_returnexpire"],
-                                                          'addfirstminutes' => true,
-                                                          'inhours'         => false]);
-        echo "</td>";
-        echo "</tr>";
-
-        echo "<tr class='tab_bg_1'>";
-        echo "<td class='center' colspan='4'>";
-        echo Html::hidden('id', ['value' => $ID]);
-        echo Html::submit(_sx('button', 'Save'), ['name' => 'update', 'class' => 'btn btn-primary']);
-        echo "</td>";
-        echo "</tr>";
-        echo "</table>";
-        Html::closeForm();
-        echo "</div>";
+        TemplateRenderer::getInstance()->display('@badges/config_badge_return.html.twig', [
+            'action'       => $target,
+            'id'           => $ID,
+            'dropdown_html' => $dropdown_html,
+        ]);
     }
 
     public static function install(Migration $migration)

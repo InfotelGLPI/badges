@@ -1,0 +1,101 @@
+{#
+# -------------------------------------------------------------------------
+# Badges plugin for GLPI
+# -------------------------------------------------------------------------
+#
+# LICENSE
+#
+# This file is part of Badges.
+#
+# Badges is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# Badges is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with Badges. If not, see <http://www.gnu.org/licenses/>.
+# -------------------------------------------------------------------------
+# @copyright Copyright (C) 2009-2022 by the badges Development Team.
+# @license   GPLv2 https://www.gnu.org/licenses/gpl-2.0.html
+# @link      https://github.com/InfotelGLPI/badges
+# -------------------------------------------------------------------------
+#}
+
+<h3>
+    <div class="alert alert-secondary" role="alert">
+        <i class="{{ badge_icon }}"></i>&nbsp;{{ __('Access badge request', 'badges') }}
+    </div>
+</h3>
+
+<form name="wizard_form" id="badges_wizardForm" method="post">
+    <input type="hidden" name="_glpi_csrf_token" value="{{ csrf_token() }}">
+    <div style="overflow-x:auto;">
+        <table class="badges_wizard_rank">
+            <tr>
+                <td>{{ __('Visitor realname', 'badges') }} <span style="color:red;">*</span></td>
+                <td><input type="text" name="visitor_realname" size="40"></td>
+                <td>{{ __('Visitor firstname', 'badges') }} <span style="color:red;">*</span></td>
+                <td><input type="text" name="visitor_firstname" size="40"></td>
+            </tr>
+            <tr>
+                <td>{{ __('Visitor society', 'badges') }} <span style="color:red;">*</span></td>
+                <td><input type="text" name="visitor_society" size="40"></td>
+                <td>{{ _n('Available badge', 'Available badges', 2, 'badges') }} <span style="color:red;">*</span></td>
+                <td id="badges_available">{{ available_badges_html|raw }}</td>
+            </tr>
+            <tr>
+                <td>{{ __('Arrival date', 'badges') }} <span style="color:red;">*</span></td>
+                <td>{{ affectation_date_field|raw }}</td>
+                <td colspan="2"></td>
+            </tr>
+            <tr>
+                <td class="center" colspan="4">
+                    <button form="" onclick="badges_addToCart('addToCart','badges_wizardForm', 'badges_cart');"
+                            class="submit btn btn-success">
+                        <i class="ti ti-plus"></i>&nbsp;{{ __('Add to cart', 'badges') }}
+                    </button>
+                </td>
+            </tr>
+        </table>
+
+        <br>
+        <div class="center">
+            <table class="tab_cadre_fixe badges_wizard_rank" id="badges_cart" style="display:none">
+                <tr>
+                    <th colspan="6">{{ __('Cart', 'badges') }}</th>
+                </tr>
+                <tr>
+                    <th>{{ __('Visitor firstname', 'badges') }}</th>
+                    <th>{{ __('Visitor realname', 'badges') }}</th>
+                    <th>{{ __('Visitor society', 'badges') }}</th>
+                    <th>{{ _n('Badge', 'Badges', 1, 'badges') }}</th>
+                    <th>{{ __('Arrival date', 'badges') }}</th>
+                    <th></th>
+                </tr>
+            </table>
+        </div>
+
+        <br>
+        <table width="100%">
+            <tr>
+                <td>
+                    <div id="dialog-confirm"></div>
+                    <button form="" onclick="badges_cancel('{{ cancel_url|e('js') }}');"
+                            class="submit btn btn-info badge_previous_button">
+                        {{ _x('button', 'Cancel') }}
+                    </button>
+                    <button form="" onclick="badges_addBadges('addBadges','badges_wizardForm');"
+                            class="submit btn btn-success badge_next_button">
+                        {{ _x('button', 'Post') }}
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <script>$(document).ready(function() {badges_initJs("{{ web_dir|e('js') }}");});</script>
+</form>

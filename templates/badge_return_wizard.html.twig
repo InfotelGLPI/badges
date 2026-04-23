@@ -1,0 +1,74 @@
+{#
+# -------------------------------------------------------------------------
+# Badges plugin for GLPI
+# -------------------------------------------------------------------------
+#
+# LICENSE
+#
+# This file is part of Badges.
+#
+# Badges is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# Badges is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with Badges. If not, see <http://www.gnu.org/licenses/>.
+# -------------------------------------------------------------------------
+# @copyright Copyright (C) 2009-2022 by the badges Development Team.
+# @license   GPLv2 https://www.gnu.org/licenses/gpl-2.0.html
+# @link      https://github.com/InfotelGLPI/badges
+# -------------------------------------------------------------------------
+#}
+
+<h3>
+    <div class="alert alert-secondary" role="alert">
+        <i class="ti ti-receipt-refund"></i>&nbsp;{{ __('Access badge return', 'badges') }}
+    </div>
+</h3>
+
+<form name="wizard_form" id="badges_wizardForm" method="post">
+    <input type="hidden" name="_glpi_csrf_token" value="{{ csrf_token() }}">
+    <div style="overflow-x:auto;">
+        <table class="badges_wizard_rank">
+            <tr>
+                <td>{{ __('Badges in your possession', 'badges') }} <span style="color:red;">*</span></td>
+                <td>
+                    {{ dropdown_html|raw }}
+                    <script>{{ load_badge_info_js|raw }}</script>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" id="badges_informations"></td>
+            </tr>
+            <tr>
+                <td>{{ __('Restitution date', 'badges') }}</td>
+                <td>{{ return_date_now }}</td>
+            </tr>
+        </table>
+
+        <br>
+        <table width="100%">
+            <tr>
+                <td>
+                    <div id="dialog-confirm"></div>
+                    <button form="" onclick="badges_cancel('{{ cancel_url|e('js') }}');"
+                            class="submit btn btn-info badge_previous_button">
+                        {{ _x('button', 'Cancel') }}
+                    </button>
+                    <button form="" onclick="badges_returnBadges('returnBadges','badges_wizardForm');"
+                            class="submit btn btn-success badge_next_button">
+                        {{ __('Badges return', 'badges') }}
+                    </button>
+                    <input type="hidden" name="requesters_id" value="{{ requesters_id }}">
+                </td>
+            </tr>
+        </table>
+    </div>
+    <script>$(document).ready(function() {badges_initJs("{{ web_dir|e('js') }}");});</script>
+</form>

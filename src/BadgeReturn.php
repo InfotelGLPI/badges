@@ -35,6 +35,7 @@ use CommonDBTM;
 use CommonGLPI;
 use DbUtils;
 use Dropdown;
+use Glpi\Application\View\TemplateRenderer;
 use Glpi\DBAL\QueryExpression;
 use Html;
 use NotificationEvent;
@@ -151,34 +152,30 @@ class BadgeReturn extends CommonDBTM
         $badge   = new Badge();
         $canedit = $badge->can($item->fields['id'], UPDATE);
 
-        if ($canedit) {
-            echo "<form name='form' method='post' action='" . Toolbox::getItemTypeFormURL($this->getType()) . "'>";
-            echo "<div class='center'>";
-            echo "<table class='tab_cadre_fixe'>";
-            echo "<tr>";
-            echo "<th colspan='6'>" . __('Badge return', 'badges') . "</th>";
-            echo "</tr>";
+        ob_start();
+        $this->loadBadgeInformation(0, $item->fields['id']);
+        $badge_info_html = ob_get_clean();
 
-            echo "<tr class='tab_bg_1'>";
-            echo "<td class='center'>";
-            $return = new BadgeReturn();
-            $return->loadBadgeInformation(0, $item->fields['id']);
-            echo "</td>";
-            echo "</tr>";
-
-            echo "<tr class='tab_bg_1'>";
-            echo "<td class='tab_bg_2 center' colspan='6'>";
-            echo Html::submit(__('Force badge restitution', 'badges'), ['name' => 'force_return', 'class' => 'btn btn-primary']);
-            echo Html::hidden('return_badges_id', ['value' => $item->fields['id']]);
-            echo Html::hidden('requesters_id', ['value' => 0]);
-            echo "</td>";
-            echo "</tr>";
-            echo "</table></div>";
-            Html::closeForm();
+        $dbu  = new DbUtils();
+        $rows = [];
+        foreach ($data as $field) {
+            $rows[] = [
+                'requester_name'    => $dbu->getUserName($field['requesters_id']),
+                'visitor_realname'  => stripslashes($field['visitor_realname']),
+                'visitor_firstname' => stripslashes($field['visitor_firstname']),
+                'visitor_society'   => stripslashes($field['visitor_society']),
+                'affectation_date'  => Html::convDateTime($field['affectation_date']),
+                'return_date'       => Html::convDateTime($field['return_date']),
+            ];
         }
 
-        $this->listItems($data);
-
+        TemplateRenderer::getInstance()->display('@badges/badge_return_for_badge.html.twig', [
+            'canedit'        => $canedit,
+            'form_url'       => Toolbox::getItemTypeFormURL($this->getType()),
+            'badge_info_html' => $badge_info_html,
+            'badges_id'      => $item->fields['id'],
+            'rows'           => $rows,
+        ]);
     }
 
 
@@ -189,49 +186,22 @@ class BadgeReturn extends CommonDBTM
      */
     public function listItems($fields)
     {
-
-        if (!empty($fields)) {
-            echo "<div class='center'>";
-            echo "<table class='tab_cadre_fixe'>";
-            echo "<tr>";
-            echo "<th colspan='6'>" . __('Badge requests history', 'badges') . "</th>";
-            echo "</tr>";
-
-            echo "<tr>";
-            echo "<th>" . __('Requester') . "</th>";
-            echo "<th>" . __('Visitor realname', 'badges') . "</th>";
-            echo "<th>" . __('Visitor firstname', 'badges') . "</th>";
-            echo "<th>" . __('Visitor society', 'badges') . "</th>";
-            echo "<th>" . __('Arrival date', 'badges') . "</th>";
-            echo "<th>" . __('Return date', 'badges') . "</th>";
-            echo "</tr>";
-
-            $dbu = new DbUtils();
-
-            foreach ($fields as $field) {
-                echo "<tr class='tab_bg_1'>";
-                echo "<td>" . $dbu->getUserName($field['requesters_id']) . "</td>";
-                echo "<td>" . htmlspecialchars(stripslashes($field['visitor_realname']), ENT_QUOTES) . "</td>";
-                echo "<td>" . htmlspecialchars(stripslashes($field['visitor_firstname']), ENT_QUOTES) . "</td>";
-                echo "<td>" . htmlspecialchars(stripslashes($field['visitor_society']), ENT_QUOTES) . "</td>";
-                echo "<td>" . Html::convDateTime($field['affectation_date']) . "</td>";
-                echo "<td>" . Html::convDateTime($field['return_date']) . "</td>";
-                echo "</tr>";
-            }
-
-            echo "</table>";
-            echo "</div>";
-
-        } else {
-            echo "<div class='center'>";
-            echo "<table class='tab_cadre_fixe'>";
-            echo "<tr>";
-            echo "<th colspan='6'>" . __('Badge requests history', 'badges') . "</th>";
-            echo "</tr>";
-            echo "<tr><td class='center'>" . __('No results found') . "</td></tr>";
-            echo "</table>";
-            echo "</div>";
+        $dbu  = new DbUtils();
+        $rows = [];
+        foreach ($fields as $field) {
+            $rows[] = [
+                'requester_name'    => $dbu->getUserName($field['requesters_id']),
+                'visitor_realname'  => stripslashes($field['visitor_realname']),
+                'visitor_firstname' => stripslashes($field['visitor_firstname']),
+                'visitor_society'   => stripslashes($field['visitor_society']),
+                'affectation_date'  => Html::convDateTime($field['affectation_date']),
+                'return_date'       => Html::convDateTime($field['return_date']),
+            ];
         }
+
+        TemplateRenderer::getInstance()->display('@badges/badge_return_list.html.twig', [
+            'rows' => $rows,
+        ]);
     }
 
 
@@ -270,83 +240,37 @@ class BadgeReturn extends CommonDBTM
      */
     public function showBadgeReturn()
     {
-        global $CFG_GLPI;
-
-        // Wizard title
-        echo "<h3><div class='alert alert-secondary' role='alert'>";
-        echo "<i class='ti ti-receipt-refund'></i>&nbsp;";
-        echo __("Access badge return", "badges");
-        echo "</div></h3>";
-
-        echo "<form name='wizard_form' id='badges_wizardForm'
-                  method='post'>";
-
-        echo "<div style='overflow-x:auto;'>";
-        // Add badges return
-        echo "<table class='badges_wizard_rank'>";
-
-        echo "<tr>";
-        echo "<td>" . __("Badges in your possession", "badges") . " <span style='color:red;'>*</span></td>";
-        echo "<td>";
         $elements = [Dropdown::EMPTY_VALUE];
         foreach ($this->request->getUserBadges(Session::getLoginUserID()) as $val) {
             $elements[$val['badges_id']] = Dropdown::getDropdownName("glpi_plugin_badges_badges", $val['badges_id']);
         }
+
+        ob_start();
         $rand = Dropdown::showFromArray("return_badges_id", $elements, ['on_change' => 'badges_loadBadgeInformation();']);
-        echo "<script type='text/javascript'>";
+        $dropdown_html = ob_get_clean();
+
+        $ajax_url = PLUGIN_BADGES_WEBDIR . '/ajax/request.php';
+        ob_start();
         echo "function badges_loadBadgeInformation(){";
-        $params = ['action'    => 'loadBadgeInformation',
-            'badges_id' => '__VALUE__'];
-        $root = $CFG_GLPI['root_doc'] . '/plugins/badges';
         Ajax::updateItemJsCode(
             "badges_informations",
-            $root . "/ajax/request.php",
-            $params,
-            "dropdown_return_badges_id$rand"
+            $ajax_url,
+            ['action' => 'loadBadgeInformation', 'badges_id' => '__VALUE__'],
+            "dropdown_return_badges_id{$rand}"
         );
         echo "}";
-        echo "</script>";
-        echo "</td>";
-        echo "</tr>";
+        $load_badge_info_js = ob_get_clean();
 
-        echo "<tr>";
-        echo "<td colspan ='2' id='badges_informations'></td>";
-        echo "</tr>";
-
-        echo "<tr>";
-        echo "<td>" . __("Restitution date", "badges") . "</td>";
-        echo "<td>";
-        echo Html::convDateTime(date('Y-m-d H:i:s'));
-        echo "</td>";
-        echo "</tr>";
-        echo "</table>";
-
-        // Footer
-        echo "<br/><table width='100%'>";
-        echo "<tr>";
-        echo "<td>";
         Html::requireJs('glpi_dialog');
-        echo "<div id='dialog-confirm'></div>";
 
-        $root = PLUGIN_BADGES_WEBDIR;
-        echo "<button form='' onclick=\"badges_cancel('" . $root . "/front/wizard.php');\"
-        class='submit btn btn-info  badge_previous_button' />
-      " . _sx('button', 'Cancel') . "</button>";
-
-        echo "<button form='' onclick=\"badges_returnBadges('returnBadges','badges_wizardForm');\"
-        class='submit btn btn-success badge_next_button' />
-      " . __('Badges return', 'badges') . "</button>";
-        echo Html::hidden('requesters_id', ['value' => Session::getLoginUserID()]);
-        echo "</td>";
-        echo "</tr>";
-        echo "</table>";
-        echo "</div>";
-        // Init javascript
-        $root = $CFG_GLPI['root_doc'] . '/plugins/badges';
-        echo Html::scriptBlock('$(document).ready(function() {badges_initJs("' . $root . '");});');
-
-        Html::closeForm();
-
+        TemplateRenderer::getInstance()->display('@badges/badge_return_wizard.html.twig', [
+            'dropdown_html'      => $dropdown_html,
+            'load_badge_info_js' => $load_badge_info_js,
+            'return_date_now'    => Html::convDateTime(date('Y-m-d H:i:s')),
+            'cancel_url'         => PLUGIN_BADGES_WEBDIR . '/front/wizard.php',
+            'web_dir'            => PLUGIN_BADGES_WEBDIR,
+            'requesters_id'      => Session::getLoginUserID(),
+        ]);
     }
 
     /**
@@ -359,29 +283,19 @@ class BadgeReturn extends CommonDBTM
     {
         $datas = $this->request->getUserBadges($users_id, ["badges_id" => $badges_id]);
 
-        if (!empty($datas)) {
-            echo "<table class='tab_cadre_fixe badges_wizard_info'>";
-            foreach ($datas as $data) {
-                echo "<tr>";
-                echo "<td><b>" . __("Visitor firstname", "badges") . "</b></td>";
-                echo "<td>" . htmlspecialchars(stripslashes($data['visitor_firstname']), ENT_QUOTES) . "</td>";
-                echo "<td><b>" . __("Visitor realname", "badges") . "</b></td>";
-                echo "<td>" . htmlspecialchars(stripslashes($data['visitor_realname']), ENT_QUOTES) . "</td>";
-                echo "</tr>";
-
-                echo "<tr>";
-                echo "<td><b>" . __("Visitor society", "badges") . "</b></td>";
-                echo "<td>" . htmlspecialchars(stripslashes($data['visitor_society']), ENT_QUOTES) . "</td>";
-                //            echo "<td><b>".__s("Available badge", "Availabe badges", "badges")."</b></td>";
-                //            echo "<td>";
-                //            $this->request->loadAvailableBadges();
-                //            echo "</td>";
-                echo "<td><b>" . __("Arrival date", "badges") . "</b></td>";
-                echo "<td>" . Html::convDateTime($data['affectation_date']) . "</td>";
-                echo "</tr>";
-            }
-            echo "</table>";
+        $rows = [];
+        foreach ($datas as $data) {
+            $rows[] = [
+                'visitor_firstname' => stripslashes($data['visitor_firstname']),
+                'visitor_realname'  => stripslashes($data['visitor_realname']),
+                'visitor_society'   => stripslashes($data['visitor_society']),
+                'affectation_date'  => Html::convDateTime($data['affectation_date']),
+            ];
         }
+
+        TemplateRenderer::getInstance()->display('@badges/badge_return_info.html.twig', [
+            'rows' => $rows,
+        ]);
     }
 
     /**
