@@ -68,8 +68,8 @@ msgstr[1] "Verfügbare Karten"
 #: templates/request_wizard.html.twig:76 templates/request_list.html.twig:35
 msgid "Badge"
 msgid_plural "Badges"
-msgstr[0] "Karte"
-msgstr[1] "Karten"
+msgstr[0] "Zutrittskarte"
+msgstr[1] "Zutrittskarten"
 
 #: src/Request.php:324
 msgid "Badge affected"
