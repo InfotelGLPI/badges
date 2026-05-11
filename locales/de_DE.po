@@ -6,15 +6,16 @@
 # Translators:
 # Xavier CAILLAUD <thetsmr@gmail.com>, 2020
 # Michael Schieferer, 2022
+# NeoTrinity <tecvisor@yahoo.fr>, 2026
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-10 13:52+0000\n"
+"POT-Creation-Date: 2026-04-23 07:48+0000\n"
 "PO-Revision-Date: 2020-11-02 15:44+0000\n"
-"Last-Translator: Michael Schieferer, 2022\n"
+"Last-Translator: NeoTrinity <tecvisor@yahoo.fr>, 2026\n"
 "Language-Team: German (Germany) (https://app.transifex.com/infotelGLPI/teams/12355/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,109 +23,116 @@ msgstr ""
 "Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/Wizard.php:69 src/Wizard.php:78 src/Request.php:269
-#: src/NotificationTargetBadge.php:59 src/NotificationTargetBadge.php:82
+#: src/Wizard.php:69 src/Wizard.php:78 src/NotificationTargetBadge.php:60
+#: src/NotificationTargetBadge.php:81 templates/request_wizard.html.twig:31
 msgid "Access badge request"
 msgstr "Anfrage für Karte"
 
-#: src/Wizard.php:85 src/BadgeReturn.php:264
+#: src/Wizard.php:85 templates/badge_return_wizard.html.twig:31
 msgid "Access badge return"
 msgstr "Kartenretouren"
 
-#: src/Request.php:318
+#: templates/status_cron.html.twig:63
+msgctxt "button"
+msgid "Add"
+msgstr "Hinzufügen"
+
+#: templates/request_wizard.html.twig:60
 msgid "Add to cart"
 msgstr "In den Warenkorb legen"
 
-#: src/Badge.php:106 src/Request.php:523
+#: src/Badge.php:110 src/Request.php:393 templates/badge_form.html.twig:118
 msgid "Affectation date"
 msgstr "Aktivierungsdatum"
 
-#: src/NotificationTargetBadge.php:91 src/NotificationTargetBadge.php:137
+#: src/NotificationTargetBadge.php:90 src/NotificationTargetBadge.php:136
 msgid "Allotted to"
 msgstr "Zugeteilt"
 
-#: src/Request.php:145 src/Request.php:221 src/Request.php:305
-#: src/Request.php:333 src/BadgeReturn.php:193 src/BadgeReturn.php:360
-#: src/BadgeReturn.php:479 src/NotificationTargetBadge.php:110
-#: src/NotificationTargetBadge.php:141
+#: src/NotificationTargetBadge.php:109 src/NotificationTargetBadge.php:140
+#: src/BadgeReturn.php:419 templates/request_wizard.html.twig:52
+#: templates/request_wizard.html.twig:77 templates/request_search.html.twig:38
+#: templates/badge_return_info.html.twig:41
+#: templates/request_list.html.twig:39
+#: templates/badge_return_list.html.twig:40
 msgid "Arrival date"
 msgstr "Ankunftsdatum"
 
-#: src/Request.php:298 src/Request.php:524
+#: src/Request.php:394 templates/request_wizard.html.twig:48
 msgid "Available badge"
 msgid_plural "Available badges"
 msgstr[0] "Verfügbare Karte"
 msgstr[1] "Verfügbare Karten"
 
-#: setup.php:120 src/Badge.php:60 src/Profile.php:198 src/Request.php:217
-#: src/Request.php:332 src/Metademand.php:65
+#: src/Badge.php:64 src/Metademand.php:65 setup.php:121
+#: templates/request_wizard.html.twig:76 templates/request_list.html.twig:35
 msgid "Badge"
 msgid_plural "Badges"
 msgstr[0] "Karte"
 msgstr[1] "Karten"
 
-#: src/Request.php:454
+#: src/Request.php:324
 msgid "Badge affected"
 msgid_plural "Badges affected"
 msgstr[0] "Betroffene Karte"
 msgstr[1] "Betroffene Karten"
 
-#: src/BadgeReturn.php:185 src/BadgeReturn.php:217
+#: templates/badge_return_list.html.twig:32
 msgid "Badge requests history"
 msgstr "Verlauf der Kartenanforderungen"
 
-#: src/BadgeReturn.php:69 src/BadgeReturn.php:148
+#: src/BadgeReturn.php:74 templates/badge_return_for_badge.html.twig:35
 msgid "Badge return"
 msgstr "Karten-Rückgabe"
 
-#: src/Config.php:156 src/NotificationTargetBadge.php:60
-#: src/NotificationTargetBadge.php:85
+#: src/NotificationTargetBadge.php:61 src/NotificationTargetBadge.php:84
+#: templates/config_badge_return.html.twig:38
 msgid "Badge return delay"
 msgstr "Karten mit verspäteter Rückgabe"
 
-#: src/BadgeReturn.php:386
+#: src/BadgeReturn.php:322
 msgid "Badge returned"
 msgstr "Karten zurückgegeben"
 
-#: src/Request.php:214 src/Request.php:243
+#: templates/request_list.html.twig:32 templates/request_list.html.twig:57
 msgid "Badge usage report"
 msgstr "Karten-Nutzungsbericht"
 
-#: src/Badge.php:626 src/BadgeReturn.php:484
-#: src/NotificationTargetBadge.php:57 src/NotificationTargetBadge.php:76
+#: src/Badge.php:524 src/NotificationTargetBadge.php:58
+#: src/NotificationTargetBadge.php:75 src/BadgeReturn.php:424
 msgid "Badges at the end of the validity"
 msgstr "Karten nahe dem Ablaufdatum"
 
-#: src/Config.php:106
+#: templates/config.html.twig:47
 msgid "Badges expired for more than "
 msgstr "Abgelaufene Karten älter als"
 
-#: src/NotificationTargetBadge.php:157
+#: src/NotificationTargetBadge.php:156
 msgid "Badges expired or badges which expires"
 msgstr "Karte läuft ab oder ist bereits abgelaufen"
 
-#: src/Config.php:116
+#: templates/config.html.twig:54
 msgid "Badges expiring in less than "
 msgstr "Auslaufenden Karten in weniger als"
 
-#: src/BadgeReturn.php:237 src/BadgeReturn.php:275
+#: src/BadgeReturn.php:220 templates/badge_return_wizard.html.twig:40
 msgid "Badges in your possession"
 msgstr "Karten in Ihrem Besitz"
 
-#: src/Request.php:60 src/NotificationTargetBadge.php:151
+#: src/NotificationTargetBadge.php:150 src/Request.php:63
 msgid "Badges request"
 msgstr "Kartenanfrage"
 
-#: src/BadgeReturn.php:320 src/BadgeReturn.php:404
+#: src/BadgeReturn.php:341 templates/badge_return_wizard.html.twig:66
 msgid "Badges return"
 msgstr "Karten im Rücklauf"
 
-#: src/Request.php:140
+#: templates/request_search.html.twig:35
 msgid "Badges usage search"
 msgstr "Kartennutzung"
 
-#: src/Badge.php:524 src/NotificationTargetBadge.php:58
-#: src/NotificationTargetBadge.php:79
+#: src/Badge.php:418 src/NotificationTargetBadge.php:59
+#: src/NotificationTargetBadge.php:78
 msgid "Badges which expires"
 msgstr "Ablaufende Karten"
 
@@ -132,25 +140,46 @@ msgstr "Ablaufende Karten"
 msgid "Badges wizard"
 msgstr "Kartenassistent"
 
-#: src/Badge.php:195
-#: /home/runner/work/badges/badges/templates/badge_form.html.twig:116
+#: src/Badge.php:200 templates/badge_form.html.twig:148
 msgid "Bookable"
 msgstr "Buchbar"
 
-#: src/Request.php:327
+#: templates/request_wizard.html.twig:90
+#: templates/badge_return_wizard.html.twig:62
+msgctxt "button"
+msgid "Cancel"
+msgstr "Beenden"
+
+#: templates/request_wizard.html.twig:70
 msgid "Cart"
 msgstr "Warenkorb"
 
-#: src/Badge.php:114 src/NotificationTargetBadge.php:89
-#: src/NotificationTargetBadge.php:136
+#: templates/badge_form.html.twig:132
+msgid "Comment"
+msgid_plural "Comments"
+msgstr[0] "Kommentar"
+msgstr[1] "Kommentare"
+
+#: src/Badge.php:118 src/NotificationTargetBadge.php:88
+#: src/NotificationTargetBadge.php:135 templates/badge_form.html.twig:123
 msgid "Date of end of validity"
 msgstr "Ablaufdatum der Gültigkeit"
+
+#: templates/config.html.twig:51 templates/config.html.twig:59
+msgid "Day"
+msgid_plural "Days"
+msgstr[0] "Tag"
+msgstr[1] "Tage"
+
+#: templates/badge_form.html.twig:124
+msgid "Empty for infinite"
+msgstr "Unendlich leer"
 
 #: src/Wizard.php:78
 msgid "For a limited time"
 msgstr "Für eine begrenzte Zeit"
 
-#: src/BadgeReturn.php:160
+#: templates/badge_return_for_badge.html.twig:43
 msgid "Force badge restitution"
 msgstr "Erzwinge Karten-Rückgabe"
 
@@ -158,50 +187,106 @@ msgstr "Erzwinge Karten-Rückgabe"
 msgid "Manage temporary badges"
 msgstr "Verwaltung temporärer Karten"
 
-#: src/Request.php:464
+#: templates/badge_form.html.twig:54
+msgid "Name"
+msgstr "Vorname"
+
+#: templates/request_list.html.twig:60
+#: templates/badge_return_list.html.twig:55
+msgid "No results found"
+msgstr "Kein Ergebnis"
+
+#: templates/badge_form.html.twig:141
+msgid "Picture"
+msgid_plural "Pictures"
+msgstr[0] "Bild"
+msgstr[1] "Bilder"
+
+#: src/Request.php:334
 msgid "Please add badges in cart"
 msgstr "Bitte Karten in den Warenkorb legen"
 
-#: src/Config.php:53
+#: src/Config.php:57
 msgid "Plugin Setup"
 msgstr "Plugin-Einrichtung"
 
-#: src/BadgeReturn.php:299
+#: templates/request_wizard.html.twig:94
+msgctxt "button"
+msgid "Post"
+msgstr "Senden"
+
+#: templates/badge_return_list.html.twig:36
+msgid "Requester"
+msgstr "Anforderer"
+
+#: templates/badge_return_wizard.html.twig:50
 msgid "Restitution date"
 msgstr "Rückgabedatum"
 
-#: src/Request.php:151 src/Request.php:222 src/BadgeReturn.php:194
+#: templates/request_search.html.twig:40 templates/request_list.html.twig:40
+#: templates/badge_return_list.html.twig:41
 msgid "Return date"
 msgstr "Rückgabedatum"
 
-#: src/Config.php:100 src/Config.php:150
+#: templates/profile.html.twig:35 templates/config.html.twig:67
+#: templates/config_badge_return.html.twig:45
+msgctxt "button"
+msgid "Save"
+msgstr "Speichern"
+
+#: templates/request_search.html.twig:44
+msgid "Search"
+msgstr "Suchen"
+
+#: templates/badge_form.html.twig:100
+msgid "Serial number"
+msgstr "Seriennummer"
+
+#: templates/badge_form.html.twig:109
+msgid "Status"
+msgstr "Status"
+
+#: templates/badge_form.html.twig:54
+msgid "Surname"
+msgstr "Nachname"
+
+#: templates/config.html.twig:42 templates/config_badge_return.html.twig:35
 msgid "Time of checking of validity of the badges"
 msgstr "Überprüfungszeit der Kartengültigkeit"
 
-#: src/BadgeType.php:50
+#: src/BadgeType.php:52
 msgid "Type of badge"
 msgid_plural "Types of badge"
 msgstr[0] "Kartentyp"
 msgstr[1] "Kartentypen"
 
-#: src/NotificationState.php:87 src/NotificationState.php:126
+#: templates/status_cron.html.twig:45
 msgid "Unused status for expiration mailing"
 msgstr "Unbenutzter Status für Ablaufmailing"
 
-#: src/Request.php:219 src/Request.php:286 src/Request.php:329
-#: src/Request.php:521 src/BadgeReturn.php:191 src/BadgeReturn.php:347
-#: src/NotificationTargetBadge.php:108 src/NotificationTargetBadge.php:139
+#: src/NotificationTargetBadge.php:107 src/NotificationTargetBadge.php:138
+#: src/Request.php:391 templates/request_wizard.html.twig:42
+#: templates/request_wizard.html.twig:73
+#: templates/badge_return_info.html.twig:33
+#: templates/request_list.html.twig:37
+#: templates/badge_return_list.html.twig:38
 msgid "Visitor firstname"
 msgstr "Besucher Vorname"
 
-#: src/Request.php:218 src/Request.php:281 src/Request.php:330
-#: src/Request.php:520 src/BadgeReturn.php:190 src/BadgeReturn.php:349
-#: src/NotificationTargetBadge.php:107 src/NotificationTargetBadge.php:138
+#: src/NotificationTargetBadge.php:106 src/NotificationTargetBadge.php:137
+#: src/Request.php:390 templates/request_wizard.html.twig:40
+#: templates/request_wizard.html.twig:74
+#: templates/badge_return_info.html.twig:35
+#: templates/request_list.html.twig:36
+#: templates/badge_return_list.html.twig:37
 msgid "Visitor realname"
 msgstr "Besucher Nachname"
 
-#: src/Request.php:220 src/Request.php:294 src/Request.php:331
-#: src/Request.php:522 src/BadgeReturn.php:192 src/BadgeReturn.php:354
-#: src/NotificationTargetBadge.php:109 src/NotificationTargetBadge.php:140
+#: src/NotificationTargetBadge.php:108 src/NotificationTargetBadge.php:139
+#: src/Request.php:392 templates/request_wizard.html.twig:46
+#: templates/request_wizard.html.twig:75
+#: templates/badge_return_info.html.twig:39
+#: templates/request_list.html.twig:38
+#: templates/badge_return_list.html.twig:39
 msgid "Visitor society"
 msgstr "Besuchergesellschaft"
