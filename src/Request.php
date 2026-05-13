@@ -442,12 +442,10 @@ class Request extends CommonDBTM
 
         // Notification
         // Request
-        $options_notif        = ['itemtype' => Badge::class,
-            'name' => 'Access Badges Request'];
-        $DB->insert(
-            "glpi_notificationtemplates",
-            $options_notif
-        );
+        $options_notif = ['itemtype' => Badge::class, 'name' => 'Access Badges Request'];
+        if (count($DB->request(['FROM' => 'glpi_notificationtemplates', 'WHERE' => $options_notif])) === 0) {
+            $DB->insert("glpi_notificationtemplates", $options_notif);
+        }
 
         foreach ($DB->request([
             'FROM' => 'glpi_notificationtemplates',
@@ -479,47 +477,43 @@ class Request extends CommonDBTM
                     ]
                 );
 
-                $DB->insert(
-                    "glpi_notifications",
-                    [
-                        'name' => 'Access badge request',
-                        'entities_id' => 0,
-                        'itemtype' => Badge::class,
-                        'event' => 'AccessBadgeRequest',
-                        'is_recursive' => 1,
-                    ]
-                );
-
-                $options_notif        = ['itemtype' => Badge::class,
-                    'name' => 'Access badge request',
-                    'event' => 'AccessBadgeRequest'];
+                $options_notif = ['itemtype' => Badge::class, 'name' => 'Access badge request', 'event' => 'AccessBadgeRequest'];
+                if (count($DB->request(['FROM' => 'glpi_notifications', 'WHERE' => $options_notif])) === 0) {
+                    $DB->insert(
+                        "glpi_notifications",
+                        [
+                            'name' => 'Access badge request',
+                            'entities_id' => 0,
+                            'itemtype' => Badge::class,
+                            'event' => 'AccessBadgeRequest',
+                            'is_recursive' => 1,
+                        ]
+                    );
+                }
 
                 foreach ($DB->request([
                     'FROM' => 'glpi_notifications',
                     'WHERE' => $options_notif]) as $data_notif) {
                     $notification = $data_notif['id'];
                     if ($notification) {
-                        $DB->insert(
-                            "glpi_notifications_notificationtemplates",
-                            [
-                                'notifications_id' => $notification,
-                                'mode' => 'mailing',
-                                'notificationtemplates_id' => $templates_id,
-                            ]
-                        );
+                        $link = [
+                            'notifications_id' => $notification,
+                            'mode' => 'mailing',
+                            'notificationtemplates_id' => $templates_id,
+                        ];
+                        if (count($DB->request(['FROM' => 'glpi_notifications_notificationtemplates', 'WHERE' => $link])) === 0) {
+                            $DB->insert("glpi_notifications_notificationtemplates", $link);
+                        }
                     }
                 }
             }
         }
 
         // Return
-        $options_notif        = ['itemtype' => Badge::class,
-            'name' => 'Access Badges Return'];
-        // Request
-        $DB->insert(
-            "glpi_notificationtemplates",
-            $options_notif
-        );
+        $options_notif = ['itemtype' => Badge::class, 'name' => 'Access Badges Return'];
+        if (count($DB->request(['FROM' => 'glpi_notificationtemplates', 'WHERE' => $options_notif])) === 0) {
+            $DB->insert("glpi_notificationtemplates", $options_notif);
+        }
 
         foreach ($DB->request([
             'FROM' => 'glpi_notificationtemplates',
@@ -551,34 +545,33 @@ class Request extends CommonDBTM
                     ]
                 );
 
-                $DB->insert(
-                    "glpi_notifications",
-                    [
-                        'name' => 'Access Badges Return',
-                        'entities_id' => 0,
-                        'itemtype' => Badge::class,
-                        'event' => 'BadgesReturn',
-                        'is_recursive' => 1,
-                    ]
-                );
-
-                $options_notif        = ['itemtype' => Badge::class,
-                    'name' => 'Access Badges Return',
-                    'event' => 'BadgesReturn'];
+                $options_notif = ['itemtype' => Badge::class, 'name' => 'Access Badges Return', 'event' => 'BadgesReturn'];
+                if (count($DB->request(['FROM' => 'glpi_notifications', 'WHERE' => $options_notif])) === 0) {
+                    $DB->insert(
+                        "glpi_notifications",
+                        [
+                            'name' => 'Access Badges Return',
+                            'entities_id' => 0,
+                            'itemtype' => Badge::class,
+                            'event' => 'BadgesReturn',
+                            'is_recursive' => 1,
+                        ]
+                    );
+                }
 
                 foreach ($DB->request([
                     'FROM' => 'glpi_notifications',
                     'WHERE' => $options_notif]) as $data_notif) {
                     $notification = $data_notif['id'];
                     if ($notification) {
-                        $DB->insert(
-                            "glpi_notifications_notificationtemplates",
-                            [
-                                'notifications_id' => $notification,
-                                'mode' => 'mailing',
-                                'notificationtemplates_id' => $templates_id,
-                            ]
-                        );
+                        $link = [
+                            'notifications_id' => $notification,
+                            'mode' => 'mailing',
+                            'notificationtemplates_id' => $templates_id,
+                        ];
+                        if (count($DB->request(['FROM' => 'glpi_notifications_notificationtemplates', 'WHERE' => $link])) === 0) {
+                            $DB->insert("glpi_notifications_notificationtemplates", $link);
+                        }
                     }
                 }
             }
