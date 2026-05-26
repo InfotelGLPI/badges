@@ -1,6 +1,4 @@
-<?php
-
-/*
+{#
  -------------------------------------------------------------------------
  badges plugin for GLPI
  Copyright (C) 2015-2026 by the badges Development Team.
@@ -25,39 +23,4 @@
  You should have received a copy of the GNU General Public License
  along with badges. If not, see <http://www.gnu.org/licenses/>.
  --------------------------------------------------------------------------
- */
-
-use Glpi\Exception\Http\AccessDeniedHttpException;
-use GlpiPlugin\Badges\Badge;
-use GlpiPlugin\Servicecatalog\Main;
-
-if (Session::getCurrentInterface() == 'central') {
-    Html::header(Badge::getTypeName(2), '', "assets", Badge::class);
-} else {
-    if (Plugin::isPluginActive('servicecatalog')) {
-        Main::showDefaultHeaderHelpdesk(Badge::getTypeName(2));
-    } else {
-        Html::helpHeader(Badge::getTypeName(2));
-    }
-}
-
-
-$badge = new Badge();
-$badge->checkGlobal(READ);
-
-if ($badge->canView()) {
-    Search::show(Badge::class);
-} else {
-    throw new AccessDeniedHttpException();
-}
-
-if (Session::getCurrentInterface() != 'central'
-    && Plugin::isPluginActive('servicecatalog')) {
-    Main::showNavBarFooter('badges');
-}
-
-if (Session::getCurrentInterface() == 'central') {
-    Html::footer();
-} else {
-    Html::helpFooter();
-}
+ #}
