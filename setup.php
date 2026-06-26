@@ -14,7 +14,7 @@
 
  badges is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
- the Free Software Foundation; either version 2 of the License, or
+ the Free Software Foundation; either version 3 of the License, or
  (at your option) any later version.
 
  badges is distributed in the hope that it will be useful,
@@ -120,7 +120,7 @@ function plugin_version_badges()
         'name' => _n('Badge', 'Badges', 2, 'badges'),
         'version' => PLUGIN_BADGES_VERSION,
         'author' => "<a href='https//blogglpi.infotel.com'>Infotel</a>, Xavier CAILLAUD",
-        'license' => 'GPLv2+',
+        'license' => 'GPLv3+',
         'homepage' => 'https://github.com/InfotelGLPI/badges',
         'requirements' => [
             'glpi' => [
