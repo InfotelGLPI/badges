@@ -144,7 +144,7 @@
                         {# {% endif %} #}
 
                          {% if item.isField('is_bookable') %}
-                         {{ fields.dropdownYesNo('is_bookable', item.fields['is_bookable'], __('Bookable', 'badges')) }}
+                         {{ fields.sliderField('is_bookable', item.fields['is_bookable'], __('Bookable', 'badges')) }}
                          {% endif %}
 
                     </div> {# .row #}
