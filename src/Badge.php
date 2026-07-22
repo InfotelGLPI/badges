@@ -375,7 +375,17 @@ class Badge extends CommonDBTM implements StateInterface
 
                 if ($item->getType() == Badge::class) {
                     foreach ($ids as $key) {
-                        $item->getFromDB($key);
+                        // Security: the massive action is only offered under the
+                        // global transfer/UPDATE rights, which do not enforce
+                        // per-object or per-entity access. Re-check that the user
+                        // may update this specific badge and may write to the
+                        // destination entity, otherwise a crafted id set could
+                        // move badges out of entities the user cannot access.
+                        if (!$item->can($key, UPDATE)
+                            || !Session::haveAccessToEntity($input['entities_id'])) {
+                            $ma->itemDone($item->getType(), $key, MassiveAction::ACTION_KO);
+                            continue;
+                        }
                         $type = BadgeType::transfer(
                             $item->fields["plugin_badges_badgetypes_id"],
                             $input['entities_id']

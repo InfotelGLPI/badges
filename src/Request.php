@@ -296,6 +296,25 @@ class Request extends CommonDBTM
         if (isset($params['badges_cart'])) {
             foreach ($params['badges_cart'] as $row) {
                 [$success, $message] = $this->checkMandatoryFields($row);
+
+                // Security (IDOR / input validation): the entity and is_bookable
+                // filter is only applied when building the dropdown
+                // (loadAvailableBadges); a client can forge an addBadges POST with
+                // an arbitrary badges_id (another entity, or not bookable). Reload
+                // the Badge server-side and re-check existence, is_bookable=1 and
+                // entity access before writing.
+                if ($success) {
+                    $badge = new Badge();
+                    if (
+                        !$badge->getFromDB((int) $row['badges_id'])
+                        || (int) $badge->fields['is_bookable'] !== 1
+                        || !Session::haveAccessToEntity($badge->fields['entities_id'])
+                    ) {
+                        $success = false;
+                        $message = __('Please add badges in cart', 'badges');
+                    }
+                }
+
                 if ($success) {
                     $badgeExist = $this->find(["badges_id"   => $row['badges_id'],
                         "is_affected" => 1]);
@@ -320,13 +339,15 @@ class Request extends CommonDBTM
                     }
                 }
 
-                $message = "<div class='alert alert-important alert-success d-flex'>" . _n('Badge affected', 'Badges affected', count($params['badges_cart']), 'badges') . "</div>";
-                NotificationEvent::raiseEvent(
-                    "AccessBadgeRequest",
-                    new Badge(),
-                    ['entities_id'  => $_SESSION['glpiactive_entity'],
-                        'badgerequest' => $params['badges_cart']]
-                );
+                if ($success) {
+                    $message = "<div class='alert alert-important alert-success d-flex'>" . _n('Badge affected', 'Badges affected', count($params['badges_cart']), 'badges') . "</div>";
+                    NotificationEvent::raiseEvent(
+                        "AccessBadgeRequest",
+                        new Badge(),
+                        ['entities_id'  => $_SESSION['glpiactive_entity'],
+                            'badgerequest' => $params['badges_cart']]
+                    );
+                }
             }
         } else {
             $success = false;

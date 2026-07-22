@@ -33,6 +33,11 @@ $return = new BadgeReturn();
 
 if (isset($_POST["force_return"])) {
     $return->check(-1, UPDATE, $_POST);
+    // Security: never trust a client-supplied requesters_id. returnBadge()
+    // forwards it to getUserBadges() and would otherwise let a user force the
+    // return of another requester's badges. Pin it to the current user, exactly
+    // like the AJAX route (ajax/request.php, action=returnBadges).
+    $_POST['requesters_id'] = Session::getLoginUserID();
     $result = $return->returnBadge($_POST);
     Session::addMessageAfterRedirect($result['message']);
 

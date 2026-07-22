@@ -24,21 +24,43 @@ this.badges_addToCart = function (action, toobserve, toupdate) {
          success: function (data) {
             if (data.success) {
                 var item_bloc = $('#' + toupdate);
-                var result = "<tr id='badges_cartRow" + data.rowId + "'>\n";
+
+                // Security (DOM XSS): build the cart row with DOM nodes and
+                // text()/val() rather than HTML string concatenation, so the
+                // visitor-supplied fields (firstname, realname, society) can
+                // never be parsed as markup. Values are kept raw here; they are
+                // stored via addBadges() and re-displayed through auto-escaping
+                // Twig templates, so no server-side escaping is applied (it
+                // would otherwise be persisted and double-escaped).
+                var $row = $('<tr>', {id: 'badges_cartRow' + data.rowId});
 
                 // Insert row in cart
                 $.each(data.fields, function (index, row) {
-                    result += "<td>" + row.label.replace(/\\["|']/g, '"') + "<input type='hidden' id='" + index + "' name='badges_cart[" + data.rowId + "][" + index + "]' value='" + row.value + "'></td>\n";
+                    var $cell = $('<td>').text(row.label);
+                    $('<input>', {
+                        type: 'hidden',
+                        id:   index,
+                        name: 'badges_cart[' + data.rowId + '][' + index + ']'
+                    }).val(row.value).appendTo($cell);
+                    $row.append($cell);
 
                     // Push used badges
-                  if (index == 'badges_id' && row.value != 0) {
-                      object.usedBadges.push(row.value);
-                  }
+                    if (index == 'badges_id' && row.value != 0) {
+                        object.usedBadges.push(row.value);
+                    }
                 });
-                result += "<td>" +
-                    "<a href='#' onclick=\"badges_removeCart('badges_cartRow" + data.rowId + "')\"><i class='ti ti-circle-x fa-2x' style='color:darkred'></i></a>" +
-                    "</td></tr>";
-                item_bloc.append(result);
+
+                var $removeCell = $('<td>');
+                $('<a>', {href: '#'})
+                    .on('click', function () {
+                        badges_removeCart('badges_cartRow' + data.rowId);
+                        return false;
+                    })
+                    .append($('<i>', {'class': 'ti ti-circle-x fa-2x'}).css('color', 'darkred'))
+                    .appendTo($removeCell);
+                $row.append($removeCell);
+
+                item_bloc.append($row);
                 item_bloc.css({"display": 'table'});
 
                 // Reload badge list

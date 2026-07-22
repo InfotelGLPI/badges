@@ -30,8 +30,13 @@
 use GlpiPlugin\Badges\Request;
 use GlpiPlugin\Badges\BadgeReturn;
 
-Session::checkLoginUser();
-//Html::header_nocache();
+// Security: checkLoginUser() only proves authentication, not authorization.
+// Every action below reads or writes badge requests/returns for the current
+// user; gate the whole endpoint on the plugin_badges READ right, exactly like
+// the self-service menu (Wizard::canView) and Request::listItems require.
+// Without this, any authenticated user lacking plugin_badges could POST here
+// and create assignments / trigger notifications.
+Session::checkRight('plugin_badges', READ);
 
 switch ($_POST['action']) {
    case 'addToCart':

@@ -1,0 +1,493 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Method GlpiPlugin\\Badges\\BadgeReturn\:\:listItems\(\) invoked with 2 parameters, 1 required\.$#'
+			identifier: arguments.count
+			count: 1
+			path: ajax/request.php
+
+		-
+			message: '#^Parameter \#1 \$fields of method GlpiPlugin\\Badges\\BadgeReturn\:\:listItems\(\) expects GlpiPlugin\\Badges\\type, int\|string\|false given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ajax/request.php
+
+		-
+			message: '#^Parameter \#1 \$params of method GlpiPlugin\\Badges\\BadgeReturn\:\:returnBadge\(\) expects GlpiPlugin\\Badges\\type, array\<mixed\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ajax/request.php
+
+		-
+			message: '#^Parameter \#1 \$params of method GlpiPlugin\\Badges\\Request\:\:addToCart\(\) expects GlpiPlugin\\Badges\\type, array\<mixed\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ajax/request.php
+
+		-
+			message: '#^Parameter \#1 \$users_id of method GlpiPlugin\\Badges\\BadgeReturn\:\:loadBadgeInformation\(\) expects GlpiPlugin\\Badges\\type, int\|string\|false given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ajax/request.php
+
+		-
+			message: '#^Call to static method showDefaultHeaderHelpdesk\(\) on an unknown class GlpiPlugin\\Servicecatalog\\Main\.$#'
+			identifier: class.notFound
+			count: 1
+			path: front/badge.form.php
+
+		-
+			message: '#^Call to static method showNavBarFooter\(\) on an unknown class GlpiPlugin\\Servicecatalog\\Main\.$#'
+			identifier: class.notFound
+			count: 1
+			path: front/badge.form.php
+
+		-
+			message: '#^Parameter \#2 \$force of method CommonDBTM\:\:delete\(\) expects bool, int given\.$#'
+			identifier: argument.type
+			count: 1
+			path: front/badge.form.php
+
+		-
+			message: '#^Call to static method showDefaultHeaderHelpdesk\(\) on an unknown class GlpiPlugin\\Servicecatalog\\Main\.$#'
+			identifier: class.notFound
+			count: 1
+			path: front/badge.php
+
+		-
+			message: '#^Call to static method showNavBarFooter\(\) on an unknown class GlpiPlugin\\Servicecatalog\\Main\.$#'
+			identifier: class.notFound
+			count: 1
+			path: front/badge.php
+
+		-
+			message: '#^Parameter \#1 \$params of method GlpiPlugin\\Badges\\BadgeReturn\:\:returnBadge\(\) expects GlpiPlugin\\Badges\\type, array\<mixed\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: front/badgereturn.form.php
+
+		-
+			message: '#^Call to static method showDefaultHeaderHelpdesk\(\) on an unknown class GlpiPlugin\\Servicecatalog\\Main\.$#'
+			identifier: class.notFound
+			count: 1
+			path: front/wizard.form.php
+
+		-
+			message: '#^Call to static method showNavBarFooter\(\) on an unknown class GlpiPlugin\\Servicecatalog\\Main\.$#'
+			identifier: class.notFound
+			count: 1
+			path: front/wizard.form.php
+
+		-
+			message: '#^Call to static method showDefaultHeaderHelpdesk\(\) on an unknown class GlpiPlugin\\Servicecatalog\\Main\.$#'
+			identifier: class.notFound
+			count: 1
+			path: front/wizard.php
+
+		-
+			message: '#^Call to static method showNavBarFooter\(\) on an unknown class GlpiPlugin\\Servicecatalog\\Main\.$#'
+			identifier: class.notFound
+			count: 1
+			path: front/wizard.php
+
+		-
+			message: '#^Missing PHPDoc tag @var for global variable \$INJECTABLE_TYPES$#'
+			identifier: glpi.missingGlobalVarType
+			count: 1
+			path: hook.php
+
+		-
+			message: '#^Parameter \#2 \$right of static method Session\:\:haveRight\(\) expects int, string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: hook.php
+
+		-
+			message: '#^Access to offset ''date_affectation'' on an unknown class GlpiPlugin\\Badges\\datas\.$#'
+			identifier: class.notFound
+			count: 6
+			path: src/Badge.php
+
+		-
+			message: '#^Access to offset ''date_expiration'' on an unknown class GlpiPlugin\\Badges\\datas\.$#'
+			identifier: class.notFound
+			count: 6
+			path: src/Badge.php
+
+		-
+			message: '#^Method GlpiPlugin\\Badges\\Badge\:\:getSpecificValueToDisplay\(\) has invalid return type GlpiPlugin\\Badges\\date\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Badge.php
+
+		-
+			message: '#^Method GlpiPlugin\\Badges\\Badge\:\:getSpecificValueToDisplay\(\) has invalid return type GlpiPlugin\\Badges\\return\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Badge.php
+
+		-
+			message: '#^Method GlpiPlugin\\Badges\\Badge\:\:getSpecificValueToDisplay\(\) has invalid return type GlpiPlugin\\Badges\\translated\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Badge.php
+
+		-
+			message: '#^Method GlpiPlugin\\Badges\\Badge\:\:prepareInputForAdd\(\) has invalid return type GlpiPlugin\\Badges\\datas\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Badge.php
+
+		-
+			message: '#^Method GlpiPlugin\\Badges\\Badge\:\:prepareInputForUpdate\(\) has invalid return type GlpiPlugin\\Badges\\datas\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Badge.php
+
+		-
+			message: '#^Method GlpiPlugin\\Badges\\Badge\:\:processMassiveActionsForOneItemtype\(\) has invalid return type GlpiPlugin\\Badges\\nothing\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Badge.php
+
+		-
+			message: '#^Method GlpiPlugin\\Badges\\Config\:\:showConfigForm\(\) invoked with 2 parameters, 1 required\.$#'
+			identifier: arguments.count
+			count: 1
+			path: src/Badge.php
+
+		-
+			message: '#^Parameter \#1 \$checkitem \(null\) of method GlpiPlugin\\Badges\\Badge\:\:getSpecificMassiveActions\(\) should be compatible with parameter \$checkitem \(CommonDBTM\) of method CommonDBTM\:\:getSpecificMassiveActions\(\)$#'
+			identifier: method.childParameterType
+			count: 1
+			path: src/Badge.php
+
+		-
+			message: '#^Parameter \#1 \$input \(GlpiPlugin\\Badges\\datas\) of method GlpiPlugin\\Badges\\Badge\:\:prepareInputForAdd\(\) should be compatible with parameter \$input \(array\<string, mixed\>\) of method CommonDBTM\:\:prepareInputForAdd\(\)$#'
+			identifier: method.childParameterType
+			count: 1
+			path: src/Badge.php
+
+		-
+			message: '#^Parameter \#1 \$input \(GlpiPlugin\\Badges\\datas\) of method GlpiPlugin\\Badges\\Badge\:\:prepareInputForUpdate\(\) should be compatible with parameter \$input \(array\<string, mixed\>\) of method CommonDBTM\:\:prepareInputForUpdate\(\)$#'
+			identifier: method.childParameterType
+			count: 1
+			path: src/Badge.php
+
+		-
+			message: '#^Parameter \$input of method GlpiPlugin\\Badges\\Badge\:\:prepareInputForAdd\(\) has invalid type GlpiPlugin\\Badges\\datas\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Badge.php
+
+		-
+			message: '#^Parameter \$input of method GlpiPlugin\\Badges\\Badge\:\:prepareInputForUpdate\(\) has invalid type GlpiPlugin\\Badges\\datas\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Badge.php
+
+		-
+			message: '#^Return type \(GlpiPlugin\\Badges\\datas\) of method GlpiPlugin\\Badges\\Badge\:\:prepareInputForAdd\(\) should be compatible with return type \(array\<string, mixed\>\|false\) of method CommonDBTM\:\:prepareInputForAdd\(\)$#'
+			identifier: method.childReturnType
+			count: 1
+			path: src/Badge.php
+
+		-
+			message: '#^Return type \(GlpiPlugin\\Badges\\datas\) of method GlpiPlugin\\Badges\\Badge\:\:prepareInputForUpdate\(\) should be compatible with return type \(array\<string, mixed\>\|false\) of method CommonDBTM\:\:prepareInputForUpdate\(\)$#'
+			identifier: method.childReturnType
+			count: 1
+			path: src/Badge.php
+
+		-
+			message: '#^Unreachable statement \- code above always terminates\.$#'
+			identifier: deadCode.unreachable
+			count: 3
+			path: src/Badge.php
+
+		-
+			message: '#^Method GlpiPlugin\\Badges\\BadgeInjection\:\:addOrUpdateObject\(\) has invalid return type GlpiPlugin\\Badges\\an\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/BadgeInjection.php
+
+		-
+			message: '#^Method GlpiPlugin\\Badges\\BadgeInjection\:\:addOrUpdateObject\(\) should return GlpiPlugin\\Badges\\an but returns array\.$#'
+			identifier: return.type
+			count: 1
+			path: src/BadgeInjection.php
+
+		-
+			message: '#^Method GlpiPlugin\\Badges\\BadgeInjection\:\:getOptions\(\) has invalid return type GlpiPlugin\\Badges\\the\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/BadgeInjection.php
+
+		-
+			message: '#^Parameter \$options of method GlpiPlugin\\Badges\\BadgeInjection\:\:addOrUpdateObject\(\) has invalid type GlpiPlugin\\Badges\\options\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/BadgeInjection.php
+
+		-
+			message: '#^Parameter \$values of method GlpiPlugin\\Badges\\BadgeInjection\:\:addOrUpdateObject\(\) has invalid type GlpiPlugin\\Badges\\fields\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/BadgeInjection.php
+
+		-
+			message: '#^Return type \(GlpiPlugin\\Badges\\an\) of method GlpiPlugin\\Badges\\BadgeInjection\:\:addOrUpdateObject\(\) should be compatible with return type \(array\) of method PluginDatainjectionInjectionInterface\:\:addOrUpdateObject\(\)$#'
+			identifier: method.childReturnType
+			count: 1
+			path: src/BadgeInjection.php
+
+		-
+			message: '#^Access to offset ''requesters_id'' on an unknown class GlpiPlugin\\Badges\\type\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/BadgeReturn.php
+
+		-
+			message: '#^Access to offset ''return_badges_id'' on an unknown class GlpiPlugin\\Badges\\type\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/BadgeReturn.php
+
+		-
+			message: '#^Access to property \$fields on an unknown class GlpiPlugin\\Badges\\type\.$#'
+			identifier: class.notFound
+			count: 4
+			path: src/BadgeReturn.php
+
+		-
+			message: '#^Call to an undefined method CommonGLPI\:\:getID\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: src/BadgeReturn.php
+
+		-
+			message: '#^Call to static method loadLang\(\) on an unknown class GlpiPlugin\\Badges\\Plugin\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/BadgeReturn.php
+
+		-
+			message: '#^Iterating over an object of an unknown class GlpiPlugin\\Badges\\type\.$#'
+			identifier: class.notFound
+			count: 2
+			path: src/BadgeReturn.php
+
+		-
+			message: '#^Method GlpiPlugin\\Badges\\BadgeReturn\:\:showForBadge\(\) should return bool but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/BadgeReturn.php
+
+		-
+			message: '#^Parameter \#1 \$item of method GlpiPlugin\\Badges\\BadgeReturn\:\:showForBadge\(\) expects GlpiPlugin\\Badges\\type, CommonGLPI given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/BadgeReturn.php
+
+		-
+			message: '#^Parameter \#1 \$users_id of method GlpiPlugin\\Badges\\BadgeReturn\:\:loadBadgeInformation\(\) expects GlpiPlugin\\Badges\\type, int given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/BadgeReturn.php
+
+		-
+			message: '#^Parameter \$badges_id of method GlpiPlugin\\Badges\\BadgeReturn\:\:loadBadgeInformation\(\) has invalid type GlpiPlugin\\Badges\\type\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/BadgeReturn.php
+
+		-
+			message: '#^Parameter \$fields of method GlpiPlugin\\Badges\\BadgeReturn\:\:listItems\(\) has invalid type GlpiPlugin\\Badges\\type\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/BadgeReturn.php
+
+		-
+			message: '#^Parameter \$input of method GlpiPlugin\\Badges\\BadgeReturn\:\:checkMandatoryFields\(\) has invalid type GlpiPlugin\\Badges\\type\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/BadgeReturn.php
+
+		-
+			message: '#^Parameter \$item of method GlpiPlugin\\Badges\\BadgeReturn\:\:showForBadge\(\) has invalid type GlpiPlugin\\Badges\\type\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/BadgeReturn.php
+
+		-
+			message: '#^Parameter \$params of method GlpiPlugin\\Badges\\BadgeReturn\:\:returnBadge\(\) has invalid type GlpiPlugin\\Badges\\type\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/BadgeReturn.php
+
+		-
+			message: '#^Parameter \$users_id of method GlpiPlugin\\Badges\\BadgeReturn\:\:loadBadgeInformation\(\) has invalid type GlpiPlugin\\Badges\\type\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/BadgeReturn.php
+
+		-
+			message: '#^Unreachable statement \- code above always terminates\.$#'
+			identifier: deadCode.unreachable
+			count: 1
+			path: src/BadgeReturn.php
+
+		-
+			message: '#^Variable \$badges_infos in isset\(\) is never defined\.$#'
+			identifier: isset.variable
+			count: 1
+			path: src/BadgeReturn.php
+
+		-
+			message: '#^Call to an undefined method CommonGLPI\:\:getField\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: src/Config.php
+
+		-
+			message: '#^If condition is always true\.$#'
+			identifier: if.alwaysTrue
+			count: 1
+			path: src/Config.php
+
+		-
+			message: '#^Parameter \#4 \$month of function mktime expects int\|null, string given\.$#'
+			identifier: argument.type
+			count: 2
+			path: src/Config.php
+
+		-
+			message: '#^Parameter \#6 \$year of function mktime expects int\|null, string given\.$#'
+			identifier: argument.type
+			count: 2
+			path: src/Config.php
+
+		-
+			message: '#^You should not use the `die` function\. It prevents the execution of post\-request/post\-command routines\.$#'
+			identifier: glpi.forbidExit
+			count: 1
+			path: src/NotificationState.php
+
+		-
+			message: '#^Access to an undefined property CommonGLPI\:\:\$fields\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/NotificationTargetBadge.php
+
+		-
+			message: '#^Method GlpiPlugin\\Badges\\Profile\:\:migrateOneProfile\(\) should return bool but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Profile.php
+
+		-
+			message: '#^Access to offset ''affectation_date'' on an unknown class GlpiPlugin\\Badges\\type\.$#'
+			identifier: class.notFound
+			count: 2
+			path: src/Request.php
+
+		-
+			message: '#^Access to offset ''badges_id'' on an unknown class GlpiPlugin\\Badges\\type\.$#'
+			identifier: class.notFound
+			count: 2
+			path: src/Request.php
+
+		-
+			message: '#^Access to offset ''visitor_firstname'' on an unknown class GlpiPlugin\\Badges\\type\.$#'
+			identifier: class.notFound
+			count: 2
+			path: src/Request.php
+
+		-
+			message: '#^Access to offset ''visitor_realname'' on an unknown class GlpiPlugin\\Badges\\type\.$#'
+			identifier: class.notFound
+			count: 2
+			path: src/Request.php
+
+		-
+			message: '#^Access to offset ''visitor_society'' on an unknown class GlpiPlugin\\Badges\\type\.$#'
+			identifier: class.notFound
+			count: 2
+			path: src/Request.php
+
+		-
+			message: '#^Binary operation "\+" between array\{requesters_id\?\: GlpiPlugin\\Badges\\type, is_affected\: 1\} and string results in an error\.$#'
+			identifier: binaryOp.invalid
+			count: 1
+			path: src/Request.php
+
+		-
+			message: '#^Default value of the parameter \#2 \$condition \(array\) of method GlpiPlugin\\Badges\\Request\:\:getUserBadges\(\) is incompatible with type string\.$#'
+			identifier: parameter.defaultValue
+			count: 1
+			path: src/Request.php
+
+		-
+			message: '#^Iterating over an object of an unknown class GlpiPlugin\\Badges\\type\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Request.php
+
+		-
+			message: '#^Method GlpiPlugin\\Badges\\Request\:\:getTypeName\(\) has invalid return type GlpiPlugin\\Badges\\translated\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Request.php
+
+		-
+			message: '#^Method GlpiPlugin\\Badges\\Request\:\:loadAvailableBadges\(\) should return array but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Request.php
+
+		-
+			message: '#^Parameter \$input of method GlpiPlugin\\Badges\\Request\:\:checkMandatoryFields\(\) has invalid type GlpiPlugin\\Badges\\type\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Request.php
+
+		-
+			message: '#^Parameter \$params of method GlpiPlugin\\Badges\\Request\:\:addToCart\(\) has invalid type GlpiPlugin\\Badges\\type\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Request.php
+
+		-
+			message: '#^Parameter \$used of method GlpiPlugin\\Badges\\Request\:\:loadAvailableBadges\(\) has invalid type GlpiPlugin\\Badges\\type\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Request.php
+
+		-
+			message: '#^Parameter \$users_id of method GlpiPlugin\\Badges\\Request\:\:getUserBadges\(\) has invalid type GlpiPlugin\\Badges\\type\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Request.php
+
+		-
+			message: '#^Variable \$message might not be defined\.$#'
+			identifier: variable.undefined
+			count: 1
+			path: src/Request.php
+
+		-
+			message: '#^Variable \$success might not be defined\.$#'
+			identifier: variable.undefined
+			count: 1
+			path: src/Request.php
+
+		-
+			message: '#^PHPDoc tag @throws with type GlpitestSQLError is not subtype of Throwable$#'
+			identifier: throws.notThrowable
+			count: 1
+			path: src/Servicecatalog.php
+
+		-
+			message: '#^Method GlpiPlugin\\Badges\\Wizard\:\:getTypeName\(\) has invalid return type GlpiPlugin\\Badges\\translated\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Wizard.php

@@ -31,6 +31,12 @@ use GlpiPlugin\Badges\Badge;
 use GlpiPlugin\Badges\Wizard;
 use GlpiPlugin\Servicecatalog\Main;
 
+// Security: unlike front/wizard.php (which renders through the canView()-gated
+// Wizard::showMenu()), this variant calls showWizard() directly. Gate it on the
+// same plugin_badges READ right so users without the right cannot reach the
+// self-service request/return forms.
+Session::checkRight('plugin_badges', READ);
+
 if (Session::getCurrentInterface() == 'central') {
     Html::header(Wizard::getTypeName(2), '', "assets", Badge::class);
 } else {
