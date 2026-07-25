@@ -30,6 +30,7 @@
 namespace GlpiPlugin\Badges;
 
 use CommonDBTM;
+use Glpi\Application\View\TemplateRenderer;
 
 /**
  * Class Wizard
@@ -64,28 +65,10 @@ class Wizard extends CommonDBTM
             return false;
         }
 
-        echo "<h3><div class='alert alert-secondary' role='alert'>";
-        echo "<i class='".Badge::getIcon()."'></i>&nbsp;";
-        echo  __("Access badge request", "badges");
-        echo "</div></h3>";
-
-        echo "<div class='row badges_wizard_row' style='margin: 0 auto;'>";
-
-       // Badge request
-        echo "<div class='center col-md-5 badges_wizard_rank'>";
-        echo "<a class='badges_menu_a' href='".PLUGIN_BADGES_WEBDIR."/front/wizard.form.php?action=badgerequest'>";
-        echo "<i class='".Badge::getIcon()."' style='font-size: 4.5em;'></i>";
-        echo "<br><br>" . __("Access badge request", "badges") . "<br>(" . __("For a limited time", "badges") . ")</a>";
-        echo "</div>";
-        echo "<div style='width: 10px;'></div>";
-       // Badge return
-        echo "<div class='center col-md-5 badges_wizard_rank'>";
-        echo "<a class='badges_menu_a' href='".PLUGIN_BADGES_WEBDIR."/front/wizard.form.php?action=badgereturn'>";
-        echo "<i class='ti ti-receipt-refund' style='font-size: 4.5em;'></i>";
-        echo "<br><br>" . __("Access badge return", "badges") . "</a>";
-        echo "</div>";
-
-        echo "</div>";
+        TemplateRenderer::getInstance()->display('@badges/wizard_menu.html.twig', [
+            'badge_icon' => Badge::getIcon(),
+            'webdir'     => PLUGIN_BADGES_WEBDIR,
+        ]);
     }
 
    /**
