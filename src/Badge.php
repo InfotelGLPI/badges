@@ -443,7 +443,10 @@ class Badge extends CommonDBTM implements StateInterface
         $notif = new NotificationState();
 
         $config->getFromDB('1');
-        $delay = $config->fields["delay_expired"];
+        // Cast at the point of use: delay_expired is stored in a varchar column, so
+        // casting here (not only in Config::prepareInputForUpdate) makes SQL injection
+        // impossible regardless of how the value ended up in the database.
+        $delay = (int) $config->fields["delay_expired"];
 
         $criteria = [
             'FROM'   => self::getTable(),
@@ -473,7 +476,9 @@ class Badge extends CommonDBTM implements StateInterface
         $notif = new NotificationState();
 
         $config->getFromDB('1');
-        $delay = $config->fields["delay_whichexpire"];
+        // Cast at the point of use (see queryExpiredBadges): defends against SQL
+        // injection independently of the value stored in the varchar column.
+        $delay = (int) $config->fields["delay_whichexpire"];
 
         $criteria = [
             'FROM'   => self::getTable(),

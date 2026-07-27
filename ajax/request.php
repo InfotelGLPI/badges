@@ -75,7 +75,10 @@ switch ($_POST['action']) {
 
    case 'searchBadges':
       header('Content-Type: application/json; charset=UTF-8');
-      $request = new BadgeReturn();
+      // Use Request::listItems($requesters_id, $options): it has the two-argument
+      // signature and pins the search to the current requester. BadgeReturn::listItems()
+      // expects a single argument, so the previous call passed the user id as $fields.
+      $request = new Request();
       echo json_encode($request->listItems(Session::getLoginUserID(), $_POST));
       break;
 }

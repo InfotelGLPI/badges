@@ -263,6 +263,28 @@ class Request extends CommonDBTM
 
         [$success, $message] = $this->checkMandatoryFields($params);
 
+        // Security (cross-entity information disclosure): the badge dropdown is
+        // restricted to the active entity and is_bookable=1 (loadAvailableBadges),
+        // but addToCart returns the badge label straight from getDropdownName
+        // without re-checking. A client with only plugin_badges READ could forge
+        // an addToCart POST with a badges_id from another entity and read its name
+        // in the JSON response. Reload the Badge server-side and re-check existence,
+        // is_bookable=1 and entity access before disclosing the label, exactly like
+        // addBadges() does before writing.
+        if ($success) {
+            $badge = new Badge();
+            if (
+                !$badge->getFromDB((int) $params['badges_id'])
+                || (int) $badge->fields['is_bookable'] !== 1
+                || !Session::haveAccessToEntity($badge->fields['entities_id'])
+            ) {
+                return ['success' => false,
+                    'message' => __('Please add badges in cart', 'badges'),
+                    'rowId'   => mt_rand(),
+                    'fields'  => []];
+            }
+        }
+
         return ['success' => $success,
             'message' => $message,
             'rowId'   => mt_rand(),
@@ -316,6 +338,8 @@ class Request extends CommonDBTM
                 }
 
                 if ($success) {
+                    $current_user = Session::getLoginUserID();
+                    // A badge can only hold one active affectation at a time.
                     $badgeExist = $this->find(["badges_id"   => $row['badges_id'],
                         "is_affected" => 1]);
                     if (empty($badgeExist)) {
@@ -325,17 +349,28 @@ class Request extends CommonDBTM
                             'affectation_date'  => $row['affectation_date'],
                             'badges_id'         => $row['badges_id'],
                             'is_affected'       => 1,
-                            'requesters_id'     => Session::getLoginUserID()]);
+                            'requesters_id'     => $current_user]);
                     } else {
                         $badgeExist = reset($badgeExist);
-                        $this->update(['id'                => $badgeExist['id'],
-                            'visitor_realname'  => $row['visitor_realname'],
-                            'visitor_firstname' => $row['visitor_firstname'],
-                            'visitor_society'   => $row['visitor_society'],
-                            'affectation_date'  => $row['affectation_date'],
-                            'badges_id'         => $row['badges_id'],
-                            'is_affected'       => 1,
-                            'requesters_id'     => Session::getLoginUserID()]);
+                        // Security (broken object-level authorization): the existing
+                        // affectation lookup does not filter on requesters_id, so a
+                        // forged addBadges POST for a badge already affected to another
+                        // user B would overwrite B's record (reassign requesters_id and
+                        // wipe the original visitor data). Refuse to touch an affectation
+                        // owned by someone else instead of silently updating it.
+                        if ((int) $badgeExist['requesters_id'] !== (int) $current_user) {
+                            $success = false;
+                            $message = __('This badge is already affected to another request', 'badges');
+                        } else {
+                            $this->update(['id'                => $badgeExist['id'],
+                                'visitor_realname'  => $row['visitor_realname'],
+                                'visitor_firstname' => $row['visitor_firstname'],
+                                'visitor_society'   => $row['visitor_society'],
+                                'affectation_date'  => $row['affectation_date'],
+                                'badges_id'         => $row['badges_id'],
+                                'is_affected'       => 1,
+                                'requesters_id'     => $current_user]);
+                        }
                     }
                 }
 

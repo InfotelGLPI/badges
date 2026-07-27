@@ -353,7 +353,9 @@ class BadgeReturn extends CommonDBTM
         $config = new Config();
 
         $config->getFromDB('1');
-        $delay = $config->fields["delay_returnexpire"] ?? "";
+        // Cast at the point of use: defends against SQL injection in the QueryExpression
+        // below independently of the value stored in the varchar column.
+        $delay = (int) ($config->fields["delay_returnexpire"] ?? 0);
 
         $query = null;
         if (!empty($delay)) {
