@@ -4,6 +4,24 @@ function badges_initJs(root_doc) {
 }
 
 /**
+ * badges_execInlineScripts : run the <script> blocks embedded in an AJAX HTML
+ * fragment WITHOUT eval(). Each script body is executed by appending a fresh
+ * DOM <script> element (same technique as jQuery's globalEval), which removes
+ * the eval() anti-pattern while preserving the dropdown init behaviour.
+ *
+ * @param html the raw HTML fragment returned by the server
+ */
+this.badges_execInlineScripts = function (html) {
+    var scripts, scriptsFinder = /<script[^>]*>([\s\S]+?)<\/script>/gi;
+    while (scripts = scriptsFinder.exec(html)) {
+        var script = document.createElement('script');
+        script.text = scripts[1];
+        document.head.appendChild(script);
+        document.head.removeChild(script);
+    }
+};
+
+/**
  * badges_add_custom_values : add text input
  *
  * @param action
@@ -182,10 +200,7 @@ this.badges_searchBadges = function (action, toobserve, toupdate) {
             var item_bloc = $('#' + toupdate);
             item_bloc.html(result);
 
-            var scripts, scriptsFinder = /<script[^>]*>([\s\S]+?)<\/script>/gi;
-            while (scripts = scriptsFinder.exec(result)) {
-                eval(scripts[1]);
-            }
+            object.badges_execInlineScripts(result);
          }
       });
 };
@@ -209,10 +224,7 @@ this.badges_reloadAvailableBadges = function () {
             var item_bloc = $('#badges_available');
             item_bloc.html(result);
 
-            var scripts, scriptsFinder = /<script[^>]*>([\s\S]+?)<\/script>/gi;
-            while (scripts = scriptsFinder.exec(result)) {
-                eval(scripts[1]);
-            }
+            object.badges_execInlineScripts(result);
          }
       });
 };

@@ -39,9 +39,14 @@ if (isset($_POST["add"])) {
     $notif->addNotificationState($_POST['states_id']);
     Html::back();
 } elseif (isset($_POST["delete"])) {
-    foreach ($_POST["item"] as $key => $val) {
-        if ($val == 1) {
-            $notif->delete(['id' => $key]);
+    // Guard against a "delete" POST that carries no (or a non-array) "item":
+    // iterating a missing/null value would raise a PHP warning. Cast each key to
+    // int before deletion as a defensive measure.
+    if (isset($_POST["item"]) && is_array($_POST["item"])) {
+        foreach ($_POST["item"] as $key => $val) {
+            if ($val == 1) {
+                $notif->delete(['id' => (int) $key]);
+            }
         }
     }
     Html::back();
