@@ -38,7 +38,7 @@ use GlpiPlugin\Resources\Resource;
 
 global $CFG_GLPI;
 
-define('PLUGIN_BADGES_VERSION', '3.2.3');
+define('PLUGIN_BADGES_VERSION', '3.2.4');
 
 if (!defined("PLUGIN_BADGES_DIR")) {
     define("PLUGIN_BADGES_DIR", Plugin::getPhpDir("badges"));
