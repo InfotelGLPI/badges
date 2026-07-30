@@ -31,6 +31,12 @@ use GlpiPlugin\Badges\Badge;
 use GlpiPlugin\Badges\Wizard;
 use GlpiPlugin\Servicecatalog\Main;
 
+// Enforce authorization before rendering the page frame, mirroring
+// front/wizard.form.php. Without this, an authenticated user lacking the
+// plugin_badges READ right would get a well-formed but empty page (showMenu()
+// returns false internally) instead of a clear 403, blurring the auth boundary.
+Session::checkRight('plugin_badges', READ);
+
 if (Session::getCurrentInterface() == 'central') {
     Html::header(Wizard::getTypeName(2), '', "assets", Badge::class);
 } else {

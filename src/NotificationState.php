@@ -67,6 +67,14 @@ class NotificationState extends CommonDBTM
      */
     public function addNotificationState($states_id)
     {
+        // Validate the incoming state id before persisting it: cast to int and
+        // ensure the referenced state actually exists in glpi_states. This keeps a
+        // forged (or mistyped) POST from creating an orphan/arbitrary row in the
+        // notification-state table that findStates() would then silently ignore.
+        $states_id = (int) $states_id;
+        if ($states_id <= 0 || !(new \State())->getFromDB($states_id)) {
+            return;
+        }
         if ($this->getFromDBbyCrit(['states_id' => $states_id])) {
             $this->update([
                 'id' => $this->fields['id'],
