@@ -194,10 +194,15 @@ class NotificationTargetBadge extends NotificationTarget
     {
         global $DB;
 
-        $DB->insert(
-            'glpi_notificationtemplates',
-                ['name' => 'Alert Badges',
-                'itemtype' => Badge::class]
-        );
+        $options_notif = ['itemtype' => Badge::class, 'name' => 'Alert Badges'];
+        if (count($DB->request(['FROM' => 'glpi_notificationtemplates', 'WHERE' => $options_notif])) === 0) {
+            $DB->insert(
+                'glpi_notificationtemplates',
+                [
+                    'name' => 'Alert Badges',
+                    'itemtype' => Badge::class
+                ]
+            );
+        }
     }
 }

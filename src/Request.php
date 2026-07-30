@@ -72,16 +72,15 @@ class Request extends CommonDBTM
 
 
     /**
-    * Display tab for each users
-    *
-    * @param CommonGLPI $item
-    * @param int        $withtemplate
-    *
-    * @return array|string
-    */
+     * Display tab for each users
+     *
+     * @param CommonGLPI $item
+     * @param int $withtemplate
+     *
+     * @return array|string
+     */
     public function getTabNameForItem(CommonGLPI $item, $withtemplate = 0)
     {
-
         if (!$withtemplate) {
             if ($item->getType() == 'User'
                 && Session::haveRight(self::$rightname, READ)) {
@@ -100,8 +99,8 @@ class Request extends CommonDBTM
      * @static
      *
      * @param CommonGLPI $item
-     * @param int        $tabnum
-     * @param int        $withtemplate
+     * @param int $tabnum
+     * @param int $withtemplate
      *
      * @return bool|true
      */
@@ -127,9 +126,9 @@ class Request extends CommonDBTM
             return false;
         }
 
-        $canedit    = $item->can($item->fields['id'], READ);
+        $canedit = $item->can($item->fields['id'], READ);
         $begin_date = date('Y-m-d H:i:s', strtotime(date('Y-m-d H:i:s') . "-1 MONTH"));
-        $end_date   = date('Y-m-d H:i:s');
+        $end_date = date('Y-m-d H:i:s');
 
         ob_start();
         Html::showDateTimeField("begin_date", ['value' => $begin_date]);
@@ -143,13 +142,13 @@ class Request extends CommonDBTM
         Html::requireJs('glpi_dialog');
 
         TemplateRenderer::getInstance()->display('@badges/request_search.html.twig', [
-            'canedit'          => $canedit,
-            'form_url'         => Toolbox::getItemTypeFormURL($this->getType()),
-            'requesters_id'    => $item->fields['id'],
+            'canedit' => $canedit,
+            'form_url' => Toolbox::getItemTypeFormURL($this->getType()),
+            'requesters_id' => $item->fields['id'],
             'begin_date_field' => $begin_date_field,
-            'end_date_field'   => $end_date_field,
-            'initial_results'  => $initial['message'],
-            'web_dir'          => PLUGIN_BADGES_WEBDIR,
+            'end_date_field' => $end_date_field,
+            'initial_results' => $initial['message'],
+            'web_dir' => PLUGIN_BADGES_WEBDIR,
         ]);
     }
 
@@ -164,36 +163,37 @@ class Request extends CommonDBTM
      */
     public function listItems($requesters_id, $options = [])
     {
-
         $params['begin_date'] = "NULL";
-        $params['end_date']   = "NULL";
+        $params['end_date'] = "NULL";
 
         foreach ($options as $key => $val) {
             $params[$key] = $val;
         }
 
-        $data  = $this->find(
-            ['requesters_id'    => $requesters_id,
+        $data = $this->find(
+            [
+                'requesters_id' => $requesters_id,
                 'affectation_date' => ['>=', $params['begin_date']],
                 [
                     "OR" => [
                         ['return_date' => ['<=', $params['end_date']]],
                         ['return_date' => null],
                     ],
-                ]],
+                ]
+            ],
             ["affectation_date DESC"]
         );
         $badge = new Badge();
-        $rows  = [];
+        $rows = [];
         foreach ($data as $field) {
             $badge->getFromDB($field['badges_id']);
             $rows[] = [
-                'badge_link'        => $badge->getLink(),
-                'visitor_realname'  => stripslashes($field['visitor_realname']),
+                'badge_link' => $badge->getLink(),
+                'visitor_realname' => stripslashes($field['visitor_realname']),
                 'visitor_firstname' => stripslashes($field['visitor_firstname']),
-                'visitor_society'   => stripslashes($field['visitor_society']),
-                'affectation_date'  => Html::convDateTime($field['affectation_date']),
-                'return_date'       => Html::convDateTime($field['return_date']),
+                'visitor_society' => stripslashes($field['visitor_society']),
+                'affectation_date' => Html::convDateTime($field['affectation_date']),
+                'return_date' => Html::convDateTime($field['return_date']),
             ];
         }
 
@@ -220,11 +220,11 @@ class Request extends CommonDBTM
         Html::requireJs('glpi_dialog');
 
         TemplateRenderer::getInstance()->display('@badges/request_wizard.html.twig', [
-            'badge_icon'             => Badge::getIcon(),
-            'available_badges_html'  => $available_badges_html,
+            'badge_icon' => Badge::getIcon(),
+            'available_badges_html' => $available_badges_html,
             'affectation_date_field' => $affectation_date_field,
-            'cancel_url'             => PLUGIN_BADGES_WEBDIR . '/front/wizard.php',
-            'web_dir'                => PLUGIN_BADGES_WEBDIR,
+            'cancel_url' => PLUGIN_BADGES_WEBDIR . '/front/wizard.php',
+            'web_dir' => PLUGIN_BADGES_WEBDIR,
         ]);
     }
 
@@ -237,7 +237,6 @@ class Request extends CommonDBTM
      */
     public function loadAvailableBadges($used = [])
     {
-
         $datas = $this->getUsedBadges();
         if (!empty($datas)) {
             foreach ($datas as $val) {
@@ -245,10 +244,12 @@ class Request extends CommonDBTM
             }
         }
 
-        Dropdown::show(Badge::class, ['name'      => 'badges_id',
-            'used'      => $used,
+        Dropdown::show(Badge::class, [
+            'name' => 'badges_id',
+            'used' => $used,
             'condition' => ['is_bookable' => 1],
-            'entity'    => $_SESSION['glpiactive_entity']]);
+            'entity' => $_SESSION['glpiactive_entity']
+        ]);
     }
 
     /**
@@ -260,7 +261,6 @@ class Request extends CommonDBTM
      */
     public function addToCart($params)
     {
-
         [$success, $message] = $this->checkMandatoryFields($params);
 
         // Security (cross-entity information disclosure): the badge dropdown is
@@ -274,35 +274,49 @@ class Request extends CommonDBTM
         if ($success) {
             $badge = new Badge();
             if (
-                !$badge->getFromDB((int) $params['badges_id'])
-                || (int) $badge->fields['is_bookable'] !== 1
+                !$badge->getFromDB((int)$params['badges_id'])
+                || (int)$badge->fields['is_bookable'] !== 1
                 || !Session::haveAccessToEntity($badge->fields['entities_id'])
             ) {
-                return ['success' => false,
+                return [
+                    'success' => false,
                     'message' => __('Please add badges in cart', 'badges'),
-                    'rowId'   => mt_rand(),
-                    'fields'  => []];
+                    'rowId' => mt_rand(),
+                    'fields' => []
+                ];
             }
         }
 
-        return ['success' => $success,
+        return [
+            'success' => $success,
             'message' => $message,
-            'rowId'   => mt_rand(),
-            'fields'  => [
-                'visitor_firstname' => ['label' => $params['visitor_firstname'],
-                    'value' => $params['visitor_firstname']],
-                'visitor_realname'  => ['label' => $params['visitor_realname'],
-                    'value' => $params['visitor_realname']],
-                'visitor_society'   => ['label' => $params['visitor_society'],
-                    'value' => $params['visitor_society']],
-                'badges_id'         => ['label' => Dropdown::getDropdownName(
-                    "glpi_plugin_badges_badges",
-                    $params['badges_id']
-                ),
-                    'value' => $params['badges_id']],
-                'affectation_date'  => ['label' => Html::convDateTime($params['affectation_date']),
-                    'value' => $params['affectation_date']],
-            ]];
+            'rowId' => mt_rand(),
+            'fields' => [
+                'visitor_firstname' => [
+                    'label' => $params['visitor_firstname'],
+                    'value' => $params['visitor_firstname']
+                ],
+                'visitor_realname' => [
+                    'label' => $params['visitor_realname'],
+                    'value' => $params['visitor_realname']
+                ],
+                'visitor_society' => [
+                    'label' => $params['visitor_society'],
+                    'value' => $params['visitor_society']
+                ],
+                'badges_id' => [
+                    'label' => Dropdown::getDropdownName(
+                        "glpi_plugin_badges_badges",
+                        $params['badges_id']
+                    ),
+                    'value' => $params['badges_id']
+                ],
+                'affectation_date' => [
+                    'label' => Html::convDateTime($params['affectation_date']),
+                    'value' => $params['affectation_date']
+                ],
+            ]
+        ];
     }
 
     /**
@@ -314,7 +328,6 @@ class Request extends CommonDBTM
      */
     public function addBadges($params)
     {
-
         if (isset($params['badges_cart'])) {
             foreach ($params['badges_cart'] as $row) {
                 [$success, $message] = $this->checkMandatoryFields($row);
@@ -328,8 +341,8 @@ class Request extends CommonDBTM
                 if ($success) {
                     $badge = new Badge();
                     if (
-                        !$badge->getFromDB((int) $row['badges_id'])
-                        || (int) $badge->fields['is_bookable'] !== 1
+                        !$badge->getFromDB((int)$row['badges_id'])
+                        || (int)$badge->fields['is_bookable'] !== 1
                         || !Session::haveAccessToEntity($badge->fields['entities_id'])
                     ) {
                         $success = false;
@@ -340,16 +353,20 @@ class Request extends CommonDBTM
                 if ($success) {
                     $current_user = Session::getLoginUserID();
                     // A badge can only hold one active affectation at a time.
-                    $badgeExist = $this->find(["badges_id"   => $row['badges_id'],
-                        "is_affected" => 1]);
+                    $badgeExist = $this->find([
+                        "badges_id" => $row['badges_id'],
+                        "is_affected" => 1
+                    ]);
                     if (empty($badgeExist)) {
-                        $this->add(['visitor_realname'  => $row['visitor_realname'],
+                        $this->add([
+                            'visitor_realname' => $row['visitor_realname'],
                             'visitor_firstname' => $row['visitor_firstname'],
-                            'visitor_society'   => $row['visitor_society'],
-                            'affectation_date'  => $row['affectation_date'],
-                            'badges_id'         => $row['badges_id'],
-                            'is_affected'       => 1,
-                            'requesters_id'     => $current_user]);
+                            'visitor_society' => $row['visitor_society'],
+                            'affectation_date' => $row['affectation_date'],
+                            'badges_id' => $row['badges_id'],
+                            'is_affected' => 1,
+                            'requesters_id' => $current_user
+                        ]);
                     } else {
                         $badgeExist = reset($badgeExist);
                         // Security (broken object-level authorization): the existing
@@ -358,29 +375,38 @@ class Request extends CommonDBTM
                         // user B would overwrite B's record (reassign requesters_id and
                         // wipe the original visitor data). Refuse to touch an affectation
                         // owned by someone else instead of silently updating it.
-                        if ((int) $badgeExist['requesters_id'] !== (int) $current_user) {
+                        if ((int)$badgeExist['requesters_id'] !== (int)$current_user) {
                             $success = false;
                             $message = __('This badge is already affected to another request', 'badges');
                         } else {
-                            $this->update(['id'                => $badgeExist['id'],
-                                'visitor_realname'  => $row['visitor_realname'],
+                            $this->update([
+                                'id' => $badgeExist['id'],
+                                'visitor_realname' => $row['visitor_realname'],
                                 'visitor_firstname' => $row['visitor_firstname'],
-                                'visitor_society'   => $row['visitor_society'],
-                                'affectation_date'  => $row['affectation_date'],
-                                'badges_id'         => $row['badges_id'],
-                                'is_affected'       => 1,
-                                'requesters_id'     => $current_user]);
+                                'visitor_society' => $row['visitor_society'],
+                                'affectation_date' => $row['affectation_date'],
+                                'badges_id' => $row['badges_id'],
+                                'is_affected' => 1,
+                                'requesters_id' => $current_user
+                            ]);
                         }
                     }
                 }
 
                 if ($success) {
-                    $message = "<div class='alert alert-important alert-success d-flex'>" . _n('Badge affected', 'Badges affected', count($params['badges_cart']), 'badges') . "</div>";
+                    $message = "<div class='alert alert-important alert-success d-flex'>" . _n(
+                            'Badge affected',
+                            'Badges affected',
+                            count($params['badges_cart']),
+                            'badges'
+                        ) . "</div>";
                     NotificationEvent::raiseEvent(
                         "AccessBadgeRequest",
                         new Badge(),
-                        ['entities_id'  => $_SESSION['glpiactive_entity'],
-                            'badgerequest' => $params['badges_cart']]
+                        [
+                            'entities_id' => $_SESSION['glpiactive_entity'],
+                            'badgerequest' => $params['badges_cart']
+                        ]
                     );
                 }
             }
@@ -389,8 +415,10 @@ class Request extends CommonDBTM
             $message = __('Please add badges in cart', 'badges');
         }
 
-        return ['success' => $success,
-            'message' => $message];
+        return [
+            'success' => $success,
+            'message' => $message
+        ];
     }
 
     /**
@@ -398,8 +426,7 @@ class Request extends CommonDBTM
      */
     public function getUsedBadges()
     {
-
-        $used  = [];
+        $used = [];
         $datas = $this->find(["is_affected" => 1]);
         if (!empty($datas)) {
             foreach ($datas as $data) {
@@ -413,14 +440,13 @@ class Request extends CommonDBTM
     /**
      * Get badges of a given user
      *
-     * @param type   $users_id
+     * @param type $users_id
      * @param string $condition
      *
      * @return array
      */
     public function getUserBadges($users_id, $condition = [])
     {
-
         $query = ["is_affected" => 1];
         if (!empty($users_id)) {
             $query += ["requesters_id" => $users_id];
@@ -439,26 +465,34 @@ class Request extends CommonDBTM
      */
     public function checkMandatoryFields($input)
     {
-        $msg     = [];
+        $msg = [];
         $checkKo = false;
 
-        $mandatory_fields = ['visitor_realname'  => __('Visitor realname', 'badges'),
+        $mandatory_fields = [
+            'visitor_realname' => __('Visitor realname', 'badges'),
             'visitor_firstname' => __('Visitor firstname', 'badges'),
-            'visitor_society'   => __('Visitor society', 'badges'),
-            'affectation_date'  => __('Affectation date', 'badges'),
-            'badges_id'         => _n("Available badge", "Available badges", 2, "badges")];
+            'visitor_society' => __('Visitor society', 'badges'),
+            'affectation_date' => __('Affectation date', 'badges'),
+            'badges_id' => _n("Available badge", "Available badges", 2, "badges")
+        ];
 
         foreach ($input as $key => $value) {
             if (isset($mandatory_fields[$key])) {
                 if (empty($value) || $value == 'NULL') {
-                    $msg[]   = $mandatory_fields[$key];
+                    $msg[] = $mandatory_fields[$key];
                     $checkKo = true;
                 }
             }
         }
 
         if ($checkKo) {
-            return [false, "<div class='alert alert-important alert-warning d-flex'>" . sprintf(__("Mandatory fields are not filled. Please correct: %s"), implode(', ', $msg)) . "</div>"];
+            return [
+                false,
+                "<div class='alert alert-important alert-warning d-flex'>" . sprintf(
+                    __("Mandatory fields are not filled. Please correct: %s"),
+                    implode(', ', $msg)
+                ) . "</div>"
+            ];
         }
 
         return [true, null];
@@ -468,10 +502,10 @@ class Request extends CommonDBTM
     {
         global $DB;
 
-        $default_charset   = DBConnection::getDefaultCharset();
+        $default_charset = DBConnection::getDefaultCharset();
         $default_collation = DBConnection::getDefaultCollation();
-        $default_key_sign  = DBConnection::getDefaultPrimaryKeySignOption();
-        $table  = self::getTable();
+        $default_key_sign = DBConnection::getDefaultPrimaryKeySignOption();
+        $table = self::getTable();
 
         if (!$DB->tableExists($table)) {
             $query = "CREATE TABLE `$table` (
@@ -500,20 +534,23 @@ class Request extends CommonDBTM
         $options_notif = ['itemtype' => Badge::class, 'name' => 'Access Badges Request'];
         if (count($DB->request(['FROM' => 'glpi_notificationtemplates', 'WHERE' => $options_notif])) === 0) {
             $DB->insert("glpi_notificationtemplates", $options_notif);
-        }
 
-        foreach ($DB->request([
-            'FROM' => 'glpi_notificationtemplates',
-            'WHERE' => $options_notif]) as $data) {
-            $templates_id = $data['id'];
 
-            if ($templates_id) {
-                $DB->insert(
-                    "glpi_notificationtemplatetranslations",
-                    [
-                        'notificationtemplates_id' => $templates_id,
-                        'subject' => '##badge.action## : ##badge.entity##',
-                        'content_text' => '##lang.badge.entity## :##badge.entity##
+            foreach (
+                $DB->request([
+                    'FROM' => 'glpi_notificationtemplates',
+                    'WHERE' => $options_notif
+                ]) as $data
+            ) {
+                $templates_id = $data['id'];
+
+                if ($templates_id) {
+                    $DB->insert(
+                        "glpi_notificationtemplatetranslations",
+                        [
+                            'notificationtemplates_id' => $templates_id,
+                            'subject' => '##badge.action## : ##badge.entity##',
+                            'content_text' => '##lang.badge.entity## :##badge.entity##
                         ##FOREACHbadgerequest##
                         ##lang.badgerequest.arrivaldate## : ##badgerequest.arrivaldate##
                         ##lang.badgerequest.requester## : ##badgerequest.requester##
@@ -521,7 +558,7 @@ class Request extends CommonDBTM
                         ##lang.badgerequest.visitorrealname## : ##badgerequest.visitorrealname##
                         ##lang.badgerequest.visitorsociety## : ##badgerequest.visitorsociety##
                         ##ENDFOREACHbadgerequest##',
-                        'content_html' => '&lt;p&gt;##lang.badge.entity## :##badge.entity##&lt;br /&gt; &lt;br /&gt;
+                            'content_html' => '&lt;p&gt;##lang.badge.entity## :##badge.entity##&lt;br /&gt; &lt;br /&gt;
                         ##FOREACHbadgerequest##&lt;br /&gt;
                         ##lang.badgerequest.arrivaldate## : ##badgerequest.arrivaldate##&lt;br /&gt;
                         ##lang.badgerequest.requester## : ##badgerequest.requester##&lt;br /&gt;
@@ -529,35 +566,47 @@ class Request extends CommonDBTM
                         ##lang.badgerequest.visitorrealname## : ##badgerequest.visitorrealname##&lt;br /&gt;
                         ##lang.badgerequest.visitorsociety## : ##badgerequest.visitorsociety##&lt;br /&gt;
                         ##ENDFOREACHbadgerequest##&lt;/p&gt;',
-                    ]
-                );
-
-                $options_notif = ['itemtype' => Badge::class, 'name' => 'Access badge request', 'event' => 'AccessBadgeRequest'];
-                if (count($DB->request(['FROM' => 'glpi_notifications', 'WHERE' => $options_notif])) === 0) {
-                    $DB->insert(
-                        "glpi_notifications",
-                        [
-                            'name' => 'Access badge request',
-                            'entities_id' => 0,
-                            'itemtype' => Badge::class,
-                            'event' => 'AccessBadgeRequest',
-                            'is_recursive' => 1,
                         ]
                     );
-                }
 
-                foreach ($DB->request([
-                    'FROM' => 'glpi_notifications',
-                    'WHERE' => $options_notif]) as $data_notif) {
-                    $notification = $data_notif['id'];
-                    if ($notification) {
-                        $link = [
-                            'notifications_id' => $notification,
-                            'mode' => 'mailing',
-                            'notificationtemplates_id' => $templates_id,
-                        ];
-                        if (count($DB->request(['FROM' => 'glpi_notifications_notificationtemplates', 'WHERE' => $link])) === 0) {
-                            $DB->insert("glpi_notifications_notificationtemplates", $link);
+                    $options_notif = [
+                        'itemtype' => Badge::class,
+                        'name' => 'Access badge request',
+                        'event' => 'AccessBadgeRequest'
+                    ];
+                    if (count($DB->request(['FROM' => 'glpi_notifications', 'WHERE' => $options_notif])) === 0) {
+                        $DB->insert(
+                            "glpi_notifications",
+                            [
+                                'name' => 'Access badge request',
+                                'entities_id' => 0,
+                                'itemtype' => Badge::class,
+                                'event' => 'AccessBadgeRequest',
+                                'is_recursive' => 1,
+                            ]
+                        );
+                    }
+
+                    foreach (
+                        $DB->request([
+                            'FROM' => 'glpi_notifications',
+                            'WHERE' => $options_notif
+                        ]) as $data_notif
+                    ) {
+                        $notification = $data_notif['id'];
+                        if ($notification) {
+                            $link = [
+                                'notifications_id' => $notification,
+                                'mode' => 'mailing',
+                                'notificationtemplates_id' => $templates_id,
+                            ];
+                            if (count(
+                                    $DB->request(
+                                        ['FROM' => 'glpi_notifications_notificationtemplates', 'WHERE' => $link]
+                                    )
+                                ) === 0) {
+                                $DB->insert("glpi_notifications_notificationtemplates", $link);
+                            }
                         }
                     }
                 }
@@ -568,20 +617,23 @@ class Request extends CommonDBTM
         $options_notif = ['itemtype' => Badge::class, 'name' => 'Access Badges Return'];
         if (count($DB->request(['FROM' => 'glpi_notificationtemplates', 'WHERE' => $options_notif])) === 0) {
             $DB->insert("glpi_notificationtemplates", $options_notif);
-        }
 
-        foreach ($DB->request([
-            'FROM' => 'glpi_notificationtemplates',
-            'WHERE' => $options_notif]) as $data) {
-            $templates_id = $data['id'];
 
-            if ($templates_id) {
-                $DB->insert(
-                    "glpi_notificationtemplatetranslations",
-                    [
-                        'notificationtemplates_id' => $templates_id,
-                        'subject' => '##badge.action## : ##badge.entity##',
-                        'content_text' => '##lang.badge.entity## :##badge.entity##
+            foreach (
+                $DB->request([
+                    'FROM' => 'glpi_notificationtemplates',
+                    'WHERE' => $options_notif
+                ]) as $data
+            ) {
+                $templates_id = $data['id'];
+
+                if ($templates_id) {
+                    $DB->insert(
+                        "glpi_notificationtemplatetranslations",
+                        [
+                            'notificationtemplates_id' => $templates_id,
+                            'subject' => '##badge.action## : ##badge.entity##',
+                            'content_text' => '##lang.badge.entity## :##badge.entity##
                      ##FOREACHbadgerequest##
                      ##lang.badgerequest.arrivaldate## : ##badgerequest.arrivaldate##
                      ##lang.badgerequest.requester## : ##badgerequest.requester##
@@ -589,7 +641,7 @@ class Request extends CommonDBTM
                      ##lang.badgerequest.visitorrealname## : ##badgerequest.visitorrealname##
                      ##lang.badgerequest.visitorsociety## : ##badgerequest.visitorsociety##
                      ##ENDFOREACHbadgerequest##',
-                        'content_html' => '&lt;p&gt;##lang.badge.entity## :##badge.entity##&lt;br /&gt; &lt;br /&gt;
+                            'content_html' => '&lt;p&gt;##lang.badge.entity## :##badge.entity##&lt;br /&gt; &lt;br /&gt;
                      ##FOREACHbadgerequest##&lt;br /&gt;
                      ##lang.badgerequest.arrivaldate## : ##badgerequest.arrivaldate##&lt;br /&gt;
                      ##lang.badgerequest.requester## : ##badgerequest.requester##&lt;br /&gt;
@@ -597,35 +649,47 @@ class Request extends CommonDBTM
                      ##lang.badgerequest.visitorrealname## : ##badgerequest.visitorrealname##&lt;br /&gt;
                      ##lang.badgerequest.visitorsociety## : ##badgerequest.visitorsociety##&lt;br /&gt;
                      ##ENDFOREACHbadgerequest##&lt;/p&gt;',
-                    ]
-                );
-
-                $options_notif = ['itemtype' => Badge::class, 'name' => 'Access Badges Return', 'event' => 'BadgesReturn'];
-                if (count($DB->request(['FROM' => 'glpi_notifications', 'WHERE' => $options_notif])) === 0) {
-                    $DB->insert(
-                        "glpi_notifications",
-                        [
-                            'name' => 'Access Badges Return',
-                            'entities_id' => 0,
-                            'itemtype' => Badge::class,
-                            'event' => 'BadgesReturn',
-                            'is_recursive' => 1,
                         ]
                     );
-                }
 
-                foreach ($DB->request([
-                    'FROM' => 'glpi_notifications',
-                    'WHERE' => $options_notif]) as $data_notif) {
-                    $notification = $data_notif['id'];
-                    if ($notification) {
-                        $link = [
-                            'notifications_id' => $notification,
-                            'mode' => 'mailing',
-                            'notificationtemplates_id' => $templates_id,
-                        ];
-                        if (count($DB->request(['FROM' => 'glpi_notifications_notificationtemplates', 'WHERE' => $link])) === 0) {
-                            $DB->insert("glpi_notifications_notificationtemplates", $link);
+                    $options_notif = [
+                        'itemtype' => Badge::class,
+                        'name' => 'Access Badges Return',
+                        'event' => 'BadgesReturn'
+                    ];
+                    if (count($DB->request(['FROM' => 'glpi_notifications', 'WHERE' => $options_notif])) === 0) {
+                        $DB->insert(
+                            "glpi_notifications",
+                            [
+                                'name' => 'Access Badges Return',
+                                'entities_id' => 0,
+                                'itemtype' => Badge::class,
+                                'event' => 'BadgesReturn',
+                                'is_recursive' => 1,
+                            ]
+                        );
+                    }
+
+                    foreach (
+                        $DB->request([
+                            'FROM' => 'glpi_notifications',
+                            'WHERE' => $options_notif
+                        ]) as $data_notif
+                    ) {
+                        $notification = $data_notif['id'];
+                        if ($notification) {
+                            $link = [
+                                'notifications_id' => $notification,
+                                'mode' => 'mailing',
+                                'notificationtemplates_id' => $templates_id,
+                            ];
+                            if (count(
+                                    $DB->request(
+                                        ['FROM' => 'glpi_notifications_notificationtemplates', 'WHERE' => $link]
+                                    )
+                                ) === 0) {
+                                $DB->insert("glpi_notifications_notificationtemplates", $link);
+                            }
                         }
                     }
                 }
