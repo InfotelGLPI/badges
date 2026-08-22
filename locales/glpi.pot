@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-17 11:11+0000\n"
+"POT-Creation-Date: 2026-08-22 15:13+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -38,7 +38,7 @@ msgstr ""
 msgid "Add to cart"
 msgstr ""
 
-#: src/Request.php:475 src/Badge.php:110 templates/badge_form.html.twig:117
+#: src/Request.php:480 src/Badge.php:111 templates/badge_form.html.twig:117
 msgid "Affectation date"
 msgstr ""
 
@@ -55,22 +55,16 @@ msgstr ""
 msgid "Arrival date"
 msgstr ""
 
-#: src/Request.php:476 templates/request_wizard.html.twig:47
+#: src/Request.php:481 templates/request_wizard.html.twig:47
 msgid "Available badge"
 msgid_plural "Available badges"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/Metademand.php:70 src/Badge.php:64 setup.php:120
+#: src/Metademand.php:69 src/Badge.php:65 setup.php:120
 #: templates/request_list.html.twig:34 templates/request_wizard.html.twig:75
 msgid "Badge"
 msgid_plural "Badges"
-msgstr[0] ""
-msgstr[1] ""
-
-#: src/Request.php:398
-msgid "Badge affected"
-msgid_plural "Badges affected"
 msgstr[0] ""
 msgstr[1] ""
 
@@ -96,7 +90,7 @@ msgid "Badge usage report"
 msgstr ""
 
 #: src/NotificationTargetBadge.php:57 src/NotificationTargetBadge.php:74
-#: src/BadgeReturn.php:425 src/Badge.php:539
+#: src/BadgeReturn.php:425 src/Badge.php:534
 msgid "Badges at the end of the validity"
 msgstr ""
 
@@ -129,11 +123,11 @@ msgid "Badges usage search"
 msgstr ""
 
 #: src/NotificationTargetBadge.php:58 src/NotificationTargetBadge.php:77
-#: src/Badge.php:428
+#: src/Badge.php:424
 msgid "Badges which expires"
 msgstr ""
 
-#: src/Wizard.php:55
+#: src/Wizard.php:54
 msgid "Badges wizard"
 msgstr ""
 
@@ -158,7 +152,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: src/NotificationTargetBadge.php:87 src/NotificationTargetBadge.php:134
-#: src/Badge.php:118 templates/badge_form.html.twig:122
+#: src/Badge.php:119 templates/badge_form.html.twig:122
 msgid "Date of end of validity"
 msgstr ""
 
@@ -198,7 +192,8 @@ msgid_plural "Pictures"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/Request.php:283 src/Request.php:349 src/Request.php:415
+#: src/Request.php:283 src/Request.php:334 src/Request.php:354
+#: src/Request.php:420
 msgid "Please add badges in cart"
 msgstr ""
 
@@ -246,7 +241,7 @@ msgstr ""
 msgid "Surname"
 msgstr ""
 
-#: src/Request.php:380
+#: src/Request.php:385
 msgid "This badge is already affected to another request"
 msgstr ""
 
@@ -264,7 +259,7 @@ msgstr[1] ""
 msgid "Unused status for expiration mailing"
 msgstr ""
 
-#: src/Request.php:473 src/NotificationTargetBadge.php:106
+#: src/Request.php:478 src/NotificationTargetBadge.php:106
 #: src/NotificationTargetBadge.php:137 templates/request_list.html.twig:36
 #: templates/request_wizard.html.twig:41 templates/request_wizard.html.twig:72
 #: templates/badge_return_list.html.twig:37
@@ -272,7 +267,7 @@ msgstr ""
 msgid "Visitor firstname"
 msgstr ""
 
-#: src/Request.php:472 src/NotificationTargetBadge.php:105
+#: src/Request.php:477 src/NotificationTargetBadge.php:105
 #: src/NotificationTargetBadge.php:136 templates/request_list.html.twig:35
 #: templates/request_wizard.html.twig:39 templates/request_wizard.html.twig:73
 #: templates/badge_return_list.html.twig:36
@@ -280,7 +275,7 @@ msgstr ""
 msgid "Visitor realname"
 msgstr ""
 
-#: src/Request.php:474 src/NotificationTargetBadge.php:107
+#: src/Request.php:479 src/NotificationTargetBadge.php:107
 #: src/NotificationTargetBadge.php:138 templates/request_list.html.twig:37
 #: templates/request_wizard.html.twig:45 templates/request_wizard.html.twig:74
 #: templates/badge_return_list.html.twig:38
