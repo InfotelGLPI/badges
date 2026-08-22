@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-30 10:43+0000\n"
+"POT-Creation-Date: 2026-08-22 15:13+0000\n"
 "PO-Revision-Date: 2020-11-02 15:44+0000\n"
 "Last-Translator: Kaya Zeren <kayazeren@gmail.com>, 2026\n"
 "Language-Team: Turkish (Turkey) (https://app.transifex.com/infotelGLPI/teams/12355/tr_TR/)\n"
@@ -23,13 +23,13 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: src/NotificationTargetBadge.php:59 src/NotificationTargetBadge.php:80
-#: templates/request_wizard.html.twig:30 templates/wizard_menu.html.twig:30
-#: templates/wizard_menu.html.twig:38
+#: templates/wizard_menu.html.twig:30 templates/wizard_menu.html.twig:38
+#: templates/request_wizard.html.twig:30
 msgid "Access badge request"
 msgstr "Erişim yaka kartı isteği"
 
-#: templates/badge_return_wizard.html.twig:30
 #: templates/wizard_menu.html.twig:45
+#: templates/badge_return_wizard.html.twig:30
 msgid "Access badge return"
 msgstr "Erişim yaka kartı geri alma"
 
@@ -42,7 +42,7 @@ msgstr "Ekle"
 msgid "Add to cart"
 msgstr "Sepete ekle"
 
-#: src/Request.php:475 src/Badge.php:110 templates/badge_form.html.twig:117
+#: src/Request.php:480 src/Badge.php:111 templates/badge_form.html.twig:117
 msgid "Affectation date"
 msgstr "Yürürlük tarihi"
 
@@ -51,32 +51,26 @@ msgid "Allotted to"
 msgstr "Kullanıcısı"
 
 #: src/NotificationTargetBadge.php:108 src/NotificationTargetBadge.php:139
-#: src/BadgeReturn.php:420 templates/badge_return_info.html.twig:40
-#: templates/request_list.html.twig:38
+#: src/BadgeReturn.php:420 templates/request_list.html.twig:38
+#: templates/request_search.html.twig:37 templates/request_wizard.html.twig:51
+#: templates/request_wizard.html.twig:76
 #: templates/badge_return_list.html.twig:39
-#: templates/request_wizard.html.twig:51 templates/request_wizard.html.twig:76
-#: templates/request_search.html.twig:37
+#: templates/badge_return_info.html.twig:40
 msgid "Arrival date"
 msgstr "Varış tarihi"
 
-#: src/Request.php:476 templates/request_wizard.html.twig:47
+#: src/Request.php:481 templates/request_wizard.html.twig:47
 msgid "Available badge"
 msgid_plural "Available badges"
 msgstr[0] "Kullanılabilecek yaka kartları"
 msgstr[1] "Kullanılabilecek yaka kartları"
 
-#: src/Metademand.php:70 src/Badge.php:64 setup.php:120
+#: src/Metademand.php:69 src/Badge.php:65 setup.php:120
 #: templates/request_list.html.twig:34 templates/request_wizard.html.twig:75
 msgid "Badge"
 msgid_plural "Badges"
 msgstr[0] "Yaka Kartları"
 msgstr[1] "Yaka kartları"
-
-#: src/Request.php:398
-msgid "Badge affected"
-msgid_plural "Badges affected"
-msgstr[0] "Yaka kartı etkilendi"
-msgstr[1] "Yaka kartı etkilendi"
 
 #: templates/badge_return_list.html.twig:31
 msgid "Badge requests history"
@@ -100,7 +94,7 @@ msgid "Badge usage report"
 msgstr "Yaka kartı kullanım raporu"
 
 #: src/NotificationTargetBadge.php:57 src/NotificationTargetBadge.php:74
-#: src/Badge.php:539 src/BadgeReturn.php:425
+#: src/BadgeReturn.php:425 src/Badge.php:534
 msgid "Badges at the end of the validity"
 msgstr "Geçerlilik süresi dolan yaka kartları"
 
@@ -120,7 +114,7 @@ msgstr "Şu kadar zaman içinde süresi dolan yaka kartları"
 msgid "Badges in your possession"
 msgstr "Kullanımınızdaki yaka kartları"
 
-#: src/NotificationTargetBadge.php:149 src/Request.php:62
+#: src/Request.php:62 src/NotificationTargetBadge.php:149
 msgid "Badges request"
 msgstr "Yaka kartları isteği"
 
@@ -133,11 +127,11 @@ msgid "Badges usage search"
 msgstr "Yaka kartları kullanımı araması"
 
 #: src/NotificationTargetBadge.php:58 src/NotificationTargetBadge.php:77
-#: src/Badge.php:428
+#: src/Badge.php:424
 msgid "Badges which expires"
 msgstr "Süresi dolmuş yaka kartları"
 
-#: src/Wizard.php:55
+#: src/Wizard.php:54
 msgid "Badges wizard"
 msgstr "Yaka kartları yardımcısı"
 
@@ -162,7 +156,7 @@ msgstr[0] "Açıklama"
 msgstr[1] "Açıklamalar"
 
 #: src/NotificationTargetBadge.php:87 src/NotificationTargetBadge.php:134
-#: src/Badge.php:118 templates/badge_form.html.twig:122
+#: src/Badge.php:119 templates/badge_form.html.twig:122
 msgid "Date of end of validity"
 msgstr "Geçerlilik süresinin sonu"
 
@@ -203,7 +197,8 @@ msgid_plural "Pictures"
 msgstr[0] "Fotoğraf"
 msgstr[1] "Fotoğraflar"
 
-#: src/Request.php:283 src/Request.php:349 src/Request.php:415
+#: src/Request.php:283 src/Request.php:334 src/Request.php:354
+#: src/Request.php:420
 msgid "Please add badges in cart"
 msgstr "Lütfen sepete yaka kartları ekleyin"
 
@@ -224,14 +219,13 @@ msgstr "İstekte bulunan"
 msgid "Restitution date"
 msgstr "Geri verme tarihi"
 
-#: templates/request_list.html.twig:39
+#: templates/request_list.html.twig:39 templates/request_search.html.twig:39
 #: templates/badge_return_list.html.twig:40
-#: templates/request_search.html.twig:39
 msgid "Return date"
 msgstr "Geri alma tarihi"
 
-#: templates/config.html.twig:66 templates/config_badge_return.html.twig:44
-#: templates/profile.html.twig:34
+#: templates/config.html.twig:66 templates/profile.html.twig:34
+#: templates/config_badge_return.html.twig:44
 msgctxt "button"
 msgid "Save"
 msgstr "Kaydet"
@@ -252,7 +246,7 @@ msgstr "Durum"
 msgid "Surname"
 msgstr "Soyad"
 
-#: src/Request.php:380
+#: src/Request.php:385
 msgid "This badge is already affected to another request"
 msgstr "Bu yaka kartı zaten başka bir istekten etkileniyor"
 
@@ -270,26 +264,26 @@ msgstr[1] "Yaka kartı türü"
 msgid "Unused status for expiration mailing"
 msgstr "Süre dolma e-postası için kullanılmıyor durumu"
 
-#: src/NotificationTargetBadge.php:106 src/NotificationTargetBadge.php:137
-#: src/Request.php:473 templates/badge_return_info.html.twig:32
-#: templates/request_list.html.twig:36
-#: templates/badge_return_list.html.twig:37
+#: src/Request.php:478 src/NotificationTargetBadge.php:106
+#: src/NotificationTargetBadge.php:137 templates/request_list.html.twig:36
 #: templates/request_wizard.html.twig:41 templates/request_wizard.html.twig:72
+#: templates/badge_return_list.html.twig:37
+#: templates/badge_return_info.html.twig:32
 msgid "Visitor firstname"
 msgstr "Ziyaretçinin adı"
 
-#: src/NotificationTargetBadge.php:105 src/NotificationTargetBadge.php:136
-#: src/Request.php:472 templates/badge_return_info.html.twig:34
-#: templates/request_list.html.twig:35
-#: templates/badge_return_list.html.twig:36
+#: src/Request.php:477 src/NotificationTargetBadge.php:105
+#: src/NotificationTargetBadge.php:136 templates/request_list.html.twig:35
 #: templates/request_wizard.html.twig:39 templates/request_wizard.html.twig:73
+#: templates/badge_return_list.html.twig:36
+#: templates/badge_return_info.html.twig:34
 msgid "Visitor realname"
 msgstr "Ziyaretçinin gerçek adı"
 
-#: src/NotificationTargetBadge.php:107 src/NotificationTargetBadge.php:138
-#: src/Request.php:474 templates/badge_return_info.html.twig:38
-#: templates/request_list.html.twig:37
-#: templates/badge_return_list.html.twig:38
+#: src/Request.php:479 src/NotificationTargetBadge.php:107
+#: src/NotificationTargetBadge.php:138 templates/request_list.html.twig:37
 #: templates/request_wizard.html.twig:45 templates/request_wizard.html.twig:74
+#: templates/badge_return_list.html.twig:38
+#: templates/badge_return_info.html.twig:38
 msgid "Visitor society"
 msgstr "Ziyaretçinin topluluğu"
