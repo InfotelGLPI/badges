@@ -67,14 +67,11 @@ function plugin_badges_uninstall()
 {
     global $DB;
 
-    //Delete rights associated with the plugin
-    // Pass true so both rights are removed: getAllRights() alone omits
-    // plugin_badges_open_ticket, which would otherwise be left behind in
+    // Remove every plugin profile right (both plugin_badges and
+    // plugin_badges_open_ticket). getAllRights() alone omits the open_ticket
+    // right; a LIKE delete guarantees no residual right is left in
     // glpi_profilerights after uninstall.
-    $profileRight = new ProfileRight();
-    foreach (Profile::getAllRights(true) as $right) {
-        $profileRight->deleteByCriteria(['name' => $right['field']]);
-    }
+    $DB->delete('glpi_profilerights', ['name' => ['LIKE', 'plugin_badges%']]);
 
     Profile::removeRightsFromSession();
 
