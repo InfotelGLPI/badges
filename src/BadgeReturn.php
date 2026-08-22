@@ -1,30 +1,30 @@
 <?php
 
-/*
- -------------------------------------------------------------------------
- badges plugin for GLPI
- Copyright (C) 2015-2026 by the badges Development Team.
-
- https://github.com/InfotelGLPI/badges
- -------------------------------------------------------------------------
-
- LICENSE
-
- This file is part of badges.
-
- badges is free software; you can redistribute it and/or modify
- it under the terms of the GNU General Public License as published by
- the Free Software Foundation; either version 3 of the License, or
- (at your option) any later version.
-
- badges is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- GNU General Public License for more details.
-
- You should have received a copy of the GNU General Public License
- along with badges. If not, see <http://www.gnu.org/licenses/>.
- --------------------------------------------------------------------------
+/**
+ * -------------------------------------------------------------------------
+ * badges plugin for GLPI
+ * Copyright (C) 2015-2026 by the badges Development Team.
+ *
+ * https://github.com/InfotelGLPI/badges
+ * -------------------------------------------------------------------------
+ *
+ * LICENSE
+ *
+ * This file is part of badges.
+ *
+ * badges is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * badges is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with badges. If not, see <http://www.gnu.org/licenses/>.
+ * --------------------------------------------------------------------------
  */
 
 namespace GlpiPlugin\Badges;
@@ -101,8 +101,8 @@ class BadgeReturn extends CommonDBTM
                         Request::getTypeName(),
                         $dbu->countElementsInTable(
                             $this->getTable(),
-                            ["badges_id" => $item->getID()]
-                        )
+                            ["badges_id" => $item->getID()],
+                        ),
                     );
                 }
                 return Request::getTypeName();
@@ -255,7 +255,7 @@ class BadgeReturn extends CommonDBTM
             "badges_informations",
             $ajax_url,
             ['action' => 'loadBadgeInformation', 'badges_id' => '__VALUE__'],
-            "dropdown_return_badges_id{$rand}"
+            "dropdown_return_badges_id{$rand}",
         );
         echo "}";
         $load_badge_info_js = ob_get_clean();
@@ -311,7 +311,7 @@ class BadgeReturn extends CommonDBTM
         if ($success) {
             $datas = $this->request->getUserBadges(
                 $params['requesters_id'],
-                ["badges_id" => $params['return_badges_id']]
+                ["badges_id" => $params['return_badges_id']],
             );
             foreach ($datas as $data) {
                 $this->update(['id'          => $data['id'],
@@ -421,7 +421,7 @@ class BadgeReturn extends CommonDBTM
                                                      . Html::convDate($data["affectation_date"]) . "<br>\n";
                     $badge_infos[$type][$entity][] = $data;
 
-                    if (!isset($badges_infos[$type][$entity])) {
+                    if (!isset($badge_messages[$type][$entity])) {
                         $badge_messages[$type][$entity] = __('Badges at the end of the validity', 'badges') . "<br />";
                     }
                     $badge_messages[$type][$entity] .= $message;

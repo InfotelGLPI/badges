@@ -1,30 +1,30 @@
 <?php
 
-/*
- -------------------------------------------------------------------------
- badges plugin for GLPI
- Copyright (C) 2015-2026 by the badges Development Team.
-
- https://github.com/InfotelGLPI/badges
- -------------------------------------------------------------------------
-
- LICENSE
-
- This file is part of badges.
-
- badges is free software; you can redistribute it and/or modify
- it under the terms of the GNU General Public License as published by
- the Free Software Foundation; either version 3 of the License, or
- (at your option) any later version.
-
- badges is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- GNU General Public License for more details.
-
- You should have received a copy of the GNU General Public License
- along with badges. If not, see <http://www.gnu.org/licenses/>.
- --------------------------------------------------------------------------
+/**
+ * -------------------------------------------------------------------------
+ * badges plugin for GLPI
+ * Copyright (C) 2015-2026 by the badges Development Team.
+ *
+ * https://github.com/InfotelGLPI/badges
+ * -------------------------------------------------------------------------
+ *
+ * LICENSE
+ *
+ * This file is part of badges.
+ *
+ * badges is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * badges is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with badges. If not, see <http://www.gnu.org/licenses/>.
+ * --------------------------------------------------------------------------
  */
 
 namespace GlpiPlugin\Badges;
@@ -44,22 +44,23 @@ use NotificationEvent;
 use Plugin;
 use Session;
 use Glpi\Features\StateInterface;
+
 /**
  * Class Badge
  */
 class Badge extends CommonDBTM implements StateInterface
 {
+    use State;
 
     public $dohistory = true;
-    static $rightname = "plugin_badges";
+    public static $rightname = "plugin_badges";
     protected $usenotepad = true;
-    use State;
     /**
      * @param int $nb
      *
      * @return string
      */
-    static function getTypeName($nb = 0)
+    public static function getTypeName($nb = 0)
     {
         return _n('Badge', 'Badges', $nb, 'badges');
     }
@@ -67,7 +68,7 @@ class Badge extends CommonDBTM implements StateInterface
     /**
      * @return string
      */
-    static function getIcon()
+    public static function getIcon()
     {
         return "ti ti-id";
     }
@@ -75,13 +76,13 @@ class Badge extends CommonDBTM implements StateInterface
     /**
      * @return array
      */
-    function rawSearchOptions()
+    public function rawSearchOptions()
     {
         $tab = [];
 
         $tab[] = [
             'id' => 'common',
-            'name' => self::getTypeName(2)
+            'name' => self::getTypeName(2),
         ];
 
         $tab[] = [
@@ -125,7 +126,6 @@ class Badge extends CommonDBTM implements StateInterface
             'field' => 'serial',
             'name' => __('Serial number'),
         ];
-
 
         $tab[] = [
             'id' => '7',
@@ -206,7 +206,7 @@ class Badge extends CommonDBTM implements StateInterface
             'table' => $this->getTable(),
             'field' => 'is_recursive',
             'name' => __('Child entities'),
-            'datatype' => 'bool'
+            'datatype' => 'bool',
         ];
 
         return $tab;
@@ -217,7 +217,7 @@ class Badge extends CommonDBTM implements StateInterface
      *
      * @return array
      */
-    function defineTabs($options = [])
+    public function defineTabs($options = [])
     {
         $ong = [];
         $this->addDefaultFormTab($ong);
@@ -236,7 +236,7 @@ class Badge extends CommonDBTM implements StateInterface
      *
      * @return datas
      */
-    function prepareInputForAdd($input)
+    public function prepareInputForAdd($input)
     {
         if (isset($input['date_affectation']) && empty($input['date_affectation'])) {
             $input['date_affectation'] = 'NULL';
@@ -252,7 +252,7 @@ class Badge extends CommonDBTM implements StateInterface
      *
      * @return datas
      */
-    function prepareInputForUpdate($input)
+    public function prepareInputForUpdate($input)
     {
         if (isset($input['date_affectation']) && empty($input['date_affectation'])) {
             $input['date_affectation'] = 'NULL';
@@ -263,7 +263,6 @@ class Badge extends CommonDBTM implements StateInterface
 
         return $input;
     }
-
 
     /**
      * Print the badge form
@@ -276,7 +275,7 @@ class Badge extends CommonDBTM implements StateInterface
      *
      * @return boolean item found
      **/
-    function showForm($ID, $options = [])
+    public function showForm($ID, $options = [])
     {
         $this->initForm($ID, $options);
         TemplateRenderer::getInstance()->display('@badges/badge_form.html.twig', [
@@ -287,7 +286,6 @@ class Badge extends CommonDBTM implements StateInterface
         return true;
     }
 
-
     //for search engine
     /**
      * @param String $field
@@ -296,13 +294,13 @@ class Badge extends CommonDBTM implements StateInterface
      *
      * @return date|return|string|translated
      */
-    static function getSpecificValueToDisplay($field, $values, array $options = [])
+    public static function getSpecificValueToDisplay($field, $values, array $options = [])
     {
         if (!is_array($values)) {
             $values = [$field => $values];
         }
         switch ($field) {
-            case 'date_expiration' :
+            case 'date_expiration':
 
                 if (empty($values[$field])) {
                     return __('infinite');
@@ -321,7 +319,7 @@ class Badge extends CommonDBTM implements StateInterface
      *
      * @return array
      */
-    function getSpecificMassiveActions($checkitem = null)
+    public function getSpecificMassiveActions($checkitem = null)
     {
         $isadmin = static::canUpdate();
         $actions = parent::getSpecificMassiveActions($checkitem);
@@ -335,16 +333,15 @@ class Badge extends CommonDBTM implements StateInterface
         return $actions;
     }
 
-
     /**
      * @param MassiveAction $ma
      *
      * @return bool|false
      */
-    static function showMassiveActionsSubForm(MassiveAction $ma)
+    public static function showMassiveActionsSubForm(MassiveAction $ma)
     {
         switch ($ma->getAction()) {
-            case "transfer" :
+            case "transfer":
                 Dropdown::show('Entity');
                 echo Html::submit(_x('button', 'Post'), ['name' => 'massiveaction', 'class' => 'btn btn-primary']);
                 return true;
@@ -364,13 +361,13 @@ class Badge extends CommonDBTM implements StateInterface
      * @see CommonDBTM::processMassiveActionsForOneItemtype()
      *
      */
-    static function processMassiveActionsForOneItemtype(
+    public static function processMassiveActionsForOneItemtype(
         MassiveAction $ma,
         CommonDBTM $item,
         array $ids
     ) {
         switch ($ma->getAction()) {
-            case "transfer" :
+            case "transfer":
                 $input = $ma->getInput();
 
                 if ($item->getType() == Badge::class) {
@@ -388,7 +385,7 @@ class Badge extends CommonDBTM implements StateInterface
                         }
                         $type = BadgeType::transfer(
                             $item->fields["plugin_badges_badgetypes_id"],
-                            $input['entities_id']
+                            $input['entities_id'],
                         );
                         if ($type > 0) {
                             $values["id"] = $key;
@@ -412,7 +409,6 @@ class Badge extends CommonDBTM implements StateInterface
         return;
     }
 
-
     // Cron action
 
     /**
@@ -420,12 +416,12 @@ class Badge extends CommonDBTM implements StateInterface
      *
      * @return array
      */
-    static function cronInfo($name)
+    public static function cronInfo($name)
     {
         switch ($name) {
             case 'BadgesAlert':
                 return [
-                    'description' => __('Badges which expires', 'badges')
+                    'description' => __('Badges which expires', 'badges'),
                 ];   // Optional
                 break;
         }
@@ -435,7 +431,7 @@ class Badge extends CommonDBTM implements StateInterface
     /**
      * @return array
      */
-    static function queryExpiredBadges()
+    public static function queryExpiredBadges()
     {
         global $DB;
 
@@ -451,12 +447,12 @@ class Badge extends CommonDBTM implements StateInterface
         $criteria = [
             'FROM'   => self::getTable(),
             'WHERE'  => [
-                'NOT' => ['date_expiration' => null
+                'NOT' => ['date_expiration' => null,
                 ],
                 'is_deleted'   => 0,
                 new QueryExpression("DATEDIFF(CURDATE(), " . $DB->quoteName('date_expiration') . ") > $delay"),
-                new QueryExpression("DATEDIFF(CURDATE(), " . $DB->quoteName('date_expiration') . ") > 0")
-            ]
+                new QueryExpression("DATEDIFF(CURDATE(), " . $DB->quoteName('date_expiration') . ") > 0"),
+            ],
         ];
 
         if (count($notif->findStates()) > 0) {
@@ -468,7 +464,7 @@ class Badge extends CommonDBTM implements StateInterface
     /**
      * @return array
      */
-    static function queryBadgesWhichExpire()
+    public static function queryBadgesWhichExpire()
     {
         global $DB;
 
@@ -486,8 +482,8 @@ class Badge extends CommonDBTM implements StateInterface
                 'NOT' => ['date_expiration' => null],
                 'is_deleted'   => 0,
                 new QueryExpression("DATEDIFF(CURDATE(), " . $DB->quoteName('date_expiration') . ") > -$delay"),
-                new QueryExpression("DATEDIFF(CURDATE(), " . $DB->quoteName('date_expiration') . ") < 0")
-            ]
+                new QueryExpression("DATEDIFF(CURDATE(), " . $DB->quoteName('date_expiration') . ") < 0"),
+            ],
         ];
 
         if (count($notif->findStates()) > 0) {
@@ -497,7 +493,6 @@ class Badge extends CommonDBTM implements StateInterface
 
     }
 
-
     /**
      * Cron action on badges : ExpiredBadges or BadgesWhichExpire
      *
@@ -506,7 +501,7 @@ class Badge extends CommonDBTM implements StateInterface
      *
      * @return int
      */
-    static function cronBadgesAlert($task = null)
+    public static function cronBadgesAlert($task = null)
     {
         global $DB, $CFG_GLPI;
 
@@ -519,7 +514,7 @@ class Badge extends CommonDBTM implements StateInterface
 
         $querys = [
             NotificationTargetBadge::BadgesWhichExpire => $query_whichexpire,
-            NotificationTargetBadge::ExpiredBadges => $query_expired
+            NotificationTargetBadge::ExpiredBadges => $query_expired,
         ];
 
         $badge_infos = [];
@@ -549,7 +544,7 @@ class Badge extends CommonDBTM implements StateInterface
 
                 if (NotificationEvent::raiseEvent($type, new Badge(), [
                     'entities_id' => $entity,
-                    'badges' => $badges
+                    'badges' => $badges,
                 ])
                 ) {
                     $message = $badge_messages[$type][$entity];
@@ -558,30 +553,30 @@ class Badge extends CommonDBTM implements StateInterface
                         $task->log(
                             Dropdown::getDropdownName(
                                 "glpi_entities",
-                                $entity
-                            ) . ":  $message\n"
+                                $entity,
+                            ) . ":  $message\n",
                         );
                         $task->addVolume(1);
                     } else {
                         Session::addMessageAfterRedirect(
                             Dropdown::getDropdownName(
                                 "glpi_entities",
-                                $entity
-                            ) . ":  $message"
+                                $entity,
+                            ) . ":  $message",
                         );
                     }
                 } else {
                     if ($task) {
                         $task->log(
                             Dropdown::getDropdownName("glpi_entities", $entity) .
-                            ":  Send badges alert failed\n"
+                            ":  Send badges alert failed\n",
                         );
                     } else {
                         Session::addMessageAfterRedirect(
                             Dropdown::getDropdownName("glpi_entities", $entity) .
                             ":  Send badges alert failed",
                             false,
-                            ERROR
+                            ERROR,
                         );
                     }
                 }
@@ -594,7 +589,7 @@ class Badge extends CommonDBTM implements StateInterface
     /**
      * @param $target
      */
-    static function configCron($target)
+    public static function configCron($target)
     {
         $notif = new NotificationState();
         $config = new Config();
@@ -603,7 +598,7 @@ class Badge extends CommonDBTM implements StateInterface
         $notif->showNotificationForm($target);
     }
 
-    static function getMenuContent()
+    public static function getMenuContent()
     {
         $menu = [];
         $menu['title'] = self::getMenuName();
@@ -618,7 +613,7 @@ class Badge extends CommonDBTM implements StateInterface
         return $menu;
     }
 
-    static function removeRightsFromSession()
+    public static function removeRightsFromSession()
     {
         if (isset($_SESSION['glpimenu']['assets']['types'][Badge::class])) {
             unset($_SESSION['glpimenu']['assets']['types'][Badge::class]);
@@ -701,7 +696,7 @@ class Badge extends CommonDBTM implements StateInterface
                     'num' => 3,
                     'rank' => 2,
                     'users_id' => 0,
-                    'interface' => 'central']
+                    'interface' => 'central'],
             );
 
             $DB->insert(
@@ -710,7 +705,7 @@ class Badge extends CommonDBTM implements StateInterface
                     'num' => 4,
                     'rank' => 3,
                     'users_id' => 0,
-                    'interface' => 'central']
+                    'interface' => 'central'],
             );
 
             $DB->insert(
@@ -719,7 +714,7 @@ class Badge extends CommonDBTM implements StateInterface
                     'num' => 5,
                     'rank' => 4,
                     'users_id' => 0,
-                    'interface' => 'central']
+                    'interface' => 'central'],
             );
         }
 
@@ -744,7 +739,7 @@ class Badge extends CommonDBTM implements StateInterface
         foreach ($classes as $old => $new) {
             $displayusers = $DB->request([
                 'SELECT' => [
-                    'users_id'
+                    'users_id',
                 ],
                 'DISTINCT' => true,
                 'FROM' => 'glpi_displaypreferences',
@@ -758,13 +753,13 @@ class Badge extends CommonDBTM implements StateInterface
                     $iterator = $DB->request([
                         'SELECT' => [
                             'num',
-                            'id'
+                            'id',
                         ],
                         'FROM' => 'glpi_displaypreferences',
                         'WHERE' => [
                             'itemtype' => $old,
                             'users_id' => $displayuser['users_id'],
-                            'interface' => 'central'
+                            'interface' => 'central',
                         ],
                     ]);
 
@@ -772,14 +767,14 @@ class Badge extends CommonDBTM implements StateInterface
                         foreach ($iterator as $data) {
                             $iterator2 = $DB->request([
                                 'SELECT' => [
-                                    'id'
+                                    'id',
                                 ],
                                 'FROM' => 'glpi_displaypreferences',
                                 'WHERE' => [
                                     'itemtype' => $new,
                                     'users_id' => $displayuser['users_id'],
                                     'num' => $data['num'],
-                                    'interface' => 'central'
+                                    'interface' => 'central',
                                 ],
                             ]);
                             if (count($iterator2) > 0) {
@@ -788,7 +783,7 @@ class Badge extends CommonDBTM implements StateInterface
                                         'glpi_displaypreferences',
                                         [
                                             'id' => $dataid['id'],
-                                        ]
+                                        ],
                                     );
                                     $DB->doQuery($query);
                                 }
@@ -800,7 +795,7 @@ class Badge extends CommonDBTM implements StateInterface
                                     ],
                                     [
                                         'id' => $data['id'],
-                                    ]
+                                    ],
                                 );
                                 $DB->doQuery($query);
                             }

@@ -1,30 +1,30 @@
 <?php
 
-/*
- -------------------------------------------------------------------------
- badges plugin for GLPI
- Copyright (C) 2015-2026 by the badges Development Team.
-
- https://github.com/InfotelGLPI/badges
- -------------------------------------------------------------------------
-
- LICENSE
-
- This file is part of badges.
-
- badges is free software; you can redistribute it and/or modify
- it under the terms of the GNU General Public License as published by
- the Free Software Foundation; either version 3 of the License, or
- (at your option) any later version.
-
- badges is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- GNU General Public License for more details.
-
- You should have received a copy of the GNU General Public License
- along with badges. If not, see <http://www.gnu.org/licenses/>.
- --------------------------------------------------------------------------
+/**
+ * -------------------------------------------------------------------------
+ * badges plugin for GLPI
+ * Copyright (C) 2015-2026 by the badges Development Team.
+ *
+ * https://github.com/InfotelGLPI/badges
+ * -------------------------------------------------------------------------
+ *
+ * LICENSE
+ *
+ * This file is part of badges.
+ *
+ * badges is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * badges is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with badges. If not, see <http://www.gnu.org/licenses/>.
+ * --------------------------------------------------------------------------
  */
 
 namespace GlpiPlugin\Badges;
@@ -179,9 +179,9 @@ class Request extends CommonDBTM
                         ['return_date' => ['<=', $params['end_date']]],
                         ['return_date' => null],
                     ],
-                ]
+                ],
             ],
-            ["affectation_date DESC"]
+            ["affectation_date DESC"],
         );
         $badge = new Badge();
         $rows = [];
@@ -248,7 +248,7 @@ class Request extends CommonDBTM
             'name' => 'badges_id',
             'used' => $used,
             'condition' => ['is_bookable' => 1],
-            'entity' => $_SESSION['glpiactive_entity']
+            'entity' => $_SESSION['glpiactive_entity'],
         ]);
     }
 
@@ -274,15 +274,15 @@ class Request extends CommonDBTM
         if ($success) {
             $badge = new Badge();
             if (
-                !$badge->getFromDB((int)$params['badges_id'])
-                || (int)$badge->fields['is_bookable'] !== 1
+                !$badge->getFromDB((int) $params['badges_id'])
+                || (int) $badge->fields['is_bookable'] !== 1
                 || !Session::haveAccessToEntity($badge->fields['entities_id'])
             ) {
                 return [
                     'success' => false,
                     'message' => __('Please add badges in cart', 'badges'),
                     'rowId' => mt_rand(),
-                    'fields' => []
+                    'fields' => [],
                 ];
             }
         }
@@ -294,28 +294,28 @@ class Request extends CommonDBTM
             'fields' => [
                 'visitor_firstname' => [
                     'label' => $params['visitor_firstname'],
-                    'value' => $params['visitor_firstname']
+                    'value' => $params['visitor_firstname'],
                 ],
                 'visitor_realname' => [
                     'label' => $params['visitor_realname'],
-                    'value' => $params['visitor_realname']
+                    'value' => $params['visitor_realname'],
                 ],
                 'visitor_society' => [
                     'label' => $params['visitor_society'],
-                    'value' => $params['visitor_society']
+                    'value' => $params['visitor_society'],
                 ],
                 'badges_id' => [
                     'label' => Dropdown::getDropdownName(
                         "glpi_plugin_badges_badges",
-                        $params['badges_id']
+                        $params['badges_id'],
                     ),
-                    'value' => $params['badges_id']
+                    'value' => $params['badges_id'],
                 ],
                 'affectation_date' => [
                     'label' => Html::convDateTime($params['affectation_date']),
-                    'value' => $params['affectation_date']
+                    'value' => $params['affectation_date'],
                 ],
-            ]
+            ],
         ];
     }
 
@@ -328,6 +328,11 @@ class Request extends CommonDBTM
      */
     public function addBadges($params)
     {
+        // Default outcome, also covers a present-but-empty badges_cart (the
+        // foreach body never runs) so $success/$message are always defined.
+        $success = false;
+        $message = __('Please add badges in cart', 'badges');
+
         if (isset($params['badges_cart'])) {
             foreach ($params['badges_cart'] as $row) {
                 [$success, $message] = $this->checkMandatoryFields($row);
@@ -341,8 +346,8 @@ class Request extends CommonDBTM
                 if ($success) {
                     $badge = new Badge();
                     if (
-                        !$badge->getFromDB((int)$row['badges_id'])
-                        || (int)$badge->fields['is_bookable'] !== 1
+                        !$badge->getFromDB((int) $row['badges_id'])
+                        || (int) $badge->fields['is_bookable'] !== 1
                         || !Session::haveAccessToEntity($badge->fields['entities_id'])
                     ) {
                         $success = false;
@@ -355,7 +360,7 @@ class Request extends CommonDBTM
                     // A badge can only hold one active affectation at a time.
                     $badgeExist = $this->find([
                         "badges_id" => $row['badges_id'],
-                        "is_affected" => 1
+                        "is_affected" => 1,
                     ]);
                     if (empty($badgeExist)) {
                         $this->add([
@@ -365,7 +370,7 @@ class Request extends CommonDBTM
                             'affectation_date' => $row['affectation_date'],
                             'badges_id' => $row['badges_id'],
                             'is_affected' => 1,
-                            'requesters_id' => $current_user
+                            'requesters_id' => $current_user,
                         ]);
                     } else {
                         $badgeExist = reset($badgeExist);
@@ -375,7 +380,7 @@ class Request extends CommonDBTM
                         // user B would overwrite B's record (reassign requesters_id and
                         // wipe the original visitor data). Refuse to touch an affectation
                         // owned by someone else instead of silently updating it.
-                        if ((int)$badgeExist['requesters_id'] !== (int)$current_user) {
+                        if ((int) $badgeExist['requesters_id'] !== (int) $current_user) {
                             $success = false;
                             $message = __('This badge is already affected to another request', 'badges');
                         } else {
@@ -387,7 +392,7 @@ class Request extends CommonDBTM
                                 'affectation_date' => $row['affectation_date'],
                                 'badges_id' => $row['badges_id'],
                                 'is_affected' => 1,
-                                'requesters_id' => $current_user
+                                'requesters_id' => $current_user,
                             ]);
                         }
                     }
@@ -395,18 +400,18 @@ class Request extends CommonDBTM
 
                 if ($success) {
                     $message = "<div class='alert alert-important alert-success d-flex'>" . _n(
-                            'Badge affected',
-                            'Badges affected',
-                            count($params['badges_cart']),
-                            'badges'
-                        ) . "</div>";
+                        'Badge affected',
+                        'Badges affected',
+                        count($params['badges_cart']),
+                        'badges',
+                    ) . "</div>";
                     NotificationEvent::raiseEvent(
                         "AccessBadgeRequest",
                         new Badge(),
                         [
                             'entities_id' => $_SESSION['glpiactive_entity'],
-                            'badgerequest' => $params['badges_cart']
-                        ]
+                            'badgerequest' => $params['badges_cart'],
+                        ],
                     );
                 }
             }
@@ -417,7 +422,7 @@ class Request extends CommonDBTM
 
         return [
             'success' => $success,
-            'message' => $message
+            'message' => $message,
         ];
     }
 
@@ -473,7 +478,7 @@ class Request extends CommonDBTM
             'visitor_firstname' => __('Visitor firstname', 'badges'),
             'visitor_society' => __('Visitor society', 'badges'),
             'affectation_date' => __('Affectation date', 'badges'),
-            'badges_id' => _n("Available badge", "Available badges", 2, "badges")
+            'badges_id' => _n("Available badge", "Available badges", 2, "badges"),
         ];
 
         foreach ($input as $key => $value) {
@@ -490,8 +495,8 @@ class Request extends CommonDBTM
                 false,
                 "<div class='alert alert-important alert-warning d-flex'>" . sprintf(
                     __("Mandatory fields are not filled. Please correct: %s"),
-                    implode(', ', $msg)
-                ) . "</div>"
+                    implode(', ', $msg),
+                ) . "</div>",
             ];
         }
 
@@ -539,7 +544,7 @@ class Request extends CommonDBTM
             foreach (
                 $DB->request([
                     'FROM' => 'glpi_notificationtemplates',
-                    'WHERE' => $options_notif
+                    'WHERE' => $options_notif,
                 ]) as $data
             ) {
                 $templates_id = $data['id'];
@@ -566,13 +571,13 @@ class Request extends CommonDBTM
                         ##lang.badgerequest.visitorrealname## : ##badgerequest.visitorrealname##&lt;br /&gt;
                         ##lang.badgerequest.visitorsociety## : ##badgerequest.visitorsociety##&lt;br /&gt;
                         ##ENDFOREACHbadgerequest##&lt;/p&gt;',
-                        ]
+                        ],
                     );
 
                     $options_notif = [
                         'itemtype' => Badge::class,
                         'name' => 'Access badge request',
-                        'event' => 'AccessBadgeRequest'
+                        'event' => 'AccessBadgeRequest',
                     ];
                     if (count($DB->request(['FROM' => 'glpi_notifications', 'WHERE' => $options_notif])) === 0) {
                         $DB->insert(
@@ -583,14 +588,14 @@ class Request extends CommonDBTM
                                 'itemtype' => Badge::class,
                                 'event' => 'AccessBadgeRequest',
                                 'is_recursive' => 1,
-                            ]
+                            ],
                         );
                     }
 
                     foreach (
                         $DB->request([
                             'FROM' => 'glpi_notifications',
-                            'WHERE' => $options_notif
+                            'WHERE' => $options_notif,
                         ]) as $data_notif
                     ) {
                         $notification = $data_notif['id'];
@@ -601,10 +606,10 @@ class Request extends CommonDBTM
                                 'notificationtemplates_id' => $templates_id,
                             ];
                             if (count(
-                                    $DB->request(
-                                        ['FROM' => 'glpi_notifications_notificationtemplates', 'WHERE' => $link]
-                                    )
-                                ) === 0) {
+                                $DB->request(
+                                    ['FROM' => 'glpi_notifications_notificationtemplates', 'WHERE' => $link],
+                                ),
+                            ) === 0) {
                                 $DB->insert("glpi_notifications_notificationtemplates", $link);
                             }
                         }
@@ -622,7 +627,7 @@ class Request extends CommonDBTM
             foreach (
                 $DB->request([
                     'FROM' => 'glpi_notificationtemplates',
-                    'WHERE' => $options_notif
+                    'WHERE' => $options_notif,
                 ]) as $data
             ) {
                 $templates_id = $data['id'];
@@ -649,13 +654,13 @@ class Request extends CommonDBTM
                      ##lang.badgerequest.visitorrealname## : ##badgerequest.visitorrealname##&lt;br /&gt;
                      ##lang.badgerequest.visitorsociety## : ##badgerequest.visitorsociety##&lt;br /&gt;
                      ##ENDFOREACHbadgerequest##&lt;/p&gt;',
-                        ]
+                        ],
                     );
 
                     $options_notif = [
                         'itemtype' => Badge::class,
                         'name' => 'Access Badges Return',
-                        'event' => 'BadgesReturn'
+                        'event' => 'BadgesReturn',
                     ];
                     if (count($DB->request(['FROM' => 'glpi_notifications', 'WHERE' => $options_notif])) === 0) {
                         $DB->insert(
@@ -666,14 +671,14 @@ class Request extends CommonDBTM
                                 'itemtype' => Badge::class,
                                 'event' => 'BadgesReturn',
                                 'is_recursive' => 1,
-                            ]
+                            ],
                         );
                     }
 
                     foreach (
                         $DB->request([
                             'FROM' => 'glpi_notifications',
-                            'WHERE' => $options_notif
+                            'WHERE' => $options_notif,
                         ]) as $data_notif
                     ) {
                         $notification = $data_notif['id'];
@@ -684,10 +689,10 @@ class Request extends CommonDBTM
                                 'notificationtemplates_id' => $templates_id,
                             ];
                             if (count(
-                                    $DB->request(
-                                        ['FROM' => 'glpi_notifications_notificationtemplates', 'WHERE' => $link]
-                                    )
-                                ) === 0) {
+                                $DB->request(
+                                    ['FROM' => 'glpi_notifications_notificationtemplates', 'WHERE' => $link],
+                                ),
+                            ) === 0) {
                                 $DB->insert("glpi_notifications_notificationtemplates", $link);
                             }
                         }

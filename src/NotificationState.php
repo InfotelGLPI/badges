@@ -1,30 +1,30 @@
 <?php
 
-/*
- -------------------------------------------------------------------------
- badges plugin for GLPI
- Copyright (C) 2015-2026 by the badges Development Team.
-
- https://github.com/InfotelGLPI/badges
- -------------------------------------------------------------------------
-
- LICENSE
-
- This file is part of badges.
-
- badges is free software; you can redistribute it and/or modify
- it under the terms of the GNU General Public License as published by
- the Free Software Foundation; either version 3 of the License, or
- (at your option) any later version.
-
- badges is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- GNU General Public License for more details.
-
- You should have received a copy of the GNU General Public License
- along with badges. If not, see <http://www.gnu.org/licenses/>.
- --------------------------------------------------------------------------
+/**
+ * -------------------------------------------------------------------------
+ * badges plugin for GLPI
+ * Copyright (C) 2015-2026 by the badges Development Team.
+ *
+ * https://github.com/InfotelGLPI/badges
+ * -------------------------------------------------------------------------
+ *
+ * LICENSE
+ *
+ * This file is part of badges.
+ *
+ * badges is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * badges is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with badges. If not, see <http://www.gnu.org/licenses/>.
+ * --------------------------------------------------------------------------
  */
 
 namespace GlpiPlugin\Badges;
@@ -78,13 +78,12 @@ class NotificationState extends CommonDBTM
         if ($this->getFromDBbyCrit(['states_id' => $states_id])) {
             $this->update([
                 'id' => $this->fields['id'],
-                'states_id' => $states_id
+                'states_id' => $states_id,
             ]);
         } else {
             $this->add(['states_id' => $states_id]);
         }
     }
-
 
     /**
      * @param $target
@@ -101,17 +100,15 @@ class NotificationState extends CommonDBTM
         foreach ($states as $value) {
             $used[] = $value['states_id'];
 
-
             $entries[] = [
                 'itemtype' => self::class,
                 'id' => $value['id'],
                 'name' => Dropdown::getDropdownName(
                     "glpi_states",
-                    $value["states_id"]
+                    $value["states_id"],
                 ),
             ];
         }
-
 
         $columns = [
             'name' => __('Name'),

@@ -1,30 +1,30 @@
 <?php
 
-/*
- -------------------------------------------------------------------------
- badges plugin for GLPI
- Copyright (C) 2015-2026 by the badges Development Team.
-
- https://github.com/InfotelGLPI/badges
- -------------------------------------------------------------------------
-
- LICENSE
-
- This file is part of badges.
-
- badges is free software; you can redistribute it and/or modify
- it under the terms of the GNU General Public License as published by
- the Free Software Foundation; either version 3 of the License, or
- (at your option) any later version.
-
- badges is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- GNU General Public License for more details.
-
- You should have received a copy of the GNU General Public License
- along with badges. If not, see <http://www.gnu.org/licenses/>.
- --------------------------------------------------------------------------
+/**
+ * -------------------------------------------------------------------------
+ * badges plugin for GLPI
+ * Copyright (C) 2015-2026 by the badges Development Team.
+ *
+ * https://github.com/InfotelGLPI/badges
+ * -------------------------------------------------------------------------
+ *
+ * LICENSE
+ *
+ * This file is part of badges.
+ *
+ * badges is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * badges is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with badges. If not, see <http://www.gnu.org/licenses/>.
+ * --------------------------------------------------------------------------
  */
 
 namespace GlpiPlugin\Badges;
@@ -43,13 +43,13 @@ use Migration;
 class Config extends CommonDBTM
 {
     public static $rightname = "config";
-   /**
-    * @param CommonGLPI $item
-    * @param int        $withtemplate
-    *
-    * @return string
-    */
-    function getTabNameForItem(CommonGLPI $item, $withtemplate = 0)
+    /**
+     * @param CommonGLPI $item
+     * @param int        $withtemplate
+     *
+     * @return string
+     */
+    public function getTabNameForItem(CommonGLPI $item, $withtemplate = 0)
     {
 
         if ($item->getType() == 'CronTask'
@@ -64,14 +64,14 @@ class Config extends CommonDBTM
         return "ti ti-id";
     }
 
-   /**
-    * @param CommonGLPI $item
-    * @param int        $tabnum
-    * @param int        $withtemplate
-    *
-    * @return bool
-    */
-    static function displayTabContentForItem(CommonGLPI $item, $tabnum = 1, $withtemplate = 0)
+    /**
+     * @param CommonGLPI $item
+     * @param int        $tabnum
+     * @param int        $withtemplate
+     *
+     * @return bool
+     */
+    public static function displayTabContentForItem(CommonGLPI $item, $tabnum = 1, $withtemplate = 0)
     {
         if ($item->getType() == 'CronTask') {
             $target = PLUGIN_BADGES_WEBDIR . "/front/notification.state.php";
@@ -130,10 +130,10 @@ class Config extends CommonDBTM
     }
 
 
-   /**
-    * @param $target
-    * @param $ID
-    */
+    /**
+     * @param $target
+     * @param $ID
+     */
     public function showFormBadgeReturn($target, $ID)
     {
         $this->getFromDB($ID);
@@ -181,7 +181,7 @@ class Config extends CommonDBTM
                 ['id' => 1,
                     'delay_expired' => 30,
                     'delay_whichexpire' => 30,
-                    'delay_returnexpire' => 30]
+                    'delay_returnexpire' => 30],
             );
         }
 

@@ -1,30 +1,30 @@
 <?php
 
-/*
- -------------------------------------------------------------------------
- badges plugin for GLPI
- Copyright (C) 2015-2026 by the badges Development Team.
-
- https://github.com/InfotelGLPI/badges
- -------------------------------------------------------------------------
-
- LICENSE
-
- This file is part of badges.
-
- badges is free software; you can redistribute it and/or modify
- it under the terms of the GNU General Public License as published by
- the Free Software Foundation; either version 3 of the License, or
- (at your option) any later version.
-
- badges is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- GNU General Public License for more details.
-
- You should have received a copy of the GNU General Public License
- along with badges. If not, see <http://www.gnu.org/licenses/>.
- --------------------------------------------------------------------------
+/**
+ * -------------------------------------------------------------------------
+ * badges plugin for GLPI
+ * Copyright (C) 2015-2026 by the badges Development Team.
+ *
+ * https://github.com/InfotelGLPI/badges
+ * -------------------------------------------------------------------------
+ *
+ * LICENSE
+ *
+ * This file is part of badges.
+ *
+ * badges is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * badges is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with badges. If not, see <http://www.gnu.org/licenses/>.
+ * --------------------------------------------------------------------------
  */
 
 namespace GlpiPlugin\Badges;
@@ -36,15 +36,14 @@ use CommonGLPI;
  */
 class Metademand extends CommonGLPI
 {
+    public static $rightname = 'plugin_metademands';
 
-    static $rightname = 'plugin_metademands';
-
-    var $dohistory = false;
+    public $dohistory = false;
 
     /**
      * @return array
      */
-    static function addFieldItems()
+    public static function addFieldItems()
     {
         return [
             Badge::class,
@@ -54,7 +53,7 @@ class Metademand extends CommonGLPI
     /**
      * @return array
      */
-    static function addDropdownFieldItems()
+    public static function addDropdownFieldItems()
     {
         $name = Badge::getTypeName(2);
         return [$name => [Badge::class => Badge::getTypeName()]];
@@ -65,7 +64,7 @@ class Metademand extends CommonGLPI
     /**
      * @return array
      */
-    static function getFieldItemsName()
+    public static function getFieldItemsName()
     {
         $prefix = _n('Badge', 'Badges', 2, 'badges') . " - ";
         return [
@@ -76,7 +75,7 @@ class Metademand extends CommonGLPI
     /**
      * @return array
      */
-    static function getFieldItemsType()
+    public static function getFieldItemsType()
     {
         return [
             Badge::class => 'dropdown',

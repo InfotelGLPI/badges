@@ -1,30 +1,30 @@
 <?php
 
-/*
- -------------------------------------------------------------------------
- badges plugin for GLPI
- Copyright (C) 2015-2026 by the badges Development Team.
-
- https://github.com/InfotelGLPI/badges
- -------------------------------------------------------------------------
-
- LICENSE
-
- This file is part of badges.
-
- badges is free software; you can redistribute it and/or modify
- it under the terms of the GNU General Public License as published by
- the Free Software Foundation; either version 3 of the License, or
- (at your option) any later version.
-
- badges is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- GNU General Public License for more details.
-
- You should have received a copy of the GNU General Public License
- along with badges. If not, see <http://www.gnu.org/licenses/>.
- --------------------------------------------------------------------------
+/**
+ * -------------------------------------------------------------------------
+ * badges plugin for GLPI
+ * Copyright (C) 2015-2026 by the badges Development Team.
+ *
+ * https://github.com/InfotelGLPI/badges
+ * -------------------------------------------------------------------------
+ *
+ * LICENSE
+ *
+ * This file is part of badges.
+ *
+ * badges is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * badges is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with badges. If not, see <http://www.gnu.org/licenses/>.
+ * --------------------------------------------------------------------------
  */
 
 use Glpi\Search\SearchOption;
@@ -80,7 +80,7 @@ function plugin_badges_uninstall()
         "glpi_plugin_badges_badgetypes",
         "glpi_plugin_badges_configs",
         "glpi_plugin_badges_notificationstates",
-        "glpi_plugin_badges_requests"
+        "glpi_plugin_badges_requests",
     ];
 
     foreach ($tables as $table) {
@@ -95,7 +95,7 @@ function plugin_badges_uninstall()
         "glpi_plugin_badges_profiles",
         "glpi_plugin_badges_config",
         "glpi_plugin_badges_mailing",
-        "glpi_plugin_badges_default"
+        "glpi_plugin_badges_default",
     ];
 
     foreach ($tables as $table) {
@@ -107,7 +107,7 @@ function plugin_badges_uninstall()
     foreach (
         $DB->request([
             'FROM' => 'glpi_notifications',
-            'WHERE' => $options
+            'WHERE' => $options,
         ]) as $data
     ) {
         $notif->delete($data);
@@ -121,7 +121,7 @@ function plugin_badges_uninstall()
     foreach (
         $DB->request([
             'FROM' => 'glpi_notificationtemplates',
-            'WHERE' => $options
+            'WHERE' => $options,
         ]) as $data
     ) {
         $options_template = [
@@ -131,7 +131,7 @@ function plugin_badges_uninstall()
         foreach (
             $DB->request([
                 'FROM' => 'glpi_notificationtemplatetranslations',
-                'WHERE' => $options_template
+                'WHERE' => $options_template,
             ]) as $data_template
         ) {
             $translation->delete($data_template);
@@ -141,7 +141,7 @@ function plugin_badges_uninstall()
         foreach (
             $DB->request([
                 'FROM' => 'glpi_notifications_notificationtemplates',
-                'WHERE' => $options_template
+                'WHERE' => $options_template,
             ]) as $data_template
         ) {
             $notif_template->delete($data_template);
@@ -159,7 +159,7 @@ function plugin_badges_uninstall()
         'SavedSearch',
         'DropdownTranslation',
         'NotificationTemplate',
-        'Notification'
+        'Notification',
     ];
     foreach ($itemtypes as $itemtype) {
         $item = new $itemtype();
@@ -200,14 +200,14 @@ function plugin_badges_getDatabaseRelations()
             "glpi_plugin_badges_badgetypes" => ["glpi_plugin_badges_badges" => "plugin_badges_badgetypes_id"],
             "glpi_entities" => [
                 "glpi_plugin_badges_badges" => "entities_id",
-                "glpi_plugin_badges_badgetypes" => "entities_id"
+                "glpi_plugin_badges_badgetypes" => "entities_id",
             ],
             "glpi_locations" => ["glpi_plugin_badges_badges" => "locations_id"],
             "glpi_states" => [
                 "glpi_plugin_badges_badges" => "states_id",
-                "glpi_plugin_badges_notificationstates" => "states_id"
+                "glpi_plugin_badges_notificationstates" => "states_id",
             ],
-            "glpi_users" => ["glpi_plugin_badges_badges" => "users_id"]
+            "glpi_users" => ["glpi_plugin_badges_badges" => "users_id"],
         ];
     } else {
         return [];

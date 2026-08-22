@@ -1,30 +1,30 @@
 <?php
 
-/*
- -------------------------------------------------------------------------
- badges plugin for GLPI
- Copyright (C) 2015-2026 by the badges Development Team.
-
- https://github.com/InfotelGLPI/badges
- -------------------------------------------------------------------------
-
- LICENSE
-
- This file is part of badges.
-
- badges is free software; you can redistribute it and/or modify
- it under the terms of the GNU General Public License as published by
- the Free Software Foundation; either version 3 of the License, or
- (at your option) any later version.
-
- badges is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- GNU General Public License for more details.
-
- You should have received a copy of the GNU General Public License
- along with badges. If not, see <http://www.gnu.org/licenses/>.
- --------------------------------------------------------------------------
+/**
+ * -------------------------------------------------------------------------
+ * badges plugin for GLPI
+ * Copyright (C) 2015-2026 by the badges Development Team.
+ *
+ * https://github.com/InfotelGLPI/badges
+ * -------------------------------------------------------------------------
+ *
+ * LICENSE
+ *
+ * This file is part of badges.
+ *
+ * badges is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * badges is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with badges. If not, see <http://www.gnu.org/licenses/>.
+ * --------------------------------------------------------------------------
  */
 
 namespace GlpiPlugin\Badges;
@@ -69,21 +69,21 @@ class Profile extends \Profile
      *
      * @return bool
      */
-//    public static function displayTabContentForItem(CommonGLPI $item, $tabnum = 1, $withtemplate = 0)
-//    {
-//        if ($item->getType() == 'Profile') {
-//            $ID   = $item->getID();
-//            $prof = new self();
-//
-//            self::addDefaultProfileInfos(
-//                $ID,
-//                ['plugin_badges'             => 0,
-//                    'plugin_badges_open_ticket' => 0]
-//            );
-//            $prof->showForm($ID);
-//        }
-//        return true;
-//    }
+    //    public static function displayTabContentForItem(CommonGLPI $item, $tabnum = 1, $withtemplate = 0)
+    //    {
+    //        if ($item->getType() == 'Profile') {
+    //            $ID   = $item->getID();
+    //            $prof = new self();
+    //
+    //            self::addDefaultProfileInfos(
+    //                $ID,
+    //                ['plugin_badges'             => 0,
+    //                    'plugin_badges_open_ticket' => 0]
+    //            );
+    //            $prof->showForm($ID);
+    //        }
+    //        return true;
+    //    }
 
     /**
      * @param CommonGLPI $item
@@ -127,7 +127,7 @@ class Profile extends \Profile
             $ID,
             ['plugin_badges'             => 127,
                 'plugin_badges_open_ticket' => 1],
-            true
+            true,
         );
     }
 
@@ -145,13 +145,13 @@ class Profile extends \Profile
         foreach ($rights as $right => $value) {
             if ($dbu->countElementsInTable(
                 'glpi_profilerights',
-                ["profiles_id" => $profiles_id, "name" => $right]
+                ["profiles_id" => $profiles_id, "name" => $right],
             ) && $drop_existing) {
                 $profileRight->deleteByCriteria(['profiles_id' => $profiles_id, 'name' => $right]);
             }
             if (!$dbu->countElementsInTable(
                 'glpi_profilerights',
-                ["profiles_id" => $profiles_id, "name" => $right]
+                ["profiles_id" => $profiles_id, "name" => $right],
             )) {
                 $myright['profiles_id'] = $profiles_id;
                 $myright['name']        = $right;
@@ -176,7 +176,7 @@ class Profile extends \Profile
             ['itemtype' => Badge::class,
                 'label'    => Badge::getTypeName(Session::getPluralNumber()),
                 'field' => Badge::$rightname,
-                'rights' => \Profile::getRightsFor(Badge::class)
+                'rights' => \Profile::getRightsFor(Badge::class),
             ],
         ];
 
@@ -265,7 +265,7 @@ class Profile extends \Profile
         foreach ($profile->getAllRights(true) as $data) {
             if ($dbu->countElementsInTable(
                 "glpi_profilerights",
-                ["name" => $data['field']]
+                ["name" => $data['field']],
             ) == 0) {
                 ProfileRight::addProfileRights([$data['field']]);
             }
