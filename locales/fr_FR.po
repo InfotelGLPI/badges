@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-22 15:13+0000\n"
+"POT-Creation-Date: 2026-08-29 10:35+0000\n"
 "PO-Revision-Date: 2020-11-02 15:44+0000\n"
 "Last-Translator: Xavier CAILLAUD <thetsmr@gmail.com>, 2026\n"
 "Language-Team: French (France) (https://app.transifex.com/infotelGLPI/teams/12355/fr_FR/)\n"
@@ -72,6 +72,13 @@ msgid_plural "Badges"
 msgstr[0] "Badge"
 msgstr[1] "Badges"
 msgstr[2] "Badges"
+
+#: src/Request.php:403
+msgid "Badge affected"
+msgid_plural "Badges affected"
+msgstr[0] "Badge affecté"
+msgstr[1] "Badges affectés"
+msgstr[2] "Badges affectés"
 
 #: templates/badge_return_list.html.twig:31
 msgid "Badge requests history"
