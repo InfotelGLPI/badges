@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-22 15:13+0000\n"
+"POT-Creation-Date: 2026-08-29 10:35+0000\n"
 "PO-Revision-Date: 2020-11-02 15:44+0000\n"
 "Last-Translator: Kaya Zeren <kayazeren@gmail.com>, 2026\n"
 "Language-Team: Turkish (Turkey) (https://app.transifex.com/infotelGLPI/teams/12355/tr_TR/)\n"
@@ -71,6 +71,12 @@ msgid "Badge"
 msgid_plural "Badges"
 msgstr[0] "Yaka Kartları"
 msgstr[1] "Yaka kartları"
+
+#: src/Request.php:403
+msgid "Badge affected"
+msgid_plural "Badges affected"
+msgstr[0] "Etkilenen yaka kartı"
+msgstr[1] "Etkilenen yaka kartları"
 
 #: templates/badge_return_list.html.twig:31
 msgid "Badge requests history"
