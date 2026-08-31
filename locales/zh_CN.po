@@ -2,208 +2,286 @@
 # Copyright (C) YEAR Badges Development Team
 # This file is distributed under the same license as the GLPI - Badges plugin package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # 孔南, 2022
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: GLPI - Badges plugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-22 13:15+0000\n"
+"POT-Creation-Date: 2026-08-31 14:49+0000\n"
 "PO-Revision-Date: 2020-11-02 15:44+0000\n"
 "Last-Translator: 孔南, 2022\n"
-"Language-Team: Chinese (China) (https://www.transifex.com/infotelGLPI/teams/12355/zh_CN/)\n"
+"Language-Team: Chinese (China) (https://www.transifex.com/infotelGLPI/"
+"teams/12355/zh_CN/)\n"
+"Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: setup.php:110 inc/badge.class.php:51 inc/metademand.class.php:63
-#: inc/profile.class.php:177 inc/request.class.php:195
-#: inc/request.class.php:311
-msgid "Badge"
-msgid_plural "Badges"
-msgstr[0] "徽章"
-
-#: inc/badge.class.php:96 inc/request.class.php:493
-msgid "Affectation date"
-msgstr "分配日期"
-
-#: inc/badge.class.php:104 inc/notificationtargetbadge.class.php:83
-#: inc/notificationtargetbadge.class.php:129
-msgid "Date of end of validity"
-msgstr "失效期"
-
-#: inc/badge.class.php:185
-msgid "Bookable"
-msgstr "可预订"
-
-#: inc/badge.class.php:507 inc/notificationtargetbadge.class.php:53
-#: inc/notificationtargetbadge.class.php:73
-msgid "Badges which expires"
-msgstr "过期的徽章"
-
-#: inc/badge.class.php:625 inc/notificationtargetbadge.class.php:52
-#: inc/notificationtargetbadge.class.php:70 inc/return.class.php:453
-msgid "Badges at the end of the validity"
-msgstr "即将到期的徽章"
-
-#: inc/badgetype.class.php:48
-msgid "Type of badge"
-msgid_plural "Types of badge"
-msgstr[0] "徽章类型"
-
-#: inc/config.class.php:48
-msgid "Plugin Setup"
-msgstr "插件设置"
-
-#: inc/config.class.php:93 inc/config.class.php:142
-msgid "Time of checking of validity of the badges"
-msgstr "徽章有效期的检查时间"
-
-#: inc/config.class.php:99
-msgid "Badges expired for more than "
-msgstr "徽章过期超过"
-
-#: inc/config.class.php:109
-msgid "Badges expiring in less than "
-msgstr "徽章到期时间少于"
-
-#: inc/config.class.php:148 inc/notificationtargetbadge.class.php:55
-#: inc/notificationtargetbadge.class.php:79
-msgid "Badge return delay"
-msgstr "徽章归还延迟"
-
-#: inc/notificationstate.class.php:115 inc/notificationstate.class.php:156
-msgid "Unused status for expiration mailing"
-msgstr "过期邮寄的未使用状态"
-
-#: inc/notificationtargetbadge.class.php:54
-#: inc/notificationtargetbadge.class.php:76 inc/request.class.php:248
-#: inc/wizard.class.php:67 inc/wizard.class.php:76
+#: src/NotificationTargetBadge.php:59 src/NotificationTargetBadge.php:80
+#: templates/wizard_menu.html.twig:30 templates/wizard_menu.html.twig:38
+#: templates/request_wizard.html.twig:30
 msgid "Access badge request"
 msgstr "访问徽章请求"
 
-#: inc/notificationtargetbadge.class.php:85
-#: inc/notificationtargetbadge.class.php:130
+#: templates/wizard_menu.html.twig:45
+#: templates/badge_return_wizard.html.twig:30
+msgid "Access badge return"
+msgstr "访问徽章归还"
+
+#: templates/status_cron.html.twig:62
+msgctxt "button"
+msgid "Add"
+msgstr ""
+
+#: templates/request_wizard.html.twig:59
+msgid "Add to cart"
+msgstr "添加到购物车"
+
+#: src/Request.php:480 src/Badge.php:111 templates/badge_form.html.twig:117
+msgid "Affectation date"
+msgstr "分配日期"
+
+#: src/NotificationTargetBadge.php:89 src/NotificationTargetBadge.php:135
 msgid "Allotted to"
 msgstr "分配给"
 
-#: inc/notificationtargetbadge.class.php:101
-#: inc/notificationtargetbadge.class.php:131 inc/request.class.php:196
-#: inc/request.class.php:260 inc/request.class.php:309
-#: inc/request.class.php:490 inc/return.class.php:176 inc/return.class.php:334
-msgid "Visitor realname"
-msgstr "访客真名"
-
-#: inc/notificationtargetbadge.class.php:102
-#: inc/notificationtargetbadge.class.php:132 inc/request.class.php:197
-#: inc/request.class.php:265 inc/request.class.php:308
-#: inc/request.class.php:491 inc/return.class.php:177 inc/return.class.php:332
-msgid "Visitor firstname"
-msgstr "访客名称"
-
-#: inc/notificationtargetbadge.class.php:103
-#: inc/notificationtargetbadge.class.php:133 inc/request.class.php:198
-#: inc/request.class.php:273 inc/request.class.php:310
-#: inc/request.class.php:492 inc/return.class.php:178 inc/return.class.php:339
-msgid "Visitor society"
-msgstr "访客社团"
-
-#: inc/notificationtargetbadge.class.php:104
-#: inc/notificationtargetbadge.class.php:134 inc/request.class.php:127
-#: inc/request.class.php:199 inc/request.class.php:284
-#: inc/request.class.php:312 inc/return.class.php:179 inc/return.class.php:345
-#: inc/return.class.php:448
+#: src/NotificationTargetBadge.php:108 src/NotificationTargetBadge.php:139
+#: src/BadgeReturn.php:420 templates/request_list.html.twig:38
+#: templates/request_search.html.twig:37 templates/request_wizard.html.twig:51
+#: templates/request_wizard.html.twig:76
+#: templates/badge_return_list.html.twig:39
+#: templates/badge_return_info.html.twig:40
 msgid "Arrival date"
 msgstr "到达日期"
 
-#: inc/notificationtargetbadge.class.php:144 inc/request.class.php:52
-msgid "Badges request"
-msgstr "徽章申请"
-
-#: inc/notificationtargetbadge.class.php:150
-msgid "Badges expired or badges which expires"
-msgstr "过期或到期的徽章"
-
-#: inc/request.class.php:122
-msgid "Badges usage search"
-msgstr "徽章使用搜索"
-
-#: inc/request.class.php:133 inc/request.class.php:200
-#: inc/return.class.php:180
-msgid "Return date"
-msgstr "归还日期"
-
-#: inc/request.class.php:192 inc/request.class.php:222
-msgid "Badge usage report"
-msgstr "徽章使用报告"
-
-#: inc/request.class.php:277 inc/request.class.php:494
+#: src/Request.php:481 templates/request_wizard.html.twig:47
 msgid "Available badge"
 msgid_plural "Available badges"
 msgstr[0] "可用的徽章"
 
-#: inc/request.class.php:297
-msgid "Add to cart"
-msgstr "添加到购物车"
+#: src/Metademand.php:69 src/Badge.php:65 setup.php:120
+#: templates/request_list.html.twig:34 templates/request_wizard.html.twig:75
+msgid "Badge"
+msgid_plural "Badges"
+msgstr[0] "徽章"
 
-#: inc/request.class.php:306
-msgid "Cart"
-msgstr "购物车"
-
-#: inc/request.class.php:430
+#: src/Request.php:403
 msgid "Badge affected"
 msgid_plural "Badges affected"
 msgstr[0] "受影响的徽章"
 
-#: inc/request.class.php:437
-msgid "Please add badges in cart"
-msgstr "请在购物车中添加徽章"
-
-#: inc/return.class.php:64 inc/return.class.php:134
-msgid "Badge return"
-msgstr "徽章归还"
-
-#: inc/return.class.php:146
-msgid "Force badge restitution"
-msgstr "强制徽章归还"
-
-#: inc/return.class.php:171 inc/return.class.php:203
+#: templates/badge_return_list.html.twig:31
 msgid "Badge requests history"
 msgstr "徽章请求历史"
 
-#: inc/return.class.php:223 inc/return.class.php:263
-msgid "Badges in your possession"
-msgstr "您拥有的徽章"
-
-#: inc/return.class.php:252 inc/wizard.class.php:83
-msgid "Access badge return"
-msgstr "访问徽章归还"
-
-#: inc/return.class.php:286
-msgid "Restitution date"
-msgstr "归还日期"
-
-#: inc/return.class.php:306 inc/return.class.php:389
-msgid "Badges return"
+#: src/BadgeReturn.php:73 templates/badge_return_for_badge.html.twig:34
+msgid "Badge return"
 msgstr "徽章归还"
 
-#: inc/return.class.php:371
+#: src/NotificationTargetBadge.php:60 src/NotificationTargetBadge.php:83
+#: templates/config_badge_return.html.twig:37
+msgid "Badge return delay"
+msgstr "徽章归还延迟"
+
+#: src/BadgeReturn.php:321
 msgid "Badge returned"
 msgstr "徽章已归还"
 
-#: inc/servicecatalog.class.php:84 inc/servicecatalog.class.php:91
-msgid "Manage temporary badges"
-msgstr "管理临时徽章"
+#: templates/request_list.html.twig:31 templates/request_list.html.twig:56
+msgid "Badge usage report"
+msgstr "徽章使用报告"
 
-#: inc/wizard.class.php:52
+#: src/NotificationTargetBadge.php:57 src/NotificationTargetBadge.php:74
+#: src/BadgeReturn.php:425 src/Badge.php:534
+msgid "Badges at the end of the validity"
+msgstr "即将到期的徽章"
+
+#: templates/config.html.twig:46
+msgid "Badges expired for more than "
+msgstr "徽章过期超过"
+
+#: src/NotificationTargetBadge.php:155
+msgid "Badges expired or badges which expires"
+msgstr "过期或到期的徽章"
+
+#: templates/config.html.twig:53
+msgid "Badges expiring in less than "
+msgstr "徽章到期时间少于"
+
+#: src/BadgeReturn.php:219 templates/badge_return_wizard.html.twig:39
+msgid "Badges in your possession"
+msgstr "您拥有的徽章"
+
+#: src/Request.php:62 src/NotificationTargetBadge.php:149
+msgid "Badges request"
+msgstr "徽章申请"
+
+#: src/BadgeReturn.php:340 templates/badge_return_wizard.html.twig:65
+msgid "Badges return"
+msgstr "徽章归还"
+
+#: templates/request_search.html.twig:34
+msgid "Badges usage search"
+msgstr "徽章使用搜索"
+
+#: src/NotificationTargetBadge.php:58 src/NotificationTargetBadge.php:77
+#: src/Badge.php:424
+msgid "Badges which expires"
+msgstr "过期的徽章"
+
+#: src/Wizard.php:54
 msgid "Badges wizard"
 msgstr "徽章向导"
 
-#: inc/wizard.class.php:76
+#: src/Badge.php:200 templates/badge_form.html.twig:147
+msgid "Bookable"
+msgstr "可预订"
+
+#: templates/badge_return_wizard.html.twig:61
+#: templates/request_wizard.html.twig:89
+msgctxt "button"
+msgid "Cancel"
+msgstr ""
+
+#: templates/request_wizard.html.twig:69
+msgid "Cart"
+msgstr "购物车"
+
+#: templates/badge_form.html.twig:131
+msgid "Comment"
+msgid_plural "Comments"
+msgstr[0] ""
+
+#: src/NotificationTargetBadge.php:87 src/NotificationTargetBadge.php:134
+#: src/Badge.php:119 templates/badge_form.html.twig:122
+msgid "Date of end of validity"
+msgstr "失效期"
+
+#: templates/config.html.twig:50 templates/config.html.twig:58
+msgid "Day"
+msgid_plural "Days"
+msgstr[0] ""
+
+#: templates/badge_form.html.twig:123
+msgid "Empty for infinite"
+msgstr ""
+
+#: templates/wizard_menu.html.twig:38
 msgid "For a limited time"
 msgstr "限时"
+
+#: templates/badge_return_for_badge.html.twig:42
+msgid "Force badge restitution"
+msgstr "强制徽章归还"
+
+#: src/Servicecatalog.php:83 src/Servicecatalog.php:90
+msgid "Manage temporary badges"
+msgstr "管理临时徽章"
+
+#: templates/badge_form.html.twig:53
+msgid "Name"
+msgstr ""
+
+#: templates/request_list.html.twig:59 templates/badge_return_list.html.twig:54
+msgid "No results found"
+msgstr ""
+
+#: templates/badge_form.html.twig:140
+msgid "Picture"
+msgid_plural "Pictures"
+msgstr[0] ""
+
+#: src/Request.php:283 src/Request.php:334 src/Request.php:354
+#: src/Request.php:420
+msgid "Please add badges in cart"
+msgstr "请在购物车中添加徽章"
+
+#: src/Config.php:57
+msgid "Plugin Setup"
+msgstr "插件设置"
+
+#: templates/request_wizard.html.twig:93
+msgctxt "button"
+msgid "Post"
+msgstr ""
+
+#: templates/badge_return_list.html.twig:35
+msgid "Requester"
+msgstr ""
+
+#: templates/badge_return_wizard.html.twig:49
+msgid "Restitution date"
+msgstr "归还日期"
+
+#: templates/request_list.html.twig:39 templates/request_search.html.twig:39
+#: templates/badge_return_list.html.twig:40
+msgid "Return date"
+msgstr "归还日期"
+
+#: templates/config.html.twig:66 templates/profile.html.twig:34
+#: templates/config_badge_return.html.twig:44
+msgctxt "button"
+msgid "Save"
+msgstr ""
+
+#: templates/request_search.html.twig:43
+msgid "Search"
+msgstr ""
+
+#: templates/badge_form.html.twig:99
+msgid "Serial number"
+msgstr ""
+
+#: templates/badge_form.html.twig:108
+msgid "Status"
+msgstr ""
+
+#: templates/badge_form.html.twig:53
+msgid "Surname"
+msgstr ""
+
+#: src/Request.php:385
+msgid "This badge is already affected to another request"
+msgstr ""
+
+#: templates/config.html.twig:41 templates/config_badge_return.html.twig:34
+msgid "Time of checking of validity of the badges"
+msgstr "徽章有效期的检查时间"
+
+#: src/BadgeType.php:51
+msgid "Type of badge"
+msgid_plural "Types of badge"
+msgstr[0] "徽章类型"
+
+#: templates/status_cron.html.twig:44
+msgid "Unused status for expiration mailing"
+msgstr "过期邮寄的未使用状态"
+
+#: src/Request.php:478 src/NotificationTargetBadge.php:106
+#: src/NotificationTargetBadge.php:137 templates/request_list.html.twig:36
+#: templates/request_wizard.html.twig:41 templates/request_wizard.html.twig:72
+#: templates/badge_return_list.html.twig:37
+#: templates/badge_return_info.html.twig:32
+msgid "Visitor firstname"
+msgstr "访客名称"
+
+#: src/Request.php:477 src/NotificationTargetBadge.php:105
+#: src/NotificationTargetBadge.php:136 templates/request_list.html.twig:35
+#: templates/request_wizard.html.twig:39 templates/request_wizard.html.twig:73
+#: templates/badge_return_list.html.twig:36
+#: templates/badge_return_info.html.twig:34
+msgid "Visitor realname"
+msgstr "访客真名"
+
+#: src/Request.php:479 src/NotificationTargetBadge.php:107
+#: src/NotificationTargetBadge.php:138 templates/request_list.html.twig:37
+#: templates/request_wizard.html.twig:45 templates/request_wizard.html.twig:74
+#: templates/badge_return_list.html.twig:38
+#: templates/badge_return_info.html.twig:38
+msgid "Visitor society"
+msgstr "访客社团"

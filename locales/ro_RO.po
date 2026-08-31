@@ -2,217 +2,301 @@
 # Copyright (C) YEAR Badges Development Team
 # This file is distributed under the same license as the GLPI - Badges plugin package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Xavier CAILLAUD <thetsmr@gmail.com>, 2020
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: GLPI - Badges plugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-02 15:08+0100\n"
+"POT-Creation-Date: 2026-08-31 14:49+0000\n"
 "PO-Revision-Date: 2020-11-02 12:44+0000\n"
 "Last-Translator: Xavier CAILLAUD <thetsmr@gmail.com>, 2020\n"
-"Language-Team: Romanian (Romania) (https://www.transifex.com/infotelGLPI/teams/12355/ro_RO/)\n"
+"Language-Team: Romanian (Romania) (https://www.transifex.com/infotelGLPI/"
+"teams/12355/ro_RO/)\n"
+"Language: ro_RO\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ro_RO\n"
-"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
+"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?"
+"2:1));\n"
 
-#: setup.php:101 inc/badge.class.php:49 inc/menu.class.php:41
-#: inc/profile.class.php:177 inc/request.class.php:194
-#: inc/request.class.php:303
-msgid "Badge"
-msgid_plural "Badges"
-msgstr[0] "Ecuson"
-msgstr[1] "Ecusoane"
-msgstr[2] "Ecusoane"
-
-#: inc/badge.class.php:88 inc/badge.class.php:300 inc/request.class.php:477
-msgid "Affectation date"
-msgstr "Data de atribuire"
-
-#: inc/badge.class.php:96 inc/badge.class.php:313
-#: inc/notificationtargetbadge.class.php:83
-#: inc/notificationtargetbadge.class.php:129
-msgid "Date of end of validity"
-msgstr "Data de sfârsit a validităţii"
-
-#: inc/badge.class.php:177 inc/badge.class.php:318
-msgid "Bookable"
-msgstr ""
-
-#: inc/badge.class.php:456 inc/notificationtargetbadge.class.php:53
-#: inc/notificationtargetbadge.class.php:73
-msgid "Badges which expires"
-msgstr "Ecusoane care expiră"
-
-#: inc/badge.class.php:574 inc/notificationtargetbadge.class.php:52
-#: inc/notificationtargetbadge.class.php:70 inc/return.class.php:447
-msgid "Badges at the end of the validity"
-msgstr "Ecusoane la sfârsit de valabilitate"
-
-#: inc/badgetype.class.php:48
-msgid "Type of badge"
-msgid_plural "Types of badge"
-msgstr[0] "Tip de ecuson"
-msgstr[1] "Tipuri de ecusoane"
-msgstr[2] "Tipuri de ecusoane"
-
-#: inc/config.class.php:48
-msgid "Plugin Setup"
-msgstr "Configurare plugin"
-
-#: inc/config.class.php:93 inc/config.class.php:141
-msgid "Time of checking of validity of the badges"
-msgstr "Perioada de verificare a valabilităţii ecusoanelor"
-
-#: inc/config.class.php:99
-msgid "Badges expired for more than "
-msgstr "Ecusoane expirate de mai bine de"
-
-#: inc/config.class.php:109
-msgid "Badges expiring in less than "
-msgstr "Ecusoane ce expiră in mai puţin de"
-
-#: inc/config.class.php:147 inc/notificationtargetbadge.class.php:55
-#: inc/notificationtargetbadge.class.php:79
-msgid "Badge return delay"
-msgstr ""
-
-#: inc/notificationstate.class.php:115 inc/notificationstate.class.php:156
-msgid "Unused status for expiration mailing"
-msgstr "Statut nefolosi pentru trimiterea de emailuri de expirare"
-
-#: inc/notificationtargetbadge.class.php:54
-#: inc/notificationtargetbadge.class.php:76 inc/request.class.php:248
-#: inc/request.class.php:254 inc/wizard.class.php:68 inc/wizard.class.php:76
+#: src/NotificationTargetBadge.php:59 src/NotificationTargetBadge.php:80
+#: templates/wizard_menu.html.twig:30 templates/wizard_menu.html.twig:38
+#: templates/request_wizard.html.twig:30
 msgid "Access badge request"
 msgstr ""
 
-#: inc/notificationtargetbadge.class.php:85
-#: inc/notificationtargetbadge.class.php:130
+#: templates/wizard_menu.html.twig:45
+#: templates/badge_return_wizard.html.twig:30
+msgid "Access badge return"
+msgstr ""
+
+#: templates/status_cron.html.twig:62
+msgctxt "button"
+msgid "Add"
+msgstr ""
+
+#: templates/request_wizard.html.twig:59
+msgid "Add to cart"
+msgstr ""
+
+#: src/Request.php:480 src/Badge.php:111 templates/badge_form.html.twig:117
+msgid "Affectation date"
+msgstr "Data de atribuire"
+
+#: src/NotificationTargetBadge.php:89 src/NotificationTargetBadge.php:135
 msgid "Allotted to"
 msgstr "Atribuit la"
 
-#: inc/notificationtargetbadge.class.php:101
-#: inc/notificationtargetbadge.class.php:131 inc/request.class.php:195
-#: inc/request.class.php:258 inc/request.class.php:301
-#: inc/request.class.php:474 inc/return.class.php:176 inc/return.class.php:328
-msgid "Visitor realname"
-msgstr ""
-
-#: inc/notificationtargetbadge.class.php:102
-#: inc/notificationtargetbadge.class.php:132 inc/request.class.php:196
-#: inc/request.class.php:263 inc/request.class.php:300
-#: inc/request.class.php:475 inc/return.class.php:177 inc/return.class.php:326
-msgid "Visitor firstname"
-msgstr ""
-
-#: inc/notificationtargetbadge.class.php:103
-#: inc/notificationtargetbadge.class.php:133 inc/request.class.php:197
-#: inc/request.class.php:271 inc/request.class.php:302
-#: inc/request.class.php:476 inc/return.class.php:178 inc/return.class.php:333
-msgid "Visitor society"
-msgstr ""
-
-#: inc/notificationtargetbadge.class.php:104
-#: inc/notificationtargetbadge.class.php:134 inc/request.class.php:126
-#: inc/request.class.php:198 inc/request.class.php:282
-#: inc/request.class.php:304 inc/return.class.php:179 inc/return.class.php:339
-#: inc/return.class.php:442
+#: src/NotificationTargetBadge.php:108 src/NotificationTargetBadge.php:139
+#: src/BadgeReturn.php:420 templates/request_list.html.twig:38
+#: templates/request_search.html.twig:37 templates/request_wizard.html.twig:51
+#: templates/request_wizard.html.twig:76
+#: templates/badge_return_list.html.twig:39
+#: templates/badge_return_info.html.twig:40
 msgid "Arrival date"
 msgstr ""
 
-#: inc/notificationtargetbadge.class.php:144 inc/request.class.php:52
-msgid "Badges request"
-msgstr ""
-
-#: inc/notificationtargetbadge.class.php:150
-msgid "Badges expired or badges which expires"
-msgstr "Ecusoane expirate sau ecusoane care expiră"
-
-#: inc/request.class.php:121
-msgid "Badges usage search"
-msgstr ""
-
-#: inc/request.class.php:132 inc/request.class.php:199
-#: inc/return.class.php:180
-msgid "Return date"
-msgstr ""
-
-#: inc/request.class.php:191 inc/request.class.php:221
-msgid "Badge usage report"
-msgstr ""
-
-#: inc/request.class.php:275 inc/request.class.php:478
+#: src/Request.php:481 templates/request_wizard.html.twig:47
 msgid "Available badge"
 msgid_plural "Available badges"
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: inc/request.class.php:291
-msgid "Add to cart"
-msgstr ""
+#: src/Metademand.php:69 src/Badge.php:65 setup.php:120
+#: templates/request_list.html.twig:34 templates/request_wizard.html.twig:75
+msgid "Badge"
+msgid_plural "Badges"
+msgstr[0] "Ecuson"
+msgstr[1] "Ecusoane"
+msgstr[2] "Ecusoane"
 
-#: inc/request.class.php:298
-msgid "Cart"
-msgstr ""
-
-#: inc/request.class.php:414
+#: src/Request.php:403
 msgid "Badge affected"
 msgid_plural "Badges affected"
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: inc/request.class.php:421
-msgid "Please add badges in cart"
-msgstr ""
-
-#: inc/return.class.php:64 inc/return.class.php:134
-msgid "Badge return"
-msgstr ""
-
-#: inc/return.class.php:146
-msgid "Force badge restitution"
-msgstr ""
-
-#: inc/return.class.php:171 inc/return.class.php:203
+#: templates/badge_return_list.html.twig:31
 msgid "Badge requests history"
 msgstr ""
 
-#: inc/return.class.php:223 inc/return.class.php:263
-msgid "Badges in your possession"
+#: src/BadgeReturn.php:73 templates/badge_return_for_badge.html.twig:34
+msgid "Badge return"
 msgstr ""
 
-#: inc/return.class.php:253 inc/return.class.php:259 inc/wizard.class.php:83
-msgid "Access badge return"
+#: src/NotificationTargetBadge.php:60 src/NotificationTargetBadge.php:83
+#: templates/config_badge_return.html.twig:37
+msgid "Badge return delay"
 msgstr ""
 
-#: inc/return.class.php:286
-msgid "Restitution date"
-msgstr ""
-
-#: inc/return.class.php:300 inc/return.class.php:383
-msgid "Badges return"
-msgstr ""
-
-#: inc/return.class.php:365
+#: src/BadgeReturn.php:321
 msgid "Badge returned"
 msgstr ""
 
-#: inc/servicecatalog.class.php:64 inc/servicecatalog.class.php:71
-msgid "Manage temporary badges"
+#: templates/request_list.html.twig:31 templates/request_list.html.twig:56
+msgid "Badge usage report"
 msgstr ""
 
-#: inc/wizard.class.php:52
+#: src/NotificationTargetBadge.php:57 src/NotificationTargetBadge.php:74
+#: src/BadgeReturn.php:425 src/Badge.php:534
+msgid "Badges at the end of the validity"
+msgstr "Ecusoane la sfârsit de valabilitate"
+
+#: templates/config.html.twig:46
+msgid "Badges expired for more than "
+msgstr "Ecusoane expirate de mai bine de"
+
+#: src/NotificationTargetBadge.php:155
+msgid "Badges expired or badges which expires"
+msgstr "Ecusoane expirate sau ecusoane care expiră"
+
+#: templates/config.html.twig:53
+msgid "Badges expiring in less than "
+msgstr "Ecusoane ce expiră in mai puţin de"
+
+#: src/BadgeReturn.php:219 templates/badge_return_wizard.html.twig:39
+msgid "Badges in your possession"
+msgstr ""
+
+#: src/Request.php:62 src/NotificationTargetBadge.php:149
+msgid "Badges request"
+msgstr ""
+
+#: src/BadgeReturn.php:340 templates/badge_return_wizard.html.twig:65
+msgid "Badges return"
+msgstr ""
+
+#: templates/request_search.html.twig:34
+msgid "Badges usage search"
+msgstr ""
+
+#: src/NotificationTargetBadge.php:58 src/NotificationTargetBadge.php:77
+#: src/Badge.php:424
+msgid "Badges which expires"
+msgstr "Ecusoane care expiră"
+
+#: src/Wizard.php:54
 msgid "Badges wizard"
 msgstr ""
 
-#: inc/wizard.class.php:76
+#: src/Badge.php:200 templates/badge_form.html.twig:147
+msgid "Bookable"
+msgstr ""
+
+#: templates/badge_return_wizard.html.twig:61
+#: templates/request_wizard.html.twig:89
+msgctxt "button"
+msgid "Cancel"
+msgstr ""
+
+#: templates/request_wizard.html.twig:69
+msgid "Cart"
+msgstr ""
+
+#: templates/badge_form.html.twig:131
+msgid "Comment"
+msgid_plural "Comments"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: src/NotificationTargetBadge.php:87 src/NotificationTargetBadge.php:134
+#: src/Badge.php:119 templates/badge_form.html.twig:122
+msgid "Date of end of validity"
+msgstr "Data de sfârsit a validităţii"
+
+#: templates/config.html.twig:50 templates/config.html.twig:58
+msgid "Day"
+msgid_plural "Days"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: templates/badge_form.html.twig:123
+msgid "Empty for infinite"
+msgstr ""
+
+#: templates/wizard_menu.html.twig:38
 msgid "For a limited time"
+msgstr ""
+
+#: templates/badge_return_for_badge.html.twig:42
+msgid "Force badge restitution"
+msgstr ""
+
+#: src/Servicecatalog.php:83 src/Servicecatalog.php:90
+msgid "Manage temporary badges"
+msgstr ""
+
+#: templates/badge_form.html.twig:53
+msgid "Name"
+msgstr ""
+
+#: templates/request_list.html.twig:59 templates/badge_return_list.html.twig:54
+msgid "No results found"
+msgstr ""
+
+#: templates/badge_form.html.twig:140
+msgid "Picture"
+msgid_plural "Pictures"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: src/Request.php:283 src/Request.php:334 src/Request.php:354
+#: src/Request.php:420
+msgid "Please add badges in cart"
+msgstr ""
+
+#: src/Config.php:57
+msgid "Plugin Setup"
+msgstr "Configurare plugin"
+
+#: templates/request_wizard.html.twig:93
+msgctxt "button"
+msgid "Post"
+msgstr ""
+
+#: templates/badge_return_list.html.twig:35
+msgid "Requester"
+msgstr ""
+
+#: templates/badge_return_wizard.html.twig:49
+msgid "Restitution date"
+msgstr ""
+
+#: templates/request_list.html.twig:39 templates/request_search.html.twig:39
+#: templates/badge_return_list.html.twig:40
+msgid "Return date"
+msgstr ""
+
+#: templates/config.html.twig:66 templates/profile.html.twig:34
+#: templates/config_badge_return.html.twig:44
+msgctxt "button"
+msgid "Save"
+msgstr ""
+
+#: templates/request_search.html.twig:43
+msgid "Search"
+msgstr ""
+
+#: templates/badge_form.html.twig:99
+msgid "Serial number"
+msgstr ""
+
+#: templates/badge_form.html.twig:108
+msgid "Status"
+msgstr ""
+
+#: templates/badge_form.html.twig:53
+msgid "Surname"
+msgstr ""
+
+#: src/Request.php:385
+msgid "This badge is already affected to another request"
+msgstr ""
+
+#: templates/config.html.twig:41 templates/config_badge_return.html.twig:34
+msgid "Time of checking of validity of the badges"
+msgstr "Perioada de verificare a valabilităţii ecusoanelor"
+
+#: src/BadgeType.php:51
+msgid "Type of badge"
+msgid_plural "Types of badge"
+msgstr[0] "Tip de ecuson"
+msgstr[1] "Tipuri de ecusoane"
+msgstr[2] "Tipuri de ecusoane"
+
+#: templates/status_cron.html.twig:44
+msgid "Unused status for expiration mailing"
+msgstr "Statut nefolosi pentru trimiterea de emailuri de expirare"
+
+#: src/Request.php:478 src/NotificationTargetBadge.php:106
+#: src/NotificationTargetBadge.php:137 templates/request_list.html.twig:36
+#: templates/request_wizard.html.twig:41 templates/request_wizard.html.twig:72
+#: templates/badge_return_list.html.twig:37
+#: templates/badge_return_info.html.twig:32
+msgid "Visitor firstname"
+msgstr ""
+
+#: src/Request.php:477 src/NotificationTargetBadge.php:105
+#: src/NotificationTargetBadge.php:136 templates/request_list.html.twig:35
+#: templates/request_wizard.html.twig:39 templates/request_wizard.html.twig:73
+#: templates/badge_return_list.html.twig:36
+#: templates/badge_return_info.html.twig:34
+msgid "Visitor realname"
+msgstr ""
+
+#: src/Request.php:479 src/NotificationTargetBadge.php:107
+#: src/NotificationTargetBadge.php:138 templates/request_list.html.twig:37
+#: templates/request_wizard.html.twig:45 templates/request_wizard.html.twig:74
+#: templates/badge_return_list.html.twig:38
+#: templates/badge_return_info.html.twig:38
+msgid "Visitor society"
 msgstr ""
