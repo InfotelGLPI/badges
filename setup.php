@@ -119,7 +119,7 @@ function plugin_version_badges()
     return [
         'name' => _n('Badge', 'Badges', 2, 'badges'),
         'version' => PLUGIN_BADGES_VERSION,
-        'author' => "<a href='https//blogglpi.infotel.com'>Infotel</a>, Xavier CAILLAUD",
+        'author' => "<a href='https://blogglpi.infotel.com'>Infotel</a>, Xavier CAILLAUD",
         'license' => 'GPLv3+',
         'homepage' => 'https://github.com/InfotelGLPI/badges',
         'requirements' => [

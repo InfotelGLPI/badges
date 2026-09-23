@@ -37,10 +37,6 @@ use Html;
 use MassiveAction;
 use Migration;
 
-if (!defined('GLPI_ROOT')) {
-    die("Sorry. You can't access directly to this file");
-}
-
 /**
  * Class NotificationState
  */
