@@ -349,12 +349,6 @@ parameters:
 			path: src/Config.php
 
 		-
-			message: '#^You should not use the `die` function\. It prevents the execution of post\-request/post\-command routines\.$#'
-			identifier: glpi.forbidExit
-			count: 1
-			path: src/NotificationState.php
-
-		-
 			message: '#^Access to an undefined property CommonGLPI\:\:\$fields\.$#'
 			identifier: property.notFound
 			count: 1
