@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-31 14:49+0000\n"
+"POT-Creation-Date: 2026-09-23 15:56+0000\n"
 "PO-Revision-Date: 2020-11-02 15:44+0000\n"
 "Last-Translator: Xavier CAILLAUD <thetsmr@gmail.com>, 2020\n"
 "Language-Team: Spanish (Argentina) (https://app.transifex.com/infotelGLPI/"
@@ -51,12 +51,11 @@ msgstr "Fecha de afectación"
 msgid "Allotted to"
 msgstr "Asignado a"
 
-#: src/NotificationTargetBadge.php:108 src/NotificationTargetBadge.php:139
-#: src/BadgeReturn.php:420 templates/request_list.html.twig:38
-#: templates/request_search.html.twig:37 templates/request_wizard.html.twig:51
-#: templates/request_wizard.html.twig:76
+#: src/BadgeReturn.php:420 src/NotificationTargetBadge.php:108
+#: src/NotificationTargetBadge.php:139 templates/request_search.html.twig:37
 #: templates/badge_return_list.html.twig:39
-#: templates/badge_return_info.html.twig:40
+#: templates/request_wizard.html.twig:51 templates/request_wizard.html.twig:76
+#: templates/badge_return_info.html.twig:40 templates/request_list.html.twig:38
 msgid "Arrival date"
 msgstr "Fecha de entrada"
 
@@ -67,8 +66,8 @@ msgstr[0] "Identificaciones disponibles"
 msgstr[1] "Identificación disponible"
 msgstr[2] "Identificación disponible"
 
-#: src/Metademand.php:69 src/Badge.php:65 setup.php:120
-#: templates/request_list.html.twig:34 templates/request_wizard.html.twig:75
+#: setup.php:120 src/Metademand.php:69 src/Badge.php:65
+#: templates/request_wizard.html.twig:75 templates/request_list.html.twig:34
 msgid "Badge"
 msgid_plural "Badges"
 msgstr[0] "Identificación"
@@ -103,8 +102,8 @@ msgstr "Identificaciones devueltas"
 msgid "Badge usage report"
 msgstr "Informe de uso de identificación"
 
-#: src/NotificationTargetBadge.php:57 src/NotificationTargetBadge.php:74
-#: src/BadgeReturn.php:425 src/Badge.php:534
+#: src/Badge.php:534 src/BadgeReturn.php:425 src/NotificationTargetBadge.php:57
+#: src/NotificationTargetBadge.php:74
 msgid "Badges at the end of the validity"
 msgstr "Identificaciones con final de validez"
 
@@ -136,8 +135,8 @@ msgstr "Identificación devuelta"
 msgid "Badges usage search"
 msgstr "Búsqueda de identificaciones usadas"
 
-#: src/NotificationTargetBadge.php:58 src/NotificationTargetBadge.php:77
-#: src/Badge.php:424
+#: src/Badge.php:424 src/NotificationTargetBadge.php:58
+#: src/NotificationTargetBadge.php:77
 msgid "Badges which expires"
 msgstr "Identificaciones que expiran"
 
@@ -149,8 +148,8 @@ msgstr "Asistente para identificación"
 msgid "Bookable"
 msgstr "Reserva"
 
-#: templates/badge_return_wizard.html.twig:61
 #: templates/request_wizard.html.twig:89
+#: templates/badge_return_wizard.html.twig:61
 msgctxt "button"
 msgid "Cancel"
 msgstr ""
@@ -166,8 +165,8 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: src/NotificationTargetBadge.php:87 src/NotificationTargetBadge.php:134
-#: src/Badge.php:119 templates/badge_form.html.twig:122
+#: src/Badge.php:119 src/NotificationTargetBadge.php:87
+#: src/NotificationTargetBadge.php:134 templates/badge_form.html.twig:122
 msgid "Date of end of validity"
 msgstr "Válido hasta el"
 
@@ -198,7 +197,7 @@ msgstr "Administrar identificaciones temporarias"
 msgid "Name"
 msgstr ""
 
-#: templates/request_list.html.twig:59 templates/badge_return_list.html.twig:54
+#: templates/badge_return_list.html.twig:54 templates/request_list.html.twig:59
 msgid "No results found"
 msgstr ""
 
@@ -231,13 +230,13 @@ msgstr ""
 msgid "Restitution date"
 msgstr "Fecha de devolución"
 
-#: templates/request_list.html.twig:39 templates/request_search.html.twig:39
-#: templates/badge_return_list.html.twig:40
+#: templates/request_search.html.twig:39
+#: templates/badge_return_list.html.twig:40 templates/request_list.html.twig:39
 msgid "Return date"
 msgstr "Fecha de regreso"
 
-#: templates/config.html.twig:66 templates/profile.html.twig:34
-#: templates/config_badge_return.html.twig:44
+#: templates/config_badge_return.html.twig:44 templates/profile.html.twig:34
+#: templates/config.html.twig:66
 msgctxt "button"
 msgid "Save"
 msgstr ""
@@ -262,7 +261,7 @@ msgstr ""
 msgid "This badge is already affected to another request"
 msgstr ""
 
-#: templates/config.html.twig:41 templates/config_badge_return.html.twig:34
+#: templates/config_badge_return.html.twig:34 templates/config.html.twig:41
 msgid "Time of checking of validity of the badges"
 msgstr "Tiempo de comprobación de validez de las identificaciones"
 
@@ -278,25 +277,22 @@ msgid "Unused status for expiration mailing"
 msgstr "Estado de no uso para envío de correo"
 
 #: src/Request.php:478 src/NotificationTargetBadge.php:106
-#: src/NotificationTargetBadge.php:137 templates/request_list.html.twig:36
+#: src/NotificationTargetBadge.php:137 templates/badge_return_list.html.twig:37
 #: templates/request_wizard.html.twig:41 templates/request_wizard.html.twig:72
-#: templates/badge_return_list.html.twig:37
-#: templates/badge_return_info.html.twig:32
+#: templates/badge_return_info.html.twig:32 templates/request_list.html.twig:36
 msgid "Visitor firstname"
 msgstr "Primer nombre del visitante"
 
 #: src/Request.php:477 src/NotificationTargetBadge.php:105
-#: src/NotificationTargetBadge.php:136 templates/request_list.html.twig:35
+#: src/NotificationTargetBadge.php:136 templates/badge_return_list.html.twig:36
 #: templates/request_wizard.html.twig:39 templates/request_wizard.html.twig:73
-#: templates/badge_return_list.html.twig:36
-#: templates/badge_return_info.html.twig:34
+#: templates/badge_return_info.html.twig:34 templates/request_list.html.twig:35
 msgid "Visitor realname"
 msgstr "Nombre real visitante"
 
 #: src/Request.php:479 src/NotificationTargetBadge.php:107
-#: src/NotificationTargetBadge.php:138 templates/request_list.html.twig:37
+#: src/NotificationTargetBadge.php:138 templates/badge_return_list.html.twig:38
 #: templates/request_wizard.html.twig:45 templates/request_wizard.html.twig:74
-#: templates/badge_return_list.html.twig:38
-#: templates/badge_return_info.html.twig:38
+#: templates/badge_return_info.html.twig:38 templates/request_list.html.twig:37
 msgid "Visitor society"
 msgstr "Empresa del visitante"
