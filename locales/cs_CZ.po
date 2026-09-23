@@ -2,54 +2,65 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Xavier CAILLAUD <thetsmr@gmail.com>, 2020
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-10 13:52+0000\n"
+"POT-Creation-Date: 2026-08-31 14:49+0000\n"
 "PO-Revision-Date: 2020-11-02 15:44+0000\n"
 "Last-Translator: Xavier CAILLAUD <thetsmr@gmail.com>, 2020\n"
-"Language-Team: Czech (Czech Republic) (https://app.transifex.com/infotelGLPI/teams/12355/cs_CZ/)\n"
+"Language-Team: Czech (Czech Republic) (https://app.transifex.com/infotelGLPI/"
+"teams/12355/cs_CZ/)\n"
+"Language: cs_CZ\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: cs_CZ\n"
-"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n "
+"<= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: src/Wizard.php:69 src/Wizard.php:78 src/Request.php:269
-#: src/NotificationTargetBadge.php:59 src/NotificationTargetBadge.php:82
+#: src/NotificationTargetBadge.php:59 src/NotificationTargetBadge.php:80
+#: templates/wizard_menu.html.twig:30 templates/wizard_menu.html.twig:38
+#: templates/request_wizard.html.twig:30
 msgid "Access badge request"
 msgstr "Žádost o přístupovou jmenovku"
 
-#: src/Wizard.php:85 src/BadgeReturn.php:264
+#: templates/wizard_menu.html.twig:45
+#: templates/badge_return_wizard.html.twig:30
 msgid "Access badge return"
 msgstr "Vrácení přístupové jmenovky"
 
-#: src/Request.php:318
+#: templates/status_cron.html.twig:62
+msgctxt "button"
+msgid "Add"
+msgstr ""
+
+#: templates/request_wizard.html.twig:59
 msgid "Add to cart"
 msgstr "Přidat do košíku"
 
-#: src/Badge.php:106 src/Request.php:523
+#: src/Request.php:480 src/Badge.php:111 templates/badge_form.html.twig:117
 msgid "Affectation date"
 msgstr "Datum přidělení"
 
-#: src/NotificationTargetBadge.php:91 src/NotificationTargetBadge.php:137
+#: src/NotificationTargetBadge.php:89 src/NotificationTargetBadge.php:135
 msgid "Allotted to"
 msgstr "Komu přiděleno"
 
-#: src/Request.php:145 src/Request.php:221 src/Request.php:305
-#: src/Request.php:333 src/BadgeReturn.php:193 src/BadgeReturn.php:360
-#: src/BadgeReturn.php:479 src/NotificationTargetBadge.php:110
-#: src/NotificationTargetBadge.php:141
+#: src/NotificationTargetBadge.php:108 src/NotificationTargetBadge.php:139
+#: src/BadgeReturn.php:420 templates/request_list.html.twig:38
+#: templates/request_search.html.twig:37 templates/request_wizard.html.twig:51
+#: templates/request_wizard.html.twig:76
+#: templates/badge_return_list.html.twig:39
+#: templates/badge_return_info.html.twig:40
 msgid "Arrival date"
 msgstr "Datum příchodu"
 
-#: src/Request.php:298 src/Request.php:524
+#: src/Request.php:481 templates/request_wizard.html.twig:47
 msgid "Available badge"
 msgid_plural "Available badges"
 msgstr[0] "Jmenovka k dispozici"
@@ -57,8 +68,8 @@ msgstr[1] "Jmenovky k dispozici"
 msgstr[2] "Jmenovek k dispozici"
 msgstr[3] "Jmenovky k dispozici"
 
-#: setup.php:120 src/Badge.php:60 src/Profile.php:198 src/Request.php:217
-#: src/Request.php:332 src/Metademand.php:65
+#: src/Metademand.php:69 src/Badge.php:65 setup.php:120
+#: templates/request_list.html.twig:34 templates/request_wizard.html.twig:75
 msgid "Badge"
 msgid_plural "Badges"
 msgstr[0] "Jmenovka"
@@ -66,7 +77,7 @@ msgstr[1] "Jmenovky"
 msgstr[2] "Jmenovek"
 msgstr[3] "Jmenovky"
 
-#: src/Request.php:454
+#: src/Request.php:403
 msgid "Badge affected"
 msgid_plural "Badges affected"
 msgstr[0] "Přidělená jmenovka"
@@ -74,62 +85,62 @@ msgstr[1] "Přidělené jmenovky"
 msgstr[2] "Přidělených jmenovek"
 msgstr[3] "Přidělené jmenovky"
 
-#: src/BadgeReturn.php:185 src/BadgeReturn.php:217
+#: templates/badge_return_list.html.twig:31
 msgid "Badge requests history"
 msgstr "Historie požadavků na jmenovky"
 
-#: src/BadgeReturn.php:69 src/BadgeReturn.php:148
+#: src/BadgeReturn.php:73 templates/badge_return_for_badge.html.twig:34
 msgid "Badge return"
 msgstr "Vrácení jmenovky"
 
-#: src/Config.php:156 src/NotificationTargetBadge.php:60
-#: src/NotificationTargetBadge.php:85
+#: src/NotificationTargetBadge.php:60 src/NotificationTargetBadge.php:83
+#: templates/config_badge_return.html.twig:37
 msgid "Badge return delay"
 msgstr "Prodleva vrácení jmenovky"
 
-#: src/BadgeReturn.php:386
+#: src/BadgeReturn.php:321
 msgid "Badge returned"
 msgstr "Jmenovka vrácena"
 
-#: src/Request.php:214 src/Request.php:243
+#: templates/request_list.html.twig:31 templates/request_list.html.twig:56
 msgid "Badge usage report"
 msgstr "Výkaz o využití jmenovek"
 
-#: src/Badge.php:626 src/BadgeReturn.php:484
-#: src/NotificationTargetBadge.php:57 src/NotificationTargetBadge.php:76
+#: src/NotificationTargetBadge.php:57 src/NotificationTargetBadge.php:74
+#: src/BadgeReturn.php:425 src/Badge.php:534
 msgid "Badges at the end of the validity"
 msgstr "Jmenovky na konci platnosti"
 
-#: src/Config.php:106
+#: templates/config.html.twig:46
 msgid "Badges expired for more than "
 msgstr "Jmenovky kterým skončila platnost před déle než"
 
-#: src/NotificationTargetBadge.php:157
+#: src/NotificationTargetBadge.php:155
 msgid "Badges expired or badges which expires"
 msgstr "Jmenovky kterým skončila nebo končí platnost"
 
-#: src/Config.php:116
+#: templates/config.html.twig:53
 msgid "Badges expiring in less than "
 msgstr "Jmenovky kterým končí platnost za méně než"
 
-#: src/BadgeReturn.php:237 src/BadgeReturn.php:275
+#: src/BadgeReturn.php:219 templates/badge_return_wizard.html.twig:39
 msgid "Badges in your possession"
 msgstr "Jmenovky které máte v držení"
 
-#: src/Request.php:60 src/NotificationTargetBadge.php:151
+#: src/Request.php:62 src/NotificationTargetBadge.php:149
 msgid "Badges request"
 msgstr "Požadavek na jmenovky"
 
-#: src/BadgeReturn.php:320 src/BadgeReturn.php:404
+#: src/BadgeReturn.php:340 templates/badge_return_wizard.html.twig:65
 msgid "Badges return"
 msgstr "Vrácení jmenovek"
 
-#: src/Request.php:140
+#: templates/request_search.html.twig:34
 msgid "Badges usage search"
 msgstr "Hledání využití jmenovek"
 
-#: src/Badge.php:524 src/NotificationTargetBadge.php:58
-#: src/NotificationTargetBadge.php:79
+#: src/NotificationTargetBadge.php:58 src/NotificationTargetBadge.php:77
+#: src/Badge.php:424
 msgid "Badges which expires"
 msgstr "Jmenovky kterým končí platnost"
 
@@ -137,53 +148,131 @@ msgstr "Jmenovky kterým končí platnost"
 msgid "Badges wizard"
 msgstr "Průvodce jmenovkami"
 
-#: src/Badge.php:195
-#: /home/runner/work/badges/badges/templates/badge_form.html.twig:116
+#: src/Badge.php:200 templates/badge_form.html.twig:147
 msgid "Bookable"
 msgstr "Zarezervovatelné"
 
-#: src/Request.php:327
+#: templates/badge_return_wizard.html.twig:61
+#: templates/request_wizard.html.twig:89
+msgctxt "button"
+msgid "Cancel"
+msgstr ""
+
+#: templates/request_wizard.html.twig:69
 msgid "Cart"
 msgstr "Košík"
 
-#: src/Badge.php:114 src/NotificationTargetBadge.php:89
-#: src/NotificationTargetBadge.php:136
+#: templates/badge_form.html.twig:131
+msgid "Comment"
+msgid_plural "Comments"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: src/NotificationTargetBadge.php:87 src/NotificationTargetBadge.php:134
+#: src/Badge.php:119 templates/badge_form.html.twig:122
 msgid "Date of end of validity"
 msgstr "Datum konce platnosti"
 
-#: src/Wizard.php:78
+#: templates/config.html.twig:50 templates/config.html.twig:58
+msgid "Day"
+msgid_plural "Days"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: templates/badge_form.html.twig:123
+msgid "Empty for infinite"
+msgstr ""
+
+#: templates/wizard_menu.html.twig:38
 msgid "For a limited time"
 msgstr "Pro omezenou dobu"
 
-#: src/BadgeReturn.php:160
+#: templates/badge_return_for_badge.html.twig:42
 msgid "Force badge restitution"
 msgstr "Vynutit navrácení jmenovky"
 
-#: src/Servicecatalog.php:84 src/Servicecatalog.php:91
+#: src/Servicecatalog.php:83 src/Servicecatalog.php:90
 msgid "Manage temporary badges"
 msgstr "Spravovat dočasné jmenovky"
 
-#: src/Request.php:464
+#: templates/badge_form.html.twig:53
+msgid "Name"
+msgstr ""
+
+#: templates/request_list.html.twig:59 templates/badge_return_list.html.twig:54
+msgid "No results found"
+msgstr ""
+
+#: templates/badge_form.html.twig:140
+msgid "Picture"
+msgid_plural "Pictures"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: src/Request.php:283 src/Request.php:334 src/Request.php:354
+#: src/Request.php:420
 msgid "Please add badges in cart"
 msgstr "Vložte jmenovky do košíku"
 
-#: src/Config.php:53
+#: src/Config.php:57
 msgid "Plugin Setup"
 msgstr "Nastavení zásuvného modulu"
 
-#: src/BadgeReturn.php:299
+#: templates/request_wizard.html.twig:93
+msgctxt "button"
+msgid "Post"
+msgstr ""
+
+#: templates/badge_return_list.html.twig:35
+msgid "Requester"
+msgstr ""
+
+#: templates/badge_return_wizard.html.twig:49
 msgid "Restitution date"
 msgstr "Datum navrácení"
 
-#: src/Request.php:151 src/Request.php:222 src/BadgeReturn.php:194
+#: templates/request_list.html.twig:39 templates/request_search.html.twig:39
+#: templates/badge_return_list.html.twig:40
 msgid "Return date"
 msgstr "Datum vrácení"
 
-#: src/Config.php:100 src/Config.php:150
+#: templates/config.html.twig:66 templates/profile.html.twig:34
+#: templates/config_badge_return.html.twig:44
+msgctxt "button"
+msgid "Save"
+msgstr ""
+
+#: templates/request_search.html.twig:43
+msgid "Search"
+msgstr ""
+
+#: templates/badge_form.html.twig:99
+msgid "Serial number"
+msgstr ""
+
+#: templates/badge_form.html.twig:108
+msgid "Status"
+msgstr ""
+
+#: templates/badge_form.html.twig:53
+msgid "Surname"
+msgstr ""
+
+#: src/Request.php:385
+msgid "This badge is already affected to another request"
+msgstr ""
+
+#: templates/config.html.twig:41 templates/config_badge_return.html.twig:34
 msgid "Time of checking of validity of the badges"
 msgstr "Jak často kontrolovat platnost jmenovek"
 
-#: src/BadgeType.php:50
+#: src/BadgeType.php:51
 msgid "Type of badge"
 msgid_plural "Types of badge"
 msgstr[0] "Typ jmenovky"
@@ -191,24 +280,30 @@ msgstr[1] "Typy jmenovek"
 msgstr[2] "Typů jmenovek"
 msgstr[3] "Typy jmenovek"
 
-#: src/NotificationState.php:87 src/NotificationState.php:126
+#: templates/status_cron.html.twig:44
 msgid "Unused status for expiration mailing"
 msgstr "Nevyužitý stav pro posílání skončení platnosti"
 
-#: src/Request.php:219 src/Request.php:286 src/Request.php:329
-#: src/Request.php:521 src/BadgeReturn.php:191 src/BadgeReturn.php:347
-#: src/NotificationTargetBadge.php:108 src/NotificationTargetBadge.php:139
+#: src/Request.php:478 src/NotificationTargetBadge.php:106
+#: src/NotificationTargetBadge.php:137 templates/request_list.html.twig:36
+#: templates/request_wizard.html.twig:41 templates/request_wizard.html.twig:72
+#: templates/badge_return_list.html.twig:37
+#: templates/badge_return_info.html.twig:32
 msgid "Visitor firstname"
 msgstr "Jméno návštěvníka"
 
-#: src/Request.php:218 src/Request.php:281 src/Request.php:330
-#: src/Request.php:520 src/BadgeReturn.php:190 src/BadgeReturn.php:349
-#: src/NotificationTargetBadge.php:107 src/NotificationTargetBadge.php:138
+#: src/Request.php:477 src/NotificationTargetBadge.php:105
+#: src/NotificationTargetBadge.php:136 templates/request_list.html.twig:35
+#: templates/request_wizard.html.twig:39 templates/request_wizard.html.twig:73
+#: templates/badge_return_list.html.twig:36
+#: templates/badge_return_info.html.twig:34
 msgid "Visitor realname"
 msgstr "Občanské jméno návštěníka"
 
-#: src/Request.php:220 src/Request.php:294 src/Request.php:331
-#: src/Request.php:522 src/BadgeReturn.php:192 src/BadgeReturn.php:354
-#: src/NotificationTargetBadge.php:109 src/NotificationTargetBadge.php:140
+#: src/Request.php:479 src/NotificationTargetBadge.php:107
+#: src/NotificationTargetBadge.php:138 templates/request_list.html.twig:37
+#: templates/request_wizard.html.twig:45 templates/request_wizard.html.twig:74
+#: templates/badge_return_list.html.twig:38
+#: templates/badge_return_info.html.twig:38
 msgid "Visitor society"
 msgstr "Společnost ze které návštěvník je"

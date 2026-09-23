@@ -2,140 +2,144 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Xavier CAILLAUD <thetsmr@gmail.com>, 2020
 # Milo Ivir <mail@milotype.de>, 2025
 # NeoTrinity <tecvisor@yahoo.fr>, 2026
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-23 07:48+0000\n"
+"POT-Creation-Date: 2026-08-31 14:49+0000\n"
 "PO-Revision-Date: 2020-11-02 15:44+0000\n"
 "Last-Translator: NeoTrinity <tecvisor@yahoo.fr>, 2026\n"
-"Language-Team: Croatian (Croatia) (https://app.transifex.com/infotelGLPI/teams/12355/hr_HR/)\n"
+"Language-Team: Croatian (Croatia) (https://app.transifex.com/infotelGLPI/"
+"teams/12355/hr_HR/)\n"
+"Language: hr_HR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: hr_HR\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
-#: src/Wizard.php:69 src/Wizard.php:78 src/NotificationTargetBadge.php:60
-#: src/NotificationTargetBadge.php:81 templates/request_wizard.html.twig:31
+#: src/NotificationTargetBadge.php:59 src/NotificationTargetBadge.php:80
+#: templates/wizard_menu.html.twig:30 templates/wizard_menu.html.twig:38
+#: templates/request_wizard.html.twig:30
 msgid "Access badge request"
 msgstr "Zahtjev za značku pristupa"
 
-#: src/Wizard.php:85 templates/badge_return_wizard.html.twig:31
+#: templates/wizard_menu.html.twig:45
+#: templates/badge_return_wizard.html.twig:30
 msgid "Access badge return"
 msgstr "Vraćanje značke pristupa"
 
-#: templates/status_cron.html.twig:63
+#: templates/status_cron.html.twig:62
 msgctxt "button"
 msgid "Add"
 msgstr "Dodaj"
 
-#: templates/request_wizard.html.twig:60
+#: templates/request_wizard.html.twig:59
 msgid "Add to cart"
 msgstr "Dodaj u košaricu"
 
-#: src/Badge.php:110 src/Request.php:393 templates/badge_form.html.twig:118
+#: src/Request.php:480 src/Badge.php:111 templates/badge_form.html.twig:117
 msgid "Affectation date"
 msgstr "Datum primjene"
 
-#: src/NotificationTargetBadge.php:90 src/NotificationTargetBadge.php:136
+#: src/NotificationTargetBadge.php:89 src/NotificationTargetBadge.php:135
 msgid "Allotted to"
 msgstr "Pripisuje se"
 
-#: src/NotificationTargetBadge.php:109 src/NotificationTargetBadge.php:140
-#: src/BadgeReturn.php:419 templates/request_wizard.html.twig:52
-#: templates/request_wizard.html.twig:77 templates/request_search.html.twig:38
-#: templates/badge_return_info.html.twig:41
-#: templates/request_list.html.twig:39
-#: templates/badge_return_list.html.twig:40
+#: src/NotificationTargetBadge.php:108 src/NotificationTargetBadge.php:139
+#: src/BadgeReturn.php:420 templates/request_list.html.twig:38
+#: templates/request_search.html.twig:37 templates/request_wizard.html.twig:51
+#: templates/request_wizard.html.twig:76
+#: templates/badge_return_list.html.twig:39
+#: templates/badge_return_info.html.twig:40
 msgid "Arrival date"
 msgstr "Datum dolaska"
 
-#: src/Request.php:394 templates/request_wizard.html.twig:48
+#: src/Request.php:481 templates/request_wizard.html.twig:47
 msgid "Available badge"
 msgid_plural "Available badges"
 msgstr[0] "Dostupna značka"
 msgstr[1] "Dostupne značke"
 msgstr[2] "Dostupne značke"
 
-#: src/Badge.php:64 src/Metademand.php:65 setup.php:121
-#: templates/request_wizard.html.twig:76 templates/request_list.html.twig:35
+#: src/Metademand.php:69 src/Badge.php:65 setup.php:120
+#: templates/request_list.html.twig:34 templates/request_wizard.html.twig:75
 msgid "Badge"
 msgid_plural "Badges"
 msgstr[0] "Značka"
 msgstr[1] "Značke"
 msgstr[2] "Značke"
 
-#: src/Request.php:324
+#: src/Request.php:403
 msgid "Badge affected"
 msgid_plural "Badges affected"
 msgstr[0] "Dodijeljena značka"
 msgstr[1] "Dodijeljene značke"
 msgstr[2] "Dodijeljene značke"
 
-#: templates/badge_return_list.html.twig:32
+#: templates/badge_return_list.html.twig:31
 msgid "Badge requests history"
 msgstr "Povijest zahtjeva znački"
 
-#: src/BadgeReturn.php:74 templates/badge_return_for_badge.html.twig:35
+#: src/BadgeReturn.php:73 templates/badge_return_for_badge.html.twig:34
 msgid "Badge return"
 msgstr "Vraćanje značke"
 
-#: src/NotificationTargetBadge.php:61 src/NotificationTargetBadge.php:84
-#: templates/config_badge_return.html.twig:38
+#: src/NotificationTargetBadge.php:60 src/NotificationTargetBadge.php:83
+#: templates/config_badge_return.html.twig:37
 msgid "Badge return delay"
 msgstr "Odgoda vraćanja značke"
 
-#: src/BadgeReturn.php:322
+#: src/BadgeReturn.php:321
 msgid "Badge returned"
 msgstr "Vraćena značka"
 
-#: templates/request_list.html.twig:32 templates/request_list.html.twig:57
+#: templates/request_list.html.twig:31 templates/request_list.html.twig:56
 msgid "Badge usage report"
 msgstr "Izvještaj o korištenju značke"
 
-#: src/Badge.php:524 src/NotificationTargetBadge.php:58
-#: src/NotificationTargetBadge.php:75 src/BadgeReturn.php:424
+#: src/NotificationTargetBadge.php:57 src/NotificationTargetBadge.php:74
+#: src/BadgeReturn.php:425 src/Badge.php:534
 msgid "Badges at the end of the validity"
 msgstr "Značke pri kraju valjanosti"
 
-#: templates/config.html.twig:47
+#: templates/config.html.twig:46
 msgid "Badges expired for more than "
 msgstr "Značke su istekle više od"
 
-#: src/NotificationTargetBadge.php:156
+#: src/NotificationTargetBadge.php:155
 msgid "Badges expired or badges which expires"
 msgstr "Istekle značke ili značke koje isteču"
 
-#: templates/config.html.twig:54
+#: templates/config.html.twig:53
 msgid "Badges expiring in less than "
 msgstr "Značke koji isteču za manje od "
 
-#: src/BadgeReturn.php:220 templates/badge_return_wizard.html.twig:40
+#: src/BadgeReturn.php:219 templates/badge_return_wizard.html.twig:39
 msgid "Badges in your possession"
 msgstr "Značke koje posjeduješ"
 
-#: src/NotificationTargetBadge.php:150 src/Request.php:63
+#: src/Request.php:62 src/NotificationTargetBadge.php:149
 msgid "Badges request"
 msgstr "Zahtjev za značke"
 
-#: src/BadgeReturn.php:341 templates/badge_return_wizard.html.twig:66
+#: src/BadgeReturn.php:340 templates/badge_return_wizard.html.twig:65
 msgid "Badges return"
 msgstr "Vraćanje znački"
 
-#: templates/request_search.html.twig:35
+#: templates/request_search.html.twig:34
 msgid "Badges usage search"
 msgstr "Pretraživanje korištenja znački"
 
-#: src/Badge.php:418 src/NotificationTargetBadge.php:59
-#: src/NotificationTargetBadge.php:78
+#: src/NotificationTargetBadge.php:58 src/NotificationTargetBadge.php:77
+#: src/Badge.php:424
 msgid "Badges which expires"
 msgstr "Značke koje isteču"
 
@@ -143,72 +147,72 @@ msgstr "Značke koje isteču"
 msgid "Badges wizard"
 msgstr "Pomoćnik za rezervaciju znački"
 
-#: src/Badge.php:200 templates/badge_form.html.twig:148
+#: src/Badge.php:200 templates/badge_form.html.twig:147
 msgid "Bookable"
 msgstr "Mogućnost rezerviranja"
 
-#: templates/request_wizard.html.twig:90
-#: templates/badge_return_wizard.html.twig:62
+#: templates/badge_return_wizard.html.twig:61
+#: templates/request_wizard.html.twig:89
 msgctxt "button"
 msgid "Cancel"
 msgstr "Otkaži"
 
-#: templates/request_wizard.html.twig:70
+#: templates/request_wizard.html.twig:69
 msgid "Cart"
 msgstr "Košarica"
 
-#: templates/badge_form.html.twig:132
+#: templates/badge_form.html.twig:131
 msgid "Comment"
 msgid_plural "Comments"
 msgstr[0] "Komentar"
 msgstr[1] "Komentari"
 msgstr[2] "Komentari"
 
-#: src/Badge.php:118 src/NotificationTargetBadge.php:88
-#: src/NotificationTargetBadge.php:135 templates/badge_form.html.twig:123
+#: src/NotificationTargetBadge.php:87 src/NotificationTargetBadge.php:134
+#: src/Badge.php:119 templates/badge_form.html.twig:122
 msgid "Date of end of validity"
 msgstr "Datum kraja valjanosti"
 
-#: templates/config.html.twig:51 templates/config.html.twig:59
+#: templates/config.html.twig:50 templates/config.html.twig:58
 msgid "Day"
 msgid_plural "Days"
 msgstr[0] "Dan"
 msgstr[1] "Dana"
 msgstr[2] "Dana"
 
-#: templates/badge_form.html.twig:124
+#: templates/badge_form.html.twig:123
 msgid "Empty for infinite"
 msgstr "Prazno za beskonačno"
 
-#: src/Wizard.php:78
+#: templates/wizard_menu.html.twig:38
 msgid "For a limited time"
 msgstr "Za ograničeno vrijeme"
 
-#: templates/badge_return_for_badge.html.twig:43
+#: templates/badge_return_for_badge.html.twig:42
 msgid "Force badge restitution"
 msgstr "Prisili obnovu značke"
 
-#: src/Servicecatalog.php:84 src/Servicecatalog.php:91
+#: src/Servicecatalog.php:83 src/Servicecatalog.php:90
 msgid "Manage temporary badges"
 msgstr "Upravljaj privremenim značkama"
 
-#: templates/badge_form.html.twig:54
+#: templates/badge_form.html.twig:53
 msgid "Name"
 msgstr "Ime"
 
-#: templates/request_list.html.twig:60
-#: templates/badge_return_list.html.twig:55
+#: templates/request_list.html.twig:59 templates/badge_return_list.html.twig:54
 msgid "No results found"
 msgstr "Nema rezultata"
 
-#: templates/badge_form.html.twig:141
+#: templates/badge_form.html.twig:140
 msgid "Picture"
 msgid_plural "Pictures"
 msgstr[0] "Slika"
 msgstr[1] "Slike"
 msgstr[2] "Slike"
 
-#: src/Request.php:334
+#: src/Request.php:283 src/Request.php:334 src/Request.php:354
+#: src/Request.php:420
 msgid "Please add badges in cart"
 msgstr "Dodaj značke u košaricu"
 
@@ -216,84 +220,85 @@ msgstr "Dodaj značke u košaricu"
 msgid "Plugin Setup"
 msgstr "Konfiguracija dodatka"
 
-#: templates/request_wizard.html.twig:94
+#: templates/request_wizard.html.twig:93
 msgctxt "button"
 msgid "Post"
 msgstr "Objavi"
 
-#: templates/badge_return_list.html.twig:36
+#: templates/badge_return_list.html.twig:35
 msgid "Requester"
 msgstr "Zahtjevač"
 
-#: templates/badge_return_wizard.html.twig:50
+#: templates/badge_return_wizard.html.twig:49
 msgid "Restitution date"
 msgstr "Datum povrata"
 
-#: templates/request_search.html.twig:40 templates/request_list.html.twig:40
-#: templates/badge_return_list.html.twig:41
+#: templates/request_list.html.twig:39 templates/request_search.html.twig:39
+#: templates/badge_return_list.html.twig:40
 msgid "Return date"
 msgstr "Datum vraćanja"
 
-#: templates/profile.html.twig:35 templates/config.html.twig:67
-#: templates/config_badge_return.html.twig:45
+#: templates/config.html.twig:66 templates/profile.html.twig:34
+#: templates/config_badge_return.html.twig:44
 msgctxt "button"
 msgid "Save"
 msgstr "Spremi"
 
-#: templates/request_search.html.twig:44
+#: templates/request_search.html.twig:43
 msgid "Search"
 msgstr "Traži"
 
-#: templates/badge_form.html.twig:100
+#: templates/badge_form.html.twig:99
 msgid "Serial number"
 msgstr "Serijski broj"
 
-#: templates/badge_form.html.twig:109
+#: templates/badge_form.html.twig:108
 msgid "Status"
 msgstr "Stanje"
 
-#: templates/badge_form.html.twig:54
+#: templates/badge_form.html.twig:53
 msgid "Surname"
 msgstr "Prezime"
 
-#: templates/config.html.twig:42 templates/config_badge_return.html.twig:35
+#: src/Request.php:385
+msgid "This badge is already affected to another request"
+msgstr ""
+
+#: templates/config.html.twig:41 templates/config_badge_return.html.twig:34
 msgid "Time of checking of validity of the badges"
 msgstr "Vrijeme provjere valjanosti značke"
 
-#: src/BadgeType.php:52
+#: src/BadgeType.php:51
 msgid "Type of badge"
 msgid_plural "Types of badge"
 msgstr[0] "Vrsta značke"
 msgstr[1] "Vrste značke"
 msgstr[2] "Vrste značke"
 
-#: templates/status_cron.html.twig:45
+#: templates/status_cron.html.twig:44
 msgid "Unused status for expiration mailing"
 msgstr "Neiskorišteno stanje za obavijest o isteku valjanosti"
 
-#: src/NotificationTargetBadge.php:107 src/NotificationTargetBadge.php:138
-#: src/Request.php:391 templates/request_wizard.html.twig:42
-#: templates/request_wizard.html.twig:73
-#: templates/badge_return_info.html.twig:33
-#: templates/request_list.html.twig:37
-#: templates/badge_return_list.html.twig:38
+#: src/Request.php:478 src/NotificationTargetBadge.php:106
+#: src/NotificationTargetBadge.php:137 templates/request_list.html.twig:36
+#: templates/request_wizard.html.twig:41 templates/request_wizard.html.twig:72
+#: templates/badge_return_list.html.twig:37
+#: templates/badge_return_info.html.twig:32
 msgid "Visitor firstname"
 msgstr "Ime posjetitelja"
 
-#: src/NotificationTargetBadge.php:106 src/NotificationTargetBadge.php:137
-#: src/Request.php:390 templates/request_wizard.html.twig:40
-#: templates/request_wizard.html.twig:74
-#: templates/badge_return_info.html.twig:35
-#: templates/request_list.html.twig:36
-#: templates/badge_return_list.html.twig:37
+#: src/Request.php:477 src/NotificationTargetBadge.php:105
+#: src/NotificationTargetBadge.php:136 templates/request_list.html.twig:35
+#: templates/request_wizard.html.twig:39 templates/request_wizard.html.twig:73
+#: templates/badge_return_list.html.twig:36
+#: templates/badge_return_info.html.twig:34
 msgid "Visitor realname"
 msgstr "Prezime posjetitelja"
 
-#: src/NotificationTargetBadge.php:108 src/NotificationTargetBadge.php:139
-#: src/Request.php:392 templates/request_wizard.html.twig:46
-#: templates/request_wizard.html.twig:75
-#: templates/badge_return_info.html.twig:39
-#: templates/request_list.html.twig:38
-#: templates/badge_return_list.html.twig:39
+#: src/Request.php:479 src/NotificationTargetBadge.php:107
+#: src/NotificationTargetBadge.php:138 templates/request_list.html.twig:37
+#: templates/request_wizard.html.twig:45 templates/request_wizard.html.twig:74
+#: templates/badge_return_list.html.twig:38
+#: templates/badge_return_info.html.twig:38
 msgid "Visitor society"
 msgstr "Tvrtka posjetitelja"
