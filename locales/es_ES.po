@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GLPI - Badges plugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-31 14:49+0000\n"
+"POT-Creation-Date: 2026-09-23 15:56+0000\n"
 "PO-Revision-Date: 2020-11-02 12:44+0000\n"
 "Last-Translator: Xavier CAILLAUD <thetsmr@gmail.com>, 2020\n"
 "Language-Team: Spanish (Spain) (https://www.transifex.com/infotelGLPI/"
@@ -50,12 +50,11 @@ msgstr "Fecha de asignación"
 msgid "Allotted to"
 msgstr "Asignada a"
 
-#: src/NotificationTargetBadge.php:108 src/NotificationTargetBadge.php:139
-#: src/BadgeReturn.php:420 templates/request_list.html.twig:38
-#: templates/request_search.html.twig:37 templates/request_wizard.html.twig:51
-#: templates/request_wizard.html.twig:76
+#: src/BadgeReturn.php:420 src/NotificationTargetBadge.php:108
+#: src/NotificationTargetBadge.php:139 templates/request_search.html.twig:37
 #: templates/badge_return_list.html.twig:39
-#: templates/badge_return_info.html.twig:40
+#: templates/request_wizard.html.twig:51 templates/request_wizard.html.twig:76
+#: templates/badge_return_info.html.twig:40 templates/request_list.html.twig:38
 msgid "Arrival date"
 msgstr ""
 
@@ -65,8 +64,8 @@ msgid_plural "Available badges"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/Metademand.php:69 src/Badge.php:65 setup.php:120
-#: templates/request_list.html.twig:34 templates/request_wizard.html.twig:75
+#: setup.php:120 src/Metademand.php:69 src/Badge.php:65
+#: templates/request_wizard.html.twig:75 templates/request_list.html.twig:34
 msgid "Badge"
 msgid_plural "Badges"
 msgstr[0] "Tarjeta identificadora"
@@ -99,8 +98,8 @@ msgstr ""
 msgid "Badge usage report"
 msgstr ""
 
-#: src/NotificationTargetBadge.php:57 src/NotificationTargetBadge.php:74
-#: src/BadgeReturn.php:425 src/Badge.php:534
+#: src/Badge.php:534 src/BadgeReturn.php:425 src/NotificationTargetBadge.php:57
+#: src/NotificationTargetBadge.php:74
 msgid "Badges at the end of the validity"
 msgstr "Tarjetas identificadoras caducadas"
 
@@ -132,8 +131,8 @@ msgstr ""
 msgid "Badges usage search"
 msgstr ""
 
-#: src/NotificationTargetBadge.php:58 src/NotificationTargetBadge.php:77
-#: src/Badge.php:424
+#: src/Badge.php:424 src/NotificationTargetBadge.php:58
+#: src/NotificationTargetBadge.php:77
 msgid "Badges which expires"
 msgstr "Tarjetas identificadoras que van a caducar"
 
@@ -145,8 +144,8 @@ msgstr ""
 msgid "Bookable"
 msgstr ""
 
-#: templates/badge_return_wizard.html.twig:61
 #: templates/request_wizard.html.twig:89
+#: templates/badge_return_wizard.html.twig:61
 msgctxt "button"
 msgid "Cancel"
 msgstr ""
@@ -161,8 +160,8 @@ msgid_plural "Comments"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/NotificationTargetBadge.php:87 src/NotificationTargetBadge.php:134
-#: src/Badge.php:119 templates/badge_form.html.twig:122
+#: src/Badge.php:119 src/NotificationTargetBadge.php:87
+#: src/NotificationTargetBadge.php:134 templates/badge_form.html.twig:122
 msgid "Date of end of validity"
 msgstr "Fecha de vencimiento"
 
@@ -192,7 +191,7 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: templates/request_list.html.twig:59 templates/badge_return_list.html.twig:54
+#: templates/badge_return_list.html.twig:54 templates/request_list.html.twig:59
 msgid "No results found"
 msgstr ""
 
@@ -224,13 +223,13 @@ msgstr ""
 msgid "Restitution date"
 msgstr ""
 
-#: templates/request_list.html.twig:39 templates/request_search.html.twig:39
-#: templates/badge_return_list.html.twig:40
+#: templates/request_search.html.twig:39
+#: templates/badge_return_list.html.twig:40 templates/request_list.html.twig:39
 msgid "Return date"
 msgstr ""
 
-#: templates/config.html.twig:66 templates/profile.html.twig:34
-#: templates/config_badge_return.html.twig:44
+#: templates/config_badge_return.html.twig:44 templates/profile.html.twig:34
+#: templates/config.html.twig:66
 msgctxt "button"
 msgid "Save"
 msgstr ""
@@ -255,7 +254,7 @@ msgstr ""
 msgid "This badge is already affected to another request"
 msgstr ""
 
-#: templates/config.html.twig:41 templates/config_badge_return.html.twig:34
+#: templates/config_badge_return.html.twig:34 templates/config.html.twig:41
 msgid "Time of checking of validity of the badges"
 msgstr "Período de comprobación de validez de las tarjetas identificadoras"
 
@@ -270,25 +269,22 @@ msgid "Unused status for expiration mailing"
 msgstr "Estados no utilizados por la notificación de caducidad"
 
 #: src/Request.php:478 src/NotificationTargetBadge.php:106
-#: src/NotificationTargetBadge.php:137 templates/request_list.html.twig:36
+#: src/NotificationTargetBadge.php:137 templates/badge_return_list.html.twig:37
 #: templates/request_wizard.html.twig:41 templates/request_wizard.html.twig:72
-#: templates/badge_return_list.html.twig:37
-#: templates/badge_return_info.html.twig:32
+#: templates/badge_return_info.html.twig:32 templates/request_list.html.twig:36
 msgid "Visitor firstname"
 msgstr ""
 
 #: src/Request.php:477 src/NotificationTargetBadge.php:105
-#: src/NotificationTargetBadge.php:136 templates/request_list.html.twig:35
+#: src/NotificationTargetBadge.php:136 templates/badge_return_list.html.twig:36
 #: templates/request_wizard.html.twig:39 templates/request_wizard.html.twig:73
-#: templates/badge_return_list.html.twig:36
-#: templates/badge_return_info.html.twig:34
+#: templates/badge_return_info.html.twig:34 templates/request_list.html.twig:35
 msgid "Visitor realname"
 msgstr ""
 
 #: src/Request.php:479 src/NotificationTargetBadge.php:107
-#: src/NotificationTargetBadge.php:138 templates/request_list.html.twig:37
+#: src/NotificationTargetBadge.php:138 templates/badge_return_list.html.twig:38
 #: templates/request_wizard.html.twig:45 templates/request_wizard.html.twig:74
-#: templates/badge_return_list.html.twig:38
-#: templates/badge_return_info.html.twig:38
+#: templates/badge_return_info.html.twig:38 templates/request_list.html.twig:37
 msgid "Visitor society"
 msgstr ""
