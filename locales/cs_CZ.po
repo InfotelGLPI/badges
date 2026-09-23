@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-23 15:56+0000\n"
+"POT-Creation-Date: 2026-09-23 16:25+0000\n"
 "PO-Revision-Date: 2020-11-02 15:44+0000\n"
 "Last-Translator: Xavier CAILLAUD <thetsmr@gmail.com>, 2020\n"
 "Language-Team: Czech (Czech Republic) (https://app.transifex.com/infotelGLPI/"
@@ -24,13 +24,13 @@ msgstr ""
 "<= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
 #: src/NotificationTargetBadge.php:59 src/NotificationTargetBadge.php:80
-#: templates/wizard_menu.html.twig:30 templates/wizard_menu.html.twig:38
-#: templates/request_wizard.html.twig:30
+#: templates/request_wizard.html.twig:30 templates/wizard_menu.html.twig:30
+#: templates/wizard_menu.html.twig:38
 msgid "Access badge request"
 msgstr "Žádost o přístupovou jmenovku"
 
-#: templates/wizard_menu.html.twig:45
 #: templates/badge_return_wizard.html.twig:30
+#: templates/wizard_menu.html.twig:45
 msgid "Access badge return"
 msgstr "Vrácení přístupové jmenovky"
 
@@ -52,10 +52,11 @@ msgid "Allotted to"
 msgstr "Komu přiděleno"
 
 #: src/BadgeReturn.php:420 src/NotificationTargetBadge.php:108
-#: src/NotificationTargetBadge.php:139 templates/request_search.html.twig:37
+#: src/NotificationTargetBadge.php:139 templates/badge_return_info.html.twig:40
+#: templates/request_search.html.twig:37
 #: templates/badge_return_list.html.twig:39
 #: templates/request_wizard.html.twig:51 templates/request_wizard.html.twig:76
-#: templates/badge_return_info.html.twig:40 templates/request_list.html.twig:38
+#: templates/request_list.html.twig:38
 msgid "Arrival date"
 msgstr "Datum příchodu"
 
@@ -105,7 +106,7 @@ msgstr "Jmenovka vrácena"
 msgid "Badge usage report"
 msgstr "Výkaz o využití jmenovek"
 
-#: src/Badge.php:534 src/BadgeReturn.php:425 src/NotificationTargetBadge.php:57
+#: src/BadgeReturn.php:425 src/Badge.php:534 src/NotificationTargetBadge.php:57
 #: src/NotificationTargetBadge.php:74
 msgid "Badges at the end of the validity"
 msgstr "Jmenovky na konci platnosti"
@@ -151,8 +152,8 @@ msgstr "Průvodce jmenovkami"
 msgid "Bookable"
 msgstr "Zarezervovatelné"
 
-#: templates/request_wizard.html.twig:89
 #: templates/badge_return_wizard.html.twig:61
+#: templates/request_wizard.html.twig:89
 msgctxt "button"
 msgid "Cancel"
 msgstr ""
@@ -241,8 +242,8 @@ msgstr "Datum navrácení"
 msgid "Return date"
 msgstr "Datum vrácení"
 
-#: templates/config_badge_return.html.twig:44 templates/profile.html.twig:34
-#: templates/config.html.twig:66
+#: templates/config.html.twig:66 templates/config_badge_return.html.twig:44
+#: templates/profile.html.twig:34
 msgctxt "button"
 msgid "Save"
 msgstr ""
@@ -267,7 +268,7 @@ msgstr ""
 msgid "This badge is already affected to another request"
 msgstr ""
 
-#: templates/config_badge_return.html.twig:34 templates/config.html.twig:41
+#: templates/config.html.twig:41 templates/config_badge_return.html.twig:34
 msgid "Time of checking of validity of the badges"
 msgstr "Jak často kontrolovat platnost jmenovek"
 
@@ -284,22 +285,25 @@ msgid "Unused status for expiration mailing"
 msgstr "Nevyužitý stav pro posílání skončení platnosti"
 
 #: src/Request.php:478 src/NotificationTargetBadge.php:106
-#: src/NotificationTargetBadge.php:137 templates/badge_return_list.html.twig:37
+#: src/NotificationTargetBadge.php:137 templates/badge_return_info.html.twig:32
+#: templates/badge_return_list.html.twig:37
 #: templates/request_wizard.html.twig:41 templates/request_wizard.html.twig:72
-#: templates/badge_return_info.html.twig:32 templates/request_list.html.twig:36
+#: templates/request_list.html.twig:36
 msgid "Visitor firstname"
 msgstr "Jméno návštěvníka"
 
 #: src/Request.php:477 src/NotificationTargetBadge.php:105
-#: src/NotificationTargetBadge.php:136 templates/badge_return_list.html.twig:36
+#: src/NotificationTargetBadge.php:136 templates/badge_return_info.html.twig:34
+#: templates/badge_return_list.html.twig:36
 #: templates/request_wizard.html.twig:39 templates/request_wizard.html.twig:73
-#: templates/badge_return_info.html.twig:34 templates/request_list.html.twig:35
+#: templates/request_list.html.twig:35
 msgid "Visitor realname"
 msgstr "Občanské jméno návštěníka"
 
 #: src/Request.php:479 src/NotificationTargetBadge.php:107
-#: src/NotificationTargetBadge.php:138 templates/badge_return_list.html.twig:38
+#: src/NotificationTargetBadge.php:138 templates/badge_return_info.html.twig:38
+#: templates/badge_return_list.html.twig:38
 #: templates/request_wizard.html.twig:45 templates/request_wizard.html.twig:74
-#: templates/badge_return_info.html.twig:38 templates/request_list.html.twig:37
+#: templates/request_list.html.twig:37
 msgid "Visitor society"
 msgstr "Společnost ze které návštěvník je"
