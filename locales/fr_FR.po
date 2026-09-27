@@ -2,10 +2,10 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
 # Xavier CAILLAUD <thetsmr@gmail.com>, 2026
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
@@ -14,14 +14,12 @@ msgstr ""
 "POT-Creation-Date: 2026-09-23 16:25+0000\n"
 "PO-Revision-Date: 2020-11-02 15:44+0000\n"
 "Last-Translator: Xavier CAILLAUD <thetsmr@gmail.com>, 2026\n"
-"Language-Team: French (France) (https://app.transifex.com/infotelGLPI/"
-"teams/12355/fr_FR/)\n"
-"Language: fr_FR\n"
+"Language-Team: French (France) (https://app.transifex.com/infotelGLPI/teams/12355/fr_FR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % "
-"1000000 == 0 ? 1 : 2;\n"
+"Language: fr_FR\n"
+"Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
 #: src/NotificationTargetBadge.php:59 src/NotificationTargetBadge.php:80
 #: templates/request_wizard.html.twig:30 templates/wizard_menu.html.twig:30
@@ -52,7 +50,8 @@ msgid "Allotted to"
 msgstr "Attribué à"
 
 #: src/BadgeReturn.php:420 src/NotificationTargetBadge.php:108
-#: src/NotificationTargetBadge.php:139 templates/badge_return_info.html.twig:40
+#: src/NotificationTargetBadge.php:139
+#: templates/badge_return_info.html.twig:40
 #: templates/request_search.html.twig:37
 #: templates/badge_return_list.html.twig:39
 #: templates/request_wizard.html.twig:51 templates/request_wizard.html.twig:76
@@ -103,8 +102,8 @@ msgstr "Badge retourné"
 msgid "Badge usage report"
 msgstr "Rapport des badges utilisés"
 
-#: src/BadgeReturn.php:425 src/Badge.php:534 src/NotificationTargetBadge.php:57
-#: src/NotificationTargetBadge.php:74
+#: src/BadgeReturn.php:425 src/Badge.php:534
+#: src/NotificationTargetBadge.php:57 src/NotificationTargetBadge.php:74
 msgid "Badges at the end of the validity"
 msgstr "Badges expirés"
 
@@ -198,7 +197,8 @@ msgstr "Gérer les badges temporaires"
 msgid "Name"
 msgstr "Nom"
 
-#: templates/badge_return_list.html.twig:54 templates/request_list.html.twig:59
+#: templates/badge_return_list.html.twig:54
+#: templates/request_list.html.twig:59
 msgid "No results found"
 msgstr "Pas de résultats trouvés"
 
@@ -232,7 +232,8 @@ msgid "Restitution date"
 msgstr "Date de restitution"
 
 #: templates/request_search.html.twig:39
-#: templates/badge_return_list.html.twig:40 templates/request_list.html.twig:39
+#: templates/badge_return_list.html.twig:40
+#: templates/request_list.html.twig:39
 msgid "Return date"
 msgstr "Date de retour"
 
@@ -240,7 +241,7 @@ msgstr "Date de retour"
 #: templates/profile.html.twig:34
 msgctxt "button"
 msgid "Save"
-msgstr "Sauver"
+msgstr "Sauvegarder"
 
 #: templates/request_search.html.twig:43
 msgid "Search"
@@ -278,7 +279,8 @@ msgid "Unused status for expiration mailing"
 msgstr "Statuts non utilisés dans l'envoi des emails d'expiration"
 
 #: src/Request.php:478 src/NotificationTargetBadge.php:106
-#: src/NotificationTargetBadge.php:137 templates/badge_return_info.html.twig:32
+#: src/NotificationTargetBadge.php:137
+#: templates/badge_return_info.html.twig:32
 #: templates/badge_return_list.html.twig:37
 #: templates/request_wizard.html.twig:41 templates/request_wizard.html.twig:72
 #: templates/request_list.html.twig:36
@@ -286,7 +288,8 @@ msgid "Visitor firstname"
 msgstr "Prénom du visiteur"
 
 #: src/Request.php:477 src/NotificationTargetBadge.php:105
-#: src/NotificationTargetBadge.php:136 templates/badge_return_info.html.twig:34
+#: src/NotificationTargetBadge.php:136
+#: templates/badge_return_info.html.twig:34
 #: templates/badge_return_list.html.twig:36
 #: templates/request_wizard.html.twig:39 templates/request_wizard.html.twig:73
 #: templates/request_list.html.twig:35
@@ -294,7 +297,8 @@ msgid "Visitor realname"
 msgstr "Nom du visiteur"
 
 #: src/Request.php:479 src/NotificationTargetBadge.php:107
-#: src/NotificationTargetBadge.php:138 templates/badge_return_info.html.twig:38
+#: src/NotificationTargetBadge.php:138
+#: templates/badge_return_info.html.twig:38
 #: templates/badge_return_list.html.twig:38
 #: templates/request_wizard.html.twig:45 templates/request_wizard.html.twig:74
 #: templates/request_list.html.twig:37
