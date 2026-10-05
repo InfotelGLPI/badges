@@ -43,6 +43,7 @@ use Migration;
 use NotificationEvent;
 use Plugin;
 use Session;
+use Transfer;
 use Glpi\Features\StateInterface;
 
 /**
@@ -54,6 +55,7 @@ class Badge extends CommonDBTM implements StateInterface
 
     public bool $dohistory = true;
     public static string $rightname = "plugin_badges";
+    public const RIGHT_OPEN_TICKET = "plugin_badges_open_ticket";
     protected bool $usenotepad = true;
     /**
      * @param int $nb
@@ -324,7 +326,7 @@ class Badge extends CommonDBTM implements StateInterface
         $isadmin = static::canUpdate();
         $actions = parent::getSpecificMassiveActions($checkitem);
 
-        if (Session::haveRight('transfer', READ)
+        if (Session::haveRight(Transfer::$rightname, READ)
             && Session::isMultiEntitiesMode()
             && $isadmin
         ) {

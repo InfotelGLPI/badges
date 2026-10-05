@@ -78,14 +78,14 @@ function plugin_init_badges()
         }
 
         if (!Plugin::isPluginActive('environment')
-            && Session::haveRight("plugin_badges", READ)) {
+            && Session::haveRight(Badge::$rightname, READ)) {
             $PLUGIN_HOOKS[Hooks::MENU_TOADD]['badges'] = ['assets' => Badge::class];
             if (!in_array(Badge::class, $CFG_GLPI['globalsearch_types'])) {
                 array_push($CFG_GLPI['globalsearch_types'], Badge::class);
             }
         }
 
-        if (Session::haveRight("plugin_badges", READ)
+        if (Session::haveRight(Badge::$rightname, READ)
             && !Plugin::isPluginActive('servicecatalog')) {
             $PLUGIN_HOOKS[Hooks::HELPDESK_MENU_ENTRY]['badges'] = PLUGIN_BADGES_WEBDIR . '/front/wizard.php';
             $PLUGIN_HOOKS[Hooks::HELPDESK_MENU_ENTRY_ICON]['badges'] = Badge::getIcon();
@@ -95,7 +95,7 @@ function plugin_init_badges()
             $PLUGIN_HOOKS['servicecatalog']['badges'] = [Servicecatalog::class];
         }
 
-        if (Session::haveRight("plugin_badges", UPDATE)) {
+        if (Session::haveRight(Badge::$rightname, UPDATE)) {
             $PLUGIN_HOOKS[Hooks::USE_MASSIVE_ACTION]['badges'] = 1;
         }
 

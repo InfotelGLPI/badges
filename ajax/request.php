@@ -27,10 +27,11 @@
  * --------------------------------------------------------------------------
  */
 
-use GlpiPlugin\Badges\Request;
+use GlpiPlugin\Badges\Badge;
 use GlpiPlugin\Badges\BadgeReturn;
+use GlpiPlugin\Badges\Request;
 
-Session::checkRight('plugin_badges', READ);
+Session::checkRight(Badge::$rightname, READ);
 
 switch ($_POST['action']) {
     case 'addToCart':

@@ -182,7 +182,7 @@ function plugin_badges_uninstall()
  */
 function plugin_badges_AssignToTicket($types)
 {
-    if (Session::haveRight("plugin_badges_open_ticket", 1)) {
+    if (Session::haveRight(Badge::RIGHT_OPEN_TICKET, 1)) {
         $types[Badge::class] = Badge::getTypeName(2);
     }
 

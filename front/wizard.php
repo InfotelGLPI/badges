@@ -35,7 +35,7 @@ use GlpiPlugin\Servicecatalog\Main;
 // front/wizard.form.php. Without this, an authenticated user lacking the
 // plugin_badges READ right would get a well-formed but empty page (showMenu()
 // returns false internally) instead of a clear 403, blurring the auth boundary.
-Session::checkRight('plugin_badges', READ);
+Session::checkRight(Badge::$rightname, READ);
 
 if (Session::getCurrentInterface() == 'central') {
     Html::header(Wizard::getTypeName(2), '', "assets", Badge::class);

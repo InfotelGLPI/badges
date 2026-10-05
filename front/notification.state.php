@@ -30,7 +30,7 @@
 use GlpiPlugin\Badges\Config;
 use GlpiPlugin\Badges\NotificationState;
 
-Session::checkRight("config", UPDATE);
+Session::checkRight(Config::$rightname, UPDATE);
 
 $config = new Config();
 $notif = new NotificationState();

@@ -85,12 +85,6 @@ parameters:
 			path: hook.php
 
 		-
-			message: '#^Parameter \#2 \$right of static method Session\:\:haveRight\(\) expects int, string given\.$#'
-			identifier: argument.type
-			count: 1
-			path: hook.php
-
-		-
 			message: '#^Access to offset ''date_affectation'' on an unknown class GlpiPlugin\\Badges\\datas\.$#'
 			identifier: class.notFound
 			count: 6

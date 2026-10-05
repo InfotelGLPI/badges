@@ -35,7 +35,7 @@ use GlpiPlugin\Servicecatalog\Main;
 // Wizard::showMenu()), this variant calls showWizard() directly. Gate it on the
 // same plugin_badges READ right so users without the right cannot reach the
 // self-service request/return forms.
-Session::checkRight('plugin_badges', READ);
+Session::checkRight(Badge::$rightname, READ);
 
 if (Session::getCurrentInterface() == 'central') {
     Html::header(Wizard::getTypeName(2), '', "assets", Badge::class);
