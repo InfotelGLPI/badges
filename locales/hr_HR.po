@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-05 11:36+0000\n"
+"POT-Creation-Date: 2026-10-05 12:03+0000\n"
 "PO-Revision-Date: 2020-11-02 15:44+0000\n"
 "Last-Translator: NeoTrinity <tecvisor@yahoo.fr>, 2026\n"
 "Language-Team: Croatian (Croatia) (https://app.transifex.com/infotelGLPI/"
@@ -43,7 +43,7 @@ msgstr "Dodaj"
 msgid "Add to cart"
 msgstr "Dodaj u košaricu"
 
-#: src/Request.php:480 src/Badge.php:111 templates/badge_form.html.twig:117
+#: src/Request.php:480 src/Badge.php:113 templates/badge_form.html.twig:117
 msgid "Affectation date"
 msgstr "Datum primjene"
 
@@ -66,7 +66,7 @@ msgstr[0] "Dostupna značka"
 msgstr[1] "Dostupne značke"
 msgstr[2] "Dostupne značke"
 
-#: setup.php:120 src/Metademand.php:69 src/Badge.php:65
+#: setup.php:120 src/Metademand.php:69 src/Badge.php:67
 #: templates/request_wizard.html.twig:82 templates/request_list.html.twig:34
 msgid "Badge"
 msgid_plural "Badges"
@@ -102,7 +102,7 @@ msgstr "Vraćena značka"
 msgid "Badge usage report"
 msgstr "Izvještaj o korištenju značke"
 
-#: src/Badge.php:534 src/BadgeReturn.php:425 src/NotificationTargetBadge.php:57
+#: src/Badge.php:536 src/BadgeReturn.php:425 src/NotificationTargetBadge.php:57
 #: src/NotificationTargetBadge.php:74
 msgid "Badges at the end of the validity"
 msgstr "Značke pri kraju valjanosti"
@@ -135,7 +135,7 @@ msgstr "Vraćanje znački"
 msgid "Badges usage search"
 msgstr "Pretraživanje korištenja znački"
 
-#: src/Badge.php:424 src/NotificationTargetBadge.php:58
+#: src/Badge.php:426 src/NotificationTargetBadge.php:58
 #: src/NotificationTargetBadge.php:77
 msgid "Badges which expires"
 msgstr "Značke koje isteču"
@@ -144,7 +144,7 @@ msgstr "Značke koje isteču"
 msgid "Badges wizard"
 msgstr "Pomoćnik za rezervaciju znački"
 
-#: src/Badge.php:200 templates/badge_form.html.twig:147
+#: src/Badge.php:202 templates/badge_form.html.twig:147
 msgid "Bookable"
 msgstr "Mogućnost rezerviranja"
 
@@ -165,7 +165,7 @@ msgstr[0] "Komentar"
 msgstr[1] "Komentari"
 msgstr[2] "Komentari"
 
-#: src/Badge.php:119 src/NotificationTargetBadge.php:87
+#: src/Badge.php:121 src/NotificationTargetBadge.php:87
 #: src/NotificationTargetBadge.php:134 templates/badge_form.html.twig:122
 msgid "Date of end of validity"
 msgstr "Datum kraja valjanosti"
