@@ -34,9 +34,9 @@ use Session;
 
 class Servicecatalog extends CommonGLPI
 {
-    public static $rightname = 'plugin_badges';
+    public static string $rightname = 'plugin_badges';
 
-    public $dohistory = false;
+    public bool $dohistory = false;
 
     public static function canUse()
     {

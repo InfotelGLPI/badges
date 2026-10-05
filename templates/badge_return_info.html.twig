@@ -25,21 +25,19 @@
  # --------------------------------------------------------------------------
  #}
 
-{% if rows is not empty %}
-<table class="tab_cadre_fixe badges_wizard_info">
-    {% for row in rows %}
-    <tr>
-        <td><b>{{ __('Visitor firstname', 'badges') }}</b></td>
-        <td>{{ row.visitor_firstname }}</td>
-        <td><b>{{ __('Visitor realname', 'badges') }}</b></td>
-        <td>{{ row.visitor_realname }}</td>
-    </tr>
-    <tr>
-        <td><b>{{ __('Visitor society', 'badges') }}</b></td>
-        <td>{{ row.visitor_society }}</td>
-        <td><b>{{ __('Arrival date', 'badges') }}</b></td>
-        <td>{{ row.affectation_date }}</td>
-    </tr>
-    {% endfor %}
-</table>
-{% endif %}
+{% for row in rows %}
+    <div class="card card-sm bg-secondary-lt mb-2">
+        <div class="card-body">
+            <dl class="row mb-0">
+                <dt class="col-6 col-md-3">{{ __('Visitor firstname', 'badges') }}</dt>
+                <dd class="col-6 col-md-3">{{ row.visitor_firstname }}</dd>
+                <dt class="col-6 col-md-3">{{ __('Visitor realname', 'badges') }}</dt>
+                <dd class="col-6 col-md-3">{{ row.visitor_realname }}</dd>
+                <dt class="col-6 col-md-3">{{ __('Visitor society', 'badges') }}</dt>
+                <dd class="col-6 col-md-3 mb-md-0">{{ row.visitor_society }}</dd>
+                <dt class="col-6 col-md-3">{{ __('Arrival date', 'badges') }}</dt>
+                <dd class="col-6 col-md-3 mb-0">{{ row.affectation_date }}</dd>
+            </dl>
+        </div>
+    </div>
+{% endfor %}

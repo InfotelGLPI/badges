@@ -25,24 +25,25 @@
  # --------------------------------------------------------------------------
  #}
 
-<h3>
-    <div class="alert alert-secondary" role="alert">
-        <i class="{{ badge_icon }}"></i>&nbsp;{{ __('Access badge request', 'badges') }}
-    </div>
-</h3>
-
-<div class="row badges_wizard_row" style="margin: 0 auto;">
-    <div class="center col-md-5 badges_wizard_rank">
-        <a class="badges_menu_a" href="{{ webdir }}/front/wizard.form.php?action=badgerequest">
-            <i class="{{ badge_icon }}" style="font-size: 4.5em;"></i>
-            <br><br>{{ __('Access badge request', 'badges') }}<br>({{ __('For a limited time', 'badges') }})
-        </a>
-    </div>
-    <div style="width: 10px;"></div>
-    <div class="center col-md-5 badges_wizard_rank">
-        <a class="badges_menu_a" href="{{ webdir }}/front/wizard.form.php?action=badgereturn">
-            <i class="ti ti-receipt-refund" style="font-size: 4.5em;"></i>
-            <br><br>{{ __('Access badge return', 'badges') }}
-        </a>
+<div class="container-lg my-3">
+    <h2 class="mb-3">
+        <i class="{{ badge_icon }} me-2"></i>{{ __('Badges wizard', 'badges') }}
+    </h2>
+    <div class="row row-cards g-3">
+        {% for item in items %}
+            <div class="col-12 col-sm-6 col-lg-4">
+                <a href="{{ item.url }}" class="card card-link card-link-pop h-100 text-reset text-decoration-none">
+                    <div class="card-body text-center py-4">
+                        <span class="avatar avatar-xl bg-secondary-lt mb-3">
+                            <i class="{{ item.icon }} fs-1"></i>
+                        </span>
+                        <h3 class="card-title mb-1">{{ item.title }}</h3>
+                        {% if item.subtitle %}
+                            <div class="text-secondary">{{ item.subtitle }}</div>
+                        {% endif %}
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
     </div>
 </div>

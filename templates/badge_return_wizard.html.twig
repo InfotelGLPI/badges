@@ -25,49 +25,45 @@
  # --------------------------------------------------------------------------
  #}
 
-<h3>
-    <div class="alert alert-secondary" role="alert">
-        <i class="ti ti-receipt-refund"></i>&nbsp;{{ __('Access badge return', 'badges') }}
-    </div>
-</h3>
-
-<form name="wizard_form" id="badges_wizardForm" method="post">
-    <input type="hidden" name="_glpi_csrf_token" value="{{ csrf_token() }}">
-    <div style="overflow-x:auto;">
-        <table class="badges_wizard_rank">
-            <tr>
-                <td>{{ __('Badges in your possession', 'badges') }} <span style="color:red;">*</span></td>
-                <td>
-                    {{ dropdown_html|raw }}
-                    <script>{{ load_badge_info_js|raw }}</script>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2" id="badges_informations"></td>
-            </tr>
-            <tr>
-                <td>{{ __('Restitution date', 'badges') }}</td>
-                <td>{{ return_date_now }}</td>
-            </tr>
-        </table>
-
-        <br>
-        <table width="100%">
-            <tr>
-                <td>
-                    <div id="dialog-confirm"></div>
-                    <button form="" onclick="badges_cancel('{{ cancel_url|e('js') }}');"
-                            class="submit btn btn-info badge_previous_button">
-                        {{ _x('button', 'Cancel') }}
-                    </button>
-                    <button form="" onclick="badges_returnBadges('returnBadges','badges_wizardForm');"
-                            class="submit btn btn-success badge_next_button">
-                        {{ __('Badges return', 'badges') }}
-                    </button>
-                    <input type="hidden" name="requesters_id" value="{{ requesters_id }}">
-                </td>
-            </tr>
-        </table>
-    </div>
+{# Badge return wizard (BadgeReturn::showBadgeReturn()). #badges_informations is filled
+   with badge_return_info.html.twig when a badge is selected. #}
+<div class="container-lg my-3">
+    <form name="wizard_form" id="badges_wizardForm" method="post">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">
+                    <i class="ti ti-receipt-refund me-2"></i>{{ __('Access badge return', 'badges') }}
+                </h3>
+            </div>
+            <div class="card-body">
+                <div class="row g-3">
+                    <div class="col-12 col-md-6">
+                        <label class="form-label required">{{ __('Badges in your possession', 'badges') }}</label>
+                        <div>
+                            {{ dropdown_html|raw }}
+                            <script>{{ load_badge_info_js|raw }}</script>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label class="form-label">{{ __('Restitution date', 'badges') }}</label>
+                        <div class="form-control-plaintext">{{ return_date_now }}</div>
+                    </div>
+                    <div class="col-12" id="badges_informations"></div>
+                </div>
+            </div>
+            <div class="card-footer d-flex justify-content-between">
+                <button type="button" class="btn btn-outline-secondary"
+                        onclick="badges_cancel('{{ cancel_url|e('js') }}');">
+                    <i class="ti ti-arrow-left me-1"></i>{{ _x('button', 'Cancel') }}
+                </button>
+                <button type="button" class="btn btn-primary"
+                        onclick="badges_returnBadges('returnBadges','badges_wizardForm');">
+                    <i class="ti ti-receipt-refund me-1"></i>{{ __('Badges return', 'badges') }}
+                </button>
+            </div>
+        </div>
+        <input type="hidden" name="requesters_id" value="{{ requesters_id }}">
+        <div id="dialog-confirm"></div>
+    </form>
     <script>$(document).ready(function() {badges_initJs("{{ web_dir|e('js') }}");});</script>
-</form>
+</div>

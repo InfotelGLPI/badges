@@ -52,9 +52,9 @@ class Badge extends CommonDBTM implements StateInterface
 {
     use State;
 
-    public $dohistory = true;
-    public static $rightname = "plugin_badges";
-    protected $usenotepad = true;
+    public bool $dohistory = true;
+    public static string $rightname = "plugin_badges";
+    protected bool $usenotepad = true;
     /**
      * @param int $nb
      *

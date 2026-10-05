@@ -50,7 +50,7 @@ use Toolbox;
  */
 class Request extends CommonDBTM
 {
-    public static $rightname = "plugin_badges";
+    public static string $rightname = "plugin_badges";
 
     /**
      * @param int $nb
@@ -399,7 +399,7 @@ class Request extends CommonDBTM
                 }
 
                 if ($success) {
-                    $message = "<div class='alert alert-important alert-success d-flex'>" . _n(
+                    $message = "<div class='alert alert-success d-flex'>" . _n(
                         'Badge affected',
                         'Badges affected',
                         count($params['badges_cart']),
@@ -493,7 +493,7 @@ class Request extends CommonDBTM
         if ($checkKo) {
             return [
                 false,
-                "<div class='alert alert-important alert-warning d-flex'>" . sprintf(
+                "<div class='alert alert-warning d-flex'>" . sprintf(
                     __("Mandatory fields are not filled. Please correct: %s"),
                     implode(', ', $msg),
                 ) . "</div>",

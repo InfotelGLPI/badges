@@ -25,76 +25,78 @@
  # --------------------------------------------------------------------------
  #}
 
-<h3>
-    <div class="alert alert-secondary" role="alert">
-        <i class="{{ badge_icon }}"></i>&nbsp;{{ __('Access badge request', 'badges') }}
-    </div>
-</h3>
-
-<form name="wizard_form" id="badges_wizardForm" method="post">
-    <input type="hidden" name="_glpi_csrf_token" value="{{ csrf_token() }}">
-    <div style="overflow-x:auto;">
-        <table class="badges_wizard_rank">
-            <tr>
-                <td>{{ __('Visitor realname', 'badges') }} <span style="color:red;">*</span></td>
-                <td><input type="text" name="visitor_realname" size="40"></td>
-                <td>{{ __('Visitor firstname', 'badges') }} <span style="color:red;">*</span></td>
-                <td><input type="text" name="visitor_firstname" size="40"></td>
-            </tr>
-            <tr>
-                <td>{{ __('Visitor society', 'badges') }} <span style="color:red;">*</span></td>
-                <td><input type="text" name="visitor_society" size="40"></td>
-                <td>{{ _n('Available badge', 'Available badges', 2, 'badges') }} <span style="color:red;">*</span></td>
-                <td id="badges_available">{{ available_badges_html|raw }}</td>
-            </tr>
-            <tr>
-                <td>{{ __('Arrival date', 'badges') }} <span style="color:red;">*</span></td>
-                <td>{{ affectation_date_field|raw }}</td>
-                <td colspan="2"></td>
-            </tr>
-            <tr>
-                <td class="center" colspan="4">
-                    <button form="" onclick="badges_addToCart('addToCart','badges_wizardForm', 'badges_cart');"
-                            class="submit btn btn-success">
-                        <i class="ti ti-plus"></i>&nbsp;{{ __('Add to cart', 'badges') }}
-                    </button>
-                </td>
-            </tr>
-        </table>
-
-        <br>
-        <div class="center">
-            <table class="tab_cadre_fixe badges_wizard_rank" id="badges_cart" style="display:none">
-                <tr>
-                    <th colspan="6">{{ __('Cart', 'badges') }}</th>
-                </tr>
-                <tr>
-                    <th>{{ __('Visitor firstname', 'badges') }}</th>
-                    <th>{{ __('Visitor realname', 'badges') }}</th>
-                    <th>{{ __('Visitor society', 'badges') }}</th>
-                    <th>{{ _n('Badge', 'Badges', 1, 'badges') }}</th>
-                    <th>{{ __('Arrival date', 'badges') }}</th>
-                    <th></th>
-                </tr>
-            </table>
+{# Badge request wizard (Request::showBadgeRequest()). The cart table rows are built by
+   badges_addToCart() in public/badges.js, which also toggles its display. #}
+<div class="container-lg my-3">
+    <form name="wizard_form" id="badges_wizardForm" method="post">
+        <div class="card mb-3">
+            <div class="card-header">
+                <h3 class="card-title">
+                    <i class="{{ badge_icon }} me-2"></i>{{ __('Access badge request', 'badges') }}
+                </h3>
+            </div>
+            <div class="card-body">
+                <div class="row g-3">
+                    <div class="col-12 col-md-6">
+                        <label class="form-label required" for="badges_visitor_realname">{{ __('Visitor realname', 'badges') }}</label>
+                        <input type="text" class="form-control" id="badges_visitor_realname" name="visitor_realname">
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label class="form-label required" for="badges_visitor_firstname">{{ __('Visitor firstname', 'badges') }}</label>
+                        <input type="text" class="form-control" id="badges_visitor_firstname" name="visitor_firstname">
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label class="form-label required" for="badges_visitor_society">{{ __('Visitor society', 'badges') }}</label>
+                        <input type="text" class="form-control" id="badges_visitor_society" name="visitor_society">
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label class="form-label required">{{ _n('Available badge', 'Available badges', 2, 'badges') }}</label>
+                        <div id="badges_available">{{ available_badges_html|raw }}</div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label class="form-label required">{{ __('Arrival date', 'badges') }}</label>
+                        <div>{{ affectation_date_field|raw }}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer text-end">
+                <button type="button" class="btn btn-success"
+                        onclick="badges_addToCart('addToCart','badges_wizardForm', 'badges_cart');">
+                    <i class="ti ti-plus me-1"></i>{{ __('Add to cart', 'badges') }}
+                </button>
+            </div>
         </div>
 
-        <br>
-        <table width="100%">
-            <tr>
-                <td>
-                    <div id="dialog-confirm"></div>
-                    <button form="" onclick="badges_cancel('{{ cancel_url|e('js') }}');"
-                            class="submit btn btn-info badge_previous_button">
-                        {{ _x('button', 'Cancel') }}
-                    </button>
-                    <button form="" onclick="badges_addBadges('addBadges','badges_wizardForm');"
-                            class="submit btn btn-success badge_next_button">
-                        {{ _x('button', 'Post') }}
-                    </button>
-                </td>
-            </tr>
-        </table>
-    </div>
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">
+                    <i class="ti ti-shopping-cart me-2"></i>{{ __('Cart', 'badges') }}
+                </h3>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-vcenter card-table" id="badges_cart" style="display:none">
+                    <tr>
+                        <th>{{ __('Visitor firstname', 'badges') }}</th>
+                        <th>{{ __('Visitor realname', 'badges') }}</th>
+                        <th>{{ __('Visitor society', 'badges') }}</th>
+                        <th>{{ _n('Badge', 'Badges', 1, 'badges') }}</th>
+                        <th>{{ __('Arrival date', 'badges') }}</th>
+                        <th class="w-1"></th>
+                    </tr>
+                </table>
+            </div>
+            <div class="card-footer d-flex justify-content-between">
+                <button type="button" class="btn btn-outline-secondary"
+                        onclick="badges_cancel('{{ cancel_url|e('js') }}');">
+                    <i class="ti ti-arrow-left me-1"></i>{{ _x('button', 'Cancel') }}
+                </button>
+                <button type="button" class="btn btn-primary"
+                        onclick="badges_addBadges('addBadges','badges_wizardForm');">
+                    <i class="ti ti-send me-1"></i>{{ _x('button', 'Post') }}
+                </button>
+            </div>
+        </div>
+        <div id="dialog-confirm"></div>
+    </form>
     <script>$(document).ready(function() {badges_initJs("{{ web_dir|e('js') }}");});</script>
-</form>
+</div>

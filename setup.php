@@ -38,7 +38,7 @@ use GlpiPlugin\Resources\Resource;
 
 global $CFG_GLPI;
 
-define('PLUGIN_BADGES_VERSION', '3.2.4');
+define('PLUGIN_BADGES_VERSION', '3.3.0');
 
 if (!defined("PLUGIN_BADGES_DIR")) {
     define("PLUGIN_BADGES_DIR", Plugin::getPhpDir("badges"));
@@ -124,8 +124,8 @@ function plugin_version_badges()
         'homepage' => 'https://github.com/InfotelGLPI/badges',
         'requirements' => [
             'glpi' => [
-                'min' => '11.0',
-                'max' => '12.0',
+                'min' => '11.0.99',
+                'max' => '12.0.99',
                 'dev' => false,
             ],
         ],

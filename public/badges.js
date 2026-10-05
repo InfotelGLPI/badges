@@ -280,7 +280,7 @@ this.badges_removeCart = function (field_id) {
 
     // Cart not visible if no data
    if (object.usedBadges.length === 0) {
-       item_bloc.parent('table').css({'display': 'none'});
+       item_bloc.closest('table').css({'display': 'none'});
    }
 
     // Remove cart row

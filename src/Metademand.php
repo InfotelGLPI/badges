@@ -36,9 +36,9 @@ use CommonGLPI;
  */
 class Metademand extends CommonGLPI
 {
-    public static $rightname = 'plugin_metademands';
+    public static string $rightname = 'plugin_metademands';
 
-    public $dohistory = false;
+    public bool $dohistory = false;
 
     /**
      * @return array

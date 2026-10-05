@@ -42,7 +42,7 @@ use Glpi\Application\View\TemplateRenderer;
  */
 class Wizard extends CommonDBTM
 {
-    public static $rightname = "plugin_badges";
+    public static string $rightname = "plugin_badges";
 
     /**
      * @param int $nb
@@ -66,7 +66,20 @@ class Wizard extends CommonDBTM
 
         TemplateRenderer::getInstance()->display('@badges/wizard_menu.html.twig', [
             'badge_icon' => Badge::getIcon(),
-            'webdir'     => PLUGIN_BADGES_WEBDIR,
+            'items'      => [
+                [
+                    'url'      => PLUGIN_BADGES_WEBDIR . '/front/wizard.form.php?action=badgerequest',
+                    'icon'     => Badge::getIcon(),
+                    'title'    => __('Access badge request', 'badges'),
+                    'subtitle' => __('For a limited time', 'badges'),
+                ],
+                [
+                    'url'      => PLUGIN_BADGES_WEBDIR . '/front/wizard.form.php?action=badgereturn',
+                    'icon'     => 'ti ti-receipt-refund',
+                    'title'    => __('Access badge return', 'badges'),
+                    'subtitle' => '',
+                ],
+            ],
         ]);
     }
 

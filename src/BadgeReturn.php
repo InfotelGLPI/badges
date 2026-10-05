@@ -53,7 +53,7 @@ class BadgeReturn extends CommonDBTM
 {
     private $request;
 
-    public static $rightname = "plugin_badges";
+    public static string $rightname = "plugin_badges";
 
     public function __construct()
     {
@@ -228,7 +228,7 @@ class BadgeReturn extends CommonDBTM
         }
 
         if ($checkKo) {
-            return [false, "<div class='alert alert-important alert-warning d-flex'>" . sprintf(__("Mandatory fields are not filled. Please correct: %s"), implode(', ', $msg)) . "</div>"];
+            return [false, "<div class='alert alert-warning d-flex'>" . sprintf(__("Mandatory fields are not filled. Please correct: %s"), implode(', ', $msg)) . "</div>"];
         }
 
         return [true, null];
@@ -318,7 +318,7 @@ class BadgeReturn extends CommonDBTM
                     'is_affected' => 0,
                     'return_date' => date('Y-m-d H:i:s')]);
             }
-            $message = "<div class='alert alert-important alert-success d-flex'>" . __('Badge returned', 'badges') . "</div>";
+            $message = "<div class='alert alert-success d-flex'>" . __('Badge returned', 'badges') . "</div>";
         }
 
         return ['success' => $success,
