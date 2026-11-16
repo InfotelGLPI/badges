@@ -122,6 +122,9 @@ function plugin_version_badges()
         'author' => "<a href='https://blogglpi.infotel.com'>Infotel</a>, Xavier CAILLAUD",
         'license' => 'GPLv3+',
         'homepage' => 'https://github.com/InfotelGLPI/badges',
+        // No inline event handler, javascript: URL nor script without nonce: the plugin works
+        // under the Content Security Policy of GLPI
+        'csp_compliant' => true,
         'requirements' => [
             'glpi' => [
                 'min' => '11.0.99',

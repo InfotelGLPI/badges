@@ -61,7 +61,7 @@
             </div>
             <div class="card-footer text-end">
                 <button type="button" class="btn btn-success"
-                        onclick="badges_addToCart('addToCart','badges_wizardForm', 'badges_cart');">
+                        data-badges-action="addToCart" data-badges-args="{{ ['addToCart', 'badges_wizardForm', 'badges_cart']|json_encode }}">
                     <i class="ti ti-plus me-1"></i>{{ __('Add to cart', 'badges') }}
                 </button>
             </div>
@@ -87,11 +87,11 @@
             </div>
             <div class="card-footer d-flex justify-content-between">
                 <button type="button" class="btn btn-outline-secondary"
-                        onclick="badges_cancel('{{ cancel_url|e('js') }}');">
+                        data-badges-action="cancel" data-badges-args="{{ [cancel_url]|json_encode }}">
                     <i class="ti ti-arrow-left me-1"></i>{{ _x('button', 'Cancel') }}
                 </button>
                 <button type="button" class="btn btn-primary"
-                        onclick="badges_addBadges('addBadges','badges_wizardForm');">
+                        data-badges-action="addBadges" data-badges-args="{{ ['addBadges', 'badges_wizardForm']|json_encode }}">
                     <i class="ti ti-send me-1"></i>{{ _x('button', 'Post') }}
                 </button>
             </div>
