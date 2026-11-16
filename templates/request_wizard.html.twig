@@ -54,7 +54,7 @@
             </tr>
             <tr>
                 <td class="center" colspan="4">
-                    <button form="" onclick="badges_addToCart('addToCart','badges_wizardForm', 'badges_cart');"
+                    <button form="" data-badges-action="addToCart" data-badges-args="{{ ['addToCart', 'badges_wizardForm', 'badges_cart']|json_encode }}"
                             class="submit btn btn-success">
                         <i class="ti ti-plus"></i>&nbsp;{{ __('Add to cart', 'badges') }}
                     </button>
@@ -84,11 +84,11 @@
             <tr>
                 <td>
                     <div id="dialog-confirm"></div>
-                    <button form="" onclick="badges_cancel('{{ cancel_url|e('js') }}');"
+                    <button form="" data-badges-action="cancel" data-badges-args="{{ [cancel_url]|json_encode }}"
                             class="submit btn btn-info badge_previous_button">
                         {{ _x('button', 'Cancel') }}
                     </button>
-                    <button form="" onclick="badges_addBadges('addBadges','badges_wizardForm');"
+                    <button form="" data-badges-action="addBadges" data-badges-args="{{ ['addBadges', 'badges_wizardForm']|json_encode }}"
                             class="submit btn btn-success badge_next_button">
                         {{ _x('button', 'Post') }}
                     </button>

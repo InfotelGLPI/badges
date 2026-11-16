@@ -41,7 +41,7 @@
                 <td>
                     <input type="button" class="submit btn btn-primary" name="addToCart"
                            value="{{ __('Search') }}"
-                           onclick="badges_searchBadges('searchBadges','badges_formSearchBadges', 'badges_searchBadges');">
+                           data-badges-action="searchBadges" data-badges-args="{{ ['searchBadges', 'badges_formSearchBadges', 'badges_searchBadges']|json_encode }}">
                     <input type="hidden" name="requesters_id" value="{{ requesters_id }}">
                 </td>
             </tr>

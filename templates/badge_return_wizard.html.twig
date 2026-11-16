@@ -56,11 +56,11 @@
             <tr>
                 <td>
                     <div id="dialog-confirm"></div>
-                    <button form="" onclick="badges_cancel('{{ cancel_url|e('js') }}');"
+                    <button form="" data-badges-action="cancel" data-badges-args="{{ [cancel_url]|json_encode }}"
                             class="submit btn btn-info badge_previous_button">
                         {{ _x('button', 'Cancel') }}
                     </button>
-                    <button form="" onclick="badges_returnBadges('returnBadges','badges_wizardForm');"
+                    <button form="" data-badges-action="returnBadges" data-badges-args="{{ ['returnBadges', 'badges_wizardForm']|json_encode }}"
                             class="submit btn btn-success badge_next_button">
                         {{ __('Badges return', 'badges') }}
                     </button>

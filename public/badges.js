@@ -42,6 +42,10 @@ this.badges_execInlineScripts = function (html) {
     var scripts, scriptsFinder = /<script[^>]*>([\s\S]+?)<\/script>/gi;
     while (scripts = scriptsFinder.exec(html)) {
         var script = document.createElement('script');
+        // Content Security Policy: a script created here only runs with the nonce of the page
+        if (typeof CFG_GLPI !== 'undefined' && CFG_GLPI.csp_nonce) {
+            script.nonce = CFG_GLPI.csp_nonce;
+        }
         script.text = scripts[1];
         document.head.appendChild(script);
         document.head.removeChild(script);
@@ -341,3 +345,41 @@ this.encodeParameters = function (elements) {
 
     return kvpairs.join("&");
 };
+
+/**
+ * Buttons of the wizards (templates/request_wizard, request_search and badge_return_wizard):
+ * data-badges-action names one of the functions above, data-badges-args carries its arguments
+ * as a JSON array. No inline handler (Content Security Policy); the listener is delegated, so
+ * it is bound once and is a no-op on the other pages.
+ */
+document.addEventListener('click', function (event) {
+    if (!(event.target instanceof Element)) {
+        return;
+    }
+
+    var button = event.target.closest('[data-badges-action]');
+    if (button === null) {
+        return;
+    }
+
+    var actions = {
+        addToCart: badges_addToCart,
+        addBadges: badges_addBadges,
+        returnBadges: badges_returnBadges,
+        searchBadges: badges_searchBadges,
+        cancel: badges_cancel
+    };
+    var action = actions[button.dataset.badgesAction];
+    if (action === undefined) {
+        return;
+    }
+
+    var args;
+    try {
+        args = JSON.parse(button.dataset.badgesArgs || '[]');
+    } catch (e) {
+        return;
+    }
+
+    action.apply(window, args);
+});

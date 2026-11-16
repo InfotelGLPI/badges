@@ -245,7 +245,7 @@ class BadgeReturn extends CommonDBTM
         }
 
         ob_start();
-        $rand = Dropdown::showFromArray("return_badges_id", $elements, ['on_change' => 'badges_loadBadgeInformation();']);
+        $rand = Dropdown::showFromArray("return_badges_id", $elements);
         $dropdown_html = ob_get_clean();
 
         $ajax_url = PLUGIN_BADGES_WEBDIR . '/ajax/request.php';
@@ -258,6 +258,10 @@ class BadgeReturn extends CommonDBTM
             "dropdown_return_badges_id{$rand}",
         );
         echo "}";
+        // Bound here rather than through an on_change, which Dropdown::showFromArray() writes as an
+        // inline onchange handler (CSP). The template prints this script after the dropdown; select2
+        // only fires jQuery events.
+        echo "$('#dropdown_return_badges_id{$rand}').on('change', function () { badges_loadBadgeInformation(); });";
         $load_badge_info_js = ob_get_clean();
 
         Html::requireJs('glpi_dialog');
