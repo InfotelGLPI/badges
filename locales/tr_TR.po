@@ -12,36 +12,36 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-05 12:03+0000\n"
+"POT-Creation-Date: 2026-11-16 08:22+0000\n"
 "PO-Revision-Date: 2020-11-02 15:44+0000\n"
 "Last-Translator: Kaya Zeren <kayazeren@gmail.com>, 2026\n"
-"Language-Team: Turkish (Turkey) (https://app.transifex.com/infotelGLPI/"
-"teams/12355/tr_TR/)\n"
+"Language-Team: Turkish (Turkey) (https://app.transifex.com/infotelGLPI/teams/"
+"12355/tr_TR/)\n"
 "Language: tr_TR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: src/Wizard.php:73 src/NotificationTargetBadge.php:59
-#: src/NotificationTargetBadge.php:80 templates/request_wizard.html.twig:35
+#: src/NotificationTargetBadge.php:59 src/NotificationTargetBadge.php:80
+#: src/Wizard.php:73 ⁨standard input⁩:35
 msgid "Access badge request"
 msgstr "Erişim yaka kartı isteği"
 
-#: src/Wizard.php:79 templates/badge_return_wizard.html.twig:35
+#: src/Wizard.php:79 ⁨standard input⁩:35
 msgid "Access badge return"
 msgstr "Erişim yaka kartı geri alma"
 
-#: templates/status_cron.html.twig:60
+#: ⁨standard input⁩:60
 msgctxt "button"
 msgid "Add"
 msgstr "Ekle"
 
-#: templates/request_wizard.html.twig:65
+#: ⁨standard input⁩:65
 msgid "Add to cart"
 msgstr "Sepete ekle"
 
-#: src/Request.php:480 src/Badge.php:113 templates/badge_form.html.twig:117
+#: src/Badge.php:113 src/Request.php:480 ⁨standard input⁩:117
 msgid "Affectation date"
 msgstr "Yürürlük tarihi"
 
@@ -49,22 +49,20 @@ msgstr "Yürürlük tarihi"
 msgid "Allotted to"
 msgstr "Kullanıcısı"
 
-#: src/BadgeReturn.php:420 src/NotificationTargetBadge.php:108
-#: src/NotificationTargetBadge.php:139 templates/request_search.html.twig:36
-#: templates/badge_return_list.html.twig:39
-#: templates/request_wizard.html.twig:57 templates/request_wizard.html.twig:83
-#: templates/badge_return_info.html.twig:38 templates/request_list.html.twig:38
+#: src/NotificationTargetBadge.php:108 src/NotificationTargetBadge.php:139
+#: src/BadgeReturn.php:424 ⁨standard input⁩:39 ⁨standard input⁩:38
+#: ⁨standard input⁩:36 ⁨standard input⁩:57 ⁨standard input⁩:83
 msgid "Arrival date"
 msgstr "Varış tarihi"
 
-#: src/Request.php:481 templates/request_wizard.html.twig:53
+#: src/Request.php:481 ⁨standard input⁩:53
 msgid "Available badge"
 msgid_plural "Available badges"
 msgstr[0] "Kullanılabilecek yaka kartları"
 msgstr[1] "Kullanılabilecek yaka kartları"
 
-#: setup.php:120 src/Metademand.php:69 src/Badge.php:67
-#: templates/request_wizard.html.twig:82 templates/request_list.html.twig:34
+#: setup.php:120 src/Badge.php:67 src/Metademand.php:69 ⁨standard input⁩:34
+#: ⁨standard input⁩:82
 msgid "Badge"
 msgid_plural "Badges"
 msgstr[0] "Yaka Kartları"
@@ -76,33 +74,33 @@ msgid_plural "Badges affected"
 msgstr[0] "Etkilenen yaka kartı"
 msgstr[1] "Etkilenen yaka kartları"
 
-#: templates/badge_return_list.html.twig:31
+#: ⁨standard input⁩:31
 msgid "Badge requests history"
 msgstr "Yaka kartı isteği geçmişi"
 
-#: src/BadgeReturn.php:73 templates/badge_return_for_badge.html.twig:33
+#: src/BadgeReturn.php:73 ⁨standard input⁩:33
 msgid "Badge return"
 msgstr "Yaka kartı geri alma"
 
 #: src/NotificationTargetBadge.php:60 src/NotificationTargetBadge.php:83
-#: templates/config_badge_return.html.twig:36
+#: ⁨standard input⁩:36
 msgid "Badge return delay"
 msgstr "Yaka kartı geri alma gecikmesi"
 
-#: src/BadgeReturn.php:321
+#: src/BadgeReturn.php:325
 msgid "Badge returned"
 msgstr "Yaka kartı geri alındı"
 
-#: templates/request_list.html.twig:31 templates/request_list.html.twig:56
+#: ⁨standard input⁩:31 ⁨standard input⁩:56
 msgid "Badge usage report"
 msgstr "Yaka kartı kullanım raporu"
 
-#: src/Badge.php:536 src/BadgeReturn.php:425 src/NotificationTargetBadge.php:57
-#: src/NotificationTargetBadge.php:74
+#: src/NotificationTargetBadge.php:57 src/NotificationTargetBadge.php:74
+#: src/BadgeReturn.php:429 src/Badge.php:536
 msgid "Badges at the end of the validity"
 msgstr "Geçerlilik süresi dolan yaka kartları"
 
-#: templates/config.html.twig:45
+#: ⁨standard input⁩:45
 msgid "Badges expired for more than "
 msgstr "Şu kadar zaman önce süresi geçmiş yaka kartları"
 
@@ -110,67 +108,66 @@ msgstr "Şu kadar zaman önce süresi geçmiş yaka kartları"
 msgid "Badges expired or badges which expires"
 msgstr "Süresi geçmiş ve geçmek üzere olan yaka kartları"
 
-#: templates/config.html.twig:52
+#: ⁨standard input⁩:52
 msgid "Badges expiring in less than "
 msgstr "Şu kadar zaman içinde süresi dolan yaka kartları"
 
-#: src/BadgeReturn.php:219 templates/badge_return_wizard.html.twig:41
+#: src/BadgeReturn.php:219 ⁨standard input⁩:41
 msgid "Badges in your possession"
 msgstr "Kullanımınızdaki yaka kartları"
 
-#: src/Request.php:62 src/NotificationTargetBadge.php:149
+#: src/NotificationTargetBadge.php:149 src/Request.php:62
 msgid "Badges request"
 msgstr "Yaka kartları isteği"
 
-#: src/BadgeReturn.php:340 templates/badge_return_wizard.html.twig:61
+#: src/BadgeReturn.php:344 ⁨standard input⁩:61
 msgid "Badges return"
 msgstr "Yaka kartı geri alındı"
 
-#: templates/request_search.html.twig:33
+#: ⁨standard input⁩:33
 msgid "Badges usage search"
 msgstr "Yaka kartları kullanımı araması"
 
-#: src/Badge.php:426 src/NotificationTargetBadge.php:58
-#: src/NotificationTargetBadge.php:77
+#: src/NotificationTargetBadge.php:58 src/NotificationTargetBadge.php:77
+#: src/Badge.php:426
 msgid "Badges which expires"
 msgstr "Süresi dolmuş yaka kartları"
 
-#: src/Wizard.php:54 templates/wizard_menu.html.twig:30
+#: src/Wizard.php:54 ⁨standard input⁩:30
 msgid "Badges wizard"
 msgstr "Yaka kartları yardımcısı"
 
-#: src/Badge.php:202 templates/badge_form.html.twig:147
+#: src/Badge.php:202 ⁨standard input⁩:147
 msgid "Bookable"
 msgstr "Ayırtılabilir"
 
-#: templates/request_wizard.html.twig:91
-#: templates/badge_return_wizard.html.twig:57
+#: ⁨standard input⁩:57 ⁨standard input⁩:91
 msgctxt "button"
 msgid "Cancel"
 msgstr "İptal"
 
-#: templates/request_wizard.html.twig:73
+#: ⁨standard input⁩:73
 msgid "Cart"
 msgstr "Sepet"
 
-#: templates/badge_form.html.twig:131
+#: ⁨standard input⁩:131
 msgid "Comment"
 msgid_plural "Comments"
 msgstr[0] "Açıklama"
 msgstr[1] "Açıklamalar"
 
-#: src/Badge.php:121 src/NotificationTargetBadge.php:87
-#: src/NotificationTargetBadge.php:134 templates/badge_form.html.twig:122
+#: src/NotificationTargetBadge.php:87 src/NotificationTargetBadge.php:134
+#: src/Badge.php:121 ⁨standard input⁩:122
 msgid "Date of end of validity"
 msgstr "Geçerlilik süresinin sonu"
 
-#: templates/config.html.twig:49 templates/config.html.twig:57
+#: ⁨standard input⁩:49 ⁨standard input⁩:57
 msgid "Day"
 msgid_plural "Days"
 msgstr[0] "Gün"
 msgstr[1] "Günler"
 
-#: templates/badge_form.html.twig:123
+#: ⁨standard input⁩:123
 msgid "Empty for infinite"
 msgstr "Süresiz olması için boş bırakın"
 
@@ -178,7 +175,7 @@ msgstr "Süresiz olması için boş bırakın"
 msgid "For a limited time"
 msgstr "Sınırlı bir süre için"
 
-#: templates/badge_return_for_badge.html.twig:41
+#: ⁨standard input⁩:41
 msgid "Force badge restitution"
 msgstr "Yaka kartını geri almaya zorla"
 
@@ -186,15 +183,15 @@ msgstr "Yaka kartını geri almaya zorla"
 msgid "Manage temporary badges"
 msgstr "Geçici yaka kartları yönetimi"
 
-#: templates/badge_form.html.twig:53
+#: ⁨standard input⁩:53
 msgid "Name"
 msgstr "Ad"
 
-#: templates/badge_return_list.html.twig:54 templates/request_list.html.twig:59
+#: ⁨standard input⁩:54 ⁨standard input⁩:59
 msgid "No results found"
 msgstr "Herhangi bir sonuç bulunamadı"
 
-#: templates/badge_form.html.twig:140
+#: ⁨standard input⁩:140
 msgid "Picture"
 msgid_plural "Pictures"
 msgstr[0] "Fotoğraf"
@@ -209,43 +206,41 @@ msgstr "Lütfen sepete yaka kartları ekleyin"
 msgid "Plugin Setup"
 msgstr "Eklenti ayarları"
 
-#: templates/request_wizard.html.twig:95
+#: ⁨standard input⁩:95
 msgctxt "button"
 msgid "Post"
 msgstr "Gönder"
 
-#: templates/badge_return_list.html.twig:35
+#: ⁨standard input⁩:35
 msgid "Requester"
 msgstr "İstekte bulunan"
 
-#: templates/badge_return_wizard.html.twig:48
+#: ⁨standard input⁩:48
 msgid "Restitution date"
 msgstr "Geri verme tarihi"
 
-#: templates/request_search.html.twig:38
-#: templates/badge_return_list.html.twig:40 templates/request_list.html.twig:39
+#: ⁨standard input⁩:40 ⁨standard input⁩:39 ⁨standard input⁩:38
 msgid "Return date"
 msgstr "Geri alma tarihi"
 
-#: templates/config_badge_return.html.twig:43 templates/profile.html.twig:34
-#: templates/config.html.twig:65
+#: ⁨standard input⁩:34 ⁨standard input⁩:65 ⁨standard input⁩:43
 msgctxt "button"
 msgid "Save"
 msgstr "Kaydet"
 
-#: templates/request_search.html.twig:42
+#: ⁨standard input⁩:42
 msgid "Search"
 msgstr "Ara"
 
-#: templates/badge_form.html.twig:99
+#: ⁨standard input⁩:99
 msgid "Serial number"
 msgstr "Seri numarası"
 
-#: templates/badge_form.html.twig:108
+#: ⁨standard input⁩:108
 msgid "Status"
 msgstr "Durum"
 
-#: templates/badge_form.html.twig:53
+#: ⁨standard input⁩:53
 msgid "Surname"
 msgstr "Soyad"
 
@@ -253,7 +248,7 @@ msgstr "Soyad"
 msgid "This badge is already affected to another request"
 msgstr "Bu yaka kartı zaten başka bir istekten etkileniyor"
 
-#: templates/config_badge_return.html.twig:33 templates/config.html.twig:40
+#: ⁨standard input⁩:40 ⁨standard input⁩:33
 msgid "Time of checking of validity of the badges"
 msgstr "Yaka kartlarının geçerliliğinin denetlenme sıklığı"
 
@@ -263,27 +258,24 @@ msgid_plural "Types of badge"
 msgstr[0] "Yaka kartı türü"
 msgstr[1] "Yaka kartı türü"
 
-#: templates/status_cron.html.twig:43
+#: ⁨standard input⁩:43
 msgid "Unused status for expiration mailing"
 msgstr "Süre dolma e-postası için kullanılmıyor durumu"
 
-#: src/Request.php:478 src/NotificationTargetBadge.php:106
-#: src/NotificationTargetBadge.php:137 templates/badge_return_list.html.twig:37
-#: templates/request_wizard.html.twig:45 templates/request_wizard.html.twig:79
-#: templates/badge_return_info.html.twig:32 templates/request_list.html.twig:36
+#: src/NotificationTargetBadge.php:106 src/NotificationTargetBadge.php:137
+#: src/Request.php:478 ⁨standard input⁩:37 ⁨standard input⁩:36 ⁨standard input⁩:32
+#: ⁨standard input⁩:45 ⁨standard input⁩:79
 msgid "Visitor firstname"
 msgstr "Ziyaretçinin adı"
 
-#: src/Request.php:477 src/NotificationTargetBadge.php:105
-#: src/NotificationTargetBadge.php:136 templates/badge_return_list.html.twig:36
-#: templates/request_wizard.html.twig:41 templates/request_wizard.html.twig:80
-#: templates/badge_return_info.html.twig:34 templates/request_list.html.twig:35
+#: src/NotificationTargetBadge.php:105 src/NotificationTargetBadge.php:136
+#: src/Request.php:477 ⁨standard input⁩:36 ⁨standard input⁩:35 ⁨standard input⁩:34
+#: ⁨standard input⁩:41 ⁨standard input⁩:80
 msgid "Visitor realname"
 msgstr "Ziyaretçinin gerçek adı"
 
-#: src/Request.php:479 src/NotificationTargetBadge.php:107
-#: src/NotificationTargetBadge.php:138 templates/badge_return_list.html.twig:38
-#: templates/request_wizard.html.twig:49 templates/request_wizard.html.twig:81
-#: templates/badge_return_info.html.twig:36 templates/request_list.html.twig:37
+#: src/NotificationTargetBadge.php:107 src/NotificationTargetBadge.php:138
+#: src/Request.php:479 ⁨standard input⁩:38 ⁨standard input⁩:37 ⁨standard input⁩:36
+#: ⁨standard input⁩:49 ⁨standard input⁩:81
 msgid "Visitor society"
 msgstr "Ziyaretçinin topluluğu"
