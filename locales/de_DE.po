@@ -2,12 +2,12 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
 # Xavier CAILLAUD <thetsmr@gmail.com>, 2020
 # Michael Schieferer, 2022
 # NeoTrinity <tecvisor@yahoo.fr>, 2026
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
@@ -16,12 +16,11 @@ msgstr ""
 "POT-Creation-Date: 2026-11-16 08:22+0000\n"
 "PO-Revision-Date: 2020-11-02 15:44+0000\n"
 "Last-Translator: NeoTrinity <tecvisor@yahoo.fr>, 2026\n"
-"Language-Team: German (Germany) (https://app.transifex.com/infotelGLPI/teams/"
-"12355/de_DE/)\n"
-"Language: de_DE\n"
+"Language-Team: German (Germany) (https://app.transifex.com/infotelGLPI/teams/12355/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/NotificationTargetBadge.php:59 src/NotificationTargetBadge.php:80
@@ -51,8 +50,8 @@ msgid "Allotted to"
 msgstr "Zugeteilt"
 
 #: src/NotificationTargetBadge.php:108 src/NotificationTargetBadge.php:139
-#: src/BadgeReturn.php:424 ⁨standard input⁩:39 ⁨standard input⁩:38
-#: ⁨standard input⁩:36 ⁨standard input⁩:57 ⁨standard input⁩:83
+#: src/BadgeReturn.php:424 ⁨standard input⁩:39 ⁨standard input⁩:38 ⁨standard
+#: input⁩:36 ⁨standard input⁩:57 ⁨standard input⁩:83
 msgid "Arrival date"
 msgstr "Ankunftsdatum"
 
@@ -72,8 +71,8 @@ msgstr[1] "Zutrittskarten"
 #: src/Request.php:403
 msgid "Badge affected"
 msgid_plural "Badges affected"
-msgstr[0] "Betroffene Karte"
-msgstr[1] "Betroffene Karten"
+msgstr[0] "Betroffene Abzeichen"
+msgstr[1] "Betroffenen Abzeichen"
 
 #: ⁨standard input⁩:31
 msgid "Badge requests history"
@@ -247,7 +246,7 @@ msgstr "Nachname"
 
 #: src/Request.php:385
 msgid "This badge is already affected to another request"
-msgstr ""
+msgstr "Dieses Abzeichen ist bereits einer anderen Anfrage zugewiesen."
 
 #: ⁨standard input⁩:40 ⁨standard input⁩:33
 msgid "Time of checking of validity of the badges"
@@ -264,19 +263,19 @@ msgid "Unused status for expiration mailing"
 msgstr "Unbenutzter Status für Ablaufmailing"
 
 #: src/NotificationTargetBadge.php:106 src/NotificationTargetBadge.php:137
-#: src/Request.php:478 ⁨standard input⁩:37 ⁨standard input⁩:36 ⁨standard input⁩:32
-#: ⁨standard input⁩:45 ⁨standard input⁩:79
+#: src/Request.php:478 ⁨standard input⁩:37 ⁨standard input⁩:36 ⁨standard
+#: input⁩:32 ⁨standard input⁩:45 ⁨standard input⁩:79
 msgid "Visitor firstname"
 msgstr "Besucher Vorname"
 
 #: src/NotificationTargetBadge.php:105 src/NotificationTargetBadge.php:136
-#: src/Request.php:477 ⁨standard input⁩:36 ⁨standard input⁩:35 ⁨standard input⁩:34
-#: ⁨standard input⁩:41 ⁨standard input⁩:80
+#: src/Request.php:477 ⁨standard input⁩:36 ⁨standard input⁩:35 ⁨standard
+#: input⁩:34 ⁨standard input⁩:41 ⁨standard input⁩:80
 msgid "Visitor realname"
 msgstr "Besucher Nachname"
 
 #: src/NotificationTargetBadge.php:107 src/NotificationTargetBadge.php:138
-#: src/Request.php:479 ⁨standard input⁩:38 ⁨standard input⁩:37 ⁨standard input⁩:36
-#: ⁨standard input⁩:49 ⁨standard input⁩:81
+#: src/Request.php:479 ⁨standard input⁩:38 ⁨standard input⁩:37 ⁨standard
+#: input⁩:36 ⁨standard input⁩:49 ⁨standard input⁩:81
 msgid "Visitor society"
 msgstr "Besuchergesellschaft"
